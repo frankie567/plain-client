@@ -3,37 +3,70 @@
 
 from typing import Any, Dict, Optional, Union
 
-from .add_customer_to_customer_groups import AddCustomerToCustomerGroups
-from .add_customer_to_tenants import AddCustomerToTenants
-from .add_labels import AddLabels
-from .add_members_to_tier import AddMembersToTier
-from .archive_label_type import ArchiveLabelType
-from .assign_thread import AssignThread
+from .add_customer_to_customer_groups import (
+    AddCustomerToCustomerGroups,
+    AddCustomerToCustomerGroupsAddCustomerToCustomerGroups,
+)
+from .add_customer_to_tenants import (
+    AddCustomerToTenants,
+    AddCustomerToTenantsAddCustomerToTenants,
+)
+from .add_labels import AddLabels, AddLabelsAddLabels
+from .add_members_to_tier import AddMembersToTier, AddMembersToTierAddMembersToTier
+from .archive_label_type import ArchiveLabelType, ArchiveLabelTypeArchiveLabelType
+from .assign_thread import AssignThread, AssignThreadAssignThread
 from .async_base_client import AsyncBaseClient
 from .base_model import UNSET, UnsetType
-from .change_thread_priority import ChangeThreadPriority
-from .companies import Companies
-from .create_attachment_upload_url import CreateAttachmentUploadUrl
-from .create_customer_card_config import CreateCustomerCardConfig
-from .create_customer_event import CreateCustomerEvent
-from .create_label_type import CreateLabelType
-from .create_note import CreateNote
-from .create_thread import CreateThread
-from .create_thread_event import CreateThreadEvent
-from .create_webhook_target import CreateWebhookTarget
-from .customer_by_email import CustomerByEmail
-from .customer_by_external_id import CustomerByExternalId
-from .customer_by_id import CustomerById
-from .customer_customer_groups import CustomerCustomerGroups
-from .customer_group_by_id import CustomerGroupById
-from .customer_groups import CustomerGroups
-from .customer_tenants import CustomerTenants
-from .customers import Customers
-from .delete_customer import DeleteCustomer
-from .delete_customer_card_config import DeleteCustomerCardConfig
-from .delete_thread_field import DeleteThreadField
-from .delete_webhook_target import DeleteWebhookTarget
-from .index_document import IndexDocument
+from .change_thread_priority import (
+    ChangeThreadPriority,
+    ChangeThreadPriorityChangeThreadPriority,
+)
+from .companies import Companies, CompaniesCompanies
+from .create_attachment_upload_url import (
+    CreateAttachmentUploadUrl,
+    CreateAttachmentUploadUrlCreateAttachmentUploadUrl,
+)
+from .create_customer_card_config import (
+    CreateCustomerCardConfig,
+    CreateCustomerCardConfigCreateCustomerCardConfig,
+)
+from .create_customer_event import (
+    CreateCustomerEvent,
+    CreateCustomerEventCreateCustomerEvent,
+)
+from .create_label_type import CreateLabelType, CreateLabelTypeCreateLabelType
+from .create_note import CreateNote, CreateNoteCreateNote
+from .create_thread import CreateThread, CreateThreadCreateThread
+from .create_thread_event import CreateThreadEvent, CreateThreadEventCreateThreadEvent
+from .create_webhook_target import (
+    CreateWebhookTarget,
+    CreateWebhookTargetCreateWebhookTarget,
+)
+from .customer_by_email import CustomerByEmail, CustomerByEmailCustomerByEmail
+from .customer_by_external_id import (
+    CustomerByExternalId,
+    CustomerByExternalIdCustomerByExternalId,
+)
+from .customer_by_id import CustomerById, CustomerByIdCustomer
+from .customer_customer_groups import (
+    CustomerCustomerGroups,
+    CustomerCustomerGroupsCustomer,
+)
+from .customer_group_by_id import CustomerGroupById, CustomerGroupByIdCustomerGroup
+from .customer_groups import CustomerGroups, CustomerGroupsCustomerGroups
+from .customer_tenants import CustomerTenants, CustomerTenantsCustomer
+from .customers import Customers, CustomersCustomers
+from .delete_customer import DeleteCustomer, DeleteCustomerDeleteCustomer
+from .delete_customer_card_config import (
+    DeleteCustomerCardConfig,
+    DeleteCustomerCardConfigDeleteCustomerCardConfig,
+)
+from .delete_thread_field import DeleteThreadField, DeleteThreadFieldDeleteThreadField
+from .delete_webhook_target import (
+    DeleteWebhookTarget,
+    DeleteWebhookTargetDeleteWebhookTarget,
+)
+from .index_document import IndexDocument, IndexDocumentCreateIndexedDocument
 from .input_types import (
     AddCustomerToCustomerGroupsInput,
     AddCustomerToTenantsInput,
@@ -87,45 +120,72 @@ from .input_types import (
     UpsertTenantInput,
     UpsertThreadFieldInput,
 )
-from .label_type import LabelType
-from .label_types import LabelTypes
-from .mark_thread_as_done import MarkThreadAsDone
-from .mark_thread_as_todo import MarkThreadAsTodo
-from .my_workspace import MyWorkspace
-from .remove_customer_from_customer_groups import RemoveCustomerFromCustomerGroups
-from .remove_customer_from_tenants import RemoveCustomerFromTenants
-from .remove_labels import RemoveLabels
-from .remove_members_from_tier import RemoveMembersFromTier
-from .reply_to_email import ReplyToEmail
-from .reply_to_thread import ReplyToThread
-from .search_companies import SearchCompanies
-from .search_tenants import SearchTenants
-from .send_customer_chat import SendCustomerChat
-from .send_new_email import SendNewEmail
-from .set_customer_tenants import SetCustomerTenants
-from .snooze_thread import SnoozeThread
-from .tenant import Tenant
-from .tenants import Tenants
-from .thread import Thread
-from .thread_by_external_id import ThreadByExternalId
-from .threads import Threads
-from .tier import Tier
-from .tiers import Tiers
-from .unassign_thread import UnassignThread
-from .update_company_tier import UpdateCompanyTier
-from .update_customer_card_config import UpdateCustomerCardConfig
-from .update_customer_company import UpdateCustomerCompany
-from .update_tenant_tier import UpdateTenantTier
-from .update_thread_tenant import UpdateThreadTenant
-from .update_webhook_target import UpdateWebhookTarget
-from .upsert_company import UpsertCompany
-from .upsert_customer import UpsertCustomer
-from .upsert_tenant import UpsertTenant
-from .upsert_thread_field import UpsertThreadField
-from .user_by_email import UserByEmail
-from .user_by_id import UserById
-from .webhook_target import WebhookTarget
-from .webhook_targets import WebhookTargets
+from .label_type import LabelType, LabelTypeLabelType
+from .label_types import LabelTypes, LabelTypesLabelTypes
+from .mark_thread_as_done import MarkThreadAsDone, MarkThreadAsDoneMarkThreadAsDone
+from .mark_thread_as_todo import MarkThreadAsTodo, MarkThreadAsTodoMarkThreadAsTodo
+from .my_workspace import MyWorkspace, MyWorkspaceMyWorkspace
+from .remove_customer_from_customer_groups import (
+    RemoveCustomerFromCustomerGroups,
+    RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroups,
+)
+from .remove_customer_from_tenants import (
+    RemoveCustomerFromTenants,
+    RemoveCustomerFromTenantsRemoveCustomerFromTenants,
+)
+from .remove_labels import RemoveLabels, RemoveLabelsRemoveLabels
+from .remove_members_from_tier import (
+    RemoveMembersFromTier,
+    RemoveMembersFromTierRemoveMembersFromTier,
+)
+from .reply_to_email import ReplyToEmail, ReplyToEmailReplyToEmail
+from .reply_to_thread import ReplyToThread, ReplyToThreadReplyToThread
+from .search_companies import SearchCompanies, SearchCompaniesSearchCompanies
+from .search_tenants import SearchTenants, SearchTenantsSearchTenants
+from .send_customer_chat import SendCustomerChat, SendCustomerChatSendCustomerChat
+from .send_new_email import SendNewEmail, SendNewEmailSendNewEmail
+from .set_customer_tenants import (
+    SetCustomerTenants,
+    SetCustomerTenantsSetCustomerTenants,
+)
+from .snooze_thread import SnoozeThread, SnoozeThreadSnoozeThread
+from .tenant import Tenant, TenantTenant
+from .tenants import Tenants, TenantsTenants
+from .thread import Thread, ThreadThread
+from .thread_by_external_id import (
+    ThreadByExternalId,
+    ThreadByExternalIdThreadByExternalId,
+)
+from .threads import Threads, ThreadsThreads
+from .tier import Tier, TierTier
+from .tiers import Tiers, TiersTiers
+from .unassign_thread import UnassignThread, UnassignThreadUnassignThread
+from .update_company_tier import UpdateCompanyTier, UpdateCompanyTierUpdateCompanyTier
+from .update_customer_card_config import (
+    UpdateCustomerCardConfig,
+    UpdateCustomerCardConfigUpdateCustomerCardConfig,
+)
+from .update_customer_company import (
+    UpdateCustomerCompany,
+    UpdateCustomerCompanyUpdateCustomerCompany,
+)
+from .update_tenant_tier import UpdateTenantTier, UpdateTenantTierUpdateTenantTier
+from .update_thread_tenant import (
+    UpdateThreadTenant,
+    UpdateThreadTenantUpdateThreadTenant,
+)
+from .update_webhook_target import (
+    UpdateWebhookTarget,
+    UpdateWebhookTargetUpdateWebhookTarget,
+)
+from .upsert_company import UpsertCompany, UpsertCompanyUpsertCompany
+from .upsert_customer import UpsertCustomer, UpsertCustomerUpsertCustomer
+from .upsert_tenant import UpsertTenant, UpsertTenantUpsertTenant
+from .upsert_thread_field import UpsertThreadField, UpsertThreadFieldUpsertThreadField
+from .user_by_email import UserByEmail, UserByEmailUserByEmail
+from .user_by_id import UserById, UserByIdUserById
+from .webhook_target import WebhookTarget, WebhookTargetWebhookTarget
+from .webhook_targets import WebhookTargets, WebhookTargetsWebhookTargets
 
 
 def gql(q: str) -> str:
@@ -135,7 +195,7 @@ def gql(q: str) -> str:
 class Plain(AsyncBaseClient):
     async def add_customer_to_customer_groups(
         self, input: AddCustomerToCustomerGroupsInput, **kwargs: Any
-    ) -> AddCustomerToCustomerGroups:
+    ) -> AddCustomerToCustomerGroupsAddCustomerToCustomerGroups:
         query = gql(
             """
             mutation addCustomerToCustomerGroups($input: AddCustomerToCustomerGroupsInput!) {
@@ -231,11 +291,13 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return AddCustomerToCustomerGroups.model_validate(data)
+        return AddCustomerToCustomerGroups.model_validate(
+            data
+        ).add_customer_to_customer_groups
 
     async def add_customer_to_tenants(
         self, input: AddCustomerToTenantsInput, **kwargs: Any
-    ) -> AddCustomerToTenants:
+    ) -> AddCustomerToTenantsAddCustomerToTenants:
         query = gql(
             """
             mutation addCustomerToTenants($input: AddCustomerToTenantsInput!) {
@@ -267,9 +329,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return AddCustomerToTenants.model_validate(data)
+        return AddCustomerToTenants.model_validate(data).add_customer_to_tenants
 
-    async def add_labels(self, input: AddLabelsInput, **kwargs: Any) -> AddLabels:
+    async def add_labels(
+        self, input: AddLabelsInput, **kwargs: Any
+    ) -> AddLabelsAddLabels:
         query = gql(
             """
             mutation addLabels($input: AddLabelsInput!) {
@@ -396,11 +460,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="addLabels", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return AddLabels.model_validate(data)
+        return AddLabels.model_validate(data).add_labels
 
     async def add_members_to_tier(
         self, input: AddMembersToTierInput, **kwargs: Any
-    ) -> AddMembersToTier:
+    ) -> AddMembersToTierAddMembersToTier:
         query = gql(
             """
             mutation addMembersToTier($input: AddMembersToTierInput!) {
@@ -512,11 +576,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return AddMembersToTier.model_validate(data)
+        return AddMembersToTier.model_validate(data).add_members_to_tier
 
     async def archive_label_type(
         self, input: ArchiveLabelTypeInput, **kwargs: Any
-    ) -> ArchiveLabelType:
+    ) -> ArchiveLabelTypeArchiveLabelType:
         query = gql(
             """
             mutation archiveLabelType($input: ArchiveLabelTypeInput!) {
@@ -614,11 +678,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return ArchiveLabelType.model_validate(data)
+        return ArchiveLabelType.model_validate(data).archive_label_type
 
     async def assign_thread(
         self, input: AssignThreadInput, **kwargs: Any
-    ) -> AssignThread:
+    ) -> AssignThreadAssignThread:
         query = gql(
             """
             mutation assignThread($input: AssignThreadInput!) {
@@ -982,11 +1046,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="assignThread", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return AssignThread.model_validate(data)
+        return AssignThread.model_validate(data).assign_thread
 
     async def change_thread_priority(
         self, input: ChangeThreadPriorityInput, **kwargs: Any
-    ) -> ChangeThreadPriority:
+    ) -> ChangeThreadPriorityChangeThreadPriority:
         query = gql(
             """
             mutation changeThreadPriority($input: ChangeThreadPriorityInput!) {
@@ -1353,11 +1417,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return ChangeThreadPriority.model_validate(data)
+        return ChangeThreadPriority.model_validate(data).change_thread_priority
 
     async def create_attachment_upload_url(
         self, input: CreateAttachmentUploadUrlInput, **kwargs: Any
-    ) -> CreateAttachmentUploadUrl:
+    ) -> CreateAttachmentUploadUrlCreateAttachmentUploadUrl:
         query = gql(
             """
             mutation createAttachmentUploadUrl($input: CreateAttachmentUploadUrlInput!) {
@@ -1432,11 +1496,13 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return CreateAttachmentUploadUrl.model_validate(data)
+        return CreateAttachmentUploadUrl.model_validate(
+            data
+        ).create_attachment_upload_url
 
     async def create_customer_card_config(
         self, input: CreateCustomerCardConfigInput, **kwargs: Any
-    ) -> CreateCustomerCardConfig:
+    ) -> CreateCustomerCardConfigCreateCustomerCardConfig:
         query = gql(
             """
             mutation createCustomerCardConfig($input: CreateCustomerCardConfigInput!) {
@@ -1498,11 +1564,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return CreateCustomerCardConfig.model_validate(data)
+        return CreateCustomerCardConfig.model_validate(data).create_customer_card_config
 
     async def create_customer_event(
         self, input: CreateCustomerEventInput, **kwargs: Any
-    ) -> CreateCustomerEvent:
+    ) -> CreateCustomerEventCreateCustomerEvent:
         query = gql(
             """
             mutation createCustomerEvent($input: CreateCustomerEventInput!) {
@@ -1605,11 +1671,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return CreateCustomerEvent.model_validate(data)
+        return CreateCustomerEvent.model_validate(data).create_customer_event
 
     async def create_label_type(
         self, input: CreateLabelTypeInput, **kwargs: Any
-    ) -> CreateLabelType:
+    ) -> CreateLabelTypeCreateLabelType:
         query = gql(
             """
             mutation createLabelType($input: CreateLabelTypeInput!) {
@@ -1716,9 +1782,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="createLabelType", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return CreateLabelType.model_validate(data)
+        return CreateLabelType.model_validate(data).create_label_type
 
-    async def create_note(self, input: CreateNoteInput, **kwargs: Any) -> CreateNote:
+    async def create_note(
+        self, input: CreateNoteInput, **kwargs: Any
+    ) -> CreateNoteCreateNote:
         query = gql(
             """
             mutation createNote($input: CreateNoteInput!) {
@@ -1757,11 +1825,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="createNote", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return CreateNote.model_validate(data)
+        return CreateNote.model_validate(data).create_note
 
     async def create_thread(
         self, input: CreateThreadInput, **kwargs: Any
-    ) -> CreateThread:
+    ) -> CreateThreadCreateThread:
         query = gql(
             """
             mutation createThread($input: CreateThreadInput!) {
@@ -2125,11 +2193,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="createThread", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return CreateThread.model_validate(data)
+        return CreateThread.model_validate(data).create_thread
 
     async def create_thread_event(
         self, input: CreateThreadEventInput, **kwargs: Any
-    ) -> CreateThreadEvent:
+    ) -> CreateThreadEventCreateThreadEvent:
         query = gql(
             """
             mutation createThreadEvent($input: CreateThreadEventInput!) {
@@ -2232,11 +2300,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return CreateThreadEvent.model_validate(data)
+        return CreateThreadEvent.model_validate(data).create_thread_event
 
     async def create_webhook_target(
         self, input: CreateWebhookTargetInput, **kwargs: Any
-    ) -> CreateWebhookTarget:
+    ) -> CreateWebhookTargetCreateWebhookTarget:
         query = gql(
             """
             mutation createWebhookTarget($input: CreateWebhookTargetInput!) {
@@ -2347,11 +2415,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return CreateWebhookTarget.model_validate(data)
+        return CreateWebhookTarget.model_validate(data).create_webhook_target
 
     async def delete_customer(
         self, input: DeleteCustomerInput, **kwargs: Any
-    ) -> DeleteCustomer:
+    ) -> DeleteCustomerDeleteCustomer:
         query = gql(
             """
             mutation deleteCustomer($input: DeleteCustomerInput!) {
@@ -2380,11 +2448,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="deleteCustomer", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return DeleteCustomer.model_validate(data)
+        return DeleteCustomer.model_validate(data).delete_customer
 
     async def delete_customer_card_config(
         self, input: DeleteCustomerCardConfigInput, **kwargs: Any
-    ) -> DeleteCustomerCardConfig:
+    ) -> DeleteCustomerCardConfigDeleteCustomerCardConfig:
         query = gql(
             """
             mutation deleteCustomerCardConfig($input: DeleteCustomerCardConfigInput!) {
@@ -2416,11 +2484,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return DeleteCustomerCardConfig.model_validate(data)
+        return DeleteCustomerCardConfig.model_validate(data).delete_customer_card_config
 
     async def delete_thread_field(
         self, input: DeleteThreadFieldInput, **kwargs: Any
-    ) -> DeleteThreadField:
+    ) -> DeleteThreadFieldDeleteThreadField:
         query = gql(
             """
             mutation deleteThreadField($input: DeleteThreadFieldInput!) {
@@ -2452,11 +2520,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return DeleteThreadField.model_validate(data)
+        return DeleteThreadField.model_validate(data).delete_thread_field
 
     async def delete_webhook_target(
         self, input: DeleteWebhookTargetInput, **kwargs: Any
-    ) -> DeleteWebhookTarget:
+    ) -> DeleteWebhookTargetDeleteWebhookTarget:
         query = gql(
             """
             mutation deleteWebhookTarget($input: DeleteWebhookTargetInput!) {
@@ -2488,11 +2556,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return DeleteWebhookTarget.model_validate(data)
+        return DeleteWebhookTarget.model_validate(data).delete_webhook_target
 
     async def index_document(
         self, input: CreateIndexedDocumentInput, **kwargs: Any
-    ) -> IndexDocument:
+    ) -> IndexDocumentCreateIndexedDocument:
         query = gql(
             """
             mutation indexDocument($input: CreateIndexedDocumentInput!) {
@@ -2539,11 +2607,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="indexDocument", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return IndexDocument.model_validate(data)
+        return IndexDocument.model_validate(data).create_indexed_document
 
     async def mark_thread_as_done(
         self, input: MarkThreadAsDoneInput, **kwargs: Any
-    ) -> MarkThreadAsDone:
+    ) -> MarkThreadAsDoneMarkThreadAsDone:
         query = gql(
             """
             mutation markThreadAsDone($input: MarkThreadAsDoneInput!) {
@@ -2910,11 +2978,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return MarkThreadAsDone.model_validate(data)
+        return MarkThreadAsDone.model_validate(data).mark_thread_as_done
 
     async def mark_thread_as_todo(
         self, input: MarkThreadAsTodoInput, **kwargs: Any
-    ) -> MarkThreadAsTodo:
+    ) -> MarkThreadAsTodoMarkThreadAsTodo:
         query = gql(
             """
             mutation markThreadAsTodo($input: MarkThreadAsTodoInput!) {
@@ -3281,11 +3349,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return MarkThreadAsTodo.model_validate(data)
+        return MarkThreadAsTodo.model_validate(data).mark_thread_as_todo
 
     async def remove_customer_from_customer_groups(
         self, input: RemoveCustomerFromCustomerGroupsInput, **kwargs: Any
-    ) -> RemoveCustomerFromCustomerGroups:
+    ) -> RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroups:
         query = gql(
             """
             mutation removeCustomerFromCustomerGroups($input: RemoveCustomerFromCustomerGroupsInput!) {
@@ -3317,11 +3385,13 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return RemoveCustomerFromCustomerGroups.model_validate(data)
+        return RemoveCustomerFromCustomerGroups.model_validate(
+            data
+        ).remove_customer_from_customer_groups
 
     async def remove_customer_from_tenants(
         self, input: RemoveCustomerFromTenantsInput, **kwargs: Any
-    ) -> RemoveCustomerFromTenants:
+    ) -> RemoveCustomerFromTenantsRemoveCustomerFromTenants:
         query = gql(
             """
             mutation removeCustomerFromTenants($input: RemoveCustomerFromTenantsInput!) {
@@ -3353,11 +3423,13 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return RemoveCustomerFromTenants.model_validate(data)
+        return RemoveCustomerFromTenants.model_validate(
+            data
+        ).remove_customer_from_tenants
 
     async def remove_labels(
         self, input: RemoveLabelsInput, **kwargs: Any
-    ) -> RemoveLabels:
+    ) -> RemoveLabelsRemoveLabels:
         query = gql(
             """
             mutation removeLabels($input: RemoveLabelsInput!) {
@@ -3386,11 +3458,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="removeLabels", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return RemoveLabels.model_validate(data)
+        return RemoveLabels.model_validate(data).remove_labels
 
     async def remove_members_from_tier(
         self, input: RemoveMembersFromTierInput, **kwargs: Any
-    ) -> RemoveMembersFromTier:
+    ) -> RemoveMembersFromTierRemoveMembersFromTier:
         query = gql(
             """
             mutation removeMembersFromTier($input: RemoveMembersFromTierInput!) {
@@ -3422,11 +3494,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return RemoveMembersFromTier.model_validate(data)
+        return RemoveMembersFromTier.model_validate(data).remove_members_from_tier
 
     async def reply_to_email(
         self, input: ReplyToEmailInput, **kwargs: Any
-    ) -> ReplyToEmail:
+    ) -> ReplyToEmailReplyToEmail:
         query = gql(
             """
             mutation replyToEmail($input: ReplyToEmailInput!) {
@@ -3540,11 +3612,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="replyToEmail", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return ReplyToEmail.model_validate(data)
+        return ReplyToEmail.model_validate(data).reply_to_email
 
     async def reply_to_thread(
         self, input: ReplyToThreadInput, **kwargs: Any
-    ) -> ReplyToThread:
+    ) -> ReplyToThreadReplyToThread:
         query = gql(
             """
             mutation replyToThread($input: ReplyToThreadInput!) {
@@ -3573,11 +3645,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="replyToThread", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return ReplyToThread.model_validate(data)
+        return ReplyToThread.model_validate(data).reply_to_thread
 
     async def send_customer_chat(
         self, input: SendCustomerChatInput, **kwargs: Any
-    ) -> SendCustomerChat:
+    ) -> SendCustomerChatSendCustomerChat:
         query = gql(
             """
             mutation sendCustomerChat($input: SendCustomerChatInput!) {
@@ -3632,11 +3704,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return SendCustomerChat.model_validate(data)
+        return SendCustomerChat.model_validate(data).send_customer_chat
 
     async def send_new_email(
         self, input: SendNewEmailInput, **kwargs: Any
-    ) -> SendNewEmail:
+    ) -> SendNewEmailSendNewEmail:
         query = gql(
             """
             mutation sendNewEmail($input: SendNewEmailInput!) {
@@ -3750,11 +3822,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="sendNewEmail", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return SendNewEmail.model_validate(data)
+        return SendNewEmail.model_validate(data).send_new_email
 
     async def set_customer_tenants(
         self, input: SetCustomerTenantsInput, **kwargs: Any
-    ) -> SetCustomerTenants:
+    ) -> SetCustomerTenantsSetCustomerTenants:
         query = gql(
             """
             mutation setCustomerTenants($input: SetCustomerTenantsInput!) {
@@ -3786,11 +3858,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return SetCustomerTenants.model_validate(data)
+        return SetCustomerTenants.model_validate(data).set_customer_tenants
 
     async def snooze_thread(
         self, input: SnoozeThreadInput, **kwargs: Any
-    ) -> SnoozeThread:
+    ) -> SnoozeThreadSnoozeThread:
         query = gql(
             """
             mutation snoozeThread($input: SnoozeThreadInput!) {
@@ -4154,11 +4226,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="snoozeThread", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return SnoozeThread.model_validate(data)
+        return SnoozeThread.model_validate(data).snooze_thread
 
     async def unassign_thread(
         self, input: UnassignThreadInput, **kwargs: Any
-    ) -> UnassignThread:
+    ) -> UnassignThreadUnassignThread:
         query = gql(
             """
             mutation unassignThread($input: UnassignThreadInput!) {
@@ -4522,11 +4594,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="unassignThread", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return UnassignThread.model_validate(data)
+        return UnassignThread.model_validate(data).unassign_thread
 
     async def update_company_tier(
         self, input: UpdateCompanyTierInput, **kwargs: Any
-    ) -> UpdateCompanyTier:
+    ) -> UpdateCompanyTierUpdateCompanyTier:
         query = gql(
             """
             mutation updateCompanyTier($input: UpdateCompanyTierInput!) {
@@ -4611,11 +4683,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return UpdateCompanyTier.model_validate(data)
+        return UpdateCompanyTier.model_validate(data).update_company_tier
 
     async def update_customer_card_config(
         self, input: UpdateCustomerCardConfigInput, **kwargs: Any
-    ) -> UpdateCustomerCardConfig:
+    ) -> UpdateCustomerCardConfigUpdateCustomerCardConfig:
         query = gql(
             """
             mutation updateCustomerCardConfig($input: UpdateCustomerCardConfigInput!) {
@@ -4677,11 +4749,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return UpdateCustomerCardConfig.model_validate(data)
+        return UpdateCustomerCardConfig.model_validate(data).update_customer_card_config
 
     async def update_customer_company(
         self, input: UpdateCustomerCompanyInput, **kwargs: Any
-    ) -> UpdateCustomerCompany:
+    ) -> UpdateCustomerCompanyUpdateCustomerCompany:
         query = gql(
             """
             mutation updateCustomerCompany($input: UpdateCustomerCompanyInput!) {
@@ -4798,11 +4870,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return UpdateCustomerCompany.model_validate(data)
+        return UpdateCustomerCompany.model_validate(data).update_customer_company
 
     async def update_tenant_tier(
         self, input: UpdateTenantTierInput, **kwargs: Any
-    ) -> UpdateTenantTier:
+    ) -> UpdateTenantTierUpdateTenantTier:
         query = gql(
             """
             mutation updateTenantTier($input: UpdateTenantTierInput!) {
@@ -4887,11 +4959,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return UpdateTenantTier.model_validate(data)
+        return UpdateTenantTier.model_validate(data).update_tenant_tier
 
     async def update_thread_tenant(
         self, input: UpdateThreadTenantInput, **kwargs: Any
-    ) -> UpdateThreadTenant:
+    ) -> UpdateThreadTenantUpdateThreadTenant:
         query = gql(
             """
             mutation updateThreadTenant($input: UpdateThreadTenantInput!) {
@@ -5258,11 +5330,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return UpdateThreadTenant.model_validate(data)
+        return UpdateThreadTenant.model_validate(data).update_thread_tenant
 
     async def update_webhook_target(
         self, input: UpdateWebhookTargetInput, **kwargs: Any
-    ) -> UpdateWebhookTarget:
+    ) -> UpdateWebhookTargetUpdateWebhookTarget:
         query = gql(
             """
             mutation updateWebhookTarget($input: UpdateWebhookTargetInput!) {
@@ -5373,11 +5445,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return UpdateWebhookTarget.model_validate(data)
+        return UpdateWebhookTarget.model_validate(data).update_webhook_target
 
     async def upsert_company(
         self, input: UpsertCompanyInput, **kwargs: Any
-    ) -> UpsertCompany:
+    ) -> UpsertCompanyUpsertCompany:
         query = gql(
             """
             mutation upsertCompany($input: UpsertCompanyInput!) {
@@ -5461,11 +5533,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="upsertCompany", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return UpsertCompany.model_validate(data)
+        return UpsertCompany.model_validate(data).upsert_company
 
     async def upsert_customer(
         self, input: UpsertCustomerInput, **kwargs: Any
-    ) -> UpsertCustomer:
+    ) -> UpsertCustomerUpsertCustomer:
         query = gql(
             """
             mutation upsertCustomer($input: UpsertCustomerInput!) {
@@ -5580,11 +5652,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="upsertCustomer", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return UpsertCustomer.model_validate(data)
+        return UpsertCustomer.model_validate(data).upsert_customer
 
     async def upsert_tenant(
         self, input: UpsertTenantInput, **kwargs: Any
-    ) -> UpsertTenant:
+    ) -> UpsertTenantUpsertTenant:
         query = gql(
             """
             mutation upsertTenant($input: UpsertTenantInput!) {
@@ -5692,11 +5764,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="upsertTenant", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return UpsertTenant.model_validate(data)
+        return UpsertTenant.model_validate(data).upsert_tenant
 
     async def upsert_thread_field(
         self, input: UpsertThreadFieldInput, **kwargs: Any
-    ) -> UpsertThreadField:
+    ) -> UpsertThreadFieldUpsertThreadField:
         query = gql(
             """
             mutation upsertThreadField($input: UpsertThreadFieldInput!) {
@@ -5788,7 +5860,7 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return UpsertThreadField.model_validate(data)
+        return UpsertThreadField.model_validate(data).upsert_thread_field
 
     async def companies(
         self,
@@ -5797,7 +5869,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> Companies:
+    ) -> CompaniesCompanies:
         query = gql(
             """
             query companies($first: Int, $after: String, $last: Int, $before: String) {
@@ -5884,9 +5956,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="companies", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return Companies.model_validate(data)
+        return Companies.model_validate(data).companies
 
-    async def customer_by_email(self, email: str, **kwargs: Any) -> CustomerByEmail:
+    async def customer_by_email(
+        self, email: str, **kwargs: Any
+    ) -> Optional[CustomerByEmailCustomerByEmail]:
         query = gql(
             """
             query customerByEmail($email: String!) {
@@ -5983,11 +6057,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="customerByEmail", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return CustomerByEmail.model_validate(data)
+        return CustomerByEmail.model_validate(data).customer_by_email
 
     async def customer_by_external_id(
         self, external_id: str, **kwargs: Any
-    ) -> CustomerByExternalId:
+    ) -> Optional[CustomerByExternalIdCustomerByExternalId]:
         query = gql(
             """
             query customerByExternalId($externalId: ID!) {
@@ -6087,9 +6161,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return CustomerByExternalId.model_validate(data)
+        return CustomerByExternalId.model_validate(data).customer_by_external_id
 
-    async def customer_by_id(self, customer_id: str, **kwargs: Any) -> CustomerById:
+    async def customer_by_id(
+        self, customer_id: str, **kwargs: Any
+    ) -> Optional[CustomerByIdCustomer]:
         query = gql(
             """
             query customerById($customerId: ID!) {
@@ -6186,7 +6262,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="customerById", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return CustomerById.model_validate(data)
+        return CustomerById.model_validate(data).customer
 
     async def customer_customer_groups(
         self,
@@ -6197,7 +6273,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> CustomerCustomerGroups:
+    ) -> Optional[CustomerCustomerGroupsCustomer]:
         query = gql(
             """
             query customerCustomerGroups($customerId: ID!, $filters: CustomerGroupMembershipsFilter, $first: Int, $after: String, $last: Int, $before: String) {
@@ -6305,11 +6381,11 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return CustomerCustomerGroups.model_validate(data)
+        return CustomerCustomerGroups.model_validate(data).customer
 
     async def customer_group_by_id(
         self, customer_group_id: str, **kwargs: Any
-    ) -> CustomerGroupById:
+    ) -> Optional[CustomerGroupByIdCustomerGroup]:
         query = gql(
             """
             query customerGroupById($customerGroupId: ID!) {
@@ -6335,7 +6411,7 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return CustomerGroupById.model_validate(data)
+        return CustomerGroupById.model_validate(data).customer_group
 
     async def customer_groups(
         self,
@@ -6344,7 +6420,7 @@ class Plain(AsyncBaseClient):
         before: Union[Optional[str], UnsetType] = UNSET,
         last: Union[Optional[int], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> CustomerGroups:
+    ) -> CustomerGroupsCustomerGroups:
         query = gql(
             """
             query customerGroups($first: Int, $after: String, $before: String, $last: Int) {
@@ -6386,7 +6462,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="customerGroups", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return CustomerGroups.model_validate(data)
+        return CustomerGroups.model_validate(data).customer_groups
 
     async def customer_tenants(
         self,
@@ -6396,7 +6472,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> CustomerTenants:
+    ) -> Optional[CustomerTenantsCustomer]:
         query = gql(
             """
             query customerTenants($customerId: ID!, $first: Int, $after: String, $last: Int, $before: String) {
@@ -6528,7 +6604,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="customerTenants", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return CustomerTenants.model_validate(data)
+        return CustomerTenants.model_validate(data).customer
 
     async def customers(
         self,
@@ -6539,7 +6615,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> Customers:
+    ) -> CustomersCustomers:
         query = gql(
             """
             query customers($filters: CustomersFilter, $sortBy: CustomersSort, $first: Int, $after: String, $last: Int, $before: String) {
@@ -6665,9 +6741,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="customers", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return Customers.model_validate(data)
+        return Customers.model_validate(data).customers
 
-    async def label_type(self, label_type_id: str, **kwargs: Any) -> LabelType:
+    async def label_type(
+        self, label_type_id: str, **kwargs: Any
+    ) -> Optional[LabelTypeLabelType]:
         query = gql(
             """
             query labelType($labelTypeId: ID!) {
@@ -6757,7 +6835,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="labelType", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return LabelType.model_validate(data)
+        return LabelType.model_validate(data).label_type
 
     async def label_types(
         self,
@@ -6767,7 +6845,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> LabelTypes:
+    ) -> LabelTypesLabelTypes:
         query = gql(
             """
             query labelTypes($filters: LabelTypeFilter, $first: Int, $after: String, $last: Int, $before: String) {
@@ -6884,9 +6962,9 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="labelTypes", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return LabelTypes.model_validate(data)
+        return LabelTypes.model_validate(data).label_types
 
-    async def my_workspace(self, **kwargs: Any) -> MyWorkspace:
+    async def my_workspace(self, **kwargs: Any) -> Optional[MyWorkspaceMyWorkspace]:
         query = gql(
             """
             query myWorkspace {
@@ -6970,7 +7048,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="myWorkspace", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return MyWorkspace.model_validate(data)
+        return MyWorkspace.model_validate(data).my_workspace
 
     async def search_companies(
         self,
@@ -6980,7 +7058,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> SearchCompanies:
+    ) -> SearchCompaniesSearchCompanies:
         query = gql(
             """
             query searchCompanies($searchQuery: CompaniesSearchQuery!, $first: Int, $after: String, $last: Int, $before: String) {
@@ -7076,7 +7154,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="searchCompanies", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return SearchCompanies.model_validate(data)
+        return SearchCompanies.model_validate(data).search_companies
 
     async def search_tenants(
         self,
@@ -7086,7 +7164,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> SearchTenants:
+    ) -> SearchTenantsSearchTenants:
         query = gql(
             """
             query searchTenants($searchQuery: TenantsSearchQuery!, $first: Int, $after: String, $last: Int, $before: String) {
@@ -7206,9 +7284,9 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="searchTenants", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return SearchTenants.model_validate(data)
+        return SearchTenants.model_validate(data).search_tenants
 
-    async def tenant(self, tenant_id: str, **kwargs: Any) -> Tenant:
+    async def tenant(self, tenant_id: str, **kwargs: Any) -> Optional[TenantTenant]:
         query = gql(
             """
             query tenant($tenantId: ID!) {
@@ -7299,7 +7377,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="tenant", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return Tenant.model_validate(data)
+        return Tenant.model_validate(data).tenant
 
     async def tenants(
         self,
@@ -7308,7 +7386,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> Tenants:
+    ) -> TenantsTenants:
         query = gql(
             """
             query tenants($first: Int, $after: String, $last: Int, $before: String) {
@@ -7419,9 +7497,9 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="tenants", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return Tenants.model_validate(data)
+        return Tenants.model_validate(data).tenants
 
-    async def thread(self, thread_id: str, **kwargs: Any) -> Thread:
+    async def thread(self, thread_id: str, **kwargs: Any) -> Optional[ThreadThread]:
         query = gql(
             """
             query thread($threadId: ID!) {
@@ -7768,11 +7846,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="thread", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return Thread.model_validate(data)
+        return Thread.model_validate(data).thread
 
     async def thread_by_external_id(
         self, customer_id: str, external_id: str, **kwargs: Any
-    ) -> ThreadByExternalId:
+    ) -> Optional[ThreadByExternalIdThreadByExternalId]:
         query = gql(
             """
             query threadByExternalId($customerId: ID!, $externalId: ID!) {
@@ -8125,7 +8203,7 @@ class Plain(AsyncBaseClient):
             **kwargs
         )
         data = self.get_data(response)
-        return ThreadByExternalId.model_validate(data)
+        return ThreadByExternalId.model_validate(data).thread_by_external_id
 
     async def threads(
         self,
@@ -8136,7 +8214,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> Threads:
+    ) -> ThreadsThreads:
         query = gql(
             """
             query threads($filters: ThreadsFilter, $sortBy: ThreadsSort, $first: Int, $after: String, $last: Int, $before: String) {
@@ -8512,9 +8590,9 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="threads", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return Threads.model_validate(data)
+        return Threads.model_validate(data).threads
 
-    async def tier(self, tier_id: str, **kwargs: Any) -> Tier:
+    async def tier(self, tier_id: str, **kwargs: Any) -> Optional[TierTier]:
         query = gql(
             """
             query tier($tierId: ID!) {
@@ -8582,7 +8660,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="tier", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return Tier.model_validate(data)
+        return Tier.model_validate(data).tier
 
     async def tiers(
         self,
@@ -8591,7 +8669,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> Tiers:
+    ) -> TiersTiers:
         query = gql(
             """
             query tiers($first: Int, $after: String, $last: Int, $before: String) {
@@ -8679,9 +8757,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="tiers", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return Tiers.model_validate(data)
+        return Tiers.model_validate(data).tiers
 
-    async def user_by_email(self, email: str, **kwargs: Any) -> UserByEmail:
+    async def user_by_email(
+        self, email: str, **kwargs: Any
+    ) -> Optional[UserByEmailUserByEmail]:
         query = gql(
             """
             query userByEmail($email: String!) {
@@ -8717,9 +8797,9 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="userByEmail", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return UserByEmail.model_validate(data)
+        return UserByEmail.model_validate(data).user_by_email
 
-    async def user_by_id(self, id: str, **kwargs: Any) -> UserById:
+    async def user_by_id(self, id: str, **kwargs: Any) -> Optional[UserByIdUserById]:
         query = gql(
             """
             query userById($id: ID!) {
@@ -8755,9 +8835,11 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="userById", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return UserById.model_validate(data)
+        return UserById.model_validate(data).user_by_id
 
-    async def webhook_target(self, id: str, **kwargs: Any) -> WebhookTarget:
+    async def webhook_target(
+        self, id: str, **kwargs: Any
+    ) -> Optional[WebhookTargetWebhookTarget]:
         query = gql(
             """
             query webhookTarget($id: ID!) {
@@ -8848,7 +8930,7 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="webhookTarget", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return WebhookTarget.model_validate(data)
+        return WebhookTarget.model_validate(data).webhook_target
 
     async def webhook_targets(
         self,
@@ -8857,7 +8939,7 @@ class Plain(AsyncBaseClient):
         last: Union[Optional[int], UnsetType] = UNSET,
         before: Union[Optional[str], UnsetType] = UNSET,
         **kwargs: Any
-    ) -> WebhookTargets:
+    ) -> WebhookTargetsWebhookTargets:
         query = gql(
             """
             query webhookTargets($first: Int, $after: String, $last: Int, $before: String) {
@@ -8968,4 +9050,4 @@ class Plain(AsyncBaseClient):
             query=query, operation_name="webhookTargets", variables=variables, **kwargs
         )
         data = self.get_data(response)
-        return WebhookTargets.model_validate(data)
+        return WebhookTargets.model_validate(data).webhook_targets

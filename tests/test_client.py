@@ -56,4 +56,4 @@ async def test_upsert_customer() -> None:
                 ),
             )
         )
-        assert result.upsert_customer.result == "CREATED"
+        assert result.result == "CREATED"

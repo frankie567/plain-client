@@ -40,12 +40,12 @@ generate = [
 ]
 lint = [
   "ruff format .",
-  "ruff --fix .",
+  "ruff check --fix --unsafe-fixes .",
   "mypy plain_client/",
 ]
 lint-check = [
   "ruff format --check .",
-  "ruff .",
+  "ruff check .",
   "mypy plain_client/",
 ]
 docs-serve = "mkdocs serve"
@@ -73,6 +73,7 @@ schema_path = "schema.graphql"
 queries_path = "graphql/"
 target_package_name = "plain_client"
 client_name = "Plain"
+plugins = ["ariadne_codegen.contrib.shorter_results.ShorterResultsPlugin"]
 
 [project]
 name = "plain-client"

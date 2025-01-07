@@ -14,16 +14,16 @@ from .enums import (
 )
 
 
-class FileSizeParts(BaseModel):
-    typename__: str = Field(alias="__typename")
-    kilo_bytes: float = Field(alias="kiloBytes")
-    mega_bytes: float = Field(alias="megaBytes")
-
-
 class DateTimeParts(BaseModel):
     typename__: str = Field(alias="__typename")
     iso_8601: str = Field(alias="iso8601")
     unix_timestamp: str = Field(alias="unixTimestamp")
+
+
+class FileSizeParts(BaseModel):
+    typename__: str = Field(alias="__typename")
+    kilo_bytes: float = Field(alias="kiloBytes")
+    mega_bytes: float = Field(alias="megaBytes")
 
 
 class AttachmentParts(BaseModel):
@@ -86,6 +86,11 @@ class ChatPartsUpdatedAt(DateTimeParts):
     pass
 
 
+class SystemActorParts(BaseModel):
+    typename__: str = Field(alias="__typename")
+    system_id: str = Field(alias="systemId")
+
+
 class MachineUserActorParts(BaseModel):
     typename__: str = Field(alias="__typename")
     machine_user_id: str = Field(alias="machineUserId")
@@ -94,11 +99,6 @@ class MachineUserActorParts(BaseModel):
 class UserActorParts(BaseModel):
     typename__: str = Field(alias="__typename")
     user_id: str = Field(alias="userId")
-
-
-class SystemActorParts(BaseModel):
-    typename__: str = Field(alias="__typename")
-    system_id: str = Field(alias="systemId")
 
 
 class CompanyParts(BaseModel):
@@ -1513,14 +1513,14 @@ class WorkspacePartsUpdatedAt(DateTimeParts):
     pass
 
 
-FileSizeParts.model_rebuild()
 DateTimeParts.model_rebuild()
+FileSizeParts.model_rebuild()
 AttachmentParts.model_rebuild()
 AttachmentUploadUrlParts.model_rebuild()
 ChatParts.model_rebuild()
+SystemActorParts.model_rebuild()
 MachineUserActorParts.model_rebuild()
 UserActorParts.model_rebuild()
-SystemActorParts.model_rebuild()
 CompanyParts.model_rebuild()
 CompanyTierMembershipParts.model_rebuild()
 CustomerActorParts.model_rebuild()
