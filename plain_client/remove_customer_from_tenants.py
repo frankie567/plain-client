@@ -10,9 +10,9 @@ from .fragments import MutationErrorParts
 
 
 class RemoveCustomerFromTenants(BaseModel):
-    remove_customer_from_tenants: (
-        "RemoveCustomerFromTenantsRemoveCustomerFromTenants"
-    ) = Field(alias="removeCustomerFromTenants")
+    remove_customer_from_tenants: "RemoveCustomerFromTenantsRemoveCustomerFromTenants" = Field(
+        alias="removeCustomerFromTenants"
+    )
 
 
 class RemoveCustomerFromTenantsRemoveCustomerFromTenants(BaseModel):

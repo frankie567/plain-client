@@ -2,7 +2,13 @@
 target-version = "py39"
 
 [tool.ruff.lint]
-extend-select = ["I", "TRY", "UP"]
+extend-select = ["I", "UP"]
+
+[tool.mypy]
+
+[[tool.mypy.overrides]]
+module = "plain_client.fragments"
+disable_error_code = ["no-redef"]  # Circumvent an ariadne-codegen generation bug
 
 [tool.pytest.ini_options]
 addopts = "--cov=plain_client/ --cov-report=term-missing"
@@ -73,6 +79,9 @@ schema_path = "schema.graphql"
 queries_path = "graphql/"
 target_package_name = "plain_client"
 client_name = "Plain"
+include_all_inputs = false
+include_all_enums = false
+enable_custom_operations = false
 plugins = ["ariadne_codegen.contrib.shorter_results.ShorterResultsPlugin"]
 
 [project]

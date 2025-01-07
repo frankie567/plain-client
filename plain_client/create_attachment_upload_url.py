@@ -10,9 +10,9 @@ from .fragments import AttachmentUploadUrlParts, MutationErrorParts
 
 
 class CreateAttachmentUploadUrl(BaseModel):
-    create_attachment_upload_url: (
-        "CreateAttachmentUploadUrlCreateAttachmentUploadUrl"
-    ) = Field(alias="createAttachmentUploadUrl")
+    create_attachment_upload_url: "CreateAttachmentUploadUrlCreateAttachmentUploadUrl" = Field(
+        alias="createAttachmentUploadUrl"
+    )
 
 
 class CreateAttachmentUploadUrlCreateAttachmentUploadUrl(BaseModel):

@@ -4,40 +4,10 @@
 from enum import Enum
 
 
-class UserStatus(str, Enum):
-    ONLINE = "ONLINE"
-    OFFLINE = "OFFLINE"
-    BREAK = "BREAK"
-
-
-class CustomerStatus(str, Enum):
-    IDLE = "IDLE"
-    ACTIVE = "ACTIVE"
-    SNOOZED = "SNOOZED"
-
-
 class ThreadFieldSchemaType(str, Enum):
     STRING = "STRING"
     BOOL = "BOOL"
     ENUM = "ENUM"
-
-
-class ThreadsLayout(str, Enum):
-    TABLE = "TABLE"
-    BOARD = "BOARD"
-
-
-class ThreadsGroupBy(str, Enum):
-    NONE = "NONE"
-    PRIORITY = "PRIORITY"
-    STATUS = "STATUS"
-    COMPANY = "COMPANY"
-    LABEL = "LABEL"
-    TIER = "TIER"
-    CHANNEL = "CHANNEL"
-    ASSIGNEE = "ASSIGNEE"
-    CUSTOMER_GROUP = "CUSTOMER_GROUP"
-    TENANT = "TENANT"
 
 
 class SortDirection(str, Enum):
@@ -47,19 +17,6 @@ class SortDirection(str, Enum):
 
 class CustomersSortField(str, Enum):
     FULL_NAME = "FULL_NAME"
-
-
-class EmailAuthenticity(str, Enum):
-    PASS = "PASS"
-    FAIL = "FAIL"
-    UNKNOWN = "UNKNOWN"
-
-
-class EmailSendStatus(str, Enum):
-    PENDING = "PENDING"
-    SENT = "SENT"
-    BOUNCED = "BOUNCED"
-    FAILED = "FAILED"
 
 
 class ComponentTextSize(str, Enum):
@@ -114,42 +71,6 @@ class ComponentDividerSpacingSize(str, Enum):
     XL = "XL"
 
 
-class SettingScopeType(str, Enum):
-    USER = "USER"
-    CHAT = "CHAT"
-    USER_EMAIL_NOTIFICATIONS = "USER_EMAIL_NOTIFICATIONS"
-    USER_SLACK_NOTIFICATIONS = "USER_SLACK_NOTIFICATIONS"
-    WORKSPACE_SLACK_CHANNEL = "WORKSPACE_SLACK_CHANNEL"
-    WORKSPACE_SLACK_NOTIFICATIONS = "WORKSPACE_SLACK_NOTIFICATIONS"
-    WORKSPACE_DISCORD_NOTIFICATIONS = "WORKSPACE_DISCORD_NOTIFICATIONS"
-    WORKSPACE = "WORKSPACE"
-
-
-class MetricDimensionType(str, Enum):
-    COMPANY = "COMPANY"
-    CUSTOMER_GROUP = "CUSTOMER_GROUP"
-    LABEL_TYPE = "LABEL_TYPE"
-    MESSAGE_SOURCE = "MESSAGE_SOURCE"
-    PRIORITY = "PRIORITY"
-    THREAD_FIELD = "THREAD_FIELD"
-    TIER = "TIER"
-
-
-class TimeSeriesMetricDimensionType(str, Enum):
-    COMPANY = "COMPANY"
-    CUSTOMER_GROUP = "CUSTOMER_GROUP"
-    LABEL_TYPE = "LABEL_TYPE"
-    MESSAGE_SOURCE = "MESSAGE_SOURCE"
-    PRIORITY = "PRIORITY"
-    THREAD_FIELD = "THREAD_FIELD"
-    TIER = "TIER"
-
-
-class TimeSeriesMetricIntervalUnit(str, Enum):
-    HOUR = "HOUR"
-    DAY = "DAY"
-
-
 class ServiceLevelAgreementType(str, Enum):
     FIRST_RESPONSE_TIME = "FIRST_RESPONSE_TIME"
     NEXT_RESPONSE_TIME = "NEXT_RESPONSE_TIME"
@@ -175,30 +96,6 @@ class MutationFieldErrorType(str, Enum):
     NOT_FOUND = "NOT_FOUND"
 
 
-class ThreadLinkStatus(str, Enum):
-    TODO = "TODO"
-    IN_PROGRESS = "IN_PROGRESS"
-    DONE = "DONE"
-    UNKNOWN = "UNKNOWN"
-
-
-class LinearIssueStateType(str, Enum):
-    TRIAGE = "TRIAGE"
-    BACKLOG = "BACKLOG"
-    UNSTARTED = "UNSTARTED"
-    STARTED = "STARTED"
-    COMPLETED = "COMPLETED"
-    CANCELLED = "CANCELLED"
-    UNKNOWN = "UNKNOWN"
-
-
-class AttachmentVirusScanResult(str, Enum):
-    CLEAN = "CLEAN"
-    INFECTED = "INFECTED"
-    FAILED = "FAILED"
-    PENDING = "PENDING"
-
-
 class AttachmentType(str, Enum):
     EMAIL = "EMAIL"
     CUSTOM_TIMELINE_ENTRY = "CUSTOM_TIMELINE_ENTRY"
@@ -212,20 +109,6 @@ class UpsertResult(str, Enum):
     UPDATED = "UPDATED"
     CREATED = "CREATED"
     NOOP = "NOOP"
-
-
-class AutoresponderMessageSource(str, Enum):
-    EMAIL = "EMAIL"
-    API = "API"
-    CHAT = "CHAT"
-    SLACK = "SLACK"
-    MS_TEAMS = "MS_TEAMS"
-
-
-class GeneratedReplyFeedbackType(str, Enum):
-    POSITIVE = "POSITIVE"
-    NEGATIVE = "NEGATIVE"
-    UNKNOWN = "UNKNOWN"
 
 
 class DoneStatusDetail(str, Enum):
@@ -277,15 +160,6 @@ class MessageSource(str, Enum):
     DISCORD = "DISCORD"
 
 
-class ThreadChannel(str, Enum):
-    EMAIL = "EMAIL"
-    SLACK = "SLACK"
-    CHAT = "CHAT"
-    API = "API"
-    MS_TEAMS = "MS_TEAMS"
-    DISCORD = "DISCORD"
-
-
 class ServiceLevelAgreementStatus(str, Enum):
     PENDING = "PENDING"
     IMMINENT_BREACH = "IMMINENT_BREACH"
@@ -293,93 +167,3 @@ class ServiceLevelAgreementStatus(str, Enum):
     BREACHED = "BREACHED"
     ACHIEVED = "ACHIEVED"
     CANCELLED = "CANCELLED"
-
-
-class ConnectedSlackChannelType(str, Enum):
-    CUSTOMER = "CUSTOMER"
-    DISCUSSION = "DISCUSSION"
-
-
-class ChangeType(str, Enum):
-    ADDED = "ADDED"
-    UPDATED = "UPDATED"
-    REMOVED = "REMOVED"
-
-
-class ServiceAuthorizationStatus(str, Enum):
-    PENDING_AUTH = "PENDING_AUTH"
-    COMPLETED_AUTH = "COMPLETED_AUTH"
-    CONNECTED = "CONNECTED"
-    REINSTALL_REQUIRED = "REINSTALL_REQUIRED"
-
-
-class WeekDay(str, Enum):
-    MONDAY = "MONDAY"
-    TUESDAY = "TUESDAY"
-    WEDNESDAY = "WEDNESDAY"
-    THURSDAY = "THURSDAY"
-    FRIDAY = "FRIDAY"
-    SATURDAY = "SATURDAY"
-    SUNDAY = "SUNDAY"
-
-
-class BillingSubscriptionStatus(str, Enum):
-    ACTIVE = "ACTIVE"
-    INACTIVE = "INACTIVE"
-
-
-class BillingPlanKey(str, Enum):
-    LEGACY = "LEGACY"
-    EVALUATE = "EVALUATE"
-    LAUNCH = "LAUNCH"
-    GROW = "GROW"
-    SCALE = "SCALE"
-
-
-class BillingSeatType(str, Enum):
-    VIEWER = "VIEWER"
-    MEMBER = "MEMBER"
-    ENG_ROTA = "ENG_ROTA"
-
-
-class BillingInterval(str, Enum):
-    MONTH = "MONTH"
-    YEAR = "YEAR"
-
-
-class BillingIntervalUnit(str, Enum):
-    MONTH = "MONTH"
-    YEAR = "YEAR"
-
-
-class CurrencyCode(str, Enum):
-    USD = "USD"
-
-
-class FeatureKey(str, Enum):
-    BUSINESS_HOURS = "BUSINESS_HOURS"
-    SLACK_DISCUSSIONS = "SLACK_DISCUSSIONS"
-    SERVICE_LEVEL_AGREEMENTS = "SERVICE_LEVEL_AGREEMENTS"
-    DATA_IMPORTERS = "DATA_IMPORTERS"
-    MS_TEAMS_INTEGRATION = "MS_TEAMS_INTEGRATION"
-    LIVE_CHAT = "LIVE_CHAT"
-    WORKFLOW_RULES = "WORKFLOW_RULES"
-    CONNECTED_CUSTOMER_SLACK_CHANNELS = "CONNECTED_CUSTOMER_SLACK_CHANNELS"
-    CONNECTED_SUPPORT_EMAIL_ADDRESSES = "CONNECTED_SUPPORT_EMAIL_ADDRESSES"
-    INSIGHTS_LOOKBACK_DAYS = "INSIGHTS_LOOKBACK_DAYS"
-    BILLING_ROTA_SEATS = "BILLING_ROTA_SEATS"
-    MORE_ACTIVE_ENG_ROTA_SEATS = "MORE_ACTIVE_ENG_ROTA_SEATS"
-    AI_SUGGESTED_RESPONSES = "AI_SUGGESTED_RESPONSES"
-    TEAM_REPORTING = "TEAM_REPORTING"
-
-
-class RoleKey(str, Enum):
-    OWNER = "OWNER"
-    ADMIN = "ADMIN"
-    SUPPORT = "SUPPORT"
-    VIEWER = "VIEWER"
-
-
-class WorkspaceFileVisibility(str, Enum):
-    PRIVATE = "PRIVATE"
-    PUBLIC = "PUBLIC"
