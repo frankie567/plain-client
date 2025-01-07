@@ -6,6 +6,7 @@ extend-select = ["I", "TRY", "UP"]
 
 [tool.pytest.ini_options]
 addopts = "--cov=plain_client/ --cov-report=term-missing"
+asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "strict"
 
 [tool.hatch]
@@ -16,7 +17,7 @@ allow-direct-references = true
 [tool.hatch.version]
 source = "regex_commit"
 commit_extra_args = ["-e"]
-path = "plain_client/__init__.py"
+path = "plain_client/__version__.py"
 
 [tool.hatch.envs.default]
 python = "3.9"
@@ -25,11 +26,8 @@ dependencies = [
     "ariadne-codegen",
     "mypy",
     "ruff",
-    "pytest",
-    "pytest-cov",
     "mkdocs-material",
     "mkdocstrings[python]",
-    "pytest-asyncio",
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -40,8 +38,6 @@ generate = [
     "download-queries",
     "ariadne-codegen"
 ]
-test = "pytest"
-test-cov-xml = "pytest --cov-report=xml"
 lint = [
   "ruff format .",
   "ruff --fix .",
@@ -54,6 +50,19 @@ lint-check = [
 ]
 docs-serve = "mkdocs serve"
 docs-build = "mkdocs build"
+
+[tool.hatch.envs.test]
+python = "3.9"
+installer = "uv"
+dependencies = [
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio",
+]
+
+[tool.hatch.envs.test.scripts]
+test = "pytest"
+test-cov-xml = "pytest --cov-report=xml"
 
 [build-system]
 requires = ["hatchling", "hatch-regex-commit"]
@@ -78,6 +87,7 @@ classifiers = [
 ]
 requires-python = ">=3.9"
 dependencies = [
+    "graphql-core",
     "httpx",
     "pydantic>=2.0.0,<3.0.0",
 ]
