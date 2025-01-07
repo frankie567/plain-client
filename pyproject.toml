@@ -1,0 +1,87 @@
+[tool.ruff]
+target-version = "py39"
+
+[tool.ruff.lint]
+extend-select = ["I", "TRY", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=plain_client/ --cov-report=term-missing"
+asyncio_mode = "strict"
+
+[tool.hatch]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+source = "regex_commit"
+commit_extra_args = ["-e"]
+path = "plain_client/__init__.py"
+
+[tool.hatch.envs.default]
+python = "3.9"
+installer = "uv"
+dependencies = [
+    "ariadne-codegen",
+    "mypy",
+    "ruff",
+    "pytest",
+    "pytest-cov",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+    "pytest-asyncio",
+]
+
+[tool.hatch.envs.default.scripts]
+download-schema = "curl https://core-api.uk.plain.com/graphql/v1/schema.graphql -o schema.graphql"
+download-queries = "./download-queries.sh"
+generate = [
+    "download-schema",
+    "download-queries",
+    "ariadne-codegen"
+]
+test = "pytest"
+test-cov-xml = "pytest --cov-report=xml"
+lint = [
+  "ruff format .",
+  "ruff --fix .",
+  "mypy plain_client/",
+]
+lint-check = [
+  "ruff format --check .",
+  "ruff .",
+  "mypy plain_client/",
+]
+docs-serve = "mkdocs serve"
+docs-build = "mkdocs build"
+
+[build-system]
+requires = ["hatchling", "hatch-regex-commit"]
+build-backend = "hatchling.build"
+
+[tool.ariadne-codegen]
+schema_path = "schema.graphql"
+queries_path = "graphql/"
+target_package_name = "plain_client"
+client_name = "Plain"
+
+[project]
+name = "plain-client"
+authors = [
+  { name = "plain-client", email = "fvoron@gmail.com" }
+]
+description = "A Python client for Plain GraphQL API"
+readme = "README.md"
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "httpx",
+    "pydantic>=2.0.0,<3.0.0",
+]
+
+[project.urls]
+Documentation = "https://frankie567.github.io/plain-client/"
+Source = "https://github.com/frankie567/plain-client"

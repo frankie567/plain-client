@@ -1,0 +1,64 @@
+site_name: Plain Client
+site_description: A Python client for Plain GraphQL API
+
+repo_url: https://github.com/frankie567/plain-client
+repo_name: frankie567/plain-client
+
+theme:
+    name: material
+    icon:
+        logo: material/library
+    palette:
+        # Palette toggle for automatic mode
+        - media: "(prefers-color-scheme)"
+          toggle:
+            icon: material/brightness-auto
+            name: Switch to light mode
+
+        # Palette toggle for light mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          primary: black
+          accent: black
+          toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
+
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          primary: black
+          accent: black
+          toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+
+plugins:
+    - search
+    - mkdocstrings:
+        handlers:
+            python:
+                import:
+                    - https://docs.python.org/3.9/objects.inv
+                options:
+                    docstring_style: google
+
+watch:
+    - docs
+    - plain_client
+
+nav:
+    - About: index.md
+    - Reference:
+        - plain_client: reference/plain_client.md
