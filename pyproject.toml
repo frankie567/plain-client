@@ -1,9 +1,6 @@
 [tool.ruff]
 target-version = "py39"
 
-[tool.ruff.lint]
-extend-select = ["I", "UP"]
-
 [tool.mypy]
 
 [[tool.mypy.overrides]]
@@ -42,11 +39,15 @@ download-queries = "./download-queries.sh"
 generate = [
     "download-schema",
     "download-queries",
-    "ariadne-codegen"
+    "generate-local"
+]
+generate-local = [
+    "ariadne-codegen",
+    "lint"
 ]
 lint = [
   "ruff format .",
-  "ruff check --fix --unsafe-fixes .",
+  "ruff check --fix .",
   "mypy plain_client/",
 ]
 lint-check = [
