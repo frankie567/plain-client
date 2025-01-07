@@ -21,6 +21,21 @@
 > * [Plain GraphQL Schema](https://core-api.uk.plain.com/graphql/v1/schema.graphql)
 > * Fragments, mutations and queries provided by Plain in their [official TypeScript SDK](https://github.com/team-plain/typescript-sdk/tree/main/src/graphql)
 
+## Quickstart
+
+```bash
+pip install plain-client
+```
+
+```py
+from plain_client import Plain
+
+client = Plain("https://core-api.uk.plain.com/graphql/v1", {"Authorization": "Bearer YOUR_API_KEY"})
+
+async def get_thread():
+    return await client.thread("THREAD_ID")
+```
+
 ## Development
 
 ### Setup environment
