@@ -5,7 +5,6 @@
 </p>
 
 [![build](https://github.com/frankie567/plain-client/workflows/Build/badge.svg)](https://github.com/frankie567/plain-client/actions)
-[![codecov](https://codecov.io/gh/frankie567/plain-client/branch/master/graph/badge.svg)](https://codecov.io/gh/frankie567/plain-client)
 [![PyPI version](https://badge.fury.io/py/plain-client.svg)](https://badge.fury.io/py/plain-client)
 
 ---
@@ -16,26 +15,34 @@
 
 ---
 
+> [!IMPORTANT]
+> This client is generated **automatically** using:
+> * [ariadne-codegen](https://github.com/mirumee/ariadne-codegen)
+> * [Plain GraphQL Schema](https://core-api.uk.plain.com/graphql/v1/schema.graphql)
+> * Fragments, mutations and queries provided by Plain in their [official TypeScript SDK](https://github.com/team-plain/typescript-sdk/tree/main/src/graphql)
+
 ## Development
 
 ### Setup environment
 
 We use [Hatch](https://hatch.pypa.io/latest/install/) to manage the development environment and production build. Ensure it's installed on your system.
 
+### Generate the client
+
+You can trigger a generation of the client with:
+
+```bash
+hatch run generate
+```
+
+It'll automatically download latest schema, fragments, mutations and queries provided by Plain.
+
 ### Run unit tests
 
 You can run all the tests with:
 
 ```bash
-hatch run test
-```
-
-### Format the code
-
-Execute the following command to apply linting and check typing:
-
-```bash
-hatch run lint
+hatch run test:test
 ```
 
 ### Publish a new version
