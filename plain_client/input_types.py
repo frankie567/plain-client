@@ -23,6 +23,7 @@ from .enums import (
     SnoozeStatusDetail,
     SortDirection,
     StatusDetailType,
+    ThreadChannel,
     ThreadFieldSchemaType,
     ThreadsSortField,
     ThreadStatus,
@@ -109,6 +110,7 @@ class ThreadsFilter(BaseModel):
     message_source: Optional[List[MessageSource]] = Field(
         alias="messageSource", default=None
     )
+    participant_ids: Optional[List[str]] = Field(alias="participantIds", default=None)
     status_changed_at: Optional["DatetimeFilter"] = Field(
         alias="statusChangedAt", default=None
     )
@@ -186,8 +188,13 @@ class CreateThreadFieldOnThreadInput(BaseModel):
     boolean_value: Optional[bool] = Field(alias="booleanValue", default=None)
 
 
+class DeleteThreadFieldIdentifier(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    key: str
+
+
 class DeleteThreadFieldInput(BaseModel):
-    thread_field_id: str = Field(alias="threadFieldId")
+    identifier: "DeleteThreadFieldIdentifier"
 
 
 class CreateNoteInput(BaseModel):
@@ -251,16 +258,41 @@ class CreateAttachmentUploadUrlInput(BaseModel):
     attachment_type: AttachmentType = Field(alias="attachmentType")
 
 
-class ComponentCopyButtonInput(BaseModel):
-    copy_button_value: str = Field(alias="copyButtonValue")
-    copy_button_tooltip_label: Optional[str] = Field(
-        alias="copyButtonTooltipLabel", default=None
+class ComponentTextInput(BaseModel):
+    text: str
+    text_size: Optional[ComponentTextSize] = Field(alias="textSize", default=None)
+    text_color: Optional[ComponentTextColor] = Field(alias="textColor", default=None)
+    color: Optional[ComponentTextColor] = None
+    size: Optional[ComponentTextSize] = None
+
+
+class ComponentPlainTextInput(BaseModel):
+    plain_text: str = Field(alias="plainText")
+    plain_text_size: Optional[ComponentPlainTextSize] = Field(
+        alias="plainTextSize", default=None
     )
+    plain_text_color: Optional[ComponentPlainTextColor] = Field(
+        alias="plainTextColor", default=None
+    )
+
+
+class ComponentLinkButtonInput(BaseModel):
+    link_button_url: Optional[str] = Field(alias="linkButtonUrl", default=None)
+    link_button_label: Optional[str] = Field(alias="linkButtonLabel", default=None)
+    url: Optional[str] = None
+    label: Optional[str] = None
 
 
 class ComponentBadgeInput(BaseModel):
     badge_label: str = Field(alias="badgeLabel")
     badge_color: Optional[ComponentBadgeColor] = Field(alias="badgeColor", default=None)
+
+
+class ComponentCopyButtonInput(BaseModel):
+    copy_button_value: str = Field(alias="copyButtonValue")
+    copy_button_tooltip_label: Optional[str] = Field(
+        alias="copyButtonTooltipLabel", default=None
+    )
 
 
 class ComponentRowInput(BaseModel):
@@ -272,6 +304,20 @@ class ComponentContainerInput(BaseModel):
     container_content: List["ComponentContainerContentInput"] = Field(
         alias="containerContent"
     )
+
+
+class ComponentDividerInput(BaseModel):
+    divider_spacing_size: Optional[ComponentDividerSpacingSize] = Field(
+        alias="dividerSpacingSize", default=None
+    )
+    spacing_size: Optional[ComponentDividerSpacingSize] = Field(
+        alias="spacingSize", default=None
+    )
+
+
+class ComponentSpacerInput(BaseModel):
+    spacer_size: Optional[ComponentSpacerSize] = Field(alias="spacerSize", default=None)
+    size: Optional[ComponentSpacerSize] = None
 
 
 class ComponentContainerContentInput(BaseModel):
@@ -323,45 +369,6 @@ class ComponentRowContentInput(BaseModel):
     component_copy_button: Optional["ComponentCopyButtonInput"] = Field(
         alias="componentCopyButton", default=None
     )
-
-
-class ComponentTextInput(BaseModel):
-    text_size: Optional[ComponentTextSize] = Field(alias="textSize", default=None)
-    text_color: Optional[ComponentTextColor] = Field(alias="textColor", default=None)
-    text: str
-    color: Optional[ComponentTextColor] = None
-    size: Optional[ComponentTextSize] = None
-
-
-class ComponentPlainTextInput(BaseModel):
-    plain_text_size: Optional[ComponentPlainTextSize] = Field(
-        alias="plainTextSize", default=None
-    )
-    plain_text_color: Optional[ComponentPlainTextColor] = Field(
-        alias="plainTextColor", default=None
-    )
-    plain_text: str = Field(alias="plainText")
-
-
-class ComponentDividerInput(BaseModel):
-    divider_spacing_size: Optional[ComponentDividerSpacingSize] = Field(
-        alias="dividerSpacingSize", default=None
-    )
-    spacing_size: Optional[ComponentDividerSpacingSize] = Field(
-        alias="spacingSize", default=None
-    )
-
-
-class ComponentLinkButtonInput(BaseModel):
-    link_button_url: Optional[str] = Field(alias="linkButtonUrl", default=None)
-    link_button_label: Optional[str] = Field(alias="linkButtonLabel", default=None)
-    url: Optional[str] = None
-    label: Optional[str] = None
-
-
-class ComponentSpacerInput(BaseModel):
-    spacer_size: Optional[ComponentSpacerSize] = Field(alias="spacerSize", default=None)
-    size: Optional[ComponentSpacerSize] = None
 
 
 class ComponentInput(BaseModel):
@@ -572,6 +579,7 @@ class ReplyToThreadInput(BaseModel):
     text_content: str = Field(alias="textContent")
     markdown_content: Optional[str] = Field(alias="markdownContent", default=None)
     impersonation: Optional["ImpersonationInput"] = None
+    attachment_ids: Optional[List[str]] = Field(alias="attachmentIds", default=None)
     channel_specific_options: Optional["ReplyToThreadChannelSpecificOptionsInput"] = (
         Field(alias="channelSpecificOptions", default=None)
     )
@@ -614,6 +622,15 @@ class UnassignThreadInput(BaseModel):
     thread_id: str = Field(alias="threadId")
 
 
+class SlackThreadChannelDetailsInput(BaseModel):
+    slack_channel_id: str = Field(alias="slackChannelId")
+    slack_team_id: str = Field(alias="slackTeamId")
+
+
+class ThreadChannelDetailsInput(BaseModel):
+    slack: Optional["SlackThreadChannelDetailsInput"] = None
+
+
 class CustomerIdentifierInput(BaseModel):
     external_id: Optional[str] = Field(alias="externalId", default=None)
     email_address: Optional[str] = Field(alias="emailAddress", default=None)
@@ -642,6 +659,10 @@ class CreateThreadInput(BaseModel):
     priority: Optional[int] = None
     tenant_identifier: Optional["TenantIdentifierInput"] = Field(
         alias="tenantIdentifier", default=None
+    )
+    channel: Optional[ThreadChannel] = None
+    channel_details: Optional["ThreadChannelDetailsInput"] = Field(
+        alias="channelDetails", default=None
     )
 
 
@@ -759,6 +780,7 @@ class SetCustomerTenantsInput(BaseModel):
 CustomersFilter.model_rebuild()
 ThreadsFilter.model_rebuild()
 UpsertThreadFieldInput.model_rebuild()
+DeleteThreadFieldInput.model_rebuild()
 SendNewEmailInput.model_rebuild()
 ReplyToEmailInput.model_rebuild()
 ComponentRowInput.model_rebuild()
@@ -784,6 +806,7 @@ ImpersonationInput.model_rebuild()
 ReplyToThreadEmailChannelSpecificOptionsInput.model_rebuild()
 ReplyToThreadChannelSpecificOptionsInput.model_rebuild()
 ReplyToThreadInput.model_rebuild()
+ThreadChannelDetailsInput.model_rebuild()
 CreateThreadInput.model_rebuild()
 CreateWebhookTargetInput.model_rebuild()
 UpdateWebhookTargetInput.model_rebuild()

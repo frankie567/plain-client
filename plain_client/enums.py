@@ -103,6 +103,7 @@ class AttachmentType(str, Enum):
     SLACK = "SLACK"
     THREAD_DISCUSSION = "THREAD_DISCUSSION"
     MS_TEAMS = "MS_TEAMS"
+    DISCORD = "DISCORD"
 
 
 class UpsertResult(str, Enum):
@@ -156,6 +157,15 @@ class MessageSource(str, Enum):
     EMAIL = "EMAIL"
     API = "API"
     SLACK = "SLACK"
+    MS_TEAMS = "MS_TEAMS"
+    DISCORD = "DISCORD"
+
+
+class ThreadChannel(str, Enum):
+    EMAIL = "EMAIL"
+    SLACK = "SLACK"
+    CHAT = "CHAT"
+    API = "API"
     MS_TEAMS = "MS_TEAMS"
     DISCORD = "DISCORD"
 
