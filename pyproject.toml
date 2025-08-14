@@ -84,6 +84,8 @@ include_all_inputs = false
 include_all_enums = false
 enable_custom_operations = false
 plugins = ["ariadne_codegen.contrib.shorter_results.ShorterResultsPlugin"]
+base_client_name = "AsyncBaseClient"
+base_client_file_path = "/Users/fvoron/Development/plain-client/generator/async_base_client.py"
 
 [project]
 name = "plain-client"

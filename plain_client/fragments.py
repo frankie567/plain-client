@@ -14,16 +14,16 @@ from .enums import (
 )
 
 
-class DateTimeParts(BaseModel):
-    typename__: str = Field(alias="__typename")
-    iso_8601: str = Field(alias="iso8601")
-    unix_timestamp: str = Field(alias="unixTimestamp")
-
-
 class FileSizeParts(BaseModel):
     typename__: str = Field(alias="__typename")
     kilo_bytes: float = Field(alias="kiloBytes")
     mega_bytes: float = Field(alias="megaBytes")
+
+
+class DateTimeParts(BaseModel):
+    typename__: str = Field(alias="__typename")
+    iso_8601: str = Field(alias="iso8601")
+    unix_timestamp: str = Field(alias="unixTimestamp")
 
 
 class AttachmentParts(BaseModel):
@@ -1554,8 +1554,8 @@ class WorkspacePartsUpdatedAt(DateTimeParts):
     pass
 
 
-DateTimeParts.model_rebuild()
 FileSizeParts.model_rebuild()
+DateTimeParts.model_rebuild()
 AttachmentParts.model_rebuild()
 AttachmentUploadUrlParts.model_rebuild()
 ChatParts.model_rebuild()
