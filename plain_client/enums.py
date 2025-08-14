@@ -4,6 +4,11 @@
 from enum import Enum
 
 
+class LabelTypeType(str, Enum):
+    DEFAULT = "DEFAULT"
+    TEAM = "TEAM"
+
+
 class ThreadFieldSchemaType(str, Enum):
     STRING = "STRING"
     BOOL = "BOOL"
@@ -71,6 +76,12 @@ class ComponentDividerSpacingSize(str, Enum):
     XL = "XL"
 
 
+class SentimentType(str, Enum):
+    POSITIVE = "POSITIVE"
+    NEGATIVE = "NEGATIVE"
+    NEUTRAL = "NEUTRAL"
+
+
 class ServiceLevelAgreementType(str, Enum):
     FIRST_RESPONSE_TIME = "FIRST_RESPONSE_TIME"
     NEXT_RESPONSE_TIME = "NEXT_RESPONSE_TIME"
@@ -104,12 +115,18 @@ class AttachmentType(str, Enum):
     THREAD_DISCUSSION = "THREAD_DISCUSSION"
     MS_TEAMS = "MS_TEAMS"
     DISCORD = "DISCORD"
+    NOTE = "NOTE"
 
 
 class UpsertResult(str, Enum):
     UPDATED = "UPDATED"
     CREATED = "CREATED"
     NOOP = "NOOP"
+
+
+class KnowledgeSourceType(str, Enum):
+    SITEMAP = "SITEMAP"
+    URL = "URL"
 
 
 class DoneStatusDetail(str, Enum):
@@ -168,6 +185,7 @@ class ThreadChannel(str, Enum):
     API = "API"
     MS_TEAMS = "MS_TEAMS"
     DISCORD = "DISCORD"
+    IMPORT = "IMPORT"
 
 
 class ServiceLevelAgreementStatus(str, Enum):

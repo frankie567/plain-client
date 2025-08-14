@@ -34,6 +34,10 @@ from .create_customer_event import (
     CreateCustomerEvent,
     CreateCustomerEventCreateCustomerEvent,
 )
+from .create_knowledge_source import (
+    CreateKnowledgeSource,
+    CreateKnowledgeSourceCreateKnowledgeSource,
+)
 from .create_label_type import CreateLabelType, CreateLabelTypeCreateLabelType
 from .create_note import CreateNote, CreateNoteCreateNote
 from .create_thread import CreateThread, CreateThreadCreateThread
@@ -80,6 +84,7 @@ from .input_types import (
     CreateCustomerCardConfigInput,
     CreateCustomerEventInput,
     CreateIndexedDocumentInput,
+    CreateKnowledgeSourceInput,
     CreateLabelTypeInput,
     CreateNoteInput,
     CreateThreadEventInput,
@@ -156,6 +161,7 @@ from .thread_by_external_id import (
     ThreadByExternalId,
     ThreadByExternalIdThreadByExternalId,
 )
+from .thread_by_ref import ThreadByRef, ThreadByRefThreadByRef
 from .threads import Threads, ThreadsThreads
 from .tier import Tier, TierTier
 from .tiers import Tiers, TiersTiers
@@ -887,6 +893,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -1255,6 +1262,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -1673,6 +1681,153 @@ class Plain(AsyncBaseClient):
         data = self.get_data(response)
         return CreateCustomerEvent.model_validate(data).create_customer_event
 
+    async def create_knowledge_source(
+        self, input: CreateKnowledgeSourceInput, **kwargs: Any
+    ) -> CreateKnowledgeSourceCreateKnowledgeSource:
+        query = gql(
+            """
+            mutation createKnowledgeSource($input: CreateKnowledgeSourceInput!) {
+              createKnowledgeSource(input: $input) {
+                knowledgeSource {
+                  __typename
+                  ...KnowledgeSourceParts
+                }
+                error {
+                  ...MutationErrorParts
+                }
+              }
+            }
+
+            fragment ActorParts on Actor {
+              ... on UserActor {
+                ...UserActorParts
+              }
+              ... on CustomerActor {
+                ...CustomerActorParts
+              }
+              ... on SystemActor {
+                ...SystemActorParts
+              }
+              ... on MachineUserActor {
+                ...MachineUserActorParts
+              }
+              ... on DeletedCustomerActor {
+                ...DeletedCustomerActorParts
+              }
+            }
+
+            fragment DateTimeParts on DateTime {
+              __typename
+              iso8601
+              unixTimestamp
+            }
+
+            fragment IndexingStatusParts on IndexingStatus {
+              ... on IndexingStatusPending {
+                startedAt {
+                  ...DateTimeParts
+                }
+              }
+              ... on IndexingStatusFailed {
+                failedAt {
+                  ...DateTimeParts
+                }
+                reason
+              }
+              ... on IndexingStatusIndexed {
+                indexedAt {
+                  ...DateTimeParts
+                }
+              }
+            }
+
+            fragment KnowledgeSourceParts on KnowledgeSource {
+              ... on KnowledgeSourceSitemap {
+                id
+                url
+                type
+                status {
+                  __typename
+                  ...IndexingStatusParts
+                }
+                createdAt {
+                  ...DateTimeParts
+                }
+                createdBy {
+                  __typename
+                  ...ActorParts
+                }
+                updatedAt {
+                  ...DateTimeParts
+                }
+                updatedBy {
+                  __typename
+                  ...ActorParts
+                }
+              }
+              ... on KnowledgeSourceUrl {
+                id
+                url
+                type
+                status {
+                  __typename
+                  ...IndexingStatusParts
+                }
+                createdAt {
+                  ...DateTimeParts
+                }
+                createdBy {
+                  __typename
+                  ...ActorParts
+                }
+                updatedAt {
+                  ...DateTimeParts
+                }
+                updatedBy {
+                  __typename
+                  ...ActorParts
+                }
+              }
+            }
+
+            fragment MachineUserActorParts on MachineUserActor {
+              __typename
+              machineUserId
+            }
+
+            fragment MutationErrorParts on MutationError {
+              __typename
+              message
+              type
+              code
+              fields {
+                field
+                message
+                type
+              }
+            }
+
+            fragment SystemActorParts on SystemActor {
+              __typename
+              systemId
+            }
+
+            fragment UserActorParts on UserActor {
+              __typename
+              userId
+            }
+            """
+        )
+        variables: Dict[str, object] = {"input": input}
+        response = await self.execute(
+            query=query,
+            operation_name="createKnowledgeSource",
+            variables=variables,
+            **kwargs,
+        )
+        data = self.get_data(response)
+        return CreateKnowledgeSource.model_validate(data).create_knowledge_source
+
     async def create_label_type(
         self, input: CreateLabelTypeInput, **kwargs: Any
     ) -> CreateLabelTypeCreateLabelType:
@@ -2034,6 +2189,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -2816,6 +2972,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -3187,6 +3344,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -4067,6 +4225,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -4435,6 +4594,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -5168,6 +5328,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -7687,6 +7848,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -8038,6 +8200,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id
@@ -8204,6 +8367,358 @@ class Plain(AsyncBaseClient):
         )
         data = self.get_data(response)
         return ThreadByExternalId.model_validate(data).thread_by_external_id
+
+    async def thread_by_ref(
+        self, ref: str, **kwargs: Any
+    ) -> Optional[ThreadByRefThreadByRef]:
+        query = gql(
+            """
+            query threadByRef($ref: String!) {
+              threadByRef(ref: $ref) {
+                ...ThreadParts
+              }
+            }
+
+            fragment ActorParts on Actor {
+              ... on UserActor {
+                ...UserActorParts
+              }
+              ... on CustomerActor {
+                ...CustomerActorParts
+              }
+              ... on SystemActor {
+                ...SystemActorParts
+              }
+              ... on MachineUserActor {
+                ...MachineUserActorParts
+              }
+              ... on DeletedCustomerActor {
+                ...DeletedCustomerActorParts
+              }
+            }
+
+            fragment CustomerActorParts on CustomerActor {
+              __typename
+              customerId
+            }
+
+            fragment DateTimeParts on DateTime {
+              __typename
+              iso8601
+              unixTimestamp
+            }
+
+            fragment DeletedCustomerActorParts on DeletedCustomerActor {
+              __typename
+              customerId
+            }
+
+            fragment InternalActorParts on Actor {
+              ... on UserActor {
+                ...UserActorParts
+              }
+              ... on SystemActor {
+                ...SystemActorParts
+              }
+              ... on MachineUserActor {
+                ...MachineUserActorParts
+              }
+            }
+
+            fragment LabelParts on Label {
+              __typename
+              id
+              labelType {
+                ...LabelTypeParts
+              }
+              createdAt {
+                ...DateTimeParts
+              }
+              createdBy {
+                ...ActorParts
+              }
+              updatedAt {
+                ...DateTimeParts
+              }
+              updatedBy {
+                ...ActorParts
+              }
+            }
+
+            fragment LabelTypeParts on LabelType {
+              __typename
+              id
+              name
+              icon
+              isArchived
+              archivedAt {
+                ...DateTimeParts
+              }
+              archivedBy {
+                ...ActorParts
+              }
+              createdAt {
+                ...DateTimeParts
+              }
+              createdBy {
+                ...ActorParts
+              }
+              updatedAt {
+                ...DateTimeParts
+              }
+              updatedBy {
+                ...ActorParts
+              }
+            }
+
+            fragment MachineUserActorParts on MachineUserActor {
+              __typename
+              machineUserId
+            }
+
+            fragment MachineUserParts on MachineUser {
+              __typename
+              id
+              fullName
+              publicName
+              description
+              updatedAt {
+                ...DateTimeParts
+              }
+            }
+
+            fragment SystemActorParts on SystemActor {
+              __typename
+              systemId
+            }
+
+            fragment SystemParts on System {
+              __typename
+              id
+            }
+
+            fragment TenantParts on Tenant {
+              __typename
+              id
+              name
+              externalId
+              url
+              tier {
+                ...TierParts
+              }
+              createdAt {
+                ...DateTimeParts
+              }
+              createdBy {
+                ...InternalActorParts
+              }
+              updatedAt {
+                ...DateTimeParts
+              }
+              updatedBy {
+                ...InternalActorParts
+              }
+            }
+
+            fragment ThreadAssigneeParts on ThreadAssignee {
+              ... on User {
+                ...UserParts
+              }
+              ... on MachineUser {
+                ...MachineUserParts
+              }
+              ... on System {
+                ...SystemParts
+              }
+            }
+
+            fragment ThreadFieldParts on ThreadField {
+              __typename
+              id
+              key
+              type
+              threadId
+              stringValue
+              booleanValue
+              isAiGenerated
+              createdAt {
+                ...DateTimeParts
+              }
+              createdBy {
+                ...InternalActorParts
+              }
+              updatedAt {
+                ...DateTimeParts
+              }
+              updatedBy {
+                ...InternalActorParts
+              }
+            }
+
+            fragment ThreadParts on Thread {
+              __typename
+              id
+              ref
+              externalId
+              customer {
+                id
+              }
+              status
+              statusDetail {
+                ...ThreadStatusDetailParts
+              }
+              statusChangedAt {
+                ...DateTimeParts
+              }
+              title
+              description
+              previewText
+              priority
+              tenant {
+                ...TenantParts
+              }
+              labels {
+                ...LabelParts
+              }
+              threadFields {
+                ...ThreadFieldParts
+              }
+              assignedAt {
+                ...DateTimeParts
+              }
+              assignedTo {
+                ...ThreadAssigneeParts
+              }
+              createdAt {
+                ...DateTimeParts
+              }
+              createdBy {
+                ...ActorParts
+              }
+              updatedAt {
+                ...DateTimeParts
+              }
+              updatedBy {
+                ...ActorParts
+              }
+            }
+
+            fragment ThreadStatusDetailParts on ThreadStatusDetail {
+              ... on ThreadStatusDetailCreated {
+                __typename
+                createdAt {
+                  ...DateTimeParts
+                }
+              }
+              ... on ThreadStatusDetailNewReply {
+                __typename
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+              }
+              ... on ThreadStatusDetailInProgress {
+                __typename
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+              }
+              ... on ThreadStatusDetailThreadDiscussionResolved {
+                __typename
+                threadDiscussionId
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+              }
+              ... on ThreadStatusDetailThreadLinkUpdated {
+                __typename
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+                linearIssueId
+              }
+              ... on ThreadStatusDetailWaitingForCustomer {
+                __typename
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+              }
+              ... on ThreadStatusDetailWaitingForDuration {
+                __typename
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+                waitingUntil {
+                  ...DateTimeParts
+                }
+              }
+              ... on ThreadStatusDetailDoneManuallySet {
+                __typename
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+              }
+              ... on ThreadStatusDetailDoneAutomaticallySet {
+                __typename
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+                afterSeconds
+              }
+              ... on ThreadStatusDetailIgnored {
+                __typename
+                statusChangedAt {
+                  ...DateTimeParts
+                }
+              }
+            }
+
+            fragment TierParts on Tier {
+              __typename
+              id
+              name
+              externalId
+              defaultThreadPriority
+              createdAt {
+                ...DateTimeParts
+              }
+              createdBy {
+                ...InternalActorParts
+              }
+              updatedAt {
+                ...DateTimeParts
+              }
+              updatedBy {
+                ...InternalActorParts
+              }
+            }
+
+            fragment UserActorParts on UserActor {
+              __typename
+              userId
+            }
+
+            fragment UserParts on User {
+              __typename
+              id
+              fullName
+              publicName
+              slackIdentities {
+                slackTeamId
+                slackUserId
+              }
+              email
+              updatedAt {
+                ...DateTimeParts
+              }
+            }
+            """
+        )
+        variables: Dict[str, object] = {"ref": ref}
+        response = await self.execute(
+            query=query, operation_name="threadByRef", variables=variables, **kwargs
+        )
+        data = self.get_data(response)
+        return ThreadByRef.model_validate(data).thread_by_ref
 
     async def threads(
         self,
@@ -8424,6 +8939,7 @@ class Plain(AsyncBaseClient):
             fragment ThreadParts on Thread {
               __typename
               id
+              ref
               externalId
               customer {
                 id

@@ -17,7 +17,10 @@ from .enums import (
     ComponentTextSize,
     CustomersSortField,
     DoneStatusDetail,
+    KnowledgeSourceType,
+    LabelTypeType,
     MessageSource,
+    SentimentType,
     ServiceLevelAgreementStatus,
     ServiceLevelAgreementType,
     SnoozeStatusDetail,
@@ -78,8 +81,17 @@ class DatetimeFilter(BaseModel):
     before: Optional[str] = None
 
 
+class SurveyResponseFilter(BaseModel):
+    has_response: Optional[bool] = Field(alias="hasResponse", default=None)
+    sentiment: Optional[SentimentType] = None
+    rating: Optional[int] = None
+    survey_id: Optional[str] = Field(alias="surveyId", default=None)
+    response_at: Optional["DatetimeFilter"] = Field(alias="responseAt", default=None)
+
+
 class ThreadsFilter(BaseModel):
     thread_ids: Optional[List[str]] = Field(alias="threadIds", default=None)
+    refs: Optional[List[str]] = None
     label_type_ids: Optional[List[str]] = Field(alias="labelTypeIds", default=None)
     priorities: Optional[List[int]] = None
     customer_ids: Optional[List[str]] = Field(alias="customerIds", default=None)
@@ -123,11 +135,15 @@ class ThreadsFilter(BaseModel):
     )
     created_at: Optional["DatetimeFilter"] = Field(alias="createdAt", default=None)
     updated_at: Optional["DatetimeFilter"] = Field(alias="updatedAt", default=None)
+    survey_response: Optional["SurveyResponseFilter"] = Field(
+        alias="surveyResponse", default=None
+    )
 
 
 class ServiceLevelAgreementFilter(BaseModel):
     types: Optional[List[ServiceLevelAgreementType]] = None
     statuses: Optional[List[ServiceLevelAgreementStatus]] = None
+    updated_at: Optional["DatetimeFilter"] = Field(alias="updatedAt", default=None)
 
 
 class ThreadsSort(BaseModel):
@@ -154,6 +170,10 @@ class OptionalStringInput(BaseModel):
 class CreateLabelTypeInput(BaseModel):
     name: str
     icon: Optional[str] = None
+    color: Optional[str] = None
+    type: Optional[LabelTypeType] = None
+    description: Optional[str] = None
+    parent_label_type_id: Optional[str] = Field(alias="parentLabelTypeId", default=None)
 
 
 class ArchiveLabelTypeInput(BaseModel):
@@ -202,6 +222,7 @@ class CreateNoteInput(BaseModel):
     thread_id: Optional[str] = Field(alias="threadId", default=None)
     text: str
     markdown: Optional[str] = None
+    attachment_ids: Optional[List[str]] = Field(alias="attachmentIds", default=None)
 
 
 class SendCustomerChatInput(BaseModel):
@@ -209,6 +230,7 @@ class SendCustomerChatInput(BaseModel):
     text: Optional[str] = None
     attachment_ids: Optional[List[str]] = Field(alias="attachmentIds", default=None)
     thread_id: str = Field(alias="threadId")
+    timestamp: Optional[str] = None
 
 
 class EmailParticipantInput(BaseModel):
@@ -237,6 +259,7 @@ class SendNewEmailInput(BaseModel):
 class ReplyToEmailInput(BaseModel):
     customer_id: Optional[str] = Field(alias="customerId", default=None)
     in_reply_to_email_id: str = Field(alias="inReplyToEmailId")
+    subject: Optional[str] = None
     text_content: str = Field(alias="textContent")
     markdown_content: Optional[str] = Field(alias="markdownContent", default=None)
     attachment_ids: Optional[List[str]] = Field(alias="attachmentIds", default=None)
@@ -476,6 +499,7 @@ class CreateCustomerEventInput(BaseModel):
     external_id: Optional[str] = Field(alias="externalId", default=None)
     title: str
     components: List["EventComponentInput"]
+    timestamp: Optional[str] = None
 
 
 class CreateThreadEventInput(BaseModel):
@@ -483,11 +507,19 @@ class CreateThreadEventInput(BaseModel):
     external_id: Optional[str] = Field(alias="externalId", default=None)
     title: str
     components: List["EventComponentInput"]
+    timestamp: Optional[str] = None
 
 
 class CreateIndexedDocumentInput(BaseModel):
     url: str
     label_type_ids: Optional[List[str]] = Field(alias="labelTypeIds", default=None)
+    knowledge_source_id: str = Field(alias="knowledgeSourceId")
+
+
+class CreateKnowledgeSourceInput(BaseModel):
+    url: str
+    label_type_ids: Optional[List[str]] = Field(alias="labelTypeIds", default=None)
+    type: KnowledgeSourceType
 
 
 class UpdateCompanyTierInput(BaseModel):
@@ -527,6 +559,9 @@ class UpsertCompanyInput(BaseModel):
     name: str
     domain_name: str = Field(alias="domainName")
     contract_value: Optional[int] = Field(alias="contractValue", default=None)
+    account_owner_user_id: Optional[str] = Field(
+        alias="accountOwnerUserId", default=None
+    )
 
 
 class TenantIdentifierInput(BaseModel):
@@ -645,7 +680,7 @@ class CreateThreadAssignedToInput(BaseModel):
 class CreateThreadInput(BaseModel):
     customer_identifier: "CustomerIdentifierInput" = Field(alias="customerIdentifier")
     title: Optional[str] = None
-    components: List["ComponentInput"]
+    components: Optional[List["ComponentInput"]] = None
     attachment_ids: Optional[List[str]] = Field(alias="attachmentIds", default=None)
     label_type_ids: Optional[List[str]] = Field(alias="labelTypeIds", default=None)
     thread_fields: Optional[List["CreateThreadFieldOnThreadInput"]] = Field(
@@ -778,7 +813,9 @@ class SetCustomerTenantsInput(BaseModel):
 
 
 CustomersFilter.model_rebuild()
+SurveyResponseFilter.model_rebuild()
 ThreadsFilter.model_rebuild()
+ServiceLevelAgreementFilter.model_rebuild()
 UpsertThreadFieldInput.model_rebuild()
 DeleteThreadFieldInput.model_rebuild()
 SendNewEmailInput.model_rebuild()
