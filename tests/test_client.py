@@ -64,7 +64,7 @@ async def test_upsert_customer() -> None:
 async def test_send_chat() -> None:
     async def handler(request: httpx2.Request) -> httpx2.Response:
         payload = json.loads(request.content)
-        assert payload["operationName"] == "sendChat"
+        assert payload["operationName"] == "SendChat"
         assert payload["variables"] == {
             "input": {"customerId": "CUSTOMER_ID", "text": "Hello"}
         }

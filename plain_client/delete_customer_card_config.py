@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
 
 
 class DeleteCustomerCardConfig(BaseModel):
@@ -19,6 +19,19 @@ class DeleteCustomerCardConfigDeleteCustomerCardConfig(BaseModel):
     error: Optional["DeleteCustomerCardConfigDeleteCustomerCardConfigError"]
 
 
-DeleteCustomerCardConfigDeleteCustomerCardConfigError = MutationErrorParts
+class DeleteCustomerCardConfigDeleteCustomerCardConfigError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["DeleteCustomerCardConfigDeleteCustomerCardConfigErrorFields"]
+
+
+class DeleteCustomerCardConfigDeleteCustomerCardConfigErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 DeleteCustomerCardConfig.model_rebuild()
 DeleteCustomerCardConfigDeleteCustomerCardConfig.model_rebuild()
+DeleteCustomerCardConfigDeleteCustomerCardConfigError.model_rebuild()

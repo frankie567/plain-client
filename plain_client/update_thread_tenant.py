@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, ThreadParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import ThreadFields
 
 
 class UpdateThreadTenant(BaseModel):
@@ -20,7 +21,22 @@ class UpdateThreadTenantUpdateThreadTenant(BaseModel):
     error: Optional["UpdateThreadTenantUpdateThreadTenantError"]
 
 
-UpdateThreadTenantUpdateThreadTenantThread = ThreadParts
-UpdateThreadTenantUpdateThreadTenantError = MutationErrorParts
+UpdateThreadTenantUpdateThreadTenantThread = ThreadFields
+
+
+class UpdateThreadTenantUpdateThreadTenantError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["UpdateThreadTenantUpdateThreadTenantErrorFields"]
+
+
+class UpdateThreadTenantUpdateThreadTenantErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 UpdateThreadTenant.model_rebuild()
 UpdateThreadTenantUpdateThreadTenant.model_rebuild()
+UpdateThreadTenantUpdateThreadTenantError.model_rebuild()

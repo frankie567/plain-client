@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import LabelTypeParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import LabelTypeFields
 
 
 class CreateLabelType(BaseModel):
@@ -20,7 +21,22 @@ class CreateLabelTypeCreateLabelType(BaseModel):
     error: Optional["CreateLabelTypeCreateLabelTypeError"]
 
 
-CreateLabelTypeCreateLabelTypeLabelType = LabelTypeParts
-CreateLabelTypeCreateLabelTypeError = MutationErrorParts
+CreateLabelTypeCreateLabelTypeLabelType = LabelTypeFields
+
+
+class CreateLabelTypeCreateLabelTypeError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["CreateLabelTypeCreateLabelTypeErrorFields"]
+
+
+class CreateLabelTypeCreateLabelTypeErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 CreateLabelType.model_rebuild()
 CreateLabelTypeCreateLabelType.model_rebuild()
+CreateLabelTypeCreateLabelTypeError.model_rebuild()

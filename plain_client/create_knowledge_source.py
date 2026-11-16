@@ -6,13 +6,33 @@ from typing import Annotated, Literal, Optional, Union
 from pydantic import Field
 
 from .base_model import BaseModel
-from .enums import KnowledgeSourceType
-from .fragments import (
-    DateTimeParts,
-    MachineUserActorParts,
-    MutationErrorParts,
-    SystemActorParts,
-    UserActorParts,
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import (  # noqa: F401
+    KnowledgeSourceSitemapFields,
+    KnowledgeSourceSitemapFieldsCreatedAt,
+    KnowledgeSourceSitemapFieldsCreatedByMachineUserActor,
+    KnowledgeSourceSitemapFieldsCreatedBySystemActor,
+    KnowledgeSourceSitemapFieldsCreatedByUserActor,
+    KnowledgeSourceSitemapFieldsIndexedDocumentCounts,
+    KnowledgeSourceSitemapFieldsStatusIndexingStatusFailed,
+    KnowledgeSourceSitemapFieldsStatusIndexingStatusIndexed,
+    KnowledgeSourceSitemapFieldsStatusIndexingStatusPending,
+    KnowledgeSourceSitemapFieldsUpdatedAt,
+    KnowledgeSourceSitemapFieldsUpdatedByMachineUserActor,
+    KnowledgeSourceSitemapFieldsUpdatedBySystemActor,
+    KnowledgeSourceSitemapFieldsUpdatedByUserActor,
+    KnowledgeSourceUrlFields,
+    KnowledgeSourceUrlFieldsCreatedAt,
+    KnowledgeSourceUrlFieldsCreatedByMachineUserActor,
+    KnowledgeSourceUrlFieldsCreatedBySystemActor,
+    KnowledgeSourceUrlFieldsCreatedByUserActor,
+    KnowledgeSourceUrlFieldsStatusIndexingStatusFailed,
+    KnowledgeSourceUrlFieldsStatusIndexingStatusIndexed,
+    KnowledgeSourceUrlFieldsStatusIndexingStatusPending,
+    KnowledgeSourceUrlFieldsUpdatedAt,
+    KnowledgeSourceUrlFieldsUpdatedByMachineUserActor,
+    KnowledgeSourceUrlFieldsUpdatedBySystemActor,
+    KnowledgeSourceUrlFieldsUpdatedByUserActor,
 )
 
 
@@ -37,231 +57,30 @@ class CreateKnowledgeSourceCreateKnowledgeSource(BaseModel):
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemap(
-    BaseModel
+    KnowledgeSourceSitemapFields
 ):
     typename__: Literal["KnowledgeSourceSitemap"] = Field(alias="__typename")
-    id: str
-    url: str
-    type_: KnowledgeSourceType = Field(alias="type")
-    status: Union[
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusPending",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexed",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusFailed",
-    ] = Field(discriminator="typename__")
-    created_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedAt" = Field(
-        alias="createdAt"
-    )
-    created_by: Union[
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedByUserActor",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedBySystemActor",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedByMachineUserActor",
-    ] = Field(alias="createdBy", discriminator="typename__")
-    updated_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedAt" = Field(
-        alias="updatedAt"
-    )
-    updated_by: Union[
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedByUserActor",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedBySystemActor",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedByMachineUserActor",
-    ] = Field(alias="updatedBy", discriminator="typename__")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusPending(
-    BaseModel
-):
-    typename__: Literal["IndexingStatusPending"] = Field(alias="__typename")
-    started_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusPendingStartedAt" = Field(
-        alias="startedAt"
-    )
-
-
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusPendingStartedAt = DateTimeParts
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexed(
-    BaseModel
-):
-    typename__: Literal["IndexingStatusIndexed"] = Field(alias="__typename")
-    indexed_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexedIndexedAt" = Field(
-        alias="indexedAt"
-    )
-
-
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexedIndexedAt = DateTimeParts
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusFailed(
-    BaseModel
-):
-    typename__: Literal["IndexingStatusFailed"] = Field(alias="__typename")
-    failed_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusFailedFailedAt" = Field(
-        alias="failedAt"
-    )
-    reason: str
-
-
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusFailedFailedAt = DateTimeParts
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedAt = DateTimeParts
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedByUserActor(
-    UserActorParts
-):
-    typename__: Literal["UserActor"] = Field(alias="__typename")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedBySystemActor(
-    SystemActorParts
-):
-    typename__: Literal["SystemActor"] = Field(alias="__typename")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedByMachineUserActor(
-    MachineUserActorParts
-):
-    typename__: Literal["MachineUserActor"] = Field(alias="__typename")
-
-
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedAt = DateTimeParts
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedByUserActor(
-    UserActorParts
-):
-    typename__: Literal["UserActor"] = Field(alias="__typename")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedBySystemActor(
-    SystemActorParts
-):
-    typename__: Literal["SystemActor"] = Field(alias="__typename")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedByMachineUserActor(
-    MachineUserActorParts
-):
-    typename__: Literal["MachineUserActor"] = Field(alias="__typename")
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrl(
-    BaseModel
+    KnowledgeSourceUrlFields
 ):
     typename__: Literal["KnowledgeSourceUrl"] = Field(alias="__typename")
-    id: str
-    url: str
-    type_: KnowledgeSourceType = Field(alias="type")
-    status: Union[
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusPending",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexed",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusFailed",
-    ] = Field(discriminator="typename__")
-    created_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedAt" = Field(
-        alias="createdAt"
-    )
-    created_by: Union[
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedByUserActor",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedBySystemActor",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedByMachineUserActor",
-    ] = Field(alias="createdBy", discriminator="typename__")
-    updated_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedAt" = Field(
-        alias="updatedAt"
-    )
-    updated_by: Union[
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedByUserActor",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedBySystemActor",
-        "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedByMachineUserActor",
-    ] = Field(alias="updatedBy", discriminator="typename__")
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusPending(
-    BaseModel
-):
-    typename__: Literal["IndexingStatusPending"] = Field(alias="__typename")
-    started_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusPendingStartedAt" = Field(
-        alias="startedAt"
-    )
+class CreateKnowledgeSourceCreateKnowledgeSourceError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["CreateKnowledgeSourceCreateKnowledgeSourceErrorFields"]
 
 
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusPendingStartedAt = DateTimeParts
+class CreateKnowledgeSourceCreateKnowledgeSourceErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexed(
-    BaseModel
-):
-    typename__: Literal["IndexingStatusIndexed"] = Field(alias="__typename")
-    indexed_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexedIndexedAt" = Field(
-        alias="indexedAt"
-    )
-
-
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexedIndexedAt = DateTimeParts
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusFailed(
-    BaseModel
-):
-    typename__: Literal["IndexingStatusFailed"] = Field(alias="__typename")
-    failed_at: "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusFailedFailedAt" = Field(
-        alias="failedAt"
-    )
-    reason: str
-
-
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusFailedFailedAt = DateTimeParts
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedAt = (
-    DateTimeParts
-)
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedByUserActor(
-    UserActorParts
-):
-    typename__: Literal["UserActor"] = Field(alias="__typename")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedBySystemActor(
-    SystemActorParts
-):
-    typename__: Literal["SystemActor"] = Field(alias="__typename")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedByMachineUserActor(
-    MachineUserActorParts
-):
-    typename__: Literal["MachineUserActor"] = Field(alias="__typename")
-
-
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedAt = (
-    DateTimeParts
-)
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedByUserActor(
-    UserActorParts
-):
-    typename__: Literal["UserActor"] = Field(alias="__typename")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedBySystemActor(
-    SystemActorParts
-):
-    typename__: Literal["SystemActor"] = Field(alias="__typename")
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedByMachineUserActor(
-    MachineUserActorParts
-):
-    typename__: Literal["MachineUserActor"] = Field(alias="__typename")
-
-
-CreateKnowledgeSourceCreateKnowledgeSourceError = MutationErrorParts
 CreateKnowledgeSource.model_rebuild()
 CreateKnowledgeSourceCreateKnowledgeSource.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemap.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusPending.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexed.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusFailed.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrl.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusPending.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexed.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusFailed.model_rebuild()
+CreateKnowledgeSourceCreateKnowledgeSourceError.model_rebuild()

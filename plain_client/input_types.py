@@ -7,9 +7,29 @@ from pydantic import Field
 
 from .base_model import BaseModel
 from .enums import (
+    AccountFieldMappingConcept,
+    AccountFieldType,
+    AccountMembershipPolicy,
+    AccountSource,
+    AccountsSortField,
+    AgentApprovalDecision,
     AgentMode,
+    AgentSandboxToolMode,
     AgentStatus,
+    AiFeedbackFeature,
+    AiFeedbackSentiment,
     AttachmentType,
+    AutoresponderMessageSource,
+    BillingIntervalUnit,
+    BillingPlanKey,
+    BroadcastContentFormat,
+    BroadcastRecipientType,
+    BroadcastRecipientUnsubscribeChannelType,
+    BroadcastSenderType,
+    BroadcastSendTargetScope,
+    BroadcastStatus,
+    BroadcastType,
+    BusinessHoursOverridesSortField,
     ComponentBadgeColor,
     ComponentDividerSpacingSize,
     ComponentPlainTextColor,
@@ -17,29 +37,262 @@ from .enums import (
     ComponentSpacerSize,
     ComponentTextColor,
     ComponentTextSize,
+    ConnectedSlackChannelType,
+    CreateThreadDiscussionType,
     CustomersSortField,
+    CustomerSurveyConditionOperator,
+    CustomerSurveyConditionsOperator,
+    DiscussionAgentType,
+    DiscussionSourceEntityType,
+    DiscussionSourceType,
+    DiscussionsSortField,
+    DiscussionToolCallStatus,
+    DiscussionType,
     DoneStatusDetail,
+    EscalationPathStepType,
+    GeneratedReplyFeedbackType,
+    HeatmapMetricName,
+    HelpCenterAiConversationsSortField,
+    HelpCenterAiMessageFeedbackType,
+    HelpCenterArticleStatus,
+    HelpCenterFeaturedHomepageItemType,
+    HelpCenterHeroAlignment,
+    HelpCenterIndexItemType,
+    HelpCenterPortalSettingsFormFieldType,
+    HelpCenterType,
+    HyperlineCheckoutPlanKey,
+    ImportThreadDiscussionType,
+    ImportThreadMessageType,
+    ImportThreadStatusDetail,
+    IndexedDocumentStatusType,
+    KnowledgeGapsSortField,
+    KnowledgeGapStatus,
+    KnowledgeSourceSearchResultType,
     KnowledgeSourceType,
     LabelTypeType,
+    MachineUserType,
+    McpFeedbackReason,
     MessageSource,
+    MetricDimensionType,
+    RoleKey,
+    RoleScopeAccessMode,
+    RoleScopeResourceType,
     SentimentType,
+    ServiceLevelAgreementPauseStatusDetailType,
     ServiceLevelAgreementStatus,
     ServiceLevelAgreementType,
+    SettingScopeType,
+    SidekickMcpAuthParamPlacement,
+    SidekickModelOption,
+    SingleValueMetricName,
+    SlackAutoJoinRuleChannelMode,
+    SlackIngestionMode,
     SnoozeStatusDetail,
     SortDirection,
     StatusDetailType,
+    TasksSortField,
+    TaskStatus,
+    TenantFieldMappingConcept,
+    TenantFieldType,
+    TenantMembershipPolicy,
+    TenantSource,
+    TenantsSortField,
+    TestThreadChannel,
+    ThreadCatchupSuggestedActionStatus,
     ThreadChannel,
+    ThreadDiscussionAgentStatus,
+    ThreadDiscussionStatus,
+    ThreadDiscussionType,
     ThreadFieldSchemaType,
+    ThreadLinkLinkType,
+    ThreadLinkStatus,
+    ThreadMetricGroupBy,
+    ThreadMetricIntervalUnit,
+    ThreadMetricMode,
+    ThreadScopePrimitiveType,
+    ThreadsGroupBy,
+    ThreadsLayout,
     ThreadsSortField,
     ThreadStatus,
+    TimelineEntryType,
+    TimeSeriesMetricDimensionType,
+    TimeSeriesMetricIntervalUnit,
+    TimeSeriesMetricName,
     TodoStatusDetail,
+    UserStatus,
+    WebhookDeliveryAttemptResultStatus,
+    WeekDay,
+    WorkflowExecutionEntityType,
+    WorkflowExecutionStatus,
+    WorkflowsSortField,
+    WorkflowStepType,
+    WorkflowTriggerType,
+    WorkspaceFileVisibility,
 )
+
+
+class StopAgentSessionTurnInput(BaseModel):
+    agent_session_id: str = Field(alias="agentSessionId")
+
+
+class DeleteQueuedAgentSessionMessageInput(BaseModel):
+    queued_agent_session_message_id: str = Field(alias="queuedAgentSessionMessageId")
+
+
+class EditQueuedAgentSessionMessageInput(BaseModel):
+    queued_agent_session_message_id: str = Field(alias="queuedAgentSessionMessageId")
+    markdown_content: str = Field(alias="markdownContent")
+    "New markdown body for the queued message. Attachments are preserved as-is."
+
+
+class DiscussionsFilter(BaseModel):
+    created_by_user_ids: list[str] | None = Field(
+        alias="createdByUserIds", default=None
+    )
+    participated_by_user_ids: list[str] | None = Field(
+        alias="participatedByUserIds", default=None
+    )
+    "Only return discussions in which one of the provided users has authored a message. Independent of\nwho created the discussion: combine it with createdByUserIds via or to get everything a user\neither started or took part in. A Sidekick Agent reply that is still queued behind the agent's current\nturn already counts, so a session appears the moment the user sends into it."
+    discussion_types: list[DiscussionType] | None = Field(
+        alias="discussionTypes", default=None
+    )
+    thread_ids: list[str] | None = Field(alias="threadIds", default=None)
+    source_entity_ids: list[str] | None = Field(alias="sourceEntityIds", default=None)
+    "Only return entity-scoped discussions whose source entity id is one of the provided values."
+    source_entity_types: list[DiscussionSourceEntityType] | None = Field(
+        alias="sourceEntityTypes", default=None
+    )
+    "Only return entity-scoped discussions whose source entity type is one of the provided values."
+    source_page_links: list[str] | None = Field(alias="sourcePageLinks", default=None)
+    "Only return page-scoped discussions whose source page link is one of the provided values."
+    last_activity_at_after: str | None = Field(
+        alias="lastActivityAtAfter", default=None
+    )
+    "Only return discussions whose last activity is at or after this timestamp. ISO 8601 format (e.g. 2024-10-28T18:30:00Z)."
+    last_activity_at_before: str | None = Field(
+        alias="lastActivityAtBefore", default=None
+    )
+    "Only return discussions whose last activity is strictly before this timestamp. ISO 8601 format (e.g. 2024-10-28T18:30:00Z)."
+    statuses: list[ThreadDiscussionStatus] | None = None
+    "Only return discussions whose status is one of the provided values.\nThis is the discussion's own lifecycle; filter on agentStatuses for what the agent is doing."
+    agent_statuses: list[ThreadDiscussionAgentStatus] | None = Field(
+        alias="agentStatuses", default=None
+    )
+    "Only return discussions whose agent status is one of the provided values.\nThis does not filter by whether the discussion is open: a resolved discussion keeps the agent\nstatus it had when it was resolved. Combine with statuses: [OPEN] to exclude resolved ones."
+    is_unread: bool | None = Field(alias="isUnread", default=None)
+    "When true, only return discussions that are unread (have an unread agent response). When false, only return read discussions. Can be combined with statuses."
+    created_by_system: bool | None = Field(alias="createdBySystem", default=None)
+    "When true, only return discussions created by a system actor (e.g. workflow-driven Sidekick Agent sessions). When false, only return discussions created by a non-system actor."
+    is_workflow_task: bool | None = Field(alias="isWorkflowTask", default=None)
+    "When true, only return the bounded Sidekick Agent tasks started by an `ask_sidekick` workflow step. When false, exclude them. These report an outcome to their workflow step rather than being a conversation anyone joins, so human-facing session lists should pass false."
+    agent_types: list[DiscussionAgentType] | None = Field(
+        alias="agentTypes", default=None
+    )
+    "Only return discussions run by one of the provided kinds of agent. Discussions with no agent at\nall, such as a Slack channel or email discussion, match none of them; use\nnot: { agentTypes: [...] } for those."
+    agent_machine_user_ids: list[str] | None = Field(
+        alias="agentMachineUserIds", default=None
+    )
+    "Only return discussions bound to one of the provided custom agent machine users. Use this to ask\nfor the discussions belonging to a specific agent the workspace built."
+    and_: list["DiscussionsFilter"] | None = Field(alias="and", default=None)
+    "Match discussions that satisfy all of the nested filters. Combined with the other fields on this filter using AND."
+    or_: list["DiscussionsFilter"] | None = Field(alias="or", default=None)
+    "Match discussions that satisfy any of the nested filters. Combined with the other fields on this filter using AND."
+    not_: Optional["DiscussionsFilter"] = Field(alias="not", default=None)
+    "Match discussions that do not satisfy the nested filter."
+
+
+class DiscussionsSort(BaseModel):
+    field: DiscussionsSortField
+    direction: SortDirection
+
+
+class WorkflowsFilter(BaseModel):
+    trigger_types: list[WorkflowTriggerType] | None = Field(
+        alias="triggerTypes", default=None
+    )
+    is_published: bool | None = Field(alias="isPublished", default=None)
+    "Filter by published status. true returns only published workflows (publishedAt set), false returns only unpublished workflows (publishedAt null)."
+    trigger_events: list[str] | None = Field(alias="triggerEvents", default=None)
+    "Only workflows whose `events` trigger listens for at least one of these event types, e.g. `thread.thread_created`. Workflows with a `manual` or `schedule` trigger are never returned when this filter is set. An empty list is not a filter."
+    created_by_user_ids: list[str] | None = Field(
+        alias="createdByUserIds", default=None
+    )
+    "Only workflows created by one of these users or machine users. Workflows created by the system have no user to match and are never returned when this filter is set. An empty list is not a filter."
+    references: Optional["WorkflowReferencesFilter"] = None
+    "Only workflows holding a step that references at least one of the given entities. Drafts are included; combine with `isPublished` to narrow."
+
+
+class WorkflowReferencesFilter(BaseModel):
+    """Entities a workflow step can reference. Fields combine with AND; an empty list is not a filter. At most 100 ids per field."""
+
+    service_level_agreement_policy_ids: list[str] | None = Field(
+        alias="serviceLevelAgreementPolicyIds", default=None
+    )
+    "Workflows with a `set_service_level_agreement_policy` action applying one of these policies. A step that clears the policy matches nothing."
+    escalation_path_ids: list[str] | None = Field(
+        alias="escalationPathIds", default=None
+    )
+    "Workflows with a `set_escalation_path` action applying one of these escalation paths."
+
+
+class WorkflowsSort(BaseModel):
+    field: WorkflowsSortField
+    direction: SortDirection
+
+
+class WorkflowExecutionsFilter(BaseModel):
+    """Optional narrowing for `workflowExecutionsForWorkspace`. Every field is independent; omit them all to list the whole workspace."""
+
+    workflow_id: str | None = Field(alias="workflowId", default=None)
+    "Only executions of this workflow."
+    entity_id: str | None = Field(alias="entityId", default=None)
+    "Only executions that ran against this entity — a thread id for event and manual workflows, or the\nworkspace's own id for scheduled ones. Ids carry their type, so no entity type is needed."
+    execution_status: WorkflowExecutionStatus | None = Field(
+        alias="executionStatus", default=None
+    )
+    "Only executions in this state."
+
+
+class WorkflowExecutionByEntityFilter(BaseModel):
+    entity_type: WorkflowExecutionEntityType = Field(alias="entityType")
+    entity_id: str = Field(alias="entityId")
+    workflow_id: str | None = Field(alias="workflowId", default=None)
+    execution_status: WorkflowExecutionStatus | None = Field(
+        alias="executionStatus", default=None
+    )
+
+
+class InternalNotificationsFilter(BaseModel):
+    created_at: Optional["DatetimeFilter"] = Field(alias="createdAt", default=None)
+    is_read: bool | None = Field(alias="isRead", default=None)
+
+
+class UsersFilter(BaseModel):
+    is_assignable_to_customer: bool | None = Field(
+        alias="isAssignableToCustomer", default=None
+    )
+    is_assignable_to_thread: bool | None = Field(
+        alias="isAssignableToThread", default=None
+    )
+    is_assignable_to_task: bool | None = Field(alias="isAssignableToTask", default=None)
+    "When set, filters workspace members by task assignability instead of thread assignability.\nDo not combine with isAssignableToThread or isAssignableToCustomer."
+
+
+class RoleFilter(BaseModel):
+    version: int | None = None
 
 
 class LabelTypeFilter(BaseModel):
     is_archived: bool | None = Field(alias="isArchived", default=None)
     updated_at: Optional["DatetimeFilter"] = Field(alias="updatedAt", default=None)
     "Only label types changed in this range, including archiving and unarchiving. Use it to sync changes since a previous read."
+
+
+class SnippetsFilter(BaseModel):
+    updated_at: Optional["DatetimeFilter"] = Field(alias="updatedAt", default=None)
+    "Only snippets changed in this range, including deletion. Use it to sync changes since a previous read."
+    include_deleted: bool | None = Field(alias="includeDeleted", default=None)
+    "Also return deleted snippets, marked by `isDeleted`. Defaults to false."
 
 
 class CustomersFilter(BaseModel):
@@ -72,17 +325,297 @@ class CustomersSort(BaseModel):
     direction: SortDirection
 
 
+class BroadcastSlackChannelRefInput(BaseModel):
+    slack_team_id: str = Field(alias="slackTeamId")
+    slack_channel_id: str = Field(alias="slackChannelId")
+
+
+class UnsubscribeBroadcastRecipientInput(BaseModel):
+    """Flat because GraphQL has no input unions. Supply the fields belonging to the `type` given."""
+
+    type_: BroadcastRecipientUnsubscribeChannelType = Field(alias="type")
+    slack_team_id: str | None = Field(alias="slackTeamId", default=None)
+    slack_channel_id: str | None = Field(alias="slackChannelId", default=None)
+
+
+class ResubscribeBroadcastRecipientInput(BaseModel):
+    """Flat because GraphQL has no input unions. Supply the fields belonging to the `type` given."""
+
+    type_: BroadcastRecipientUnsubscribeChannelType = Field(alias="type")
+    slack_team_id: str | None = Field(alias="slackTeamId", default=None)
+    slack_channel_id: str | None = Field(alias="slackChannelId", default=None)
+
+
+class ImportBroadcastRecipientUnsubscribeRowInput(BaseModel):
+    row_number: int = Field(alias="rowNumber")
+    "1-based spreadsheet row number (header is 1)."
+    recipient: str
+    "Recipient identifier to unsubscribe. Today this is a Slack channel id (`C…` / `G…` / `D…`)\nor exact Slack channel name (optional leading `#`); email addresses will reuse this field later."
+    slack_team_id: str | None = Field(alias="slackTeamId", default=None)
+    "Optional Slack team id when the same Slack channel name exists on more than one connected team. Unused for non-Slack recipients."
+
+
+class ImportBroadcastRecipientUnsubscribesInput(BaseModel):
+    rows: list["ImportBroadcastRecipientUnsubscribeRowInput"]
+    "Structured rows to unsubscribe (max 500). CSV parsing is client-side."
+    is_dry_run: bool = Field(alias="isDryRun")
+    "When true, resolve and report without writing."
+
+
+class StringSearchExpression(BaseModel):
+    """The different ways in which a string is matched.
+    Exactly one of these must be provided in a single search expression."""
+
+    case_insensitive_contains: str | None = Field(
+        alias="caseInsensitiveContains", default=None
+    )
+    "Case-insensitive match values containing the provided string."
+
+
+class CustomerSearchCondition(BaseModel):
+    """The customer attributes available for search, each of them mapped to a search expression.
+    Exactly one of them must be provided in a single search condition."""
+
+    full_name: Optional["StringSearchExpression"] = Field(
+        alias="fullName", default=None
+    )
+    "Search expression on the customer's full name."
+    short_name: Optional["StringSearchExpression"] = Field(
+        alias="shortName", default=None
+    )
+    "Search expression on the customer's short name."
+    email: Optional["StringSearchExpression"] = None
+    "Search expression on the customer's email address."
+    external_id: Optional["StringSearchExpression"] = Field(
+        alias="externalId", default=None
+    )
+    "Search expression on the customer's external id."
+    timeline_entry_text: Optional["StringSearchExpression"] = Field(
+        alias="timelineEntryText", default=None
+    )
+    "Search expression on specific timeline entries' text (email, chat) sent or received by the customer.\nCommon English stop-words will be removed from the text to search."
+
+
+class CustomersSearchQuery(BaseModel):
+    """A query to search for customers. Search queries are combinations of search conditions, as defined
+    below. At least one search condition must be provided."""
+
+    or_: list["CustomerSearchCondition"] | None = Field(alias="or", default=None)
+    "An array of search conditions that will be combined using a 'logical OR' to search for customers."
+
+
+class SelectedIssueTrackerField(BaseModel):
+    key: str
+    value: str
+
+
+class ThreadLinkCandidateFilter(BaseModel):
+    source_type: str = Field(alias="sourceType")
+    "One of `github_issue`, `shortcut_issue`, `incidentio_incident` or `rootly_incident`."
+
+
+class GenerateReplyOption(BaseModel):
+    key: str | None = None
+    value: str | None = None
+
+
+class ThreadClustersFilter(BaseModel):
+    variant: str | None = None
+    company_ids: list[str] | None = Field(alias="companyIds", default=None)
+    tenant_ids: list[str] | None = Field(alias="tenantIds", default=None)
+    account_ids: list[str] | None = Field(alias="accountIds", default=None)
+
+
+class ServiceLevelAgreementPoliciesFilter(BaseModel):
+    """Narrows the SLA policy list. Omit a field to leave that dimension unconstrained."""
+
+    search_query: str | None = Field(alias="searchQuery", default=None)
+    "Narrows to policies whose name contains this, matched case-insensitively and unanchored. Searched in the database rather than on the page, so it finds policies a client has not loaded."
+    service_level_agreement_types: list[ServiceLevelAgreementType] | None = Field(
+        alias="serviceLevelAgreementTypes", default=None
+    )
+    "Narrows to policies holding a target of at least one of these types. A policy with no target of any given type is excluded."
+
+
+class CustomerGroupsFilter(BaseModel):
+    external_ids: list[str] | None = Field(alias="externalIds", default=None)
+
+
 class CustomerGroupMembershipsFilter(BaseModel):
     customer_group_external_ids: list[str] | None = Field(
         alias="customerGroupExternalIds", default=None
     )
 
 
+class SingleValueMetricFilters(BaseModel):
+    user_id: str | None = Field(alias="userId", default=None)
+    csat_rating: int | None = Field(alias="csatRating", default=None)
+    csat_survey_id: str | None = Field(alias="csatSurveyId", default=None)
+
+
+class SingleValueMetricOptions(BaseModel):
+    from_: str | None = Field(alias="from", default=None)
+    "Defaults to 7 days ago."
+    to: str | None = None
+    dimension: MetricDimensionType | None = None
+    sub_dimension: str | None = Field(alias="subDimension", default=None)
+    filters: Optional["SingleValueMetricFilters"] = None
+
+
+class HeatmapMetricFilters(BaseModel):
+    user_id: str | None = Field(alias="userId", default=None)
+
+
+class HeatmapMetricOptionsInput(BaseModel):
+    from_: str | None = Field(alias="from", default=None)
+    to: str | None = None
+    dimension_type: MetricDimensionType | None = Field(
+        alias="dimensionType", default=None
+    )
+    dimension_value: str | None = Field(alias="dimensionValue", default=None)
+    sub_dimension: str | None = Field(alias="subDimension", default=None)
+    filters: Optional["HeatmapMetricFilters"] = None
+
+
+class TimeSeriesMetricInterval(BaseModel):
+    unit: TimeSeriesMetricIntervalUnit | None = None
+
+
+class TimeSeriesMetricFilters(BaseModel):
+    user_id: str | None = Field(alias="userId", default=None)
+    csat_rating: int | None = Field(alias="csatRating", default=None)
+    csat_survey_id: str | None = Field(alias="csatSurveyId", default=None)
+
+
+class TimeSeriesMetricOptions(BaseModel):
+    from_: str | None = Field(alias="from", default=None)
+    "Defaults to 7 days ago."
+    to: str | None = None
+    dimension: TimeSeriesMetricDimensionType | None = None
+    sub_dimension: str | None = Field(alias="subDimension", default=None)
+    interval: Optional["TimeSeriesMetricInterval"] = None
+    filters: Optional["TimeSeriesMetricFilters"] = None
+    fetch_thread_ids: bool | None = Field(alias="fetchThreadIds", default=None)
+
+
+class ThreadMetricInterval(BaseModel):
+    unit: ThreadMetricIntervalUnit
+
+
+class ThreadMetricGroupByInput(BaseModel):
+    """Sub-key required when dimension is keyed (THREAD_FIELD key, TENANT_FIELD externalFieldId)."""
+
+    dimension: ThreadMetricGroupBy
+    sub_key: str | None = Field(alias="subKey", default=None)
+    top_n: int | None = Field(alias="topN", default=None)
+
+
+class ThreadMetricFilters(BaseModel):
+    label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
+    company_identifiers: list["CompanyIdentifierInput"] | None = Field(
+        alias="companyIdentifiers", default=None
+    )
+    tenant_identifiers: list["TenantIdentifierInput"] | None = Field(
+        alias="tenantIdentifiers", default=None
+    )
+    account_identifiers: list["AccountIdentifierInput"] | None = Field(
+        alias="accountIdentifiers", default=None
+    )
+    tier_identifiers: list["TierIdentifierInput"] | None = Field(
+        alias="tierIdentifiers", default=None
+    )
+    customer_group_identifiers: list["CustomerGroupIdentifier"] | None = Field(
+        alias="customerGroupIdentifiers", default=None
+    )
+    assigned_to_user: list[str] | None = Field(alias="assignedToUser", default=None)
+    "Scopes to who the thread is *currently* assigned to (primary or additional/secondary assignee) — not who performed any measured action. For per-agent action metrics (agent_* metrics) use `userIds` instead. Referencing any user other than the caller requires `metricsAgent:read`."
+    priorities: list[int] | None = None
+    message_source: list[MessageSource] | None = Field(
+        alias="messageSource", default=None
+    )
+    thread_fields: list["ThreadFieldFilter"] | None = Field(
+        alias="threadFields", default=None
+    )
+    tenant_fields: list["TenantFieldFilter"] | None = Field(
+        alias="tenantFields", default=None
+    )
+    account_fields: list["AccountFieldFilter"] | None = Field(
+        alias="accountFields", default=None
+    )
+    survey_response: Optional["SurveyResponseFilter"] = Field(
+        alias="surveyResponse", default=None
+    )
+    user_ids: list[str] | None = Field(alias="userIds", default=None)
+    "Scopes to who *performed the measured action* (the event actors — e.g. who sent the message, resolved the thread, or made the transition). This is the correct field for agent_* metrics. Use with `groupBy: ASSIGNEE`."
+    and_: list["ThreadMetricFilters"] | None = Field(alias="and", default=None)
+    or_: list["ThreadMetricFilters"] | None = Field(alias="or", default=None)
+    not_: Optional["ThreadMetricFilters"] = Field(alias="not", default=None)
+
+
+class ThreadTimeSeriesMetricInput(BaseModel):
+    metric_name: TimeSeriesMetricName = Field(alias="metricName")
+    from_: str = Field(alias="from")
+    "ISO 8601 format (e.g. 2024-10-28T18:30:00Z)."
+    to: str
+    "ISO 8601 format (e.g. 2024-10-28T18:30:00Z). Must not be more than 5 minutes in the future."
+    interval: "ThreadMetricInterval"
+    group_by: list["ThreadMetricGroupByInput"] | None = Field(
+        alias="groupBy", default=None
+    )
+    "Required for `agent_*` metrics in METRIC mode: pass `[{ dimension: ASSIGNEE }]`, or another dimension together with `filters.userIds`."
+    filters: Optional["ThreadMetricFilters"] = None
+    percentile: int | None = None
+    "Percentile (integer 1-99, e.g. 90 for P90) for the configurable-percentile duration metrics (threads_first_response_time, threads_resolution_time, threads_time_customer_waiting, threads_time_between_follow_up_responses, threads_time_between_all_responses, and their agent_ variants). Defaults to 50 (median). Rejected for any other metric."
+    mode: ThreadMetricMode
+    "The return mode. Either METRIC - the values of the metric. Or THREAD_IDS - the distinct thread ids behind the values. Use filters and to/from to narrow search if looking for threadsIds for a specific subset"
+
+
+class ThreadSingleValueMetricInput(BaseModel):
+    metric_name: SingleValueMetricName = Field(alias="metricName")
+    from_: str | None = Field(alias="from", default=None)
+    "ISO 8601 format (e.g. 2024-10-28T18:30:00Z). Required for all metrics except all-time counts (e.g. threads_all_time_count_done), which reject a date range."
+    to: str | None = None
+    "ISO 8601 format (e.g. 2024-10-28T18:30:00Z). Must not be more than 5 minutes in the future. Required for all metrics except all-time counts (e.g. threads_all_time_count_done), which reject a date range."
+    group_by: list["ThreadMetricGroupByInput"] | None = Field(
+        alias="groupBy", default=None
+    )
+    "Required for `agent_*` metrics in METRIC mode: pass `[{ dimension: ASSIGNEE }]`, or another dimension together with `filters.userIds`."
+    filters: Optional["ThreadMetricFilters"] = None
+    percentile: int | None = None
+    "Percentile (integer 1-99, e.g. 90 for P90) for the configurable-percentile duration metrics (threads_first_response_time, threads_resolution_time, threads_time_customer_waiting, threads_time_between_follow_up_responses, and their agent_ variants). Defaults to 50 (median). Rejected for any other metric."
+    mode: ThreadMetricMode
+    "The return mode. Either METRIC - the values of the metric. Or THREAD_IDS - the distinct thread ids behind the values. Use filters and to/from to narrow search if looking for threadsIds for a specific subset"
+
+
+class ThreadHeatmapMetricInput(BaseModel):
+    metric_name: HeatmapMetricName = Field(alias="metricName")
+    from_: str = Field(alias="from")
+    "ISO 8601 format (e.g. 2024-10-28T18:30:00Z)."
+    to: str
+    "ISO 8601 format (e.g. 2024-10-28T18:30:00Z). Must not be more than 5 minutes in the future."
+    filters: Optional["ThreadMetricFilters"] = None
+    mode: ThreadMetricMode
+    "The return mode. Either METRIC - the values of the metric. Or THREAD_IDS - the distinct thread ids behind the values. Use filters and to/from to narrow search if looking for threadsIds for a specific subset"
+    thread_ids_args: Optional["ThreadHeatmapThreadIdsArgs"] = Field(
+        alias="threadIdsArgs", default=None
+    )
+    "The clicked cell to drill into. Required when mode is threadIds; rejected otherwise."
+
+
+class ThreadHeatmapThreadIdsArgs(BaseModel):
+    """Identifies the heatmap slice to retrieve thread ids from. Supply both fields for a single cell (one day-of-week/hour-of-day pair across the range), only `hourOfDay` for a column (that hour across all days), or only `dayOfWeek` for a row (that day across all hours). At least one is required in threadIds mode."""
+
+    day_of_week: int | None = Field(alias="dayOfWeek", default=None)
+    "Day of week to pin (1 = Monday … 7 = Sunday, UTC). Omit to span all days."
+    hour_of_day: int | None = Field(alias="hourOfDay", default=None)
+    "Hour of day to pin (0–23, UTC). Omit to span all hours."
+
+
 class TierIdentifierInput(BaseModel):
     tier_id: str | None = Field(alias="tierId", default=None)
     "Plain's ID for the tier, such as `tier_01…`. Not the tier's name."
     external_id: str | None = Field(alias="externalId", default=None)
-    "Your identifier for the tier, assigned at creation. This field accepts the external identifier rather than the display name."
+    "Your own ID for the tier, set when it was created. Not its name: find a tier by name with `tiers`."
 
 
 class ThreadFieldNumberFilter(BaseModel):
@@ -113,6 +646,15 @@ class ThreadLinkSourceFilter(BaseModel):
     source_id: str = Field(alias="sourceId")
 
 
+class DateFilter(BaseModel):
+    """Filters calendar dates, which have no time or timezone."""
+
+    after: str | None = None
+    "On or after this date, in YYYY-MM-DD format."
+    before: str | None = None
+    "Before this date, in YYYY-MM-DD format."
+
+
 class DatetimeFilter(BaseModel):
     after: str | None = None
     "Timestamps -greater or equal- than this value. ISO 8601 format (e.g. 2024-10-28T18:30:00Z)."
@@ -127,6 +669,23 @@ class SurveyResponseFilter(BaseModel):
     rating: int | None = None
     survey_id: str | None = Field(alias="surveyId", default=None)
     response_at: Optional["DatetimeFilter"] = Field(alias="responseAt", default=None)
+
+
+class TasksFilter(BaseModel):
+    assigned_to_user: list[str] | None = Field(alias="assignedToUser", default=None)
+    company_ids: list[str] | None = Field(alias="companyIds", default=None)
+    is_assigned: bool | None = Field(alias="isAssigned", default=None)
+    statuses: list[TaskStatus] | None = None
+    tenant_ids: list[str] | None = Field(alias="tenantIds", default=None)
+    account_ids: list[str] | None = Field(alias="accountIds", default=None)
+    and_: list["TasksFilter"] | None = Field(alias="and", default=None)
+    or_: list["TasksFilter"] | None = Field(alias="or", default=None)
+    not_: Optional["TasksFilter"] = Field(alias="not", default=None)
+
+
+class TasksSort(BaseModel):
+    field: TasksSortField
+    direction: SortDirection
 
 
 class ThreadsFilter(BaseModel):
@@ -255,6 +814,11 @@ class ThreadsSort(BaseModel):
     thread_field_key: str | None = Field(alias="threadFieldKey", default=None)
 
 
+class DeletedThreadsFilter(BaseModel):
+    deleted_at: Optional["DatetimeFilter"] = Field(alias="deletedAt", default=None)
+    "Filter deleted threads by deletion timestamp."
+
+
 class StringInput(BaseModel):
     value: str
 
@@ -275,6 +839,95 @@ class OptionalStringInput(BaseModel):
     value: str | None = None
 
 
+class OptionalBooleanInput(BaseModel):
+    value: bool | None = None
+
+
+class OptionalFloatInput(BaseModel):
+    value: float | None = None
+
+
+class CreateUserAccountInput(BaseModel):
+    full_name: str = Field(alias="fullName")
+    public_name: str = Field(alias="publicName")
+    marketing_consent: bool | None = Field(alias="marketingConsent", default=None)
+
+
+class CreateWorkspaceInput(BaseModel):
+    name: str
+    public_name: str = Field(alias="publicName")
+
+
+class InviteUserToWorkspaceInput(BaseModel):
+    email: str
+    role_key: RoleKey | None = Field(alias="roleKey", default=None)
+    custom_role_id: str | None = Field(alias="customRoleId", default=None)
+    using_billing_rota_seat: Optional["BooleanInput"] = Field(
+        alias="usingBillingRotaSeat", default=None
+    )
+
+
+class AcceptWorkspaceInviteInput(BaseModel):
+    invite_id: str = Field(alias="inviteId")
+
+
+class DeleteWorkspaceInviteInput(BaseModel):
+    invite_id: str = Field(alias="inviteId")
+
+
+class AssignRolesToUserInput(BaseModel):
+    user_id: str = Field(alias="userId")
+    role_ids: list[str] | None = Field(alias="roleIds", default=None)
+    role_key: RoleKey | None = Field(alias="roleKey", default=None)
+    custom_role_id: str | None = Field(alias="customRoleId", default=None)
+    using_billing_rota_seat: Optional["BooleanInput"] = Field(
+        alias="usingBillingRotaSeat", default=None
+    )
+
+
+class CreateCustomRoleInput(BaseModel):
+    name: str
+    description: str | None = None
+    permissions_preset: RoleKey | None = Field(alias="permissionsPreset", default=None)
+    "The built-in role whose permissions this custom role inherits. Only `SUPPORT` and `VIEWER` are accepted, and it cannot be changed later. Defaults to `SUPPORT`. Users with a `VIEWER` custom role take a viewer seat rather than a member seat, and cannot be assigned threads."
+
+
+class UpdateCustomRoleInput(BaseModel):
+    custom_role_id: str = Field(alias="customRoleId")
+    name: Optional["OptionalStringInput"] = None
+    description: Optional["OptionalStringInput"] = None
+
+
+class DeleteCustomRoleInput(BaseModel):
+    custom_role_id: str = Field(alias="customRoleId")
+
+
+class RolePriorityOrderEntryInput(BaseModel):
+    """One role in a role priority order. Set exactly one of `key` or `customRoleId`."""
+
+    key: RoleKey | None = None
+    custom_role_id: str | None = Field(alias="customRoleId", default=None)
+
+
+class UpdateRolePriorityOrderInput(BaseModel):
+    roles: list["RolePriorityOrderEntryInput"]
+    "Every role in the workspace, highest priority first. Built-in roles keep their fixed order, starting with `OWNER` and ending with `NONE`. Each custom role must appear exactly once."
+
+
+class ScopeConditionInput(BaseModel):
+    primitive_type: ThreadScopePrimitiveType = Field(alias="primitiveType")
+    access_mode: RoleScopeAccessMode = Field(alias="accessMode")
+    values: list[str] | None = None
+    "IDs of the values to include/exclude (required for VIEW_ONLY and VIEW_ALL_EXCEPT)"
+
+
+class UpsertRoleScopesInput(BaseModel):
+    custom_role_id: str = Field(alias="customRoleId")
+    resource: RoleScopeResourceType
+    scopes: list["ScopeConditionInput"]
+    "For THREAD resource: array of scope conditions - one per primitive type"
+
+
 class CreateLabelTypeInput(BaseModel):
     name: str
     icon: str | None = None
@@ -290,14 +943,158 @@ class ArchiveLabelTypeInput(BaseModel):
     label_type_id: str = Field(alias="labelTypeId")
 
 
+class UnarchiveLabelTypeInput(BaseModel):
+    label_type_id: str = Field(alias="labelTypeId")
+
+
+class UpdateLabelTypeInput(BaseModel):
+    label_type_id: str = Field(alias="labelTypeId")
+    name: Optional["StringInput"] = None
+    icon: Optional["OptionalStringInput"] = None
+    color: Optional["OptionalStringInput"] = None
+    description: Optional["OptionalStringInput"] = None
+    external_id: Optional["OptionalStringInput"] = Field(
+        alias="externalId", default=None
+    )
+    is_excluded_from_ai: Optional["OptionalBooleanInput"] = Field(
+        alias="isExcludedFromAi", default=None
+    )
+
+
 class AddLabelsInput(BaseModel):
     label_type_ids: list[str] = Field(alias="labelTypeIds")
     thread_id: str = Field(alias="threadId")
     only_if_no_labels: bool | None = Field(alias="onlyIfNoLabels", default=None)
 
 
+class AddLabelsToUserInput(BaseModel):
+    label_type_ids: list[str] = Field(alias="labelTypeIds")
+    entity_id: str = Field(alias="entityId")
+
+
 class RemoveLabelsInput(BaseModel):
     label_ids: list[str] = Field(alias="labelIds")
+
+
+class RemoveLabelsFromUserInput(BaseModel):
+    label_ids: list[str] = Field(alias="labelIds")
+
+
+class DependsOnThreadFieldInput(BaseModel):
+    """Makes a thread field conditional on a sibling field's value. Nesting is capped at one level: `threadFieldSchemaId` must reference a field that does not itself depend on another thread field, otherwise the mutation fails with `cannot_create_thread_field_schema` (the dependent nesting level is too deep)."""
+
+    thread_field_schema_id: str = Field(alias="threadFieldSchemaId")
+    thread_field_schema_value: str = Field(alias="threadFieldSchemaValue")
+
+
+class OptionalDependsOnThreadFieldInput(BaseModel):
+    value: Optional["DependsOnThreadFieldInput"] = None
+
+
+class CreateThreadFieldSchemaInput(BaseModel):
+    label: str
+    "The human-readable name of the field. Must be unique across all thread field schemas in the workspace."
+    key: str
+    "A stable identifier used when reading and writing values. Must be lowercase and contain only letters, numbers, and underscores (validated against `^[a-z0-9_]+$`); camelCase and hyphens are rejected. Immutable after creation."
+    description: str
+    order: int
+    type_: ThreadFieldSchemaType = Field(alias="type")
+    enum_values: list[str] = Field(alias="enumValues")
+    is_required: bool = Field(alias="isRequired")
+    default_string_value: str | None = Field(alias="defaultStringValue", default=None)
+    default_boolean_value: bool | None = Field(
+        alias="defaultBooleanValue", default=None
+    )
+    default_number_value: float | None = Field(alias="defaultNumberValue", default=None)
+    default_date_value: str | None = Field(alias="defaultDateValue", default=None)
+    is_ai_auto_fill_enabled: bool = Field(alias="isAiAutoFillEnabled")
+    is_available_to_agents: bool | None = Field(
+        alias="isAvailableToAgents", default=None
+    )
+    is_client_readonly: bool | None = Field(alias="isClientReadonly", default=None)
+    depends_on_thread_field: Optional["DependsOnThreadFieldInput"] = Field(
+        alias="dependsOnThreadField", default=None
+    )
+    depends_on_label_type_ids: list[str] | None = Field(
+        alias="dependsOnLabelTypeIds", default=None
+    )
+
+
+class OptionalDateTimeInput(BaseModel):
+    value: str | None = None
+
+
+class UpdateThreadFieldSchemaInput(BaseModel):
+    thread_field_schema_id: str = Field(alias="threadFieldSchemaId")
+    label: Optional["StringInput"] = None
+    "The human-readable name of the field. Must be unique across all thread field schemas in the workspace. The `key` cannot be changed after creation, so renaming a field means changing only its label here."
+    description: Optional["StringInput"] = None
+    order: int | None = None
+    enum_values: list[str] | None = Field(alias="enumValues", default=None)
+    is_required: bool | None = Field(alias="isRequired", default=None)
+    default_string_value: Optional["OptionalStringInput"] = Field(
+        alias="defaultStringValue", default=None
+    )
+    default_boolean_value: Optional["OptionalBooleanInput"] = Field(
+        alias="defaultBooleanValue", default=None
+    )
+    default_number_value: Optional["OptionalFloatInput"] = Field(
+        alias="defaultNumberValue", default=None
+    )
+    default_date_value: Optional["OptionalDateTimeInput"] = Field(
+        alias="defaultDateValue", default=None
+    )
+    is_ai_auto_fill_enabled: bool | None = Field(
+        alias="isAiAutoFillEnabled", default=None
+    )
+    is_available_to_agents: bool | None = Field(
+        alias="isAvailableToAgents", default=None
+    )
+    is_client_readonly: bool | None = Field(alias="isClientReadonly", default=None)
+    depends_on_thread_field: Optional["OptionalDependsOnThreadFieldInput"] = Field(
+        alias="dependsOnThreadField", default=None
+    )
+    depends_on_label_type_ids: list[str] | None = Field(
+        alias="dependsOnLabelTypeIds", default=None
+    )
+
+
+class DeleteThreadFieldSchemaInput(BaseModel):
+    thread_field_schema_id: str = Field(alias="threadFieldSchemaId")
+
+
+class DeleteEscalationPathInput(BaseModel):
+    escalation_path_id: str = Field(alias="escalationPathId")
+
+
+class CreateEscalationPathInput(BaseModel):
+    name: str
+    description: str | None = None
+    steps: list["EscalationPathStepInput"]
+
+
+class UpdateEscalationPathInput(BaseModel):
+    escalation_path_id: str = Field(alias="escalationPathId")
+    name: str | None = None
+    description: str | None = None
+    steps: list["EscalationPathStepInput"] | None = None
+
+
+class EscalationPathStepInput(BaseModel):
+    type_: EscalationPathStepType = Field(alias="type")
+    user_id: str | None = Field(alias="userId", default=None)
+    label_type_id: str | None = Field(alias="labelTypeId", default=None)
+
+
+class ThreadFieldSchemaOrderInput(BaseModel):
+    thread_field_schema_id: str = Field(alias="threadFieldSchemaId")
+    order: int
+
+
+class ReorderThreadFieldSchemasInput(BaseModel):
+    thread_field_schema_orders: list["ThreadFieldSchemaOrderInput"] = Field(
+        alias="threadFieldSchemaOrders"
+    )
 
 
 class UpsertThreadFieldIdentifier(BaseModel):
@@ -325,6 +1122,10 @@ class CreateThreadFieldOnThreadInput(BaseModel):
     date_value: str | None = Field(alias="dateValue", default=None)
 
 
+class BulkUpsertThreadFieldsInput(BaseModel):
+    inputs: list["UpsertThreadFieldInput"]
+
+
 class DeleteThreadFieldIdentifier(BaseModel):
     thread_id: str = Field(alias="threadId")
     "Plain's ID for the thread."
@@ -336,17 +1137,665 @@ class DeleteThreadFieldInput(BaseModel):
     identifier: "DeleteThreadFieldIdentifier"
 
 
+class CreateWorkflowRuleInput(BaseModel):
+    name: str
+    payload: str
+    "JSON-encoded payload of the rule definition."
+
+
+class UpdateWorkflowRuleInput(BaseModel):
+    workflow_rule_id: str = Field(alias="workflowRuleId")
+    name: Optional["StringInput"] = None
+    payload: Optional["StringInput"] = None
+    "JSON-encoded payload of the rule definition."
+    order: Optional["IntInput"] = None
+
+
+class ToggleWorkflowRulePublishedInput(BaseModel):
+    workflow_rule_id: str = Field(alias="workflowRuleId")
+
+
+class DeleteWorkflowRuleInput(BaseModel):
+    workflow_rule_id: str = Field(alias="workflowRuleId")
+
+
+class TriggerWorkflowRuleInput(BaseModel):
+    workflow_rule_id: str = Field(alias="workflowRuleId")
+    thread_id: str = Field(alias="threadId")
+
+
+class CreateWorkflowInput(BaseModel):
+    name: str
+    trigger: str
+    'JSON-encoded trigger configuration. `type` is lowercase: `{"type":"manual"}`, `{"type":"events","events":["thread.thread_created"]}` or `{"type":"schedule","cron":"0 9 * * 1"}`. See `Workflow.trigger` for every event.'
+    source_template_id: str | None = Field(alias="sourceTemplateId", default=None)
+    "The gallery template this workflow was created from, if any. Recorded once and never updated — the workflow diverges as soon as it is edited."
+
+
+class UpdateWorkflowInput(BaseModel):
+    workflow_id: str = Field(alias="workflowId")
+    name: Optional["StringInput"] = None
+    trigger: Optional["StringInput"] = None
+    'JSON-encoded trigger configuration. `type` is lowercase: `{"type":"manual"}`, `{"type":"events","events":["thread.thread_created"]}` or `{"type":"schedule","cron":"0 9 * * 1"}`. See `Workflow.trigger` for every event.'
+    start_step_id: Optional["StringInput"] = Field(alias="startStepId", default=None)
+    "The ID of the first step to execute. Cannot be cleared to null on a published workflow; unpublish (`isPublished: false`) before restructuring steps, then republish."
+    order: Optional["IntInput"] = None
+    "Writes the legacy `order` integer and nothing else — it does not change where the workflow sits in the list."
+    is_published: Optional["BooleanInput"] = Field(alias="isPublished", default=None)
+
+
+class MoveWorkflowInput(BaseModel):
+    workflow_id: str = Field(alias="workflowId")
+    "The workflow to move. Drafts can be moved too — they hold a position in the list like anything else."
+    after_workflow_id: str | None = Field(alias="afterWorkflowId", default=None)
+    "The workflow to place it directly after. Null moves it to the front, so every position is reachable."
+
+
+class DeleteWorkflowInput(BaseModel):
+    workflow_id: str = Field(alias="workflowId")
+
+
+class TriggerWorkflowInput(BaseModel):
+    workflow_id: str = Field(alias="workflowId")
+    thread_id: str = Field(alias="threadId")
+
+
+class CreateWorkflowShareLinkInput(BaseModel):
+    workflow_id: str = Field(alias="workflowId")
+
+
+class ExportWorkflowTemplateInput(BaseModel):
+    workflow_id: str = Field(alias="workflowId")
+
+
+class CreateWorkflowStepInput(BaseModel):
+    workflow_id: str = Field(alias="workflowId")
+    type_: WorkflowStepType = Field(alias="type")
+    "The type of step: ACTION, CONDITION, WAIT or NOTE."
+    name: str | None = None
+    "Optional name for the step."
+    payload: str
+    'JSON-encoded step configuration: an object with `"version":1` and a `type`, using exactly the fields below. Use IDs from this workspace; `workflowCapabilities` lists which action types a trigger allows.\n- CONDITION: a leaf, or a combinator `{"version":1,"type":"and"|"or","conditions":[…]}` / `{"version":1,"type":"not","condition":{…}}`. Leaves: `any_message_contains` / `any_customer_message_contains` (`keywords`: string[], `matchType`?: `CONTAINS`|`MATCHES_WORD`); `contains_label` (`labelTypeIds`); `priority_equals` (`priorities`: int[], 0=Urgent … 3=Low); `tier_equals` (`tierIds`); `customer_email_includes` (`customerEmails`); `support_channel_equals` (`supportChannels`: `SLACK`|`MS_TEAMS`|`EMAIL`|`CHAT`|`DISCORD`|`API`); `outside_business_hours` (`businessHoursScheduleId`?); `thread_field_equals` (`threadFieldKey`, `fieldValue`: {`type`, `operator`, `value`}); `ai_workflow_rule_condition` (`prompt`, for checks with no native type).\n- ACTION: `apply_labels` / `remove_labels` (`labelTypeIds`); `set_priority` (`priority`: 0–3); `set_tier` (`tierId`); `assign_to_user` (`userId`); `assign_to_team` (`teamLabelId`); `add_note` / `send_message` (`text`, `markdown` or null); `set_status` (`statusDetail`, e.g. `ThreadStatusDetailDoneManuallySet`); `set_thread_field` (`threadFieldKey`, `threadFieldType`, one value field).\n- WAIT: `{"duration":<seconds>}`. NOTE: `{"text":"…"}`.\nExample, labelling invoice threads: a CONDITION `{"version":1,"type":"any_message_contains","keywords":["invoice"]}` whose true branch goes to an ACTION `{"version":1,"type":"apply_labels","labelTypeIds":["lt_…"]}`. See `WorkflowStep.payload` for every type.'
+    transitions: list[str | None]
+    "Array of next step IDs. For ACTION: 1 element. For CONDITION: 2 elements (true, false). For WAIT: 1 or 2 elements (completed, cancelled). For NOTE: empty. Use null for terminal/no branch."
+    position_x: float | None = Field(alias="positionX", default=None)
+    "X position of this step on the canvas."
+    position_y: float | None = Field(alias="positionY", default=None)
+    "Y position of this step on the canvas."
+
+
+class UpdateWorkflowStepInput(BaseModel):
+    step_id: str = Field(alias="stepId")
+    name: Optional["StringInput"] = None
+    "Optional name for the step."
+    payload: Optional["StringInput"] = None
+    "JSON-encoded payload containing the action or condition configuration."
+    transitions: list[str | None] | None = None
+    "Array of next step IDs. For ACTION: 1 element. For CONDITION: 2 elements (true, false). Use null for terminal/no branch. Full array replacement."
+    position_x: float | None = Field(alias="positionX", default=None)
+    "X position of this step on the canvas."
+    position_y: float | None = Field(alias="positionY", default=None)
+    "Y position of this step on the canvas."
+
+
+class DeleteWorkflowStepInput(BaseModel):
+    step_id: str = Field(alias="stepId")
+
+
+class BulkUpsertWorkflowStepInput(BaseModel):
+    """Input for a single step in the bulk upsert operation."""
+
+    step_id: str | None = Field(alias="stepId", default=None)
+    "Optional step ID - if provided and exists in this workflow, step will be updated. Otherwise created with new ID."
+    type_: WorkflowStepType = Field(alias="type")
+    "The type of step: ACTION, CONDITION, WAIT or NOTE."
+    name: str | None = None
+    "Optional name for the step."
+    payload: str
+    'JSON-encoded step configuration: an object with `"version":1` and a `type`, using exactly the fields below. Use IDs from this workspace; `workflowCapabilities` lists which action types a trigger allows.\n- CONDITION: a leaf, or a combinator `{"version":1,"type":"and"|"or","conditions":[…]}` / `{"version":1,"type":"not","condition":{…}}`. Leaves: `any_message_contains` / `any_customer_message_contains` (`keywords`: string[], `matchType`?: `CONTAINS`|`MATCHES_WORD`); `contains_label` (`labelTypeIds`); `priority_equals` (`priorities`: int[], 0=Urgent … 3=Low); `tier_equals` (`tierIds`); `customer_email_includes` (`customerEmails`); `support_channel_equals` (`supportChannels`: `SLACK`|`MS_TEAMS`|`EMAIL`|`CHAT`|`DISCORD`|`API`); `outside_business_hours` (`businessHoursScheduleId`?); `thread_field_equals` (`threadFieldKey`, `fieldValue`: {`type`, `operator`, `value`}); `ai_workflow_rule_condition` (`prompt`, for checks with no native type).\n- ACTION: `apply_labels` / `remove_labels` (`labelTypeIds`); `set_priority` (`priority`: 0–3); `set_tier` (`tierId`); `assign_to_user` (`userId`); `assign_to_team` (`teamLabelId`); `add_note` / `send_message` (`text`, `markdown` or null); `set_status` (`statusDetail`, e.g. `ThreadStatusDetailDoneManuallySet`); `set_thread_field` (`threadFieldKey`, `threadFieldType`, one value field).\n- WAIT: `{"duration":<seconds>}`. NOTE: `{"text":"…"}`.\nExample, labelling invoice threads: a CONDITION `{"version":1,"type":"any_message_contains","keywords":["invoice"]}` whose true branch goes to an ACTION `{"version":1,"type":"apply_labels","labelTypeIds":["lt_…"]}`. See `WorkflowStep.payload` for every type.'
+    transitions: list[str | None]
+    "Transition step IDs. ACTION steps: [nextStepId], CONDITION steps: [trueStepId, falseStepId], WAIT steps: [completedStepId, cancelledStepId], NOTE steps: []. Use null for terminal/no branch. A NOTE step cannot be a transition target or the startStepId."
+    position_x: float | None = Field(alias="positionX", default=None)
+    "X position of this step on the canvas."
+    position_y: float | None = Field(alias="positionY", default=None)
+    "Y position of this step on the canvas."
+
+
+class BulkUpsertWorkflowStepsInput(BaseModel):
+    workflow_id: str = Field(alias="workflowId")
+    steps: list["BulkUpsertWorkflowStepInput"]
+    "The complete list of steps. Steps with existing IDs are updated, new IDs are created, missing IDs are deleted."
+    start_step_id: str | None = Field(alias="startStepId", default=None)
+    "Optional: Set this as the workflow's startStepId. Use null to clear. If not provided, startStepId is unchanged. Clearing to null fails on a published workflow — unpublish before restructuring, then republish."
+    trigger: Optional["StringInput"] = None
+    "Optional: JSON-encoded trigger configuration. If not provided, trigger is unchanged. See `Workflow.trigger` for the valid `type` values and their required fields."
+
+
+class WorkspaceFileInput(BaseModel):
+    workspace_file_id: str | None = Field(alias="workspaceFileId", default=None)
+
+
+class CreateChatAppInput(BaseModel):
+    name: str
+    logo: Optional["WorkspaceFileInput"] = None
+
+
+class UpdateChatAppInput(BaseModel):
+    chat_app_id: str = Field(alias="chatAppId")
+    name: Optional["StringInput"] = None
+    logo: Optional["WorkspaceFileInput"] = None
+    business_hours_schedule_ids: list[str] | None = Field(
+        alias="businessHoursScheduleIds", default=None
+    )
+    "Omit to leave the linked business hours schedules untouched. An empty list unlinks all of them."
+
+
+class DeleteChatAppInput(BaseModel):
+    chat_app_id: str = Field(alias="chatAppId")
+
+
+class CreateChatAppSecretInput(BaseModel):
+    chat_app_id: str = Field(alias="chatAppId")
+
+
+class DeleteChatAppSecretInput(BaseModel):
+    chat_app_id: str = Field(alias="chatAppId")
+
+
+class LinearIssueThreadLinkInput(BaseModel):
+    linear_issue_id: str = Field(alias="linearIssueId")
+    linear_issue_url: str = Field(alias="linearIssueUrl")
+
+
+class PlainThreadLinkInput(BaseModel):
+    plain_thread_id: str = Field(alias="plainThreadId")
+    link_type: ThreadLinkLinkType | None = Field(alias="linkType", default=None)
+
+
+class PlainTaskThreadLinkInput(BaseModel):
+    plain_task_id: str = Field(alias="plainTaskId")
+
+
+class JiraIssueThreadLinkInput(BaseModel):
+    jira_issue_id: str = Field(alias="jiraIssueId")
+
+
+class CreateThreadLinkInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    source_id: str | None = Field(alias="sourceId", default=None)
+    source_type: str | None = Field(alias="sourceType", default=None)
+    linear_issue: Optional["LinearIssueThreadLinkInput"] = Field(
+        alias="linearIssue", default=None
+    )
+    plain_thread: Optional["PlainThreadLinkInput"] = Field(
+        alias="plainThread", default=None
+    )
+    plain_task: Optional["PlainTaskThreadLinkInput"] = Field(
+        alias="plainTask", default=None
+    )
+    jira_issue: Optional["JiraIssueThreadLinkInput"] = Field(
+        alias="jiraIssue", default=None
+    )
+
+
+class BulkCreateThreadLinksInput(BaseModel):
+    thread_ids: list[str] = Field(alias="threadIds")
+    "The threads to link to the same target entity. Between 1 and 25 IDs."
+    source_id: str | None = Field(alias="sourceId", default=None)
+    source_type: str | None = Field(alias="sourceType", default=None)
+    linear_issue: Optional["LinearIssueThreadLinkInput"] = Field(
+        alias="linearIssue", default=None
+    )
+    plain_thread: Optional["PlainThreadLinkInput"] = Field(
+        alias="plainThread", default=None
+    )
+    plain_task: Optional["PlainTaskThreadLinkInput"] = Field(
+        alias="plainTask", default=None
+    )
+    jira_issue: Optional["JiraIssueThreadLinkInput"] = Field(
+        alias="jiraIssue", default=None
+    )
+
+
+class BulkDeleteThreadLinksInput(BaseModel):
+    thread_link_ids: list[str] = Field(alias="threadLinkIds")
+    "The thread link IDs to delete. Between 1 and 100 IDs. Duplicate IDs are collapsed to a single deletion."
+
+
+class DeleteThreadLinkInput(BaseModel):
+    thread_link_id: str = Field(alias="threadLinkId")
+
+
+class ThreadLinkGroupFilter(BaseModel):
+    statuses: list[ThreadLinkStatus] | None = None
+    "Defaults to [TODO, IN_PROGRESS]"
+    thread_link_group_ids: list[str] | None = Field(
+        alias="threadLinkGroupIds", default=None
+    )
+    company_ids: list[str] | None = Field(alias="companyIds", default=None)
+    tier_ids: list[str] | None = Field(alias="tierIds", default=None)
+    tenant_ids: list[str] | None = Field(alias="tenantIds", default=None)
+    account_ids: list[str] | None = Field(alias="accountIds", default=None)
+
+
 class CreateNoteInput(BaseModel):
     customer_id: str = Field(alias="customerId")
-    "The ID of the customer the thread belongs to (starts with `c_`)."
     thread_id: str | None = Field(alias="threadId", default=None)
-    "The ID of the thread to pin the note to (starts with `th_`). Required, although the type allows null."
     text: str
-    "Plain-text note body, at most 10,000 characters. May be empty only if `markdown` or `attachmentIds` is set."
     markdown: str | None = None
-    "Optional markdown version of the note, at most 10,000 characters."
     attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
-    "Up to 100 attachment IDs."
+
+
+class DeleteNoteInput(BaseModel):
+    note_id: str = Field(alias="noteId")
+
+
+class UpdateNoteInput(BaseModel):
+    note_id: str = Field(alias="noteId")
+    text: str
+    markdown: str | None = None
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+
+
+class ThreadsDisplayOptionsInput(BaseModel):
+    has_status: bool = Field(alias="hasStatus")
+    has_customer: bool = Field(alias="hasCustomer")
+    has_company: bool | None = Field(alias="hasCompany", default=None)
+    has_preview_text: bool = Field(alias="hasPreviewText")
+    has_tier: bool = Field(alias="hasTier")
+    has_customer_groups: bool = Field(alias="hasCustomerGroups")
+    has_labels: bool = Field(alias="hasLabels")
+    has_linear_issues: bool | None = Field(alias="hasLinearIssues", default=None)
+    has_jira_issues: bool | None = Field(alias="hasJiraIssues", default=None)
+    has_linked_threads: bool = Field(alias="hasLinkedThreads")
+    has_service_level_agreements: bool = Field(alias="hasServiceLevelAgreements")
+    has_channels: bool = Field(alias="hasChannels")
+    has_last_updated: bool = Field(alias="hasLastUpdated")
+    has_created_at: bool | None = Field(alias="hasCreatedAt", default=None)
+    has_assignees: bool = Field(alias="hasAssignees")
+    has_ref: bool = Field(alias="hasRef")
+    has_issue_tracker_issues: bool | None = Field(
+        alias="hasIssueTrackerIssues", default=None
+    )
+    has_tasks: bool | None = Field(alias="hasTasks", default=None)
+    has_thread_field_keys: list[str] | None = Field(
+        alias="hasThreadFieldKeys", default=None
+    )
+    has_tenants: bool | None = Field(alias="hasTenants", default=None)
+    has_accounts: bool | None = Field(alias="hasAccounts", default=None)
+    has_tenant_field_external_ids: list[str] | None = Field(
+        alias="hasTenantFieldExternalIds", default=None
+    )
+    has_account_field_external_ids: list[str] | None = Field(
+        alias="hasAccountFieldExternalIds", default=None
+    )
+
+
+class SavedThreadsViewFilterInput(BaseModel):
+    statuses: list[ThreadStatus]
+    status_details: list[StatusDetailType] = Field(alias="statusDetails")
+    priorities: list[int]
+    assigned_to_user: list[str] = Field(alias="assignedToUser")
+    participants: list[str]
+    customer_groups: list[str] = Field(alias="customerGroups")
+    companies: list[str] | None = None
+    tenants: list[str] | None = None
+    accounts: list[str] | None = None
+    tiers: list[str]
+    service_level_agreement_policy_ids: list[str] | None = Field(
+        alias="serviceLevelAgreementPolicyIds", default=None
+    )
+    "Omitted or null means no policy filter."
+    label_type_ids: list[str] = Field(alias="labelTypeIds")
+    message_source: list[MessageSource] = Field(alias="messageSource")
+    support_email_addresses: list[str] = Field(alias="supportEmailAddresses")
+    sla_types: list[str] = Field(alias="slaTypes")
+    sla_statuses: list[str] = Field(alias="slaStatuses")
+    thread_fields: list["ThreadFieldFilter"] = Field(alias="threadFields")
+    tenant_fields: list["TenantFieldFilter"] | None = Field(
+        alias="tenantFields", default=None
+    )
+    account_fields: list["AccountFieldFilter"] | None = Field(
+        alias="accountFields", default=None
+    )
+    thread_link_group_ids: list[str] = Field(alias="threadLinkGroupIds")
+    thread_link_sources: list["ThreadLinkSourceFilter"] = Field(
+        alias="threadLinkSources"
+    )
+    created_at_filter: Optional["DatetimeFilter"] = Field(
+        alias="createdAtFilter", default=None
+    )
+    survey_response: Optional["SurveyResponseFilter"] = Field(
+        alias="surveyResponse", default=None
+    )
+    sort: "ThreadsSort"
+    display_options: "ThreadsDisplayOptionsInput" = Field(alias="displayOptions")
+    group_by: ThreadsGroupBy = Field(alias="groupBy")
+    layout: ThreadsLayout
+    and_: list["SavedThreadsViewFilterInput"] | None = Field(alias="and", default=None)
+    or_: list["SavedThreadsViewFilterInput"] | None = Field(alias="or", default=None)
+    not_: Optional["SavedThreadsViewFilterInput"] = Field(alias="not", default=None)
+
+
+class CreateSavedThreadsViewInput(BaseModel):
+    name: str
+    icon: str
+    color: str
+    threads_filter: "SavedThreadsViewFilterInput" = Field(alias="threadsFilter")
+    is_hidden: bool | None = Field(alias="isHidden", default=None)
+
+
+class DeleteSavedThreadsViewInput(BaseModel):
+    saved_threads_view_id: str = Field(alias="savedThreadsViewId")
+
+
+class UpdateSavedThreadsViewInput(BaseModel):
+    saved_threads_view_id: str = Field(alias="savedThreadsViewId")
+    name: Optional["StringInput"] = None
+    icon: Optional["StringInput"] = None
+    color: Optional["StringInput"] = None
+    threads_filter: Optional["SavedThreadsViewFilterInput"] = Field(
+        alias="threadsFilter", default=None
+    )
+    is_hidden: Optional["BooleanInput"] = Field(alias="isHidden", default=None)
+
+
+class CreateMyFavoritePageInput(BaseModel):
+    key: str
+
+
+class DeleteMyFavoritePageInput(BaseModel):
+    favorite_page_id: str = Field(alias="favoritePageId")
+
+
+class CreateSnippetInput(BaseModel):
+    name: str
+    text: str
+    markdown: str | None = None
+    path: str | None = None
+    "Used to group snippets, only accepts alphanumeric characters"
+
+
+class DeleteSnippetInput(BaseModel):
+    snippet_id: str = Field(alias="snippetId")
+
+
+class UpdateSnippetInput(BaseModel):
+    snippet_id: str = Field(alias="snippetId")
+    name: Optional["StringInput"] = None
+    text: Optional["StringInput"] = None
+    markdown: Optional["StringInput"] = None
+    path: Optional["OptionalStringInput"] = None
+    "Used to group snippets, only accepts alphanumeric characters"
+
+
+class BroadcastContentFormatInput(BaseModel):
+    value: BroadcastContentFormat
+
+
+class BroadcastSenderTypeInput(BaseModel):
+    """Nullable, unlike `BroadcastContentFormatInput`: clearing the sender is how a broadcast goes back to having none."""
+
+    value: BroadcastSenderType | None = None
+
+
+class BroadcastSendTargetRecipientInput(BaseModel):
+    """Mirrors `BroadcastSendTargetRecipient`. Supply the fields belonging to the `type` given."""
+
+    type_: BroadcastRecipientType = Field(alias="type")
+    slack_team_id: str | None = Field(alias="slackTeamId", default=None)
+    slack_channel_id: str | None = Field(alias="slackChannelId", default=None)
+
+
+class BroadcastSendTargetRecipientsInput(BaseModel):
+    type_: BroadcastType = Field(alias="type")
+    "The channel the target is written for. An audience of another type cannot be resolved against it."
+    send_target: "BroadcastSendTargetInput" = Field(alias="sendTarget")
+
+
+class BroadcastSendTargetInput(BaseModel):
+    scope: BroadcastSendTargetScope | None = None
+    "Who the filter side of the target reaches. `MATCHING` requires `filters`; `ALL_RECIPIENTS` rejects it. Omit it to target only what `recipients` names, or nobody at all when that is empty too."
+    filters: Optional["BroadcastAudienceFilterInput"] = None
+    "Who the broadcast reaches. Every audience it names must be of the same type as the broadcast. Must constrain something: reaching everyone is the `ALL_RECIPIENTS` scope, not an empty filter. A node nested below the first must constrain something too."
+    recipients: list["BroadcastSendTargetRecipientInput"] | None = None
+    "Recipients to send to by id, added to whatever `filters` resolves to. For a caller that has ids rather\nthan a predicate; one the workspace cannot reach is dropped rather than failed. Either side of the\ntarget stands alone: filters with no ids, or ids with no `scope`."
+    exclude_recipients: list["BroadcastSendTargetRecipientInput"] | None = Field(
+        alias="excludeRecipients", default=None
+    )
+    include_unsubscribed: bool | None = Field(alias="includeUnsubscribed", default=None)
+    "When true, channels that have unsubscribed still resolve as recipients and are delivered.\nOmit or pass false to keep the default: opted-out channels are excluded from the preview and\nrecorded as skipped on send. Distinct from `appendUnsubscribeLink` on the broadcast."
+
+
+class CreateBroadcastInput(BaseModel):
+    name: str
+    notification_title: str | None = Field(alias="notificationTitle", default=None)
+    "The title recipients see in the notification. Can be set later, but is required before the broadcast can be sent."
+    content: str
+    "The body of the broadcast, encoded as declared by `contentFormat`. Callers outside the Plain app\nshould send `SLACK_BLOCK_KIT` and a JSON array of Slack blocks; see `BroadcastContentFormat` for\nwhat is accepted."
+    content_format: BroadcastContentFormat = Field(alias="contentFormat")
+    "How `content` is encoded."
+    type_: BroadcastType = Field(alias="type")
+    is_link_unfurling_enabled: bool | None = Field(
+        alias="isLinkUnfurlingEnabled", default=None
+    )
+    "Whether Slack expands the links and media in this broadcast. Defaults to true, which is Slack's own behaviour. Only meaningful for a `SLACK` broadcast."
+    append_unsubscribe_link: bool | None = Field(
+        alias="appendUnsubscribeLink", default=None
+    )
+    "Whether Plain appends an unsubscribe link when this broadcast is delivered. Omit to inherit the\nworkspace default. Pass true or false to override that default for this broadcast only."
+    sender_type: BroadcastSenderType | None = Field(alias="senderType", default=None)
+    "Which kind of sender `senderUserId` describes. Required alongside `senderUserId`, and rejected with it when `PLAIN`."
+    sender_user_id: str | None = Field(alias="senderUserId", default=None)
+    sender_email_address: str | None = Field(alias="senderEmailAddress", default=None)
+    send_target: Optional["BroadcastSendTargetInput"] = Field(
+        alias="sendTarget", default=None
+    )
+
+
+class DuplicateBroadcastInput(BaseModel):
+    broadcast_id: str = Field(alias="broadcastId")
+
+
+class UpdateBroadcastInput(BaseModel):
+    broadcast_id: str = Field(alias="broadcastId")
+    name: Optional["StringInput"] = None
+    notification_title: Optional["OptionalStringInput"] = Field(
+        alias="notificationTitle", default=None
+    )
+    "The title recipients see in the notification. Pass null to clear it; a broadcast with none cannot be sent."
+    content: Optional["StringInput"] = None
+    "Set alongside `contentFormat` whenever the encoding of the new body differs from the stored one."
+    content_format: Optional["BroadcastContentFormatInput"] = Field(
+        alias="contentFormat", default=None
+    )
+    "How `content` is encoded. Changing this on its own re-checks the stored body against the new\nencoding, so switching format without also sending matching `content` is rejected rather than\nleft to fail at send time."
+    is_link_unfurling_enabled: Optional["BooleanInput"] = Field(
+        alias="isLinkUnfurlingEnabled", default=None
+    )
+    "Whether Slack expands the links and media in this broadcast. Omit to leave it unchanged."
+    append_unsubscribe_link: Optional["OptionalBooleanInput"] = Field(
+        alias="appendUnsubscribeLink", default=None
+    )
+    "Whether Plain appends an unsubscribe link when this broadcast is delivered. Omit to leave the\noverride unchanged. Pass null to clear it so the broadcast inherits the workspace default again;\npass true or false to override that default for this broadcast only."
+    sender_type: Optional["BroadcastSenderTypeInput"] = Field(
+        alias="senderType", default=None
+    )
+    "Which kind of sender `senderUserId` describes. Validated against the state the broadcast will\nhold, so either half can be set on its own as long as the result is coherent: `PLAIN_USER`\nneeds a `senderUserId`, `PLAIN` must not have one."
+    sender_user_id: Optional["OptionalStringInput"] = Field(
+        alias="senderUserId", default=None
+    )
+    sender_email_address: Optional["OptionalStringInput"] = Field(
+        alias="senderEmailAddress", default=None
+    )
+    send_target: Optional["BroadcastSendTargetInput"] = Field(
+        alias="sendTarget", default=None
+    )
+    "Pass a target to replace the current one, or null — equivalently a target with no `scope` and no\n`recipients` — to clear it. Omit to leave it unchanged. Clearing the target — or the sender — of a\nbroadcast that is already scheduled is rejected, because a scheduled broadcast has to stay sendable."
+
+
+class DeleteBroadcastInput(BaseModel):
+    broadcast_id: str = Field(alias="broadcastId")
+
+
+class BroadcastAudienceTenantFieldFilterInput(BaseModel):
+    external_field_id: str = Field(alias="externalFieldId")
+    string_value: str | None = Field(alias="stringValue", default=None)
+    boolean_value: bool | None = Field(alias="booleanValue", default=None)
+    number_value: float | None = Field(alias="numberValue", default=None)
+    string_array_value: list[str] | None = Field(alias="stringArrayValue", default=None)
+    user_reference_values: list[str] | None = Field(
+        alias="userReferenceValues", default=None
+    )
+    tenant_reference_values: list[str] | None = Field(
+        alias="tenantReferenceValues", default=None
+    )
+
+
+class BroadcastAudienceAccountFieldFilterInput(BaseModel):
+    external_field_id: str = Field(alias="externalFieldId")
+    string_value: str | None = Field(alias="stringValue", default=None)
+    boolean_value: bool | None = Field(alias="booleanValue", default=None)
+    number_value: float | None = Field(alias="numberValue", default=None)
+    string_array_value: list[str] | None = Field(alias="stringArrayValue", default=None)
+    user_reference_values: list[str] | None = Field(
+        alias="userReferenceValues", default=None
+    )
+    account_reference_values: list[str] | None = Field(
+        alias="accountReferenceValues", default=None
+    )
+
+
+class BroadcastAudienceFilterInput(BaseModel):
+    tenant_ids: list[str] | None = Field(alias="tenantIds", default=None)
+    account_ids: list[str] | None = Field(alias="accountIds", default=None)
+    tier_ids: list[str] | None = Field(alias="tierIds", default=None)
+    tenant_fields: list["BroadcastAudienceTenantFieldFilterInput"] | None = Field(
+        alias="tenantFields", default=None
+    )
+    account_fields: list["BroadcastAudienceAccountFieldFilterInput"] | None = Field(
+        alias="accountFields", default=None
+    )
+    slack_channels: list["BroadcastSlackChannelRefInput"] | None = Field(
+        alias="slackChannels", default=None
+    )
+    slack_channel_name_contains: list[str] | None = Field(
+        alias="slackChannelNameContains", default=None
+    )
+    audience_ids: list[str] | None = Field(alias="audienceIds", default=None)
+    "Saved audiences. Values OR, like every other dimension. Rejected on an audience's own filter, which is what\nkeeps an audience from being defined in terms of another one; on a broadcast's it may sit anywhere in the\ntree, including under a `not` to exclude the audience."
+    and_: list["BroadcastAudienceFilterInput"] | None = Field(alias="and", default=None)
+    "Further conditions, all of which must hold. Nests at most two levels: this filter may hold `and`/`or`\nchildren, and those children may hold their own, but a third level is rejected — the composer renders\na row of groups and cannot show anything deeper without changing who the filter reaches."
+    or_: list["BroadcastAudienceFilterInput"] | None = Field(alias="or", default=None)
+    "Alternatives, any of which may hold. Nests at most two levels, the same as `and`."
+    not_: Optional["BroadcastAudienceFilterInput"] = Field(alias="not", default=None)
+    "A condition to subtract. May name a single dimension and nothing else: no `and`/`or` of its own, no\nsecond dimension, and no nested `not`, because negating a conjunction is a disjunction the composer\ncannot render. Express that as separate audiences instead."
+
+
+class CreateBroadcastAudienceInput(BaseModel):
+    name: str
+    type_: BroadcastType = Field(alias="type")
+    "Fixed at creation. An audience can only be attached to a broadcast of the same type."
+    filters: "BroadcastAudienceFilterInput"
+    "What the audience selects. An audience with no rows at all means every recipient the broadcast may reach, which is the only way to say so — a nested node still has to constrain something."
+
+
+class UpdateBroadcastAudienceInput(BaseModel):
+    broadcast_audience_id: str = Field(alias="broadcastAudienceId")
+    name: Optional["StringInput"] = None
+    filters: Optional["BroadcastAudienceFilterInput"] = None
+    "Replaces the stored filters wholesale. Validated against the audience's existing `type`, which cannot be changed."
+
+
+class ImportBroadcastAudienceChannelRowInput(BaseModel):
+    row_number: int = Field(alias="rowNumber")
+    "1-based spreadsheet row number (header is 1)."
+    recipient: str
+    "Recipient identifier to pin on the audience. Today this is a Slack channel id (`C…` / `G…` / `D…`)\nor exact Slack channel name (optional leading `#`)."
+    slack_team_id: str | None = Field(alias="slackTeamId", default=None)
+    "Optional Slack team id when the same Slack channel name exists on more than one connected team."
+
+
+class ImportBroadcastAudienceChannelsInput(BaseModel):
+    broadcast_audience_id: str = Field(alias="broadcastAudienceId")
+    rows: list["ImportBroadcastAudienceChannelRowInput"]
+    "Structured rows to pin (max 500). CSV parsing is client-side."
+    is_dry_run: bool = Field(alias="isDryRun")
+    "When true, resolve and report without writing."
+
+
+class DeleteBroadcastAudienceInput(BaseModel):
+    broadcast_audience_id: str = Field(alias="broadcastAudienceId")
+
+
+class ScheduleBroadcastInput(BaseModel):
+    broadcast_id: str = Field(alias="broadcastId")
+    scheduled_at: str | None = Field(alias="scheduledAt", default=None)
+    "When the broadcast should be sent. Either the literal string `now` to send as soon as possible,\nor an ISO-8601 timestamp in UTC (e.g. `2026-08-10T14:30:00Z`). A timestamp that has already\npassed is treated as `now`; one more than a minute in the past is rejected.\n\nNull clears the schedule instead, returning the broadcast to `DRAFT`. Only a send that has not\nbeen picked up can be cleared; from `RESOLVING` onwards the call is rejected."
+
+
+class SendTestBroadcastInput(BaseModel):
+    broadcast_id: str = Field(alias="broadcastId")
+    channels: list["BroadcastSlackChannelRefInput"]
+    "The Slack channels to post the test to, between 1 and 10. Every one must already be connected to\nthis workspace, and naming the same channel twice posts to it once."
+
+
+class UpsertTeamSettingsInput(BaseModel):
+    label_type_id: str = Field(alias="labelTypeId")
+    is_round_robin_enabled: bool | None = Field(
+        alias="isRoundRobinEnabled", default=None
+    )
+    round_robin_max_capacity: int | None = Field(
+        alias="roundRobinMaxCapacity", default=None
+    )
+
+
+class CreateTaskAssignedToInput(BaseModel):
+    """Only one of the fields can be set."""
+
+    user_id: str | None = Field(alias="userId", default=None)
+    machine_user_id: str | None = Field(alias="machineUserId", default=None)
+
+
+class CreateTaskInput(BaseModel):
+    title: str
+    description: str | None = None
+    status: TaskStatus | None = None
+    priority: int | None = None
+    company_id: str | None = Field(alias="companyId", default=None)
+    tenant_id: str | None = Field(alias="tenantId", default=None)
+    account_id: str | None = Field(alias="accountId", default=None)
+    assigned_to: Optional["CreateTaskAssignedToInput"] = Field(
+        alias="assignedTo", default=None
+    )
+
+
+class UpdateTaskAssignedToInput(BaseModel):
+    """Only one of the fields can be set."""
+
+    user_id: str | None = Field(alias="userId", default=None)
+    machine_user_id: str | None = Field(alias="machineUserId", default=None)
+
+
+class UpdateTaskInput(BaseModel):
+    task_id: str = Field(alias="taskId")
+    title: str | None = None
+    description: str | None = None
+    status: TaskStatus | None = None
+    priority: int | None = None
+    company_id: str | None = Field(alias="companyId", default=None)
+    "Only one of companyId or tenantId can be set. Cannot specify both. Setting companyId will unset tenantId if it already exists."
+    tenant_id: str | None = Field(alias="tenantId", default=None)
+    "Only one of companyId or tenantId can be set. Cannot specify both. Setting tenantId will unset companyId if it already exists."
+    account_id: str | None = Field(alias="accountId", default=None)
+    "Only one of companyId or accountId can be set. Cannot specify both. Setting accountId will unset companyId if it already exists."
+    assigned_to: Optional["UpdateTaskAssignedToInput"] = Field(
+        alias="assignedTo", default=None
+    )
+
+
+class DeleteTaskInput(BaseModel):
+    task_id: str = Field(alias="taskId")
 
 
 class SendChatInput(BaseModel):
@@ -365,6 +1814,62 @@ class SendCustomerChatInput(BaseModel):
     thread_id: str = Field(alias="threadId")
     timestamp: str | None = None
     "When provided, this will override the timestamp of the chat. Useful when backfilling messages. Must be in ISO 8601 format (e.g. 2024-10-28T18:30:00Z)."
+
+
+class ChangeUserStatusInput(BaseModel):
+    user_id: str = Field(alias="userId")
+    status: UserStatus
+
+
+class UpdateMyUserInput(BaseModel):
+    full_name: Optional["OptionalStringInput"] = Field(alias="fullName", default=None)
+    public_name: Optional["OptionalStringInput"] = Field(
+        alias="publicName", default=None
+    )
+    avatar: Optional["WorkspaceFileInput"] = None
+
+
+class UpdateUserDefaultSavedThreadsViewInput(BaseModel):
+    user_id: str = Field(alias="userId")
+    saved_view_id: str | None = Field(alias="savedViewId", default=None)
+
+
+class UpdateWorkspaceInput(BaseModel):
+    public_name: Optional["StringInput"] = Field(alias="publicName", default=None)
+    name: Optional["StringInput"] = None
+    logo: Optional["WorkspaceFileInput"] = None
+    domain_names: list[str] | None = Field(alias="domainNames", default=None)
+
+
+class DeleteUserInput(BaseModel):
+    user_id: str = Field(alias="userId")
+
+
+class DeleteEmailSuppressionInput(BaseModel):
+    email_address: str = Field(alias="emailAddress")
+
+
+class AddWorkspaceAlternateSupportEmailAddressInput(BaseModel):
+    alternate_support_email_address: str = Field(alias="alternateSupportEmailAddress")
+
+
+class RemoveWorkspaceAlternateSupportEmailAddressInput(BaseModel):
+    alternate_support_email_address: str = Field(alias="alternateSupportEmailAddress")
+
+
+class CreateWorkspaceEmailDomainSettingsInput(BaseModel):
+    support_email_address: str = Field(alias="supportEmailAddress")
+
+
+class VerifyWorkspaceEmailForwardingSettingsInput(BaseModel):
+    is_forwarding_configured: bool = Field(alias="isForwardingConfigured")
+
+
+class UpdateWorkspaceEmailSettingsInput(BaseModel):
+    is_enabled: bool | None = Field(alias="isEnabled", default=None)
+    bcc_email_addresses: list[str] | None = Field(
+        alias="bccEmailAddresses", default=None
+    )
 
 
 class EmailParticipantInput(BaseModel):
@@ -394,6 +1899,12 @@ class SendNewEmailInput(BaseModel):
     "If true, the email will be categorized as USER_HIDDEN, meaning it will not be visible to the user in the UI."
 
 
+class SendBulkEmailInput(BaseModel):
+    thread_ids: list[str] = Field(alias="threadIds")
+    text_content: str = Field(alias="textContent")
+    markdown_content: str | None = Field(alias="markdownContent", default=None)
+
+
 class ReplyToEmailInput(BaseModel):
     customer_id: str | None = Field(alias="customerId", default=None)
     in_reply_to_email_id: str = Field(alias="inReplyToEmailId")
@@ -413,6 +1924,15 @@ class ReplyToEmailInput(BaseModel):
     "Optional field for alternate from email address. If provided, it will be used as the from address in the email.\nIt must match one of the workspace support email addresses (default or alternate)."
     is_hidden_from_user: bool | None = Field(alias="isHiddenFromUser", default=None)
     "If true, the email will be categorized as USER_HIDDEN, meaning it will not be visible to the user in the UI."
+
+
+class CreateEmailPreviewUrlInput(BaseModel):
+    email_id: str = Field(alias="emailId")
+    customer_id: str = Field(alias="customerId")
+
+
+class CreateAttachmentDownloadUrlInput(BaseModel):
+    attachment_id: str = Field(alias="attachmentId")
 
 
 class CreateAttachmentUploadUrlInput(BaseModel):
@@ -718,8 +2238,119 @@ class UpsertCustomerInput(BaseModel):
     on_update: "UpsertCustomerOnUpdateInput" = Field(alias="onUpdate")
 
 
+class CreateMachineUserInput(BaseModel):
+    public_name: str = Field(alias="publicName")
+    full_name: str = Field(alias="fullName")
+    description: str | None = None
+    type_: MachineUserType | None = Field(alias="type", default=None)
+    "The type of machine user. Defaults to API_USER if not specified."
+    is_custom_agent: bool | None = Field(alias="isCustomAgent", default=None)
+    "Mark this machine user as an agent the workspace built itself. Defaults to false. Cannot be combined with the AI_AGENT type."
+    avatar: Optional["WorkspaceFileInput"] = None
+
+
+class DeleteMachineUserInput(BaseModel):
+    machine_user_id: str = Field(alias="machineUserId")
+
+
+class UpdateMachineUserInput(BaseModel):
+    machine_user_id: str = Field(alias="machineUserId")
+    full_name: Optional["StringInput"] = Field(alias="fullName", default=None)
+    public_name: Optional["StringInput"] = Field(alias="publicName", default=None)
+    description: Optional["OptionalStringInput"] = None
+    type_: MachineUserType | None = Field(alias="type", default=None)
+    "The type of machine user. Defaults to API_USER if not specified."
+    is_custom_agent: Optional["BooleanInput"] = Field(
+        alias="isCustomAgent", default=None
+    )
+    "Mark this machine user as an agent the workspace built itself. Cannot be set on an AI_AGENT machine user."
+    avatar: Optional["WorkspaceFileInput"] = None
+
+
+class ApiKeyImpersonationAllowListInput(BaseModel):
+    user_ids: list[str] = Field(alias="userIds")
+    role_ids: list[str] = Field(alias="roleIds")
+    custom_role_ids: list[str] = Field(alias="customRoleIds")
+
+
+class CreateApiKeyInput(BaseModel):
+    machine_user_id: str = Field(alias="machineUserId")
+    description: str | None = None
+    permissions: list[str]
+    impersonation_allow_list: Optional["ApiKeyImpersonationAllowListInput"] = Field(
+        alias="impersonationAllowList", default=None
+    )
+    "The workspace users, roles and custom roles this key may reply as. Omit to create a key that cannot reply as anyone yet."
+
+
+class UpdateApiKeyInput(BaseModel):
+    api_key_id: str = Field(alias="apiKeyId")
+    description: str | None = None
+    permissions: list[str]
+    impersonation_allow_list: Optional["ApiKeyImpersonationAllowListInput"] = Field(
+        alias="impersonationAllowList", default=None
+    )
+    "Replaces the whole list of workspace users, roles and custom roles this key may reply as. Omit to leave it unchanged; send null or empty lists to clear it."
+
+
+class DeleteApiKeyInput(BaseModel):
+    api_key_id: str = Field(alias="apiKeyId")
+
+
+class CreateOAuthAppInput(BaseModel):
+    name: str
+    description: str | None = None
+    redirect_urls: list[str] = Field(alias="redirectUrls")
+    "Absolute URLs using https, or http on localhost. At least one is required."
+    allowed_origins: list[str] | None = Field(alias="allowedOrigins", default=None)
+    "Browser origins allowed to exchange an authorization code for a token, such as https://app.example.com. Each one is a scheme and host with an optional port, using https, or http on localhost. At least one is required for an app that uses PKCE, which is the default. Omit it, or pass an empty list, for an app with `usesPkce` set to false, which only exchanges codes from a server."
+    uses_pkce: bool | None = Field(alias="usesPkce", default=None)
+    "Defaults to true: the app runs in a browser or on someone's device, authenticates with PKCE and gets no client secret. Set to false for an app that runs on a server, which gets a client secret. This can't be changed after the app is created."
+
+
+class UpdateOAuthAppInput(BaseModel):
+    oauth_app_id: str = Field(alias="oauthAppId")
+    name: Optional["StringInput"] = None
+    description: Optional["OptionalStringInput"] = None
+    redirect_urls: Optional["StringArrayInput"] = Field(
+        alias="redirectUrls", default=None
+    )
+    "Replaces the whole list of redirect URLs."
+    allowed_origins: Optional["StringArrayInput"] = Field(
+        alias="allowedOrigins", default=None
+    )
+    "Replaces the whole list of allowed origins. At least one is required for an app that uses PKCE. Pass an empty list to remove every origin from an app that doesn't."
+
+
+class EnableOAuthAppInput(BaseModel):
+    oauth_app_id: str = Field(alias="oauthAppId")
+
+
+class DisableOAuthAppInput(BaseModel):
+    oauth_app_id: str = Field(alias="oauthAppId")
+
+
+class DeleteOAuthAppInput(BaseModel):
+    oauth_app_id: str = Field(alias="oauthAppId")
+
+
 class DeleteCustomerInput(BaseModel):
     customer_id: str = Field(alias="customerId")
+
+
+class DeleteThreadInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+
+
+class CreateTestThreadInput(BaseModel):
+    channel: TestThreadChannel = TestThreadChannel.CHAT
+    "Where the thread's conversation happens. `SLACK` puts it in the workspace's Slack test\nchannel, creating that channel on first use, which needs the `workspaceSlackIntegration:edit`\npermission; reusing an existing one does not. Defaults to `CHAT`."
+    slack_integration_id: str | None = Field(alias="slackIntegrationId", default=None)
+    "The Slack integration whose workspace the test channel belongs to. Required when `channel` is `SLACK`, ignored otherwise."
+
+
+class DeleteTestThreadInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
 
 
 class CreateCustomerEventInput(BaseModel):
@@ -752,16 +2383,567 @@ class CreateThreadEventInput(BaseModel):
     "Whether this event should be rendered collapsed by default in the timeline. Defaults to false."
 
 
+class AutoresponderConditionInput(BaseModel):
+    tier_id: str | None = Field(alias="tierId", default=None)
+    is_outside_business_hours: bool | None = Field(
+        alias="isOutsideBusinessHours", default=None
+    )
+    support_email_addresses: list[str] | None = Field(
+        alias="supportEmailAddresses", default=None
+    )
+    label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
+    priorities: list[int] | None = None
+
+
+class CreateAutoresponderInput(BaseModel):
+    name: str
+    order: int
+    text_content: str = Field(alias="textContent")
+    markdown_content: str | None = Field(alias="markdownContent", default=None)
+    is_enabled: bool = Field(alias="isEnabled")
+    message_sources: list[AutoresponderMessageSource] = Field(alias="messageSources")
+    conditions: list["AutoresponderConditionInput"]
+    response_delay_seconds: int | None = Field(
+        alias="responseDelaySeconds", default=None
+    )
+
+
+class UpdateAutoresponderInput(BaseModel):
+    autoresponder_id: str = Field(alias="autoresponderId")
+    name: Optional["StringInput"] = None
+    order: Optional["IntInput"] = None
+    text_content: Optional["StringInput"] = Field(alias="textContent", default=None)
+    markdown_content: Optional["OptionalStringInput"] = Field(
+        alias="markdownContent", default=None
+    )
+    is_enabled: Optional["BooleanInput"] = Field(alias="isEnabled", default=None)
+    message_sources: list[AutoresponderMessageSource] | None = Field(
+        alias="messageSources", default=None
+    )
+    conditions: list["AutoresponderConditionInput"] | None = None
+    response_delay_seconds: Optional["IntInput"] = Field(
+        alias="responseDelaySeconds", default=None
+    )
+
+
+class DeleteAutoresponderInput(BaseModel):
+    autoresponder_id: str = Field(alias="autoresponderId")
+
+
+class AutoresponderOrderInput(BaseModel):
+    autoresponder_id: str = Field(alias="autoresponderId")
+    order: int
+
+
+class ReorderAutorespondersInput(BaseModel):
+    autoresponders_order: list["AutoresponderOrderInput"] = Field(
+        alias="autorespondersOrder"
+    )
+
+
+class CustomerSurveyConditionInput(BaseModel):
+    tier_ids: list[str] | None = Field(alias="tierIds", default=None)
+    support_email_addresses: list[str] | None = Field(
+        alias="supportEmailAddresses", default=None
+    )
+    label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
+    priorities: list[int] | None = None
+    message_source: list[MessageSource] | None = Field(
+        alias="messageSource", default=None
+    )
+    operator: CustomerSurveyConditionOperator | None = None
+
+
+class CsatCustomerSurveyTemplateInput(BaseModel):
+    type_: str = Field(alias="type")
+    question_text: str = Field(alias="questionText")
+
+
+class CustomerSurveyTemplateInput(BaseModel):
+    csat_template: Optional["CsatCustomerSurveyTemplateInput"] = Field(
+        alias="csatTemplate", default=None
+    )
+
+
+class CreateCustomerSurveyInput(BaseModel):
+    name: str
+    conditions: list["CustomerSurveyConditionInput"] | None = None
+    "Which done threads get the survey: by tier, support email, label, priority or message source. Omit to survey every done thread."
+    conditions_operator: CustomerSurveyConditionsOperator | None = Field(
+        alias="conditionsOperator", default=None
+    )
+    template: "CustomerSurveyTemplateInput"
+    is_enabled: bool = Field(alias="isEnabled")
+    response_delay_minutes: int | None = Field(
+        alias="responseDelayMinutes", default=None
+    )
+    "How many minutes after a thread is marked done the survey is sent."
+    customer_interval_days: int | None = Field(
+        alias="customerIntervalDays", default=None
+    )
+    order: int | None = None
+
+
+class UpdateCustomerSurveyInput(BaseModel):
+    customer_survey_id: str = Field(alias="customerSurveyId")
+    name: Optional["StringInput"] = None
+    conditions: list["CustomerSurveyConditionInput"] | None = None
+    "Which done threads get the survey: by tier, support email, label, priority or message source."
+    conditions_operator: CustomerSurveyConditionsOperator | None = Field(
+        alias="conditionsOperator", default=None
+    )
+    template: Optional["CustomerSurveyTemplateInput"] = None
+    order: int | None = None
+    is_enabled: Optional["BooleanInput"] = Field(alias="isEnabled", default=None)
+    response_delay_minutes: Optional["IntInput"] = Field(
+        alias="responseDelayMinutes", default=None
+    )
+    "How many minutes after a thread is marked done the survey is sent."
+    customer_interval_days: Optional["IntInput"] = Field(
+        alias="customerIntervalDays", default=None
+    )
+
+
+class DeleteCustomerSurveyInput(BaseModel):
+    customer_survey_id: str = Field(alias="customerSurveyId")
+
+
+class CustomerSurveyOrderInput(BaseModel):
+    customer_survey_id: str = Field(alias="customerSurveyId")
+    order: int
+
+
+class ReorderCustomerSurveysInput(BaseModel):
+    customer_survey_orders: list["CustomerSurveyOrderInput"] = Field(
+        alias="customerSurveyOrders"
+    )
+
+
+class UpdateInternalNotificationsInput(BaseModel):
+    notification_ids: list[str] = Field(alias="notificationIds")
+    read_at: Optional["OptionalStringInput"] = Field(alias="readAt", default=None)
+    archived_at: Optional["StringInput"] = Field(alias="archivedAt", default=None)
+
+
+class UpdateAllMyInternalNotificationsInput(BaseModel):
+    filters: Optional["InternalNotificationsFilter"] = None
+    "Same filter as `myInternalNotifications`. Archived notifications are excluded."
+    read_at: Optional["OptionalStringInput"] = Field(alias="readAt", default=None)
+    "ISO-8601 timestamp to mark matching notifications read. Pass null to mark them unread."
+    archived_at: Optional["StringInput"] = Field(alias="archivedAt", default=None)
+    "ISO-8601 timestamp to archive matching notifications."
+
+
+class CreateAiFeatureFeedbackInput(BaseModel):
+    feature: str
+    ai_agent_feedback: Optional["AiAgentFeedbackDetailsInput"] = Field(
+        alias="aiAgentFeedback", default=None
+    )
+    thread_catchup_feedback: Optional["ThreadCatchupFeedbackDetailsInput"] = Field(
+        alias="threadCatchupFeedback", default=None
+    )
+
+
+class AiAgentFeedbackDetailsInput(BaseModel):
+    reason: str
+    comment: str | None = None
+    thread_id: str = Field(alias="threadId")
+    timeline_entry_id: str = Field(alias="timelineEntryId")
+
+
+class ThreadCatchupFeedbackDetailsInput(BaseModel):
+    reason: str
+    comment: str | None = None
+    thread_id: str = Field(alias="threadId")
+    catchup_detail_generated_at: str | None = Field(
+        alias="catchupDetailGeneratedAt", default=None
+    )
+
+
+class CreateAiFeedbackInput(BaseModel):
+    feedback: str
+
+
+class CreateMcpFeedbackInput(BaseModel):
+    reason: McpFeedbackReason
+    comment: str
+    "What went wrong or what you would like to be possible, 1 to 5000 characters. Do not include customer data or personal information."
+    tool_name: str | None = Field(alias="toolName", default=None)
+    "The name of the MCP tool the feedback is about, if any: letters, digits, `_`, `.` and `-` only, up to 200 characters."
+
+
+class AiFeedbackFilter(BaseModel):
+    features: list[AiFeedbackFeature] | None = None
+    "Only return feedback on these AI features."
+    sentiments: list[AiFeedbackSentiment] | None = None
+    "Only return feedback with these sentiments. Feedback submitted before sentiment was captured has no sentiment and is excluded by this filter."
+    created_at: Optional["DatetimeFilter"] = Field(alias="createdAt", default=None)
+    "Only return feedback submitted within this time window."
+
+
+class AiToneRulesFilter(BaseModel):
+    is_enabled: bool | None = Field(alias="isEnabled", default=None)
+
+
+class GenerateAiToneRulesFromDescriptionInput(BaseModel):
+    description: str
+
+
+class CreateAiToneRuleInput(BaseModel):
+    category: str
+    "The aspect of communication style this rule governs. One of `EMPATHY`, `LANGUAGE`, `FORMALITY`, `PERSONALITY`, or `WARMTH`."
+    description: str
+    is_enabled: bool | None = Field(alias="isEnabled", default=None)
+
+
+class UpdateAiToneRulesInput(BaseModel):
+    updates: list["AiToneRuleUpdate"]
+
+
+class AiToneRuleUpdate(BaseModel):
+    ai_tone_rule_id: str = Field(alias="aiToneRuleId")
+    description: str | None = None
+    is_enabled: bool | None = Field(alias="isEnabled", default=None)
+
+
+class DeleteAiToneRulesInput(BaseModel):
+    ai_tone_rule_ids: list[str] = Field(alias="aiToneRuleIds")
+
+
+class EscalateThreadInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+
+
+class MoveLabelTypeInput(BaseModel):
+    label_type_id: str = Field(alias="labelTypeId")
+    after_label_type_id: str | None = Field(alias="afterLabelTypeId", default=None)
+    "Move the label type immediately after the label type with the given ID. Required if beforeLabelTypeId is not provided."
+    before_label_type_id: str | None = Field(alias="beforeLabelTypeId", default=None)
+    "Move the label type immediately before the label type with the given ID. Required if afterLabelTypeId is not provided."
+    parent_label_type_id: str | None = Field(alias="parentLabelTypeId", default=None)
+    "Move the label type to be a child of the specified parent. When provided alone, the label will be moved to the end of the parent's children. When provided with afterLabelTypeId or beforeLabelTypeId, validates that the reference label has the same parent."
+
+
+class AcceptSuggestedLabelTypesInput(BaseModel):
+    suggested_label_type_ids: list[str] = Field(alias="suggestedLabelTypeIds")
+
+
+class DismissSuggestedLabelTypesInput(BaseModel):
+    suggested_label_type_ids: list[str] = Field(alias="suggestedLabelTypeIds")
+
+
+class GenerateHelpCenterArticleInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    help_center_id: str = Field(alias="helpCenterId")
+
+
+class DeleteCompanyInput(BaseModel):
+    company_identifier: "CompanyIdentifierInput" = Field(alias="companyIdentifier")
+
+
+class HelpCenterIndexItemInput(BaseModel):
+    type_: HelpCenterIndexItemType = Field(alias="type")
+    entity_id: str = Field(alias="entityId")
+    parent_id: str | None = Field(alias="parentId", default=None)
+    title: str | None = None
+    "Inline label for HEADING items. Ignored for ARTICLE / ARTICLE_GROUP."
+
+
+class UpdateHelpCenterIndexInput(BaseModel):
+    help_center_id: str = Field(alias="helpCenterId")
+    hash: str
+    help_center_index: list["HelpCenterIndexItemInput"] = Field(alias="helpCenterIndex")
+
+
+class UpdateHelpCenterCustomDomainNameInput(BaseModel):
+    help_center_id: str = Field(alias="helpCenterId")
+    custom_domain_name: "OptionalStringInput" = Field(alias="customDomainName")
+
+
+class VerifyHelpCenterCustomDomainNameInput(BaseModel):
+    help_center_id: str = Field(alias="helpCenterId")
+
+
+class OptionalGeneratedReplyFeedbackInput(BaseModel):
+    value: GeneratedReplyFeedbackType | None = None
+
+
+class AddGeneratedReplyInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    timeline_entry_id: str = Field(alias="timelineEntryId")
+    markdown: str
+
+
+class RequestGeneratedReplyInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    timeline_entry_id: str = Field(alias="timelineEntryId")
+
+
+class GeneratedReplyFeedbackInput(BaseModel):
+    type_: Optional["OptionalGeneratedReplyFeedbackInput"] = Field(
+        alias="type", default=None
+    )
+    comment: str | None = None
+
+
+class UpdateGeneratedReplyInput(BaseModel):
+    generated_reply_id: str = Field(alias="generatedReplyId")
+    feedback: Optional["GeneratedReplyFeedbackInput"] = None
+
+
 class CreateIndexedDocumentInput(BaseModel):
     url: str
     label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
     knowledge_source_id: str = Field(alias="knowledgeSourceId")
 
 
+class IndexedDocumentsFilter(BaseModel):
+    knowledge_source_id: str | None = Field(alias="knowledgeSourceId", default=None)
+    statuses: list[IndexedDocumentStatusType] | None = None
+    "Filter to documents whose current ingestion status matches one of these values."
+
+
 class CreateKnowledgeSourceInput(BaseModel):
     url: str
     label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
     type_: KnowledgeSourceType = Field(alias="type")
+
+
+class DeleteKnowledgeSourceInput(BaseModel):
+    knowledge_source_id: str = Field(alias="knowledgeSourceId")
+
+
+class ReindexKnowledgeSourceInput(BaseModel):
+    knowledge_source_id: str = Field(alias="knowledgeSourceId")
+
+
+class KnowledgeSourcesFilter(BaseModel):
+    type_: KnowledgeSourceType | None = Field(alias="type", default=None)
+
+
+class SearchKnowledgeSourcesOptions(BaseModel):
+    label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
+    "Restrict results to documents and help center articles that have at least one of these label types. Unlabelled records may also be included, depending on the workspace's label filtering behaviour."
+    types: list[KnowledgeSourceSearchResultType] | None = None
+    "Restrict results to specific content types. Omit to search both indexed documents and help center articles."
+    include_non_customer_facing: bool | None = Field(
+        alias="includeNonCustomerFacing", default=None
+    )
+    "When true, includes help center articles from help centers that are not configured as AI-accessible. Defaults to false."
+
+
+class ThreadDiscussionSlackDetailsInput(BaseModel):
+    connected_slack_channel_id: str = Field(alias="connectedSlackChannelId")
+
+
+class ThreadDiscussionEmailDetailsInput(BaseModel):
+    to_addresses: list[str] = Field(alias="toAddresses")
+    cc_addresses: list[str] | None = Field(alias="ccAddresses", default=None)
+
+
+class ThreadDiscussionCursorDetailsInput(BaseModel):
+    type_: str = Field(alias="type")
+    repository_url: str | None = Field(alias="repositoryUrl", default=None)
+
+
+class CreateThreadDiscussionInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    markdown_content: str = Field(alias="markdownContent")
+    "The markdown content of the first message. When slackBlocks are provided, this\nis used as the fallback content rendered in Plain's UI."
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+    type_: CreateThreadDiscussionType = Field(alias="type")
+    slack_details: Optional["ThreadDiscussionSlackDetailsInput"] = Field(
+        alias="slackDetails", default=None
+    )
+    email_details: Optional["ThreadDiscussionEmailDetailsInput"] = Field(
+        alias="emailDetails", default=None
+    )
+    cursor_details: Optional["ThreadDiscussionCursorDetailsInput"] = Field(
+        alias="cursorDetails", default=None
+    )
+    unfurl_links: bool | None = Field(alias="unfurlLinks", default=None)
+    slack_blocks: str | None = Field(alias="slackBlocks", default=None)
+    "Slack Block Kit blocks (https://api.slack.com/block-kit) to send as the first\nmessage of the discussion. Only valid when type is SLACK. Provided as a JSON\nstring holding an array of blocks. In Plain, the UI will fall back to the\nmarkdownContent property but will render Slack blocks in Slack."
+
+
+class CreateDiscussionInput(BaseModel):
+    sidekick_model_option: SidekickModelOption | None = Field(
+        alias="sidekickModelOption", default=None
+    )
+    "Model option for Plain Sidekick, fixed for the life of the session. Defaults to MEDIUM.\nRejected when the model picker is not enabled for the workspace."
+    thread_id: str | None = Field(alias="threadId", default=None)
+    markdown_content: str = Field(alias="markdownContent")
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+    "Customer-scoped attachments. Used by EMAIL / SLACK / CURSOR discussions.\nSidekick Agent AGENT_SESSION discussions use workspaceFileIds instead."
+    workspace_file_ids: list[str] | None = Field(alias="workspaceFileIds", default=None)
+    "Workspace-scoped files. Used by Sidekick Agent AGENT_SESSION discussions, which\nare not customer-scoped. Other discussion types ignore this field."
+    type_: DiscussionType = Field(alias="type")
+    slack_details: Optional["ThreadDiscussionSlackDetailsInput"] = Field(
+        alias="slackDetails", default=None
+    )
+    email_details: Optional["ThreadDiscussionEmailDetailsInput"] = Field(
+        alias="emailDetails", default=None
+    )
+    cursor_details: Optional["ThreadDiscussionCursorDetailsInput"] = Field(
+        alias="cursorDetails", default=None
+    )
+    source_entity_id: str | None = Field(alias="sourceEntityId", default=None)
+    "The entity ID where this discussion was started (e.g. a company or customer ID).\nUsed to provide context to agent sessions started outside of a thread."
+    source_entity_type: DiscussionSourceEntityType | None = Field(
+        alias="sourceEntityType", default=None
+    )
+    "The entity type for sourceEntityId. Required when sourceEntityId is provided."
+    agent_machine_user_id: str | None = Field(alias="agentMachineUserId", default=None)
+    "Which agent to ask on an AGENT_SESSION discussion. Omit for Plain's Sidekick Agent. Must reference a\nmachine user marked as a custom agent; Plain starts nothing for one, so the agent is expected to\nreply over the API."
+    source_page_link: str | None = Field(alias="sourcePageLink", default=None)
+    "The page path where this discussion was started (e.g. '/insights', '/settings').\nUsed to provide context when the user is on a page without a specific entity.\nAlso carries the reporting page link for a CHART source."
+    source_page_anchor: str | None = Field(alias="sourcePageAnchor", default=None)
+    "The page-fragment anchor (no '#') identifying the element the discussion was started from,\ne.g. a specific reporting chart. Kept separate from sourcePageLink, which is matched exactly\nas a page-scope key and must stay hash-free. Only meaningful for PAGE and CHART sources."
+    source_type: DiscussionSourceType | None = Field(alias="sourceType", default=None)
+    "The kind of source. Pass CHART (with sourcePageLink) to start a discussion from a reporting\nchart. THREAD/PAGE/ENTITY are otherwise inferred from threadId / sourcePageLink / sourceEntityId."
+    additional_context: str | None = Field(alias="additionalContext", default=None)
+    "Free-form context from the UI (e.g. active filters on the current page) injected\ninto the agent's prompt, so it knows what data the user is currently looking at.\n\nIgnored when agentMachineUserId is set. Plain builds the prompt only for its own Sidekick Agent;\nan agent the workspace built receives the message over the discussion webhook, which does\nnot carry this field. Passing it is accepted but has no effect."
+
+
+class ImportThreadDiscussionInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    "The ID of the Plain thread to attach the discussion to."
+    type_: ImportThreadDiscussionType = Field(alias="type")
+    "The type of external source the discussion is imported from. Determines which\n*Details field on this input is required."
+    slack_details: Optional["ImportThreadDiscussionSlackDetailsInput"] = Field(
+        alias="slackDetails", default=None
+    )
+    "Required when type is SLACK."
+
+
+class ImportThreadDiscussionSlackDetailsInput(BaseModel):
+    slack_message_url: str = Field(alias="slackMessageUrl")
+    "A Slack message permalink, e.g.\nhttps://workspace.slack.com/archives/C123ABC/p1234567890123456\nThe link can point to either the root message of a thread or any reply within it —\nin either case the entire Slack thread (root + all replies) is imported."
+
+
+class SendThreadDiscussionMessageInput(BaseModel):
+    thread_discussion_id: str = Field(alias="threadDiscussionId")
+    markdown_content: str = Field(alias="markdownContent")
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+    channel_details: Optional["SendThreadDiscussionMessageChannelDetailsInput"] = Field(
+        alias="channelDetails", default=None
+    )
+    "Channel-specific details for the message. Discriminated by type. Currently only SLACK is supported."
+
+
+class SendThreadDiscussionMessageChannelDetailsInput(BaseModel):
+    type_: ThreadDiscussionType = Field(alias="type")
+    slack: Optional["SendThreadDiscussionMessageSlackChannelDetailsInput"] = None
+
+
+class SendThreadDiscussionMessageSlackChannelDetailsInput(BaseModel):
+    slack_blocks: str | None = Field(alias="slackBlocks", default=None)
+    "JSON-encoded Slack Block Kit blocks. markdownContent is still required as the text fallback."
+    unfurl_links: bool | None = Field(alias="unfurlLinks", default=None)
+    "Slack should unfurl links in the reply. Defaults to true."
+    reply_broadcast: bool | None = Field(alias="replyBroadcast", default=None)
+    "The reply should also broadcast message into the parent Slack channel. Defaults to false. Cannot be combined with attachmentIds — Slack's file upload API has no broadcast equivalent, so the combination is rejected with input_validation."
+
+
+class SendDiscussionMessageInput(BaseModel):
+    discussion_id: str = Field(alias="discussionId")
+    markdown_content: str = Field(alias="markdownContent")
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+    "Customer-scoped attachments. Used by EMAIL / SLACK / CURSOR discussions.\nSidekick Agent AGENT_SESSION discussions use workspaceFileIds instead."
+    workspace_file_ids: list[str] | None = Field(alias="workspaceFileIds", default=None)
+    "Workspace-scoped files. Used by Sidekick Agent AGENT_SESSION discussions."
+
+
+class UpdateDiscussionAgentStatusInput(BaseModel):
+    discussion_id: str = Field(alias="discussionId")
+    agent_status: ThreadDiscussionAgentStatus = Field(alias="agentStatus")
+    "IN_PROGRESS while the agent works, IDLE when it has finished, which also marks the discussion\nunread. UNKNOWN and TOOL_CALL_APPROVAL_PENDING are rejected, and so is any status while an\napproval or question card is open; ask with requestDiscussionToolCallApproval or\nrequestDiscussionQuestion, which set the latter themselves."
+
+
+class UpsertDiscussionToolCallInput(BaseModel):
+    discussion_id: str = Field(alias="discussionId")
+    tool_call_id: str = Field(alias="toolCallId")
+    "The agent's own id for the call, unique within the discussion. 1-256 chars, [A-Za-z0-9_-]."
+    status: DiscussionToolCallStatus
+    text: str
+    "One line describing what the call did, shown on the timeline."
+    error: str | None = None
+    "Why the call failed. Required when status is ERROR."
+
+
+class RequestDiscussionToolCallApprovalInput(BaseModel):
+    discussion_id: str = Field(alias="discussionId")
+    tool_call_id: str = Field(alias="toolCallId")
+    "The call to gate, by the toolCallId it was reported with. Must name a call on this discussion that is still PENDING."
+    justification: str
+    "Why the agent needs the call approved, in its own words. Shown on the card the reviewer sees."
+
+
+class RequestDiscussionQuestionOptionInput(BaseModel):
+    label: str
+    "1-80 characters, unique within the question. Do not add an Other option; the card has one."
+    description: str
+    "1-240 characters."
+
+
+class RequestDiscussionQuestionItemInput(BaseModel):
+    question: str
+    "1-500 characters."
+    is_multi_select: bool = Field(alias="isMultiSelect")
+    "True when several options can be picked; false when the person picks one option or types an answer."
+    options: list["RequestDiscussionQuestionOptionInput"]
+    "2-4 options. Put the one you recommend first."
+
+
+class RequestDiscussionQuestionInput(BaseModel):
+    discussion_id: str = Field(alias="discussionId")
+    questions: list["RequestDiscussionQuestionItemInput"]
+    "1-4 questions. A card holds at most 8 across every ask."
+
+
+class ResolveDiscussionApprovalInput(BaseModel):
+    approval_id: str = Field(alias="approvalId")
+    decision: AgentApprovalDecision
+    reviewer_note: str | None = Field(alias="reviewerNote", default=None)
+    "Shown to the agent, and used as the error on the tool call the approval covers when denied."
+
+
+class StopDiscussionTurnInput(BaseModel):
+    discussion_id: str = Field(alias="discussionId")
+
+
+class ChangeThreadDiscussionStatusInput(BaseModel):
+    thread_discussion_id: str = Field(alias="threadDiscussionId")
+    status: ThreadDiscussionStatus
+
+
+class MarkThreadDiscussionReadInput(BaseModel):
+    thread_discussion_id: str = Field(alias="threadDiscussionId")
+
+
+class DeleteThreadDiscussionInput(BaseModel):
+    thread_discussion_id: str = Field(alias="threadDiscussionId")
+
+
+class ResolveAgentApprovalInput(BaseModel):
+    lease_id: str = Field(alias="leaseId")
+    decision: AgentApprovalDecision
+    reviewer_note: str | None = Field(alias="reviewerNote", default=None)
+
+
+class AnswerSidekickQuestionSelectionInput(BaseModel):
+    question_id: str = Field(alias="questionId")
+    option_ids: list[str] = Field(alias="optionIds")
+    other_text: str | None = Field(alias="otherText", default=None)
+
+
+class AnswerSidekickQuestionInput(BaseModel):
+    thread_discussion_message_id: str = Field(alias="threadDiscussionMessageId")
+    selections: list["AnswerSidekickQuestionSelectionInput"]
+
+
+class DismissSidekickQuestionInput(BaseModel):
+    thread_discussion_message_id: str = Field(alias="threadDiscussionMessageId")
 
 
 class UpdateCompanyTierInput(BaseModel):
@@ -771,11 +2953,23 @@ class UpdateCompanyTierInput(BaseModel):
     company_identifier: "CompanyIdentifierInput" = Field(alias="companyIdentifier")
 
 
+class ChangeThreadCustomerInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    customer_id: str = Field(alias="customerId")
+
+
 class UpdateTenantTierInput(BaseModel):
     tier_identifier: Optional["TierIdentifierInput"] = Field(
         alias="tierIdentifier", default=None
     )
     tenant_identifier: "TenantIdentifierInput" = Field(alias="tenantIdentifier")
+
+
+class UpdateAccountTierInput(BaseModel):
+    tier_identifier: Optional["TierIdentifierInput"] = Field(
+        alias="tierIdentifier", default=None
+    )
+    account_identifier: "AccountIdentifierInput" = Field(alias="accountIdentifier")
 
 
 class AddMembersToTierInput(BaseModel):
@@ -791,10 +2985,211 @@ class RemoveMembersFromTierInput(BaseModel):
     )
 
 
+class CreateTierInput(BaseModel):
+    name: str
+    "The name of this tier."
+    external_id: str = Field(alias="externalId")
+    "The external ID of this tier. You can use this field to store your own unique identifier for this tier. This must be unique in your workspace."
+    color: str
+    "The color to assign to this tier, given by its hex code (e.g. #FABADA). This color is used in Plain's UI to represent this tier."
+    default_thread_priority: int | None = Field(
+        alias="defaultThreadPriority", default=None
+    )
+    "Any thread created in this tier will have this priority by default, unless a different priority is specified while creating it. If not provided, it defaults to 2 (normal priority)."
+    member_identifiers: list["TierMemberIdentifierInput"] = Field(
+        alias="memberIdentifiers"
+    )
+    is_default: bool | None = Field(alias="isDefault", default=None)
+    "If set to true, this tier will be applied to all threads that do not match any other tier.\n\nOnly one tier can be the default tier.\n\nDefault: false"
+
+
+class ServiceLevelAgreementThreadLabelTypeIdFilterInput(BaseModel):
+    label_type_ids: list[str] = Field(alias="labelTypeIds")
+    "The label type IDs that the thread needs to have in order for the SLA to be applied. Based on the 'requireAll' field."
+    require_all: bool = Field(alias="requireAll")
+    "If true, the SLA will only be applied to threads that have all of the provided label types. If false, the SLA will be applied to threads that have any of the provided label types."
+
+
+class ServiceLevelAgreementInput(BaseModel):
+    first_response_time_minutes: int | None = Field(
+        alias="firstResponseTimeMinutes", default=None
+    )
+    "Set this to configure the first response time SLA."
+    next_response_time_minutes: int | None = Field(
+        alias="nextResponseTimeMinutes", default=None
+    )
+    "Set this to configure an SLA for next responses."
+    first_resolution_time_minutes: int | None = Field(
+        alias="firstResolutionTimeMinutes", default=None
+    )
+    "Set this to configure a first-resolution-time SLA. The clock starts when the thread arrives and the SLA is met when the thread is first marked Done."
+    total_resolution_time_minutes: int | None = Field(
+        alias="totalResolutionTimeMinutes", default=None
+    )
+    "Set this to configure a total-resolution-time SLA. The clock starts when the thread arrives and continues across reopenings until the thread is marked Done."
+    pause_on_status_detail_types: (
+        list[ServiceLevelAgreementPauseStatusDetailType] | None
+    ) = Field(alias="pauseOnStatusDetailTypes", default=None)
+    "The thread status details that pause the resolution-time clock. Only valid with firstResolutionTimeMinutes or totalResolutionTimeMinutes. Defaults to [WAITING_FOR_CUSTOMER]. Pass an empty array to keep the clock running."
+    thread_priority_filter: list[int] | None = Field(
+        alias="threadPriorityFilter", default=None
+    )
+    "This SLA can only be applied to a thread if it has one of these priority values. If not provided, it defaults to all priorities (0, 1, 2 and 3)."
+    thread_label_type_id_filter: Optional[
+        "ServiceLevelAgreementThreadLabelTypeIdFilterInput"
+    ] = Field(alias="threadLabelTypeIdFilter", default=None)
+    "This SLA can only be applied to a thread if it has one or all of these label types. If not provided, the filter is not applied."
+    use_business_hours_only: bool | None = Field(
+        alias="useBusinessHoursOnly", default=None
+    )
+    "If true, the SLA is linked to your workspace's business hours schedule and only tracked during it. Only works when the workspace has exactly one schedule. If false, the SLA will be tracked 24/7. Deprecated — use businessHoursScheduleIds instead."
+    business_hours_schedule_ids: list[str] | None = Field(
+        alias="businessHoursScheduleIds", default=None
+    )
+    "The business hours schedules to track this SLA against. Replaces useBusinessHoursOnly. Pass an empty array for the SLA to be tracked 24/7."
+    breach_actions: list["BreachActionInput"] = Field(alias="breachActions")
+    "The actions to take when the SLA is about to breach and when it breaches."
+
+
+class BreachActionInput(BaseModel):
+    before_breach_action: Optional["BeforeBreachActionInput"] = Field(
+        alias="beforeBreachAction", default=None
+    )
+
+
+class BeforeBreachActionInput(BaseModel):
+    before_breach_minutes: int = Field(alias="beforeBreachMinutes")
+
+
 class TierMemberIdentifierInput(BaseModel):
     company_id: str | None = Field(alias="companyId", default=None)
     tenant_id: str | None = Field(alias="tenantId", default=None)
     account_id: str | None = Field(alias="accountId", default=None)
+
+
+class UpdateTierInput(BaseModel):
+    tier_id: str = Field(alias="tierId")
+    name: Optional["StringInput"] = None
+    external_id: Optional["OptionalStringInput"] = Field(
+        alias="externalId", default=None
+    )
+    color: Optional["StringInput"] = None
+    default_thread_priority: Optional["IntInput"] = Field(
+        alias="defaultThreadPriority", default=None
+    )
+    is_default: Optional["BooleanInput"] = Field(alias="isDefault", default=None)
+
+
+class DeleteTierInput(BaseModel):
+    tier_id: str = Field(alias="tierId")
+
+
+class CreateServiceLevelAgreementInput(BaseModel):
+    tier_id: str = Field(alias="tierId")
+    service_level_agreement: "ServiceLevelAgreementInput" = Field(
+        alias="serviceLevelAgreement"
+    )
+
+
+class IntArrayInput(BaseModel):
+    value: list[int]
+
+
+class ServiceLevelAgreementPauseStatusDetailTypeArrayInput(BaseModel):
+    value: list[ServiceLevelAgreementPauseStatusDetailType]
+
+
+class UpdateServiceLevelAgreementInput(BaseModel):
+    service_level_agreement_id: str = Field(alias="serviceLevelAgreementId")
+    "The ID of the SLA itself, not of the SLA policy it belongs to. The ID is enough: there is no need to look the SLA up first."
+    first_response_time_minutes: Optional["IntInput"] = Field(
+        alias="firstResponseTimeMinutes", default=None
+    )
+    "This SLA will breach if it does not receive a first response within this many minutes. May only be provided if the service level agreement is a first response time SLA."
+    next_response_time_minutes: Optional["IntInput"] = Field(
+        alias="nextResponseTimeMinutes", default=None
+    )
+    "This SLA will breach if it does not receive a next response within this many minutes. May only be provided if the service level agreement is a next response time SLA."
+    first_resolution_time_minutes: Optional["IntInput"] = Field(
+        alias="firstResolutionTimeMinutes", default=None
+    )
+    "This SLA will breach if the thread is not first marked Done within this many minutes. May only be provided if the service level agreement is a first-resolution-time SLA."
+    total_resolution_time_minutes: Optional["IntInput"] = Field(
+        alias="totalResolutionTimeMinutes", default=None
+    )
+    "This SLA will breach if the thread is not marked Done within this many minutes of creation, including after it is reopened. May only be provided if the service level agreement is a total-resolution-time SLA."
+    pause_on_status_detail_types: Optional[
+        "ServiceLevelAgreementPauseStatusDetailTypeArrayInput"
+    ] = Field(alias="pauseOnStatusDetailTypes", default=None)
+    "The thread status details that pause the resolution-time clock. May only be provided if the service level agreement is a first- or total-resolution-time SLA. Pass an empty array to keep the clock running."
+    thread_priority_filter: Optional["IntArrayInput"] = Field(
+        alias="threadPriorityFilter", default=None
+    )
+    "This SLA can only be applied to a thread if it has one of these priority values. If not provided, it defaults to all priorities (0, 1, 2 and 3)."
+    thread_label_type_id_filter: Optional[
+        "ServiceLevelAgreementThreadLabelTypeIdFilterInput"
+    ] = Field(alias="threadLabelTypeIdFilter", default=None)
+    "This SLA can only be applied to a thread if it has one or all of these label types. If not provided, the filter is not applied."
+    use_business_hours_only: Optional["OptionalBooleanInput"] = Field(
+        alias="useBusinessHoursOnly", default=None
+    )
+    "If true, the SLA is linked to your workspace's business hours schedule and only tracked during it. Only works when the workspace has exactly one schedule. If false, the SLA will be tracked 24/7. Deprecated — use businessHoursScheduleIds instead."
+    business_hours_schedule_ids: list[str] | None = Field(
+        alias="businessHoursScheduleIds", default=None
+    )
+    "The business hours schedules to track this SLA against. Replaces useBusinessHoursOnly. Pass an empty array to clear business hours associations for the SLA to be tracked 24/7."
+    breach_actions: list["BreachActionInput"] | None = Field(
+        alias="breachActions", default=None
+    )
+    "The actions to take when the SLA is about to breach and when it breaches."
+
+
+class DeleteServiceLevelAgreementInput(BaseModel):
+    service_level_agreement_id: str = Field(alias="serviceLevelAgreementId")
+
+
+class ServiceLevelAgreementWarnBeforeInput(BaseModel):
+    minutes: int
+    "How many minutes before the deadline the SLA is treated as close to breaching. Must be strictly less than the target."
+
+
+class ServiceLevelAgreementPolicyTargetInput(BaseModel):
+    type_: ServiceLevelAgreementType = Field(alias="type")
+    "The type of target. A policy can hold at most one target of each type."
+    minutes: int
+    "This target will breach if the SLA is not met within this many minutes."
+    warn_before: "ServiceLevelAgreementWarnBeforeInput" = Field(alias="warnBefore")
+    business_hours_schedule_ids: list[str] | None = Field(
+        alias="businessHoursScheduleIds", default=None
+    )
+    "The business hours schedules to track this target against. Every target in the policy that uses business hours must reference the same schedules. Leave it out or pass an empty array for the target to be tracked 24/7; leave it out when updating and the target keeps the schedules it already has."
+    pause_on_status_detail_types: (
+        list[ServiceLevelAgreementPauseStatusDetailType] | None
+    ) = Field(alias="pauseOnStatusDetailTypes", default=None)
+    "The thread status details that pause the resolution-time clock. Only valid when type is FIRST_RESOLUTION_TIME or TOTAL_RESOLUTION_TIME. Defaults to [WAITING_FOR_CUSTOMER]. Pass an empty array to keep the clock running."
+
+
+class CreateServiceLevelAgreementPolicyInput(BaseModel):
+    name: str
+    description: str | None = None
+    targets: list["ServiceLevelAgreementPolicyTargetInput"]
+    "The targets this policy applies. At most one per type."
+
+
+class UpdateServiceLevelAgreementPolicyInput(BaseModel):
+    service_level_agreement_policy_id: str = Field(
+        alias="serviceLevelAgreementPolicyId"
+    )
+    name: Optional["StringInput"] = None
+    description: Optional["OptionalStringInput"] = None
+    targets: list["ServiceLevelAgreementPolicyTargetInput"]
+    "The full set of targets the policy should have after the update."
+
+
+class DeleteServiceLevelAgreementPolicyInput(BaseModel):
+    service_level_agreement_policy_id: str = Field(
+        alias="serviceLevelAgreementPolicyId"
+    )
 
 
 class UpsertCompanyInput(BaseModel):
@@ -805,18 +3200,165 @@ class UpsertCompanyInput(BaseModel):
     account_owner_user_id: str | None = Field(alias="accountOwnerUserId", default=None)
 
 
+class TenantFieldSchemasFilter(BaseModel):
+    source: str | None = None
+    is_visible: bool | None = Field(alias="isVisible", default=None)
+
+
+class TenantFieldSchemaInput(BaseModel):
+    source: str
+    "New schemas can only have source: 'api'."
+    external_field_id: str = Field(alias="externalFieldId")
+    label: str
+    type_: TenantFieldType = Field(alias="type")
+    "The field type. Set when the schema is first created and immutable thereafter: for an existing schema (matched on `source` and `externalFieldId`) the type must match the stored value, otherwise the upsert is rejected. The label, options, visibility and order can still be updated."
+    options: list[str] | None = None
+    is_visible: bool = Field(alias="isVisible")
+    order: int
+
+
+class UpsertTenantFieldSchemaInput(BaseModel):
+    tenant_field_schemas: list["TenantFieldSchemaInput"] = Field(
+        alias="tenantFieldSchemas"
+    )
+
+
+class TenantFieldIdentifier(BaseModel):
+    tenant_id: str | None = Field(alias="tenantId", default=None)
+    "Plain's internal identifier for the tenant. Provide exactly one of `tenantId` or `tenantIdentifier`."
+    tenant_identifier: Optional["TenantIdentifierInput"] = Field(
+        alias="tenantIdentifier", default=None
+    )
+    "Identify the tenant by Plain's internal id or your own external id. Provide exactly one of `tenantId` or `tenantIdentifier`."
+    external_field_id: str = Field(alias="externalFieldId")
+    "The tenant field's key, such as `contract_value` (a tenant field schema's `externalFieldId`)."
+
+
+class UpsertTenantFieldInput(BaseModel):
+    tenant_field_identifier: "TenantFieldIdentifier" = Field(
+        alias="tenantFieldIdentifier"
+    )
+    type_: TenantFieldType = Field(alias="type")
+    string_value: str | None = Field(alias="stringValue", default=None)
+    number_value: float | None = Field(alias="numberValue", default=None)
+    boolean_value: bool | None = Field(alias="booleanValue", default=None)
+    array_value: list[str] | None = Field(alias="arrayValue", default=None)
+    date_value: str | None = Field(alias="dateValue", default=None)
+    user_reference_values: list[str] | None = Field(
+        alias="userReferenceValues", default=None
+    )
+    tenant_reference_values: list[str] | None = Field(
+        alias="tenantReferenceValues", default=None
+    )
+
+
+class DeleteTenantFieldInput(BaseModel):
+    tenant_field_id: str = Field(alias="tenantFieldId")
+
+
+class DeleteTenantFieldSchemaInput(BaseModel):
+    tenant_field_schema_id: str = Field(alias="tenantFieldSchemaId")
+
+
+class SetupTenantFieldSchemaMappingInput(BaseModel):
+    tenant_field_schema_id: str = Field(alias="tenantFieldSchemaId")
+    maps_to: TenantFieldMappingConcept = Field(alias="mapsTo")
+
+
+class RemoveTenantFieldSchemaMappingInput(BaseModel):
+    tenant_field_schema_id: str = Field(alias="tenantFieldSchemaId")
+
+
+class AccountFieldSchemasFilter(BaseModel):
+    source: str | None = None
+    is_visible: bool | None = Field(alias="isVisible", default=None)
+
+
+class AccountFieldSchemaInput(BaseModel):
+    source: str
+    "New schemas can only have source: 'api'."
+    external_field_id: str = Field(alias="externalFieldId")
+    label: str
+    type_: AccountFieldType = Field(alias="type")
+    "The field type. Set when the schema is first created and immutable thereafter: for an existing schema (matched on `source` and `externalFieldId`) the type must match the stored value, otherwise the upsert is rejected. The label, options, visibility and order can still be updated."
+    options: list[str] | None = None
+    is_visible: bool = Field(alias="isVisible")
+    order: int
+
+
+class UpsertAccountFieldSchemaInput(BaseModel):
+    account_field_schemas: list["AccountFieldSchemaInput"] = Field(
+        alias="accountFieldSchemas"
+    )
+
+
+class AccountFieldIdentifier(BaseModel):
+    account_id: str | None = Field(alias="accountId", default=None)
+    "Plain's internal identifier for the account. Provide exactly one of `accountId` or `accountIdentifier`."
+    account_identifier: Optional["AccountIdentifierInput"] = Field(
+        alias="accountIdentifier", default=None
+    )
+    "Identify the account by Plain's internal id or your own external id. Provide exactly one of `accountId` or `accountIdentifier`."
+    external_field_id: str = Field(alias="externalFieldId")
+
+
+class UpsertAccountFieldInput(BaseModel):
+    account_field_identifier: "AccountFieldIdentifier" = Field(
+        alias="accountFieldIdentifier"
+    )
+    type_: AccountFieldType = Field(alias="type")
+    string_value: str | None = Field(alias="stringValue", default=None)
+    number_value: float | None = Field(alias="numberValue", default=None)
+    boolean_value: bool | None = Field(alias="booleanValue", default=None)
+    array_value: list[str] | None = Field(alias="arrayValue", default=None)
+    date_value: str | None = Field(alias="dateValue", default=None)
+    user_reference_values: list[str] | None = Field(
+        alias="userReferenceValues", default=None
+    )
+    account_reference_values: list[str] | None = Field(
+        alias="accountReferenceValues", default=None
+    )
+
+
+class DeleteAccountFieldInput(BaseModel):
+    account_field_id: str = Field(alias="accountFieldId")
+
+
+class DeleteAccountFieldSchemaInput(BaseModel):
+    account_field_schema_id: str = Field(alias="accountFieldSchemaId")
+
+
+class SetupAccountFieldSchemaMappingInput(BaseModel):
+    account_field_schema_id: str = Field(alias="accountFieldSchemaId")
+    maps_to: AccountFieldMappingConcept = Field(alias="mapsTo")
+
+
+class RemoveAccountFieldSchemaMappingInput(BaseModel):
+    account_field_schema_id: str = Field(alias="accountFieldSchemaId")
+
+
 class TenantIdentifierInput(BaseModel):
     tenant_id: str | None = Field(alias="tenantId", default=None)
     "Plain's ID for the tenant, such as `te_01…`. Not the tenant's name."
     external_id: str | None = Field(alias="externalId", default=None)
-    "Your identifier for the tenant, assigned at creation. This field accepts the external identifier rather than the display name."
+    "Your own ID for the tenant, set when it was created. Not its name: find a tenant by name with `searchTenants`."
 
 
 class AccountIdentifierInput(BaseModel):
     account_id: str | None = Field(alias="accountId", default=None)
     "Plain's ID for the account, such as `te_01…`. Not the account's name."
     external_id: str | None = Field(alias="externalId", default=None)
-    "Your identifier for the account, assigned at creation. This field accepts the external identifier rather than the display name."
+    "Your own ID for the account, set when it was created. Not its name: find an account by name with `searchAccounts`."
+
+
+class CreateTenantInput(BaseModel):
+    name: str
+    external_id: str = Field(alias="externalId")
+
+
+class CreateAccountInput(BaseModel):
+    name: str
+    external_id: str = Field(alias="externalId")
 
 
 class UpsertTenantInput(BaseModel):
@@ -838,6 +3380,33 @@ class UpsertTenantInput(BaseModel):
     "Whether customers whose email domain matches this tenant's primary or alternate domains are automatically added to it. This field is in beta and may not be available to you by default."
 
 
+class UpsertAccountInput(BaseModel):
+    identifier: "AccountIdentifierInput"
+    name: str
+    external_id: str = Field(alias="externalId")
+    url: Optional["OptionalStringInput"] = None
+    primary_domain: Optional["OptionalStringInput"] = Field(
+        alias="primaryDomain", default=None
+    )
+    "The primary domain name associated with this account (e.g. `acme.com`). This field is in beta and may not be available to you by default."
+    alternate_domains: Optional["StringArrayInput"] = Field(
+        alias="alternateDomains", default=None
+    )
+    "Alternate domain names associated with this account. This field is in beta and may not be available to you by default."
+    is_domain_auto_join_enabled: Optional["BooleanInput"] = Field(
+        alias="isDomainAutoJoinEnabled", default=None
+    )
+    "Whether customers whose email domain matches this account's primary or alternate domains are automatically added to it. This field is in beta and may not be available to you by default."
+
+
+class DeleteTenantInput(BaseModel):
+    tenant_identifier: "TenantIdentifierInput" = Field(alias="tenantIdentifier")
+
+
+class DeleteAccountInput(BaseModel):
+    account_identifier: "AccountIdentifierInput" = Field(alias="accountIdentifier")
+
+
 class CompanyIdentifierInput(BaseModel):
     company_id: str | None = Field(alias="companyId", default=None)
     "Plain's internal identifier for the company."
@@ -852,6 +3421,57 @@ class UpdateCustomerCompanyInput(BaseModel):
         alias="companyIdentifier", default=None
     )
     "The identifier of the company we want to update the customer with. Pass null if you want to remove the company from the customer."
+
+
+class MentionInput(BaseModel):
+    user_id: str = Field(alias="userId")
+    display_name: str = Field(alias="displayName")
+
+
+class SendMSTeamsMessageInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    markdown_content: str | None = Field(alias="markdownContent", default=None)
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+    mentions: list["MentionInput"] | None = None
+
+
+class CreateThreadFromMSTeamsMessageInput(BaseModel):
+    """Identifies the Microsoft Teams message to create a thread from, using the IDs on the Teams activity."""
+
+    ms_teams_conversation_id: str = Field(alias="msTeamsConversationId")
+    "The Teams conversation ID, as provided by Teams in the activity's `conversation.id`. For a\nchannel post this includes the post (`19:...@thread.tacv2;messageid=...`)."
+    ms_teams_message_id: str = Field(alias="msTeamsMessageId")
+    "The Teams message ID, as provided by Teams in the activity's `id`."
+
+
+class SendSlackMessageInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    markdown_content: str = Field(alias="markdownContent")
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+    unfurl_links: bool | None = Field(alias="unfurlLinks", default=None)
+    reply_broadcast: bool | None = Field(alias="replyBroadcast", default=None)
+
+
+class ShareThreadToUserInSlackInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    user_id: str = Field(alias="userId")
+
+
+class SendDiscordMessageInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    markdown_content: str | None = Field(alias="markdownContent", default=None)
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+
+
+class ToggleSlackMessageReactionInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    timeline_entry_id: str = Field(alias="timelineEntryId")
+    reaction_name: str = Field(alias="reactionName")
+
+
+class ForkThreadInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    timeline_entry_id: str = Field(alias="timelineEntryId")
 
 
 class CustomerImpersonationInput(BaseModel):
@@ -896,6 +3516,22 @@ class ReplyToThreadInput(BaseModel):
     )
 
 
+class ThreadsSearchQuery(BaseModel):
+    """Query to search for threads. The search term provided is used to match against different parts of the thread:
+    - its title
+    - its messages
+    - the customer's name
+    - the customer's email"""
+
+    term: str
+    "The term to search for. It must be at least 2 characters long. The search is case-insensitive."
+
+
+class UpsertMyEmailSignatureInput(BaseModel):
+    text: str
+    markdown: str | None = None
+
+
 class MarkThreadAsDoneInput(BaseModel):
     thread_id: str = Field(alias="threadId")
     status_detail: DoneStatusDetail | None = Field(alias="statusDetail", default=None)
@@ -911,6 +3547,21 @@ class ChangeThreadPriorityInput(BaseModel):
     priority: int
     only_if_default: bool | None = Field(alias="onlyIfDefault", default=None)
     "Only change priority if it is still Normal and has not been set since thread creation.\nOtherwise return the unchanged thread. Defaults to false."
+
+
+class UpdateThreadTitleInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    title: str
+
+
+class UpdateThreadExternalIdInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    external_id: str | None = Field(alias="externalId", default=None)
+    "The external ID to set on the thread, or `null` to clear it."
+
+
+class LockThreadInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
 
 
 class SnoozeThreadInput(BaseModel):
@@ -932,6 +3583,66 @@ class UnassignThreadInput(BaseModel):
     thread_id: str = Field(alias="threadId")
 
 
+class AddAdditionalAssigneesInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    user_ids: list[str] | None = Field(alias="userIds", default=None)
+    machine_user_ids: list[str] | None = Field(alias="machineUserIds", default=None)
+
+
+class RemoveAdditionalAssigneesInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    user_ids: list[str] | None = Field(alias="userIds", default=None)
+    machine_user_ids: list[str] | None = Field(alias="machineUserIds", default=None)
+
+
+class MintEmbedTokenInput(BaseModel):
+    embed_id: str = Field(alias="embedId")
+    "Stable identifier for the embed. Passed through as the `plain_embed_id`\nclaim for audit logging."
+    thread_id: str = Field(alias="threadId")
+    "Thread the command is being invoked from. Access is checked server-side."
+
+
+class CreateThreadChannelAssociationInput(BaseModel):
+    company_identifier: Optional["CompanyIdentifierInput"] = Field(
+        alias="companyIdentifier", default=None
+    )
+    tenant_identifier: Optional["TenantIdentifierInput"] = Field(
+        alias="tenantIdentifier", default=None
+    )
+    connected_slack_channel_id: str | None = Field(
+        alias="connectedSlackChannelId", default=None
+    )
+    tenant_membership_policy: TenantMembershipPolicy | None = Field(
+        alias="tenantMembershipPolicy", default=None
+    )
+    "How tenants are assigned when a message from this channel is received. Defaults to ALWAYS_ADD."
+    account_identifier: Optional["AccountIdentifierInput"] = Field(
+        alias="accountIdentifier", default=None
+    )
+    account_membership_policy: AccountMembershipPolicy | None = Field(
+        alias="accountMembershipPolicy", default=None
+    )
+    "How accounts are assigned when a message from this channel is received. Defaults to ALWAYS_ADD."
+
+
+class UpdateThreadChannelAssociationTenantMembershipPolicyInput(BaseModel):
+    thread_channel_association_id: str = Field(alias="threadChannelAssociationId")
+    tenant_membership_policy: TenantMembershipPolicy = Field(
+        alias="tenantMembershipPolicy"
+    )
+
+
+class UpdateThreadChannelAssociationAccountMembershipPolicyInput(BaseModel):
+    thread_channel_association_id: str = Field(alias="threadChannelAssociationId")
+    account_membership_policy: AccountMembershipPolicy = Field(
+        alias="accountMembershipPolicy"
+    )
+
+
+class DeleteThreadChannelAssociationInput(BaseModel):
+    thread_channel_association_id: str = Field(alias="threadChannelAssociationId")
+
+
 class SlackThreadChannelDetailsInput(BaseModel):
     slack_channel_id: str = Field(alias="slackChannelId")
     slack_team_id: str = Field(alias="slackTeamId")
@@ -947,6 +3658,15 @@ class ThreadChannelDetailsInput(BaseModel):
     ms_teams: Optional["MSTeamsThreadChannelDetailsInput"] = Field(
         alias="msTeams", default=None
     )
+
+
+class ThreadTimelineEntriesFilter(BaseModel):
+    is_message: bool | None = Field(alias="isMessage", default=None)
+    "Only return message timeline entries."
+    entry_types: list[TimelineEntryType] | None = Field(
+        alias="entryTypes", default=None
+    )
+    "Only return timeline entries of the specified types. If provided, this takes precedence over isMessage."
 
 
 class CustomerIdentifierInput(BaseModel):
@@ -1008,6 +3728,87 @@ class CreateThreadInput(BaseModel):
     "Channel details for the thread, required if channel is SLACK or MS_TEAMS"
 
 
+class ImportThreadStatusDetailInput(BaseModel):
+    type_: ImportThreadStatusDetail = Field(alias="type")
+    "The status detail type."
+
+
+class ImportThreadAssignedToInput(BaseModel):
+    """Only one of the fields can be set."""
+
+    user_id: str | None = Field(alias="userId", default=None)
+    machine_user_id: str | None = Field(alias="machineUserId", default=None)
+
+
+class ImportThreadInput(BaseModel):
+    customer_identifier: "CustomerIdentifierInput" = Field(alias="customerIdentifier")
+    "The identifier of the customer being either the existing customer ID, the customer's email address or an external ID."
+    title: str
+    "The title of the thread."
+    external_id: str = Field(alias="externalId")
+    "An external ID for this thread. Duplicate imports with the same externalId are skipped."
+    external_url: str | None = Field(alias="externalUrl", default=None)
+    "An optional external URL for this thread."
+    description: str | None = None
+    "An optional description for this thread."
+    priority: int
+    "The priority of the thread. Valid values are 0, 1, 2, 3, from most to least urgent."
+    status: ThreadStatus
+    "The status of the thread."
+    status_detail: "ImportThreadStatusDetailInput" = Field(alias="statusDetail")
+    "The status detail for the thread. Must correspond to the provided status."
+    label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
+    "An array of label type IDs to attach to the thread."
+    assigned_to: Optional["ImportThreadAssignedToInput"] = Field(
+        alias="assignedTo", default=None
+    )
+    "User this thread should be assigned to."
+    tenant_id: str | None = Field(alias="tenantId", default=None)
+    "The ID of the tenant for this thread."
+    created_at: str = Field(alias="createdAt")
+    "The original creation timestamp of this thread in the source system."
+
+
+class ImportThreadMessageAuthorInput(BaseModel):
+    """Only one of customerId or userId must be provided."""
+
+    customer_id: str | None = Field(alias="customerId", default=None)
+    "The Plain customer who authored this message."
+    user_id: str | None = Field(alias="userId", default=None)
+    "The Plain user who authored this message."
+
+
+class ImportThreadMessageInput(BaseModel):
+    author: "ImportThreadMessageAuthorInput"
+    "The author of the message."
+    text: str
+    "The text content of the message."
+    created_at: str = Field(alias="createdAt")
+    "The original creation timestamp of this message in the source system."
+    type_: ImportThreadMessageType = Field(alias="type")
+    external_id: str = Field(alias="externalId")
+    "An external ID for this message. Duplicate imports with the same externalId are skipped."
+    attachment_ids: list[str] | None = Field(alias="attachmentIds", default=None)
+    "An array of attachments for the message."
+    email_message_id: str | None = Field(alias="emailMessageId", default=None)
+    "The value of the RFC 5322 Message-ID email header of the original message, with or without angle brackets. When set, subsequent email replies that reference this Message-ID are threaded onto the imported thread."
+
+
+class ImportThreadMessagesInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    "The ID of the thread to import messages into."
+    thread_messages: list["ImportThreadMessageInput"] = Field(alias="threadMessages")
+    "The messages to import."
+
+
+class MarkCustomerAsSpamInput(BaseModel):
+    customer_id: str = Field(alias="customerId")
+
+
+class UnmarkCustomerAsSpamInput(BaseModel):
+    customer_id: str = Field(alias="customerId")
+
+
 class WebhookTargetEventSubscriptionInput(BaseModel):
     event_type: str = Field(alias="eventType")
 
@@ -1048,6 +3849,27 @@ class UpdateWebhookTargetInput(BaseModel):
 
 class DeleteWebhookTargetInput(BaseModel):
     webhook_target_id: str = Field(alias="webhookTargetId")
+
+
+class WebhookDeliveryAttemptFilter(BaseModel):
+    event_types: list[str] | None = Field(alias="eventTypes", default=None)
+    result_status: WebhookDeliveryAttemptResultStatus | None = Field(
+        alias="resultStatus", default=None
+    )
+
+
+class CustomerCardConfigOrderInput(BaseModel):
+    customer_card_config_id: str = Field(alias="customerCardConfigId")
+    "The ID of the customer card config to be reordered."
+    order: int
+    "The order the customer card config should have."
+
+
+class ReorderCustomerCardConfigsInput(BaseModel):
+    customer_card_config_orders: list["CustomerCardConfigOrderInput"] = Field(
+        alias="customerCardConfigOrders"
+    )
+    "An array of ordering updates."
 
 
 class CustomerCardConfigApiHeaderInput(BaseModel):
@@ -1106,6 +3928,355 @@ class DeleteCustomerCardConfigInput(BaseModel):
     "The customer card config ID to delete."
 
 
+class ReloadCustomerCardInstanceInput(BaseModel):
+    customer_id: str = Field(alias="customerId")
+    customer_card_config_id: str = Field(alias="customerCardConfigId")
+    thread_id: str | None = Field(alias="threadId", default=None)
+
+
+class SettingScopeInput(BaseModel):
+    """An input to specify the scope for a setting."""
+
+    id: str | None = None
+    "An optional ID input. Depends on the type of scope if this is required."
+    scope_type: SettingScopeType = Field(alias="scopeType")
+    "Determines the type of the scope."
+
+
+class SettingValueInput(BaseModel):
+    """An input "union" where exactly one field may be be provided as an input.
+    Current API only supports booleans but as the API expands more optional fields will be added."""
+
+    boolean: bool | None = None
+    "If the setting value is a boolean then this field should be set."
+    string: str | None = None
+    "If the setting value is a string then this field should be set."
+    number: int | None = None
+    "If the setting value is a number then this field should be set"
+    string_array: list[str | None] | None = Field(alias="stringArray", default=None)
+    "If the setting value is a string array then this field should be set."
+
+
+class UpdateSettingInput(BaseModel):
+    """An input provided to the `updateSetting` mutation."""
+
+    code: str
+    "A code for the setting."
+    scope: "SettingScopeInput"
+    "A valid scope for the setting code."
+    value: "SettingValueInput"
+    "The setting value."
+
+
+class DeleteSettingInput(BaseModel):
+    """An input provided to the `deleteSetting` mutation."""
+
+    code: str
+    "A code for the setting."
+    scope: "SettingScopeInput"
+    "A valid scope for the setting code."
+
+
+class BulkUpdateSlackChannelSettingsInput(BaseModel):
+    """An input provided to the `bulkUpdateSlackChannelSettings` mutation."""
+
+    updates: list["BulkUpdateSlackChannelSettingItem"]
+    "List of per-channel setting writes to apply. Writes are applied as a single batched DynamoDB transaction (chunked at 100 items per call) and emit a single batched event publish, so large lists are accepted without per-item fan-out cost."
+
+
+class BulkUpdateSlackChannelSettingItem(BaseModel):
+    """A single update applied by the `bulkUpdateSlackChannelSettings` mutation."""
+
+    slack_channel_id: str = Field(alias="slackChannelId")
+    "The Plain slack channel id that the setting applies to. Used as the scope id of the `WORKSPACE_SLACK_CONNECTED_CHANNEL` scope."
+    code: str
+    "The setting code."
+    value: "SettingValueInput"
+    "The setting value."
+
+
+class CreateMySlackIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class CreateUserAuthSlackIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class CreateWorkspaceSlackIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class CreateWorkspaceSlackIntegrationFromAuthInput(BaseModel):
+    """The notification channel is chosen afterwards with the notification/slack/channel_id setting. Plain posts notifications for this integration only after that setting is present."""
+
+    slack_channel_integration_id: str = Field(alias="slackChannelIntegrationId")
+    "The workspace Slack channel integration whose Slack connection the notifications should use."
+
+
+class RefreshWorkspaceSlackChannelIntegrationInput(BaseModel):
+    integration_id: str = Field(alias="integrationId")
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class DeleteWorkspaceSlackIntegrationInput(BaseModel):
+    integration_id: str = Field(alias="integrationId")
+
+
+class CreateWorkspaceSlackChannelIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class DeleteWorkspaceSlackChannelIntegrationInput(BaseModel):
+    integration_id: str = Field(alias="integrationId")
+
+
+class CreateWorkspaceSlackSidekickIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class RefreshWorkspaceSlackSidekickIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class UpdateSidekickSlackConfigInput(BaseModel):
+    operating_instructions: str | None = Field(
+        alias="operatingInstructions", default=None
+    )
+
+
+class DeleteUserAuthSlackIntegrationInput(BaseModel):
+    slack_team_id: str = Field(alias="slackTeamId")
+
+
+class BulkJoinSlackChannelsRuleInput(BaseModel):
+    channel_name_prefix: str = Field(alias="channelNamePrefix")
+    "The channel name prefix of the rule. An empty string means the rule has no prefix."
+    channel_name_suffix: str = Field(alias="channelNameSuffix")
+    "The channel name suffix of the rule. An empty string means the rule has no suffix."
+
+
+class BulkJoinSlackChannelsInput(BaseModel):
+    integration_id: str = Field(alias="integrationId")
+    rule: Optional["BulkJoinSlackChannelsRuleInput"] = None
+    "When set, join only the public channels matching this auto-join rule.\nOmit to join channels matching every rule on the integration.\nThe rule is identified by the prefix and suffix saved on the integration."
+
+
+class CreateThreadFromSlackMessageInput(BaseModel):
+    """Identifies the Slack message to ingest. Optional thread attributes are applied only when a new
+    thread is created. An already-ingested message returns the existing thread and ignores them.
+    When set, these values win over the Slack channel association and other inferred defaults."""
+
+    slack_channel_id: str = Field(alias="slackChannelId")
+    "The Slack channel the message is in, as provided by Slack (e.g. C0123ABCD)."
+    slack_message_timestamp: str = Field(alias="slackMessageTimestamp")
+    "The Slack `ts` of the top-level message to ingest. Replies are rejected."
+    title: str | None = None
+    "The title of the thread. When omitted, defaults to Slack message in #channel."
+    description: str | None = None
+    "The optional description for this thread. This is used to display a preview of the thread in the UI.\nWhen omitted, the top-level Slack message text is used."
+    label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
+    "Label types to attach to the thread upon creation."
+    tenant_identifier: Optional["TenantIdentifierInput"] = Field(
+        alias="tenantIdentifier", default=None
+    )
+    "When set, used instead of the Slack channel's tenant association."
+    account_identifier: Optional["AccountIdentifierInput"] = Field(
+        alias="accountIdentifier", default=None
+    )
+    "When set, used instead of the Slack channel's account association."
+    priority: int | None = None
+    "The priority of the thread. Valid values are 0, 1, 2, 3, from most to least urgent, defaults to 2 (normal)."
+    external_id: str | None = Field(alias="externalId", default=None)
+    "The external ID of this thread. You can use this field to store your own unique identifier for this thread."
+    thread_fields: list["CreateThreadFieldOnThreadInput"] | None = Field(
+        alias="threadFields", default=None
+    )
+    "Thread fields to attach to the thread upon creation."
+
+
+class UpdateConnectedSlackChannelInput(BaseModel):
+    connected_slack_channel_id: str = Field(alias="connectedSlackChannelId")
+    channel_type: ConnectedSlackChannelType | None = Field(
+        alias="channelType", default=None
+    )
+    is_enabled: Optional["BooleanInput"] = Field(alias="isEnabled", default=None)
+
+
+class BulkUpdateConnectedSlackChannelsInput(BaseModel):
+    """An input provided to the `bulkUpdateConnectedSlackChannels` mutation."""
+
+    updates: list["BulkUpdateConnectedSlackChannelItem"]
+    "List of per-channel updates to apply. Each item is applied independently; partial failures are reported per-item."
+
+
+class BulkUpdateConnectedSlackChannelItem(BaseModel):
+    """A single update applied by the `bulkUpdateConnectedSlackChannels` mutation.
+    Mirrors `UpdateConnectedSlackChannelInput`."""
+
+    connected_slack_channel_id: str = Field(alias="connectedSlackChannelId")
+    channel_type: ConnectedSlackChannelType | None = Field(
+        alias="channelType", default=None
+    )
+    is_enabled: Optional["BooleanInput"] = Field(alias="isEnabled", default=None)
+
+
+class ConnectedSlackChannelsFilter(BaseModel):
+    slack_team_ids: list[str] | None = Field(alias="slackTeamIds", default=None)
+    slack_channel_ids: list[str] | None = Field(alias="slackChannelIds", default=None)
+    channel_types: list[ConnectedSlackChannelType] | None = Field(
+        alias="channelTypes", default=None
+    )
+    is_enabled: Optional["BooleanInput"] = Field(alias="isEnabled", default=None)
+    name: str | None = None
+    exclude_test_channels: Optional["BooleanInput"] = Field(
+        alias="excludeTestChannels", default=None
+    )
+    "`value: true` omits the workspace's Slack test channel from the page and from `totalCount`.\n`value: false`, `null`, and omitting the field include it."
+
+
+class SlackAutoJoinRuleManualIngestionInput(BaseModel):
+    """Manual (emoji-reaction) ingestion configuration provided to setSlackAutoJoinRules."""
+
+    emoji: str | None = None
+    is_customer_enabled: bool = Field(alias="isCustomerEnabled")
+
+
+class SlackAutoJoinRuleIngestionModeInput(BaseModel):
+    """The default thread-creation (ingestion) configuration for an auto-join rule.
+    Provide `manual` only when `type` is `MANUAL` — it is ignored for other
+    modes. Omit the whole object to inherit the team default ingestion mode."""
+
+    type_: SlackIngestionMode = Field(alias="type")
+    manual: Optional["SlackAutoJoinRuleManualIngestionInput"] = None
+
+
+class SlackAutoJoinRuleInput(BaseModel):
+    channel_name_prefix: str = Field(alias="channelNamePrefix")
+    "At least one of channelNamePrefix and channelNameSuffix must be non-empty."
+    channel_name_suffix: str = Field(alias="channelNameSuffix")
+    default_channel_mode: SlackAutoJoinRuleChannelMode | None = Field(
+        alias="defaultChannelMode", default=None
+    )
+    default_ingestion_mode: Optional["SlackAutoJoinRuleIngestionModeInput"] = Field(
+        alias="defaultIngestionMode", default=None
+    )
+    "Omit to inherit the team default ingestion mode."
+
+
+class SetSlackAutoJoinRulesInput(BaseModel):
+    """An input provided to the `setSlackAutoJoinRules` mutation."""
+
+    integration_id: str = Field(alias="integrationId")
+    rules: list["SlackAutoJoinRuleInput"]
+    "The complete set of auto-join rules for the integration. Replaces any existing rules."
+
+
+class CreateWorkspaceDiscordChannelIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class CreateWorkspaceDiscordIntegrationInput(BaseModel):
+    name: str
+    webhook_url: str = Field(alias="webhookUrl")
+
+
+class DeleteWorkspaceDiscordIntegrationInput(BaseModel):
+    integration_id: str = Field(alias="integrationId")
+
+
+class DeleteWorkspaceDiscordChannelIntegrationInput(BaseModel):
+    integration_id: str = Field(alias="integrationId")
+
+
+class DeleteUserAuthDiscordChannelIntegrationInput(BaseModel):
+    integration_id: str = Field(alias="integrationId")
+
+
+class RefreshConnectedDiscordChannelsInput(BaseModel):
+    discord_guild_id: str = Field(alias="discordGuildId")
+
+
+class UpdateConnectedDiscordChannelInput(BaseModel):
+    connected_discord_channel_id: str = Field(alias="connectedDiscordChannelId")
+    is_enabled: Optional["BooleanInput"] = Field(alias="isEnabled", default=None)
+
+
+class CreateUserAuthDiscordChannelIntegrationInput(BaseModel):
+    discord_guild_id: str = Field(alias="discordGuildId")
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class CreateMyLinearIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class CreateLinearAppIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class CreateGithubUserAuthIntegrationInput(BaseModel):
+    nango_session_token: str = Field(alias="nangoSessionToken")
+    nango_connection_id: str = Field(alias="nangoConnectionId")
+
+
+class CreateWorkspaceCursorIntegrationInput(BaseModel):
+    token: str
+
+
+class CreateMyMSTeamsIntegrationInput(BaseModel):
+    auth_code: str = Field(alias="authCode")
+    redirect_url: str = Field(alias="redirectUrl")
+
+
+class CreateWorkspaceMSTeamsIntegrationInput(BaseModel):
+    ms_teams_tenant_id: str = Field(alias="msTeamsTenantId")
+
+
+class DeleteWorkspaceMSTeamsIntegrationInput(BaseModel):
+    integration_id: str = Field(alias="integrationId")
+
+
+class UpsertCustomerGroupInput(BaseModel):
+    identifier: "CustomerGroupIdentifier"
+    name: str
+    key: str
+    color: str
+    external_id: str | None = Field(alias="externalId", default=None)
+
+
+class CreateCustomerGroupInput(BaseModel):
+    name: str
+    key: str
+    color: str
+    external_id: str | None = Field(alias="externalId", default=None)
+
+
+class UpdateCustomerGroupInput(BaseModel):
+    customer_group_id: str = Field(alias="customerGroupId")
+    name: Optional["StringInput"] = None
+    key: Optional["StringInput"] = None
+    color: Optional["StringInput"] = None
+    external_id: Optional["OptionalStringInput"] = Field(
+        alias="externalId", default=None
+    )
+
+
+class DeleteCustomerGroupInput(BaseModel):
+    customer_group_id: str = Field(alias="customerGroupId")
+
+
 class CustomerGroupIdentifier(BaseModel):
     """Identifies a customer group by exactly one of: its Plain-assigned ID, its unique key, or the external ID from your system. Provide exactly one field."""
 
@@ -1138,6 +4309,20 @@ class CompaniesSearchQuery(BaseModel):
     "The term to search for. It must be at least 2 characters long. The search is case-insensitive on these two fields:\n- the company name (partial match)\n- the company domain name (partial match)"
 
 
+class BroadcastsSearchQuery(BaseModel):
+    """Query to search for broadcasts."""
+
+    name: str
+    "The name to search for. It must be at least 2 characters long. The search is case-insensitive,\nmatches on any part of the name, and ignores accents."
+
+
+class BroadcastsFilter(BaseModel):
+    """Narrows a list of broadcasts. Omit a field to leave that dimension unconstrained."""
+
+    statuses: list[BroadcastStatus] | None = None
+    "Filters broadcasts to those whose status is one of the given statuses. A broadcast's status comes\nfrom its latest real send, so `DRAFT` matches broadcasts that have never been scheduled and no\nstatus reflects a test send. Must not be empty."
+
+
 class TenantsSearchQuery(BaseModel):
     """Query to search for tenants."""
 
@@ -1145,11 +4330,371 @@ class TenantsSearchQuery(BaseModel):
     "The term to search for. It must be at least 2 characters long. The search is case-insensitive on these fields:\n- the tenant name (partial match)\n- the tenant external id (exact match)\n- the tenant primary and alternate domains (partial match)"
 
 
+class AccountsSearchQuery(BaseModel):
+    """Query to search for accounts."""
+
+    term: str
+    "The term to search for. It must be at least 2 characters long. The search is case-insensitive on these fields:\n- the account name (partial match)\n- the account external id (exact match)\n- the account primary and alternate domains (partial match)"
+
+
+class StartServiceAuthorizationInput(BaseModel):
+    service_integration_key: str = Field(alias="serviceIntegrationKey")
+    "One of: zendesk, salesforce, freshdesk, helpscout-mailbox, hubspot, jira, shortcut, rootly, incidentio, github-app-oauth, attio."
+
+
+class ServiceAuthorizationsFilter(BaseModel):
+    service_integration_key: str | None = Field(
+        alias="serviceIntegrationKey", default=None
+    )
+    "One of: zendesk, salesforce, freshdesk, helpscout-mailbox, hubspot, jira, shortcut, rootly, incidentio, github-app-oauth, attio."
+
+
+class CompleteJiraAuthorizationInput(BaseModel):
+    refresh_token: str = Field(alias="refreshToken")
+    site_id: str = Field(alias="siteId")
+
+
+class CompleteServiceAuthorizationInput(BaseModel):
+    service_authorization_id: str = Field(alias="serviceAuthorizationId")
+    payload: str | None = None
+    "JSON-encoded payload of the service configuration."
+    jira: Optional["CompleteJiraAuthorizationInput"] = None
+
+
+class DeleteServiceAuthorizationInput(BaseModel):
+    service_authorization_id: str = Field(alias="serviceAuthorizationId")
+
+
+class DeleteMyServiceAuthorizationInput(BaseModel):
+    service_authorization_id: str = Field(alias="serviceAuthorizationId")
+
+
+class SidekickGithubRepoInput(BaseModel):
+    """A repository to select for the workspace's Sidekick Agent GitHub integration,
+    with optional per-repo operating instructions."""
+
+    repo_id: str = Field(alias="repoId")
+    "GitHub's repository id."
+    owner: str
+    name: str
+    operating_instructions: str | None = Field(
+        alias="operatingInstructions", default=None
+    )
+    "Free-text guidance for the agent that is specific to this repository."
+
+
+class UpdateSidekickGithubConfigInput(BaseModel):
+    service_authorization_id: str = Field(alias="serviceAuthorizationId")
+    selected_repos: list["SidekickGithubRepoInput"] = Field(alias="selectedRepos")
+    operating_instructions: str | None = Field(
+        alias="operatingInstructions", default=None
+    )
+    "Free-text guidance for the agent that applies across the workspace."
+
+
+class UpdateSidekickServiceConfigInput(BaseModel):
+    service_authorization_id: str = Field(alias="serviceAuthorizationId")
+    operating_instructions: str | None = Field(
+        alias="operatingInstructions", default=None
+    )
+    "Free-text guidance for the agent that applies to this service across\nthe workspace. Pass null or an empty string to clear."
+
+
+class UpdateSidekickPosthogConfigInput(BaseModel):
+    service_authorization_id: str = Field(alias="serviceAuthorizationId")
+    operating_instructions: str | None = Field(
+        alias="operatingInstructions", default=None
+    )
+    "Free-text guidance for the agent that applies to PostHog use across\nthe workspace. Pass null or an empty string to clear."
+    project_id: str | None = Field(alias="projectId", default=None)
+    "The default PostHog project (team) id the agent queries when the\nuser doesn't specify one. Pass null or an empty string to clear."
+
+
+class UpdateSidekickSettingsInput(BaseModel):
+    model_options: str | None = Field(alias="modelOptions", default=None)
+    "JSON configuration for the LOW, MEDIUM and HIGH model options. Omit to keep the existing configuration. Rejected when the model picker is not enabled for the workspace."
+    custom_prompt: str | None = Field(alias="customPrompt", default=None)
+    "Custom prompt to append to the Sidekick Agent system prompt. Pass null or an empty string to clear. Omit to leave the current value unchanged."
+    preferred_integrations: list[str] | None = Field(
+        alias="preferredIntegrations", default=None
+    )
+    "Tools selected during onboarding, as Sidekick Agent integration catalog slugs. Pass an empty list to record that nothing was selected. Omit or pass null to leave the current value unchanged. Unknown slugs are rejected."
+
+
+class UpdateAgentSandboxToolPolicyInput(BaseModel):
+    service: str
+    op: str
+    mode: AgentSandboxToolMode
+
+
+class CreateSidekickCustomSkillInput(BaseModel):
+    name: str | None = None
+    "Deprecated and ignored — the slug is always derived from displayName."
+    display_name: str = Field(alias="displayName")
+    "Human-readable display name. Must contain at least one letter or number."
+    description: str
+    instructions: str
+
+
+class UpdateSidekickCustomSkillInput(BaseModel):
+    custom_skill_id: str = Field(alias="customSkillId")
+    name: str | None = None
+    "Deprecated and ignored — the slug can no longer be changed directly."
+    display_name: str | None = Field(alias="displayName", default=None)
+    "Human-readable display name."
+    description: str | None = None
+    instructions: str | None = None
+    is_enabled: bool | None = Field(alias="isEnabled", default=None)
+
+
+class DeleteSidekickCustomSkillInput(BaseModel):
+    custom_skill_id: str = Field(alias="customSkillId")
+
+
+class SidekickMcpAuthParamInput(BaseModel):
+    """One API-key auth attachment to configure on create: the non-secret name plus where the secret is attached."""
+
+    name: str
+    "The header or query-param name the secret is sent in, e.g. Authorization. Header names must be valid header-name tokens."
+    placement: SidekickMcpAuthParamPlacement
+
+
+class SidekickMcpApiKeyAuthInput(BaseModel):
+    """API-key auth config for a custom MCP server. Providing this on create registers the server as API-key rather than OAuth."""
+
+    params: list["SidekickMcpAuthParamInput"]
+    "The auth attachments (name + placement) the API key(s) are sent in. At least one required. The secret values are entered client-side and vaulted in Nango, never sent here."
+
+
+class CreateSidekickMcpServerInput(BaseModel):
+    name: str
+    url: str
+    operating_instructions: str | None = Field(
+        alias="operatingInstructions", default=None
+    )
+    api_key_auth: Optional["SidekickMcpApiKeyAuthInput"] = Field(
+        alias="apiKeyAuth", default=None
+    )
+    "Omit for an OAuth server (the default). Provide to register an API-key server; the secret values are vaulted in Nango, never sent here."
+
+
+class CompleteSidekickMcpServerConnectionInput(BaseModel):
+    sidekick_mcp_server_id: str = Field(alias="sidekickMcpServerId")
+    nango_connection_id: str = Field(alias="nangoConnectionId")
+
+
+class UpdateSidekickMcpServerInput(BaseModel):
+    sidekick_mcp_server_id: str = Field(alias="sidekickMcpServerId")
+    name: Optional["StringInput"] = None
+    operating_instructions: Optional["OptionalStringInput"] = Field(
+        alias="operatingInstructions", default=None
+    )
+
+
+class DeleteSidekickMcpServerInput(BaseModel):
+    sidekick_mcp_server_id: str = Field(alias="sidekickMcpServerId")
+
+
+class RefreshSidekickMcpServerToolsInput(BaseModel):
+    sidekick_mcp_server_id: str = Field(alias="sidekickMcpServerId")
+
+
+class CreateImportSyncInput(BaseModel):
+    service_integration_key: str = Field(alias="serviceIntegrationKey")
+    filters: "ImportSyncFiltersInput"
+
+
+class ImportSyncFiltersInput(BaseModel):
+    tenant_list_id: str | None = Field(alias="tenantListId", default=None)
+    tenant_list_name: str | None = Field(alias="tenantListName", default=None)
+
+
+class UpdateImportJobDefinitionInput(BaseModel):
+    service_integration_key: str = Field(alias="serviceIntegrationKey")
+    is_enabled: bool | None = Field(alias="isEnabled", default=None)
+
+
+class BusinessHoursWeekDayInput(BaseModel):
+    start_time: str = Field(alias="startTime")
+    "The time you open for business on this day as an UTC ISO time. For example: 09:00Z ."
+    end_time: str = Field(alias="endTime")
+    "The time you close for business on this day as an UTC ISO time. For example: 17:00Z ."
+
+
+class BusinessHoursWeekDaysInput(BaseModel):
+    """Represents the times in which you are open for business during a week. Only provide the days you are open for business."""
+
+    monday: Optional["BusinessHoursWeekDayInput"] = None
+    tuesday: Optional["BusinessHoursWeekDayInput"] = None
+    wednesday: Optional["BusinessHoursWeekDayInput"] = None
+    thursday: Optional["BusinessHoursWeekDayInput"] = None
+    friday: Optional["BusinessHoursWeekDayInput"] = None
+    saturday: Optional["BusinessHoursWeekDayInput"] = None
+    sunday: Optional["BusinessHoursWeekDayInput"] = None
+
+
+class UpsertBusinessHoursInput(BaseModel):
+    week_days: Optional["BusinessHoursWeekDaysInput"] = Field(
+        alias="weekDays", default=None
+    )
+
+
+class BusinessHoursOverridesFilter(BaseModel):
+    """Filters overrides by their start and end dates. For example, current and upcoming overrides are endsOn after today; overrides touching a week are endsOn after its first day and startsOn before the day after its last."""
+
+    starts_on: Optional["DateFilter"] = Field(alias="startsOn", default=None)
+    ends_on: Optional["DateFilter"] = Field(alias="endsOn", default=None)
+
+
+class WorkspaceBusinessHoursOverridesFilter(BaseModel):
+    """Filters overrides by schedule and by their start and end dates. Omit businessHoursScheduleIds to include every schedule, or pass up to 100. For dates, after is inclusive and before is exclusive."""
+
+    business_hours_schedule_ids: list[str] | None = Field(
+        alias="businessHoursScheduleIds", default=None
+    )
+    starts_on: Optional["DateFilter"] = Field(alias="startsOn", default=None)
+    ends_on: Optional["DateFilter"] = Field(alias="endsOn", default=None)
+
+
+class BusinessHoursOverridesSort(BaseModel):
+    field: BusinessHoursOverridesSortField
+    direction: SortDirection
+
+
+class BusinessHoursOverrideSlotInput(BaseModel):
+    date: str
+    "A date within the override, in YYYY-MM-DD format."
+    opens_at: str = Field(alias="opensAt")
+    "Opening time in HH:MM format."
+    closes_at: str = Field(alias="closesAt")
+    "Closing time in HH:MM format. Must be after opensAt."
+
+
+class CreateBusinessHoursOverrideInput(BaseModel):
+    business_hours_schedule_id: str = Field(alias="businessHoursScheduleId")
+    name: str
+    "Human-readable name for the override."
+    starts_on: str = Field(alias="startsOn")
+    "The first date, in YYYY-MM-DD format. Can't be before today in the schedule's timezone; today can be given hours at any time of day."
+    ends_on: str = Field(alias="endsOn")
+    "The last date (inclusive), in YYYY-MM-DD format. An override can cover at most 92 days."
+    slots: list["BusinessHoursOverrideSlotInput"] | None = None
+    "The open slots. A date in the range without slots is closed; omit to close every date. Overlapping and adjacent slots on a date are merged."
+
+
+class UpdateBusinessHoursOverrideInput(BaseModel):
+    business_hours_override_id: str = Field(alias="businessHoursOverrideId")
+    name: Optional["StringInput"] = None
+    "Rename the override. Omit to leave the name unchanged."
+    starts_on: str | None = Field(alias="startsOn", default=None)
+    "Move the first date, in YYYY-MM-DD format. Can't be moved to before today. Slots on dates removed are dropped."
+    ends_on: str | None = Field(alias="endsOn", default=None)
+    "Move the last date (inclusive), in YYYY-MM-DD format. Dates added are closed; slots on dates removed are dropped."
+    slots: list["BusinessHoursOverrideSlotInput"] | None = None
+    "Replace the override's slots in full. A date in the range without slots is closed. Omit to leave the hours unchanged."
+
+
+class DeleteBusinessHoursOverrideInput(BaseModel):
+    business_hours_override_id: str = Field(alias="businessHoursOverrideId")
+
+
+class BusinessHoursSlotInput(BaseModel):
+    timezone: str | None = None
+    "Deprecated: set the timezone on the schedule instead. If given, it must match the schedule's timezone. Omitted, the slot uses the schedule's timezone."
+    weekday: WeekDay
+    opens_at: str = Field(alias="opensAt")
+    closes_at: str = Field(alias="closesAt")
+
+
+class SyncBusinessHoursSlotsInput(BaseModel):
+    slots: list["BusinessHoursSlotInput"]
+
+
+class CreateBusinessHoursScheduleInput(BaseModel):
+    name: str
+    "Human-readable name for the schedule. Must be unique within the workspace."
+    timezone: str | None = None
+    "The schedule's IANA timezone, e.g. Europe/London. Omit to take it from the slots. If given, every slot must use it."
+    slots: list["BusinessHoursSlotInput"] | None = None
+    "The slots to open the schedule with. Must contain at least one slot, and every slot must use the same timezone."
+
+
+class UpdateBusinessHoursScheduleInput(BaseModel):
+    business_hours_schedule_id: str = Field(alias="businessHoursScheduleId")
+    name: Optional["StringInput"] = None
+    "Rename the schedule. Omit to leave the name unchanged. Must be unique within the workspace."
+    timezone: str | None = None
+    "Change the schedule's IANA timezone, e.g. Europe/London. Omit to take it from the slots, or to leave it unchanged when slots are omitted too. If given with slots, every slot must use it."
+    slots: list["BusinessHoursSlotInput"] | None = None
+    "Replace the schedule's slots in full. Omit to leave them unchanged. If given, must contain at least one slot, and every slot must use the same timezone."
+
+
+class DeleteBusinessHoursScheduleInput(BaseModel):
+    business_hours_schedule_id: str = Field(alias="businessHoursScheduleId")
+
+
+class UserWorkingHoursSlotInput(BaseModel):
+    weekday: WeekDay
+    "The time the slot is for this day of the week."
+    starts_at: str = Field(alias="startsAt")
+    "The time the slot starts at this time (HH:mm format)."
+    ends_at: str = Field(alias="endsAt")
+    "The time the slot ends at this time (HH:mm format)."
+
+
+class SyncUserWorkingHoursInput(BaseModel):
+    user_id: str | None = Field(alias="userId", default=None)
+    "The user to configure working hours for. Optional for human callers (defaults to the acting user), but required when calling with a machine user (API key) token."
+    timezone: str
+    "The timezone for the working hours slots."
+    is_enabled: bool = Field(alias="isEnabled")
+    "Whether automatic status switching should be enabled."
+    slots: list["UserWorkingHoursSlotInput"]
+    "The time slots that define when the user is available."
+
+
 class UpdateThreadTenantInput(BaseModel):
     thread_id: str = Field(alias="threadId")
     tenant_identifier: Optional["TenantIdentifierInput"] = Field(
         alias="tenantIdentifier", default=None
     )
+
+
+class UpdateThreadAccountInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    account_identifier: Optional["AccountIdentifierInput"] = Field(
+        alias="accountIdentifier", default=None
+    )
+
+
+class UpdateThreadTierInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    tier_identifier: Optional["TierIdentifierInput"] = Field(
+        alias="tierIdentifier", default=None
+    )
+
+
+class UpdateThreadServiceLevelAgreementPolicyInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    service_level_agreement_policy_id: str | None = Field(
+        alias="serviceLevelAgreementPolicyId", default=None
+    )
+
+
+class UpdateThreadEscalationPathInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    escalation_path_id: str | None = Field(alias="escalationPathId", default=None)
+
+
+class UpdateThreadAgentStatusInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    agent_status: AgentStatus | None = Field(alias="agentStatus", default=None)
+
+
+class UpdateThreadSuggestedActionStatusInput(BaseModel):
+    thread_id: str = Field(alias="threadId")
+    suggested_action_id: str = Field(alias="suggestedActionId")
+    status: ThreadCatchupSuggestedActionStatus
 
 
 class AddCustomerToTenantsInput(BaseModel):
@@ -1167,15 +4712,711 @@ class SetCustomerTenantsInput(BaseModel):
     tenant_identifiers: list["TenantIdentifierInput"] = Field(alias="tenantIdentifiers")
 
 
+class AddCustomerToAccountsInput(BaseModel):
+    customer_identifier: "CustomerIdentifierInput" = Field(alias="customerIdentifier")
+    account_identifiers: list["AccountIdentifierInput"] = Field(
+        alias="accountIdentifiers"
+    )
+
+
+class RemoveCustomerFromAccountsInput(BaseModel):
+    customer_identifier: "CustomerIdentifierInput" = Field(alias="customerIdentifier")
+    account_identifiers: list["AccountIdentifierInput"] = Field(
+        alias="accountIdentifiers"
+    )
+
+
+class SetCustomerAccountsInput(BaseModel):
+    customer_identifier: "CustomerIdentifierInput" = Field(alias="customerIdentifier")
+    account_identifiers: list["AccountIdentifierInput"] = Field(
+        alias="accountIdentifiers"
+    )
+
+
+class CompaniesFilter(BaseModel):
+    company_ids: list[str] | None = Field(alias="companyIds", default=None)
+    is_deleted: bool | None = Field(alias="isDeleted", default=None)
+    "True to only return companies that have been deleted. False to only return companies that have not been deleted.\nOmit to return all companies."
+    updated_at: Optional["DatetimeFilter"] = Field(alias="updatedAt", default=None)
+
+
+class TenantsFilter(BaseModel):
+    tenant_ids: list[str] | None = Field(alias="tenantIds", default=None)
+    is_deleted: bool | None = Field(alias="isDeleted", default=None)
+    "True to only return tenants that have been deleted. False to only return tenants that have not been deleted.\nOmit to return all tenants."
+    updated_at: Optional["DatetimeFilter"] = Field(alias="updatedAt", default=None)
+    tier_identifiers: list["TierIdentifierInput"] | None = Field(
+        alias="tierIdentifiers", default=None
+    )
+    "Filter to tenants that belong to any of the given tiers, identified by their Plain ID or external ID."
+    tenant_fields: list["TenantFieldFilter"] | None = Field(
+        alias="tenantFields", default=None
+    )
+    "Filter to tenants whose tenant field values match all of the given field filters."
+    sources: list[TenantSource] | None = None
+    "Filter to tenants from any of the given sources."
+    domains: list[str] | None = None
+    "Filter to tenants whose primary or alternate domains include any of the given domains. Matching is exact and case-insensitive."
+    and_: list["TenantsFilter"] | None = Field(alias="and", default=None)
+    "Matches tenants that match every one of these filters."
+    or_: list["TenantsFilter"] | None = Field(alias="or", default=None)
+    "Matches tenants that match at least one of these filters."
+    not_: Optional["TenantsFilter"] = Field(alias="not", default=None)
+    "Matches tenants that do not match this filter."
+
+
+class TenantsSort(BaseModel):
+    """Tenants without a value for the sort field come last in either direction. Ties are ordered by name."""
+
+    field: TenantsSortField
+    direction: SortDirection
+    tenant_field_schema_id: str | None = Field(
+        alias="tenantFieldSchemaId", default=None
+    )
+    "Required when `field` is `TENANT_FIELD`. The schema must be for a string, number, boolean or datetime field."
+
+
+class AccountsFilter(BaseModel):
+    account_ids: list[str] | None = Field(alias="accountIds", default=None)
+    is_deleted: bool | None = Field(alias="isDeleted", default=None)
+    "True to only return accounts that have been deleted. False to only return accounts that have not been deleted.\nOmit to return all accounts."
+    updated_at: Optional["DatetimeFilter"] = Field(alias="updatedAt", default=None)
+    tier_identifiers: list["TierIdentifierInput"] | None = Field(
+        alias="tierIdentifiers", default=None
+    )
+    "Filter to accounts that belong to any of the given tiers, identified by their Plain ID or external ID."
+    account_fields: list["AccountFieldFilter"] | None = Field(
+        alias="accountFields", default=None
+    )
+    "Filter to accounts whose account field values match all of the given field filters."
+    sources: list[AccountSource] | None = None
+    "Filter to accounts from any of the given sources."
+    domains: list[str] | None = None
+    "Filter to accounts whose primary or alternate domains include any of the given domains. Matching is exact and case-insensitive."
+    and_: list["AccountsFilter"] | None = Field(alias="and", default=None)
+    "Matches accounts that match every one of these filters."
+    or_: list["AccountsFilter"] | None = Field(alias="or", default=None)
+    "Matches accounts that match at least one of these filters."
+    not_: Optional["AccountsFilter"] = Field(alias="not", default=None)
+    "Matches accounts that do not match this filter."
+
+
+class AccountsSort(BaseModel):
+    """Accounts without a value for the sort field come last in either direction. Ties are ordered by name."""
+
+    field: AccountsSortField
+    direction: SortDirection
+    account_field_schema_id: str | None = Field(
+        alias="accountFieldSchemaId", default=None
+    )
+    "Required when `field` is `ACCOUNT_FIELD`. The schema must be for a string, number, boolean or datetime field."
+
+
+class CreateHyperlineCheckoutSessionInput(BaseModel):
+    plan: HyperlineCheckoutPlanKey
+    interval_unit: BillingIntervalUnit = Field(alias="intervalUnit")
+
+
+class SidekickCreditUsageByDayInput(BaseModel):
+    from_: str = Field(alias="from")
+    "Start of the range, inclusive. ISO 8601 format (e.g. 2026-06-01T00:00:00Z)."
+    to: str
+    "End of the range, exclusive. ISO 8601 format (e.g. 2026-07-01T00:00:00Z)."
+
+
+class CalculateRoleChangeCostInput(BaseModel):
+    role_key: RoleKey = Field(alias="roleKey")
+    quantity: Optional["IntInput"] = None
+    user_id: str | None = Field(alias="userId", default=None)
+    using_billing_rota_seat: Optional["BooleanInput"] = Field(
+        alias="usingBillingRotaSeat", default=None
+    )
+
+
+class AddUserToActiveBillingRotaInput(BaseModel):
+    user_id: str = Field(alias="userId")
+
+
+class RemoveUserFromActiveBillingRotaInput(BaseModel):
+    user_id: str = Field(alias="userId")
+
+
+class UpdateActiveBillingRotaInput(BaseModel):
+    user_ids_to_add: list[str] | None = Field(alias="userIdsToAdd", default=None)
+    user_ids_to_remove: list[str] | None = Field(alias="userIdsToRemove", default=None)
+
+
+class MachineUsersFilter(BaseModel):
+    type_: MachineUserType | None = Field(alias="type", default=None)
+    is_custom_agent: bool | None = Field(alias="isCustomAgent", default=None)
+    "Filter to only the machine users the workspace has marked as its own agents, or only those it has not."
+
+
+class ChangeBillingPlanInput(BaseModel):
+    plan_key: BillingPlanKey = Field(alias="planKey")
+    interval_unit: BillingIntervalUnit | None = Field(
+        alias="intervalUnit", default=None
+    )
+
+
+class PreviewBillingPlanChangeInput(BaseModel):
+    plan_key: BillingPlanKey = Field(alias="planKey")
+    interval_unit: BillingIntervalUnit | None = Field(
+        alias="intervalUnit", default=None
+    )
+
+
+class PurchaseCreditsInput(BaseModel):
+    count: int
+    "The number of credits to purchase. Must match the unit count of a configured top-up bundle."
+
+
+class CreateWorkspaceFileUploadUrlInput(BaseModel):
+    file_name: str = Field(alias="fileName")
+    file_size_bytes: int = Field(alias="fileSizeBytes")
+    visibility: WorkspaceFileVisibility
+
+
+class CreateWorkspaceFileDownloadUrlInput(BaseModel):
+    workspace_file_id: str = Field(alias="workspaceFileId")
+
+
+class DeleteWorkspaceFileInput(BaseModel):
+    workspace_file_id: str = Field(alias="workspaceFileId")
+
+
+class ResolveCustomerForMSTeamsChannelInput(BaseModel):
+    ms_teams_team_id: str = Field(alias="msTeamsTeamId")
+    ms_teams_channel_id: str = Field(alias="msTeamsChannelId")
+
+
+class ResolveCustomerForSlackChannelInput(BaseModel):
+    slack_team_id: str = Field(alias="slackTeamId")
+    slack_channel_id: str = Field(alias="slackChannelId")
+
+
+class HelpCentersFilter(BaseModel):
+    is_customer_facing_ai_enabled: bool | None = Field(
+        alias="isCustomerFacingAiEnabled", default=None
+    )
+
+
+class HelpCenterAiConversationsFilter(BaseModel):
+    """Filters applied when listing help center AI conversations."""
+
+    help_center_ids: list[str] | None = Field(alias="helpCenterIds", default=None)
+    "Only return conversations belonging to one of these help centers."
+    feedback_types: list[HelpCenterAiMessageFeedbackType] | None = Field(
+        alias="feedbackTypes", default=None
+    )
+    "Only return conversations where at least one message has one of these feedback types."
+
+
+class HelpCenterAiConversationsSort(BaseModel):
+    """Controls how help center AI conversations are ordered."""
+
+    field: HelpCenterAiConversationsSortField
+    "The conversation field used for ordering."
+    direction: SortDirection
+    "The direction in which conversations are ordered."
+
+
+class HelpCenterThemedImageInput(BaseModel):
+    light: "WorkspaceFileInput"
+    dark: "WorkspaceFileInput"
+
+
+class CreateHelpCenterInput(BaseModel):
+    public_name: str = Field(alias="publicName")
+    internal_name: str = Field(alias="internalName")
+    type_: HelpCenterType = Field(alias="type")
+    description: str
+    head_custom_js: str | None = Field(alias="headCustomJs", default=None)
+    body_custom_js: str | None = Field(alias="bodyCustomJs", default=None)
+    is_chat_enabled: bool | None = Field(alias="isChatEnabled", default=None)
+    article_copy_options: Optional["HelpCenterArticleCopyOptionsInput"] = Field(
+        alias="articleCopyOptions", default=None
+    )
+    is_customer_facing_ai_enabled: bool | None = Field(
+        alias="isCustomerFacingAiEnabled", default=None
+    )
+    favicon: Optional["HelpCenterThemedImageInput"] = None
+    logo: Optional["HelpCenterThemedImageInput"] = None
+    color: str | None = None
+    social_preview_image: Optional["WorkspaceFileInput"] = Field(
+        alias="socialPreviewImage", default=None
+    )
+    subdomain: str
+    auth_mechanism: Optional["HelpCenterAuthMechanismInput"] = Field(
+        alias="authMechanism", default=None
+    )
+
+
+class HelpCenterArticleCopyOptionSettingsInput(BaseModel):
+    is_plaintext_enabled: bool = Field(alias="isPlaintextEnabled")
+    is_markdown_enabled: bool = Field(alias="isMarkdownEnabled")
+    is_chatgpt_enabled: bool = Field(alias="isChatgptEnabled")
+    is_claude_enabled: bool = Field(alias="isClaudeEnabled")
+    is_cursor_enabled: bool = Field(alias="isCursorEnabled")
+
+
+class UpdateHelpCenterArticleCopyOptionSettingsInput(BaseModel):
+    is_plaintext_enabled: bool | None = Field(alias="isPlaintextEnabled", default=None)
+    is_markdown_enabled: bool | None = Field(alias="isMarkdownEnabled", default=None)
+    is_chatgpt_enabled: bool | None = Field(alias="isChatgptEnabled", default=None)
+    is_claude_enabled: bool | None = Field(alias="isClaudeEnabled", default=None)
+    is_cursor_enabled: bool | None = Field(alias="isCursorEnabled", default=None)
+
+
+class HelpCenterArticleCopyOptionsInput(BaseModel):
+    is_enabled: bool = Field(alias="isEnabled")
+    options: "HelpCenterArticleCopyOptionSettingsInput"
+
+
+class UpdateHelpCenterArticleCopyOptionsInput(BaseModel):
+    is_enabled: bool | None = Field(alias="isEnabled", default=None)
+    options: Optional["UpdateHelpCenterArticleCopyOptionSettingsInput"] = None
+
+
+class HelpCenterPortalSettingsInput(BaseModel):
+    is_enabled: bool | None = Field(alias="isEnabled", default=None)
+    thread_visibility: Optional["HelpCenterPortalSettingsThreadVisibilityInput"] = (
+        Field(alias="threadVisibility", default=None)
+    )
+    form_fields: list["HelpCenterPortalSettingsFormFieldInput"] | None = Field(
+        alias="formFields", default=None
+    )
+    is_additional_recipients_enabled: bool | None = Field(
+        alias="isAdditionalRecipientsEnabled", default=None
+    )
+
+
+class HelpCenterAccessSettingsInput(BaseModel):
+    tier_ids: list[str] | None = Field(alias="tierIds", default=None)
+    tenant_ids: list[str] | None = Field(alias="tenantIds", default=None)
+    account_ids: list[str] | None = Field(alias="accountIds", default=None)
+    company_ids: list[str] | None = Field(alias="companyIds", default=None)
+    customer_ids: list[str] | None = Field(alias="customerIds", default=None)
+
+
+class HelpCenterPortalSettingsOverrideCustomerCompanyInput(BaseModel):
+    company_ids: list[str] | None = Field(alias="companyIds", default=None)
+    customer_ids: list[str] | None = Field(alias="customerIds", default=None)
+
+
+class HelpCenterPortalSettingsOverrideCustomerTenantsInput(BaseModel):
+    tenant_ids: list[str] | None = Field(alias="tenantIds", default=None)
+    customer_ids: list[str] | None = Field(alias="customerIds", default=None)
+
+
+class HelpCenterPortalSettingsOverrideCustomerAccountsInput(BaseModel):
+    account_ids: list[str] | None = Field(alias="accountIds", default=None)
+    customer_ids: list[str] | None = Field(alias="customerIds", default=None)
+
+
+class HelpCenterPortalSettingsThreadVisibilityInput(BaseModel):
+    customer_company: bool | None = Field(alias="customerCompany", default=None)
+    override_customer_company: Optional[
+        "HelpCenterPortalSettingsOverrideCustomerCompanyInput"
+    ] = Field(alias="overrideCustomerCompany", default=None)
+    customer_tenants: bool | None = Field(alias="customerTenants", default=None)
+    override_customer_tenants: Optional[
+        "HelpCenterPortalSettingsOverrideCustomerTenantsInput"
+    ] = Field(alias="overrideCustomerTenants", default=None)
+    customer_accounts: bool | None = Field(alias="customerAccounts", default=None)
+    override_customer_accounts: Optional[
+        "HelpCenterPortalSettingsOverrideCustomerAccountsInput"
+    ] = Field(alias="overrideCustomerAccounts", default=None)
+    customer_email_domain: bool | None = Field(
+        alias="customerEmailDomain", default=None
+    )
+    override_customer_email_domain: Optional[
+        "HelpCenterPortalSettingsOverrideCustomerTenantsInput"
+    ] = Field(alias="overrideCustomerEmailDomain", default=None)
+
+
+class HelpCenterPortalSettingsFormFieldInput(BaseModel):
+    id: str | None = None
+    type_: HelpCenterPortalSettingsFormFieldType = Field(alias="type")
+    label: str
+    placeholder: str | None = None
+    is_required: bool = Field(alias="isRequired")
+    thread_details: Optional["HelpCenterPortalSettingsThreadDetailsInput"] = Field(
+        alias="threadDetails", default=None
+    )
+    dropdown_options: list["HelpCenterPortalSettingsDropdownOptionInput"] | None = (
+        Field(alias="dropdownOptions", default=None)
+    )
+
+
+class ThreadAssigneeInput(BaseModel):
+    user_id: str | None = Field(alias="userId", default=None)
+    machine_user_id: str | None = Field(alias="machineUserId", default=None)
+
+
+class HelpCenterPortalSettingsThreadDetailsInput(BaseModel):
+    label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
+    priority: int | None = None
+    assignees: list["ThreadAssigneeInput"] | None = None
+    thread_fields: list["HelpCenterPortalSettingsThreadFieldsInput"] | None = Field(
+        alias="threadFields", default=None
+    )
+
+
+class HelpCenterPortalSettingsThreadFieldsInput(BaseModel):
+    thread_field_schema_id: str = Field(alias="threadFieldSchemaId")
+    selected_string_value: str | None = Field(alias="selectedStringValue", default=None)
+    selected_boolean_value: bool | None = Field(
+        alias="selectedBooleanValue", default=None
+    )
+
+
+class HelpCenterPortalSettingsDropdownOptionInput(BaseModel):
+    dropdown_option_id: str | None = Field(alias="dropdownOptionId", default=None)
+    label: str
+    thread_details: Optional["HelpCenterPortalSettingsThreadDetailsInput"] = Field(
+        alias="threadDetails", default=None
+    )
+
+
+class UpdateHelpCenterInput(BaseModel):
+    help_center_id: str = Field(alias="helpCenterId")
+    type_: HelpCenterType | None = Field(alias="type", default=None)
+    public_name: str | None = Field(alias="publicName", default=None)
+    internal_name: str | None = Field(alias="internalName", default=None)
+    description: str | None = None
+    head_custom_js: Optional["StringInput"] = Field(alias="headCustomJs", default=None)
+    body_custom_js: Optional["StringInput"] = Field(alias="bodyCustomJs", default=None)
+    is_chat_enabled: bool | None = Field(alias="isChatEnabled", default=None)
+    article_copy_options: Optional["UpdateHelpCenterArticleCopyOptionsInput"] = Field(
+        alias="articleCopyOptions", default=None
+    )
+    is_customer_facing_ai_enabled: bool | None = Field(
+        alias="isCustomerFacingAiEnabled", default=None
+    )
+    link_cards_heading: str | None = Field(alias="linkCardsHeading", default=None)
+    link_cards: list["HelpCenterLinkCardInput"] | None = Field(
+        alias="linkCards", default=None
+    )
+    is_link_cards_enabled: bool | None = Field(alias="isLinkCardsEnabled", default=None)
+    is_popular_topics_enabled: bool | None = Field(
+        alias="isPopularTopicsEnabled", default=None
+    )
+    popular_topic_article_ids: list[str] | None = Field(
+        alias="popularTopicArticleIds", default=None
+    )
+    "Replaces the stored popular topic article order by filling column one (up to 5) and then column two. Omit to leave it unchanged. At most 10 published articles from this help center. Ignored when popularTopicColumns is also set."
+    popular_topic_columns: Optional["HelpCenterPopularTopicColumnsInput"] = Field(
+        alias="popularTopicColumns", default=None
+    )
+    "Replaces both popular topic columns. Omit to leave them unchanged. Each column has at most 5 published articles. Empty slots are not stored."
+    featured_homepage_items: list["HelpCenterFeaturedHomepageItemInput"] | None = Field(
+        alias="featuredHomepageItems", default=None
+    )
+    "Replaces the ordered featured homepage articles and syncs each article with that article's featured flag. Omit to leave it unchanged."
+    hero_heading: str | None = Field(alias="heroHeading", default=None)
+    "Omit to leave unchanged. Null or blank keeps the public default (How can we help?)."
+    hero_subheading: str | None = Field(alias="heroSubheading", default=None)
+    "Omit to leave unchanged. Null or blank keeps the public default, Search the help center, or browse by topic."
+    hero_search_placeholder: str | None = Field(
+        alias="heroSearchPlaceholder", default=None
+    )
+    "Omit to leave unchanged. Null or blank keeps the public default, Search help center."
+    hero_alignment: HelpCenterHeroAlignment | None = Field(
+        alias="heroAlignment", default=None
+    )
+    "Omit to leave unchanged."
+    favicon: Optional["HelpCenterThemedImageInput"] = None
+    logo: Optional["HelpCenterThemedImageInput"] = None
+    color: Optional["StringInput"] = None
+    social_preview_image: Optional["WorkspaceFileInput"] = Field(
+        alias="socialPreviewImage", default=None
+    )
+    agent_avatar_image: Optional["HelpCenterThemedImageInput"] = Field(
+        alias="agentAvatarImage", default=None
+    )
+    subdomain: str | None = None
+    portal_settings: Optional["HelpCenterPortalSettingsInput"] = Field(
+        alias="portalSettings", default=None
+    )
+    access: Optional["HelpCenterAccessSettingsInput"] = None
+    auth_mechanism: Optional["HelpCenterAuthMechanismInput"] = Field(
+        alias="authMechanism", default=None
+    )
+
+
+class HelpCenterAuthMechanismInput(BaseModel):
+    workos_authkit_auth_mechanism: Optional[
+        "HelpCenterWorkosAuthkitAuthMechanismInput"
+    ] = Field(alias="workosAuthkitAuthMechanism", default=None)
+    workos_connect_auth_mechanism: Optional["WorkosConnectAuthMechanismInput"] = Field(
+        alias="workosConnectAuthMechanism", default=None
+    )
+
+
+class HelpCenterWorkosAuthkitAuthMechanismInput(BaseModel):
+    ignore: bool | None = None
+
+
+class WorkosConnectAuthMechanismInput(BaseModel):
+    app_client_id: str = Field(alias="appClientId")
+    app_secret: str = Field(alias="appSecret")
+    api_host: str = Field(alias="apiHost")
+
+
+class UpsertHelpCenterArticleInput(BaseModel):
+    help_center_id: str = Field(alias="helpCenterId")
+    help_center_article_id: str | None = Field(
+        alias="helpCenterArticleId", default=None
+    )
+    help_center_article_group_id: str | None = Field(
+        alias="helpCenterArticleGroupId", default=None
+    )
+    title: str
+    description: str | None = None
+    icon: str | None = None
+    content_html: str = Field(alias="contentHtml")
+    slug: str | None = None
+    status: HelpCenterArticleStatus | None = None
+    label_type_ids: list[str] | None = Field(alias="labelTypeIds", default=None)
+    is_featured: bool | None = Field(alias="isFeatured", default=None)
+    is_popular_topic: bool | None = Field(alias="isPopularTopic", default=None)
+
+
+class HelpCenterLinkCardInput(BaseModel):
+    title: str
+    description: str | None = None
+    url: str
+    icon: str | None = None
+
+
+class HelpCenterPopularTopicColumnsInput(BaseModel):
+    column_one_article_ids: list[str] = Field(alias="columnOneArticleIds")
+    column_two_article_ids: list[str] = Field(alias="columnTwoArticleIds")
+
+
+class HelpCenterFeaturedHomepageItemInput(BaseModel):
+    type_: HelpCenterFeaturedHomepageItemType = Field(alias="type")
+    article_id: str = Field(alias="articleId")
+
+
+class CreateHelpCenterArticleGroupInput(BaseModel):
+    help_center_id: str = Field(alias="helpCenterId")
+    name: str
+    slug: str | None = None
+    parent_help_center_article_group_id: str | None = Field(
+        alias="parentHelpCenterArticleGroupId", default=None
+    )
+    "Parent group ID. If not provided, creates a top-level group."
+
+
+class UpdateHelpCenterArticleGroupInput(BaseModel):
+    help_center_article_group_id: str = Field(alias="helpCenterArticleGroupId")
+    name: str | None = None
+    description: str | None = None
+    icon: str | None = None
+
+
+class DeleteHelpCenterInput(BaseModel):
+    help_center_id: str = Field(alias="helpCenterId")
+
+
+class DeleteHelpCenterArticleInput(BaseModel):
+    help_center_article_id: str = Field(alias="helpCenterArticleId")
+
+
+class DeleteHelpCenterArticleGroupInput(BaseModel):
+    help_center_article_group_id: str = Field(alias="helpCenterArticleGroupId")
+
+
+class CreateIssueTrackerIssueInput(BaseModel):
+    issue_tracker_type: str = Field(alias="issueTrackerType")
+    title: str
+    description: str | None = None
+    fields: list["IssueTrackerFieldInput"]
+
+
+class IssueTrackerFieldInput(BaseModel):
+    key: str
+    value: str
+
+
+class ImportJobsFilter(BaseModel):
+    service_integration_keys: list[str] | None = Field(
+        alias="serviceIntegrationKeys", default=None
+    )
+    import_job_definition_ids: list[str] | None = Field(
+        alias="importJobDefinitionIds", default=None
+    )
+
+
+class ImportTenantFieldSchemasFromServiceInput(BaseModel):
+    service_integration_key: str = Field(alias="serviceIntegrationKey")
+
+
+class ImportAccountFieldSchemasFromServiceInput(BaseModel):
+    service_integration_key: str = Field(alias="serviceIntegrationKey")
+
+
+class ImportTenantFieldSchemaInput(BaseModel):
+    external_field_id: str = Field(alias="externalFieldId")
+    type_: TenantFieldType = Field(alias="type")
+    label: str
+    options: list[str] | None = None
+    is_deleted: bool = Field(alias="isDeleted")
+
+
+class ImportTenantFieldSchemasInput(BaseModel):
+    tenant_field_schemas: list["ImportTenantFieldSchemaInput"] = Field(
+        alias="tenantFieldSchemas"
+    )
+
+
+class ImportAccountFieldSchemaInput(BaseModel):
+    external_field_id: str = Field(alias="externalFieldId")
+    type_: AccountFieldType = Field(alias="type")
+    label: str
+    options: list[str] | None = None
+    is_deleted: bool = Field(alias="isDeleted")
+
+
+class ImportAccountFieldSchemasInput(BaseModel):
+    account_field_schemas: list["ImportAccountFieldSchemaInput"] = Field(
+        alias="accountFieldSchemas"
+    )
+
+
+class ImportTenantFieldValueInput(BaseModel):
+    field_id: str = Field(alias="fieldId")
+    type_: TenantFieldType = Field(alias="type")
+    value: str
+
+
+class ImportTenantInput(BaseModel):
+    external_id: str = Field(alias="externalId")
+    name: str
+    url: str | None = None
+    tenant_fields: list["ImportTenantFieldValueInput"] | None = Field(
+        alias="tenantFields", default=None
+    )
+
+
+class ImportTenantsInput(BaseModel):
+    tenants: list["ImportTenantInput"]
+
+
+class ImportAccountFieldValueInput(BaseModel):
+    field_id: str = Field(alias="fieldId")
+    type_: AccountFieldType = Field(alias="type")
+    value: str
+
+
+class ImportAccountInput(BaseModel):
+    external_id: str = Field(alias="externalId")
+    name: str
+    url: str | None = None
+    account_fields: list["ImportAccountFieldValueInput"] | None = Field(
+        alias="accountFields", default=None
+    )
+
+
+class ImportAccountsInput(BaseModel):
+    accounts: list["ImportAccountInput"]
+
+
+class ImportCustomerTenantInput(BaseModel):
+    external_id: str = Field(alias="externalId")
+    name: str
+    url: str | None = None
+
+
+class ImportCustomerInput(BaseModel):
+    external_id: str = Field(alias="externalId")
+    full_name: str = Field(alias="fullName")
+    short_name: str | None = Field(alias="shortName", default=None)
+    email: str | None = None
+    created_at: str | None = Field(alias="createdAt", default=None)
+    tenants: list["ImportCustomerTenantInput"]
+
+
+class ImportCustomersInput(BaseModel):
+    customers: list["ImportCustomerInput"]
+
+
+class KnowledgeGapsFilter(BaseModel):
+    statuses: list[KnowledgeGapStatus] | None = None
+    last_seen_at: Optional["DatetimeFilter"] = Field(alias="lastSeenAt", default=None)
+    "Only return gaps most recently hit by a customer within this range. Set only `after` to get every gap hit at least once since that time."
+
+
+class KnowledgeGapsSort(BaseModel):
+    field: KnowledgeGapsSortField
+    direction: SortDirection
+
+
+DiscussionsFilter.model_rebuild()
+WorkflowsFilter.model_rebuild()
+InternalNotificationsFilter.model_rebuild()
 LabelTypeFilter.model_rebuild()
+SnippetsFilter.model_rebuild()
 CustomersFilter.model_rebuild()
+ImportBroadcastRecipientUnsubscribesInput.model_rebuild()
+CustomerSearchCondition.model_rebuild()
+CustomersSearchQuery.model_rebuild()
+SingleValueMetricOptions.model_rebuild()
+HeatmapMetricOptionsInput.model_rebuild()
+TimeSeriesMetricOptions.model_rebuild()
+ThreadMetricFilters.model_rebuild()
+ThreadTimeSeriesMetricInput.model_rebuild()
+ThreadSingleValueMetricInput.model_rebuild()
+ThreadHeatmapMetricInput.model_rebuild()
 ThreadFieldFilter.model_rebuild()
 SurveyResponseFilter.model_rebuild()
+TasksFilter.model_rebuild()
 ThreadsFilter.model_rebuild()
 ServiceLevelAgreementFilter.model_rebuild()
 AgentStatusFilter.model_rebuild()
+DeletedThreadsFilter.model_rebuild()
+InviteUserToWorkspaceInput.model_rebuild()
+AssignRolesToUserInput.model_rebuild()
+UpdateCustomRoleInput.model_rebuild()
+UpdateRolePriorityOrderInput.model_rebuild()
+UpsertRoleScopesInput.model_rebuild()
+UpdateLabelTypeInput.model_rebuild()
+OptionalDependsOnThreadFieldInput.model_rebuild()
+CreateThreadFieldSchemaInput.model_rebuild()
+UpdateThreadFieldSchemaInput.model_rebuild()
+CreateEscalationPathInput.model_rebuild()
+UpdateEscalationPathInput.model_rebuild()
+ReorderThreadFieldSchemasInput.model_rebuild()
 UpsertThreadFieldInput.model_rebuild()
+BulkUpsertThreadFieldsInput.model_rebuild()
 DeleteThreadFieldInput.model_rebuild()
+UpdateWorkflowRuleInput.model_rebuild()
+UpdateWorkflowInput.model_rebuild()
+UpdateWorkflowStepInput.model_rebuild()
+BulkUpsertWorkflowStepsInput.model_rebuild()
+CreateChatAppInput.model_rebuild()
+UpdateChatAppInput.model_rebuild()
+CreateThreadLinkInput.model_rebuild()
+BulkCreateThreadLinksInput.model_rebuild()
+SavedThreadsViewFilterInput.model_rebuild()
+CreateSavedThreadsViewInput.model_rebuild()
+UpdateSavedThreadsViewInput.model_rebuild()
+UpdateSnippetInput.model_rebuild()
+BroadcastSendTargetRecipientsInput.model_rebuild()
+BroadcastSendTargetInput.model_rebuild()
+CreateBroadcastInput.model_rebuild()
+UpdateBroadcastInput.model_rebuild()
+BroadcastAudienceFilterInput.model_rebuild()
+CreateBroadcastAudienceInput.model_rebuild()
+UpdateBroadcastAudienceInput.model_rebuild()
+ImportBroadcastAudienceChannelsInput.model_rebuild()
+SendTestBroadcastInput.model_rebuild()
+CreateTaskInput.model_rebuild()
+UpdateTaskInput.model_rebuild()
+UpdateMyUserInput.model_rebuild()
+UpdateWorkspaceInput.model_rebuild()
 SendNewEmailInput.model_rebuild()
 ReplyToEmailInput.model_rebuild()
 ComponentWorkflowButtonInput.model_rebuild()
@@ -1189,30 +5430,147 @@ EventComponentInput.model_rebuild()
 UpsertCustomerOnCreateInput.model_rebuild()
 UpsertCustomerOnUpdateInput.model_rebuild()
 UpsertCustomerInput.model_rebuild()
+CreateMachineUserInput.model_rebuild()
+UpdateMachineUserInput.model_rebuild()
+CreateApiKeyInput.model_rebuild()
+UpdateApiKeyInput.model_rebuild()
+UpdateOAuthAppInput.model_rebuild()
 CreateCustomerEventInput.model_rebuild()
 CreateThreadEventInput.model_rebuild()
+CreateAutoresponderInput.model_rebuild()
+UpdateAutoresponderInput.model_rebuild()
+ReorderAutorespondersInput.model_rebuild()
+CustomerSurveyTemplateInput.model_rebuild()
+CreateCustomerSurveyInput.model_rebuild()
+UpdateCustomerSurveyInput.model_rebuild()
+ReorderCustomerSurveysInput.model_rebuild()
+UpdateInternalNotificationsInput.model_rebuild()
+UpdateAllMyInternalNotificationsInput.model_rebuild()
+CreateAiFeatureFeedbackInput.model_rebuild()
+AiFeedbackFilter.model_rebuild()
+UpdateAiToneRulesInput.model_rebuild()
+DeleteCompanyInput.model_rebuild()
+UpdateHelpCenterIndexInput.model_rebuild()
+UpdateHelpCenterCustomDomainNameInput.model_rebuild()
+GeneratedReplyFeedbackInput.model_rebuild()
+UpdateGeneratedReplyInput.model_rebuild()
+CreateThreadDiscussionInput.model_rebuild()
+CreateDiscussionInput.model_rebuild()
+ImportThreadDiscussionInput.model_rebuild()
+SendThreadDiscussionMessageInput.model_rebuild()
+SendThreadDiscussionMessageChannelDetailsInput.model_rebuild()
+RequestDiscussionQuestionItemInput.model_rebuild()
+RequestDiscussionQuestionInput.model_rebuild()
+AnswerSidekickQuestionInput.model_rebuild()
 UpdateCompanyTierInput.model_rebuild()
 UpdateTenantTierInput.model_rebuild()
+UpdateAccountTierInput.model_rebuild()
 AddMembersToTierInput.model_rebuild()
 RemoveMembersFromTierInput.model_rebuild()
+CreateTierInput.model_rebuild()
+ServiceLevelAgreementInput.model_rebuild()
+BreachActionInput.model_rebuild()
+UpdateTierInput.model_rebuild()
+CreateServiceLevelAgreementInput.model_rebuild()
+UpdateServiceLevelAgreementInput.model_rebuild()
+ServiceLevelAgreementPolicyTargetInput.model_rebuild()
+CreateServiceLevelAgreementPolicyInput.model_rebuild()
+UpdateServiceLevelAgreementPolicyInput.model_rebuild()
 UpsertCompanyInput.model_rebuild()
+UpsertTenantFieldSchemaInput.model_rebuild()
+TenantFieldIdentifier.model_rebuild()
+UpsertTenantFieldInput.model_rebuild()
+UpsertAccountFieldSchemaInput.model_rebuild()
+AccountFieldIdentifier.model_rebuild()
+UpsertAccountFieldInput.model_rebuild()
 UpsertTenantInput.model_rebuild()
+UpsertAccountInput.model_rebuild()
+DeleteTenantInput.model_rebuild()
+DeleteAccountInput.model_rebuild()
 UpdateCustomerCompanyInput.model_rebuild()
+SendMSTeamsMessageInput.model_rebuild()
 CustomerImpersonationInput.model_rebuild()
 UserImpersonationInput.model_rebuild()
 ImpersonationInput.model_rebuild()
 ReplyToThreadEmailChannelSpecificOptionsInput.model_rebuild()
 ReplyToThreadChannelSpecificOptionsInput.model_rebuild()
 ReplyToThreadInput.model_rebuild()
+CreateThreadChannelAssociationInput.model_rebuild()
 ThreadChannelDetailsInput.model_rebuild()
 CreateThreadInput.model_rebuild()
+ImportThreadInput.model_rebuild()
+ImportThreadMessageInput.model_rebuild()
+ImportThreadMessagesInput.model_rebuild()
 CreateWebhookTargetInput.model_rebuild()
 UpdateWebhookTargetInput.model_rebuild()
+ReorderCustomerCardConfigsInput.model_rebuild()
 CreateCustomerCardConfigInput.model_rebuild()
 UpdateCustomerCardConfigInput.model_rebuild()
+UpdateSettingInput.model_rebuild()
+DeleteSettingInput.model_rebuild()
+BulkUpdateSlackChannelSettingsInput.model_rebuild()
+BulkUpdateSlackChannelSettingItem.model_rebuild()
+BulkJoinSlackChannelsInput.model_rebuild()
+CreateThreadFromSlackMessageInput.model_rebuild()
+UpdateConnectedSlackChannelInput.model_rebuild()
+BulkUpdateConnectedSlackChannelsInput.model_rebuild()
+BulkUpdateConnectedSlackChannelItem.model_rebuild()
+ConnectedSlackChannelsFilter.model_rebuild()
+SlackAutoJoinRuleIngestionModeInput.model_rebuild()
+SlackAutoJoinRuleInput.model_rebuild()
+SetSlackAutoJoinRulesInput.model_rebuild()
+UpdateConnectedDiscordChannelInput.model_rebuild()
+UpsertCustomerGroupInput.model_rebuild()
+UpdateCustomerGroupInput.model_rebuild()
 AddCustomerToCustomerGroupsInput.model_rebuild()
 RemoveCustomerFromCustomerGroupsInput.model_rebuild()
+CompleteServiceAuthorizationInput.model_rebuild()
+UpdateSidekickGithubConfigInput.model_rebuild()
+SidekickMcpApiKeyAuthInput.model_rebuild()
+CreateSidekickMcpServerInput.model_rebuild()
+UpdateSidekickMcpServerInput.model_rebuild()
+CreateImportSyncInput.model_rebuild()
+BusinessHoursWeekDaysInput.model_rebuild()
+UpsertBusinessHoursInput.model_rebuild()
+BusinessHoursOverridesFilter.model_rebuild()
+WorkspaceBusinessHoursOverridesFilter.model_rebuild()
+CreateBusinessHoursOverrideInput.model_rebuild()
+UpdateBusinessHoursOverrideInput.model_rebuild()
+SyncBusinessHoursSlotsInput.model_rebuild()
+CreateBusinessHoursScheduleInput.model_rebuild()
+UpdateBusinessHoursScheduleInput.model_rebuild()
+SyncUserWorkingHoursInput.model_rebuild()
 UpdateThreadTenantInput.model_rebuild()
+UpdateThreadAccountInput.model_rebuild()
+UpdateThreadTierInput.model_rebuild()
 AddCustomerToTenantsInput.model_rebuild()
 RemoveCustomerFromTenantsInput.model_rebuild()
 SetCustomerTenantsInput.model_rebuild()
+AddCustomerToAccountsInput.model_rebuild()
+RemoveCustomerFromAccountsInput.model_rebuild()
+SetCustomerAccountsInput.model_rebuild()
+CompaniesFilter.model_rebuild()
+TenantsFilter.model_rebuild()
+AccountsFilter.model_rebuild()
+CalculateRoleChangeCostInput.model_rebuild()
+HelpCenterThemedImageInput.model_rebuild()
+CreateHelpCenterInput.model_rebuild()
+HelpCenterArticleCopyOptionsInput.model_rebuild()
+UpdateHelpCenterArticleCopyOptionsInput.model_rebuild()
+HelpCenterPortalSettingsInput.model_rebuild()
+HelpCenterPortalSettingsThreadVisibilityInput.model_rebuild()
+HelpCenterPortalSettingsFormFieldInput.model_rebuild()
+HelpCenterPortalSettingsThreadDetailsInput.model_rebuild()
+HelpCenterPortalSettingsDropdownOptionInput.model_rebuild()
+UpdateHelpCenterInput.model_rebuild()
+HelpCenterAuthMechanismInput.model_rebuild()
+CreateIssueTrackerIssueInput.model_rebuild()
+ImportTenantFieldSchemasInput.model_rebuild()
+ImportAccountFieldSchemasInput.model_rebuild()
+ImportTenantInput.model_rebuild()
+ImportTenantsInput.model_rebuild()
+ImportAccountInput.model_rebuild()
+ImportAccountsInput.model_rebuild()
+ImportCustomerInput.model_rebuild()
+ImportCustomersInput.model_rebuild()
+KnowledgeGapsFilter.model_rebuild()

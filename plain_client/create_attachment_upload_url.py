@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import AttachmentUploadUrlParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import AttachmentUploadUrlFields
 
 
 class CreateAttachmentUploadUrl(BaseModel):
@@ -23,8 +24,23 @@ class CreateAttachmentUploadUrlCreateAttachmentUploadUrl(BaseModel):
 
 
 CreateAttachmentUploadUrlCreateAttachmentUploadUrlAttachmentUploadUrl = (
-    AttachmentUploadUrlParts
+    AttachmentUploadUrlFields
 )
-CreateAttachmentUploadUrlCreateAttachmentUploadUrlError = MutationErrorParts
+
+
+class CreateAttachmentUploadUrlCreateAttachmentUploadUrlError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["CreateAttachmentUploadUrlCreateAttachmentUploadUrlErrorFields"]
+
+
+class CreateAttachmentUploadUrlCreateAttachmentUploadUrlErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 CreateAttachmentUploadUrl.model_rebuild()
 CreateAttachmentUploadUrlCreateAttachmentUploadUrl.model_rebuild()
+CreateAttachmentUploadUrlCreateAttachmentUploadUrlError.model_rebuild()

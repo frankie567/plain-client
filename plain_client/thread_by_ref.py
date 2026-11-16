@@ -6,12 +6,12 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import ThreadParts
+from .fragments import ThreadFields
 
 
 class ThreadByRef(BaseModel):
     thread_by_ref: Optional["ThreadByRefThreadByRef"] = Field(alias="threadByRef")
 
 
-ThreadByRefThreadByRef = ThreadParts
+ThreadByRefThreadByRef = ThreadFields
 ThreadByRef.model_rebuild()

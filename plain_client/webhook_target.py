@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import WebhookTargetParts
+from .fragments import WebhookTargetFields
 
 
 class WebhookTarget(BaseModel):
@@ -15,5 +15,5 @@ class WebhookTarget(BaseModel):
     )
 
 
-WebhookTargetWebhookTarget = WebhookTargetParts
+WebhookTargetWebhookTarget = WebhookTargetFields
 WebhookTarget.model_rebuild()

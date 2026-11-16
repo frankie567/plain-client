@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import ThreadFields
 
 
 class RemoveLabels(BaseModel):
@@ -14,9 +15,26 @@ class RemoveLabels(BaseModel):
 
 
 class RemoveLabelsRemoveLabels(BaseModel):
+    thread: Optional["RemoveLabelsRemoveLabelsThread"]
     error: Optional["RemoveLabelsRemoveLabelsError"]
 
 
-RemoveLabelsRemoveLabelsError = MutationErrorParts
+RemoveLabelsRemoveLabelsThread = ThreadFields
+
+
+class RemoveLabelsRemoveLabelsError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["RemoveLabelsRemoveLabelsErrorFields"]
+
+
+class RemoveLabelsRemoveLabelsErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 RemoveLabels.model_rebuild()
 RemoveLabelsRemoveLabels.model_rebuild()
+RemoveLabelsRemoveLabelsError.model_rebuild()

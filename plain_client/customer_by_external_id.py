@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import CustomerParts
+from .fragments import CustomerFields
 
 
 class CustomerByExternalId(BaseModel):
@@ -15,5 +15,5 @@ class CustomerByExternalId(BaseModel):
     )
 
 
-CustomerByExternalIdCustomerByExternalId = CustomerParts
+CustomerByExternalIdCustomerByExternalId = CustomerFields
 CustomerByExternalId.model_rebuild()

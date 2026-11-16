@@ -4,12 +4,12 @@
 from typing import Optional
 
 from .base_model import BaseModel
-from .fragments import TenantParts
+from .fragments import TenantFields
 
 
 class Tenant(BaseModel):
     tenant: Optional["TenantTenant"]
 
 
-TenantTenant = TenantParts
+TenantTenant = TenantFields
 Tenant.model_rebuild()

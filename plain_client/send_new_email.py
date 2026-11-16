@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import EmailParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import EmailFields
 
 
 class SendNewEmail(BaseModel):
@@ -18,7 +19,22 @@ class SendNewEmailSendNewEmail(BaseModel):
     error: Optional["SendNewEmailSendNewEmailError"]
 
 
-SendNewEmailSendNewEmailEmail = EmailParts
-SendNewEmailSendNewEmailError = MutationErrorParts
+SendNewEmailSendNewEmailEmail = EmailFields
+
+
+class SendNewEmailSendNewEmailError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["SendNewEmailSendNewEmailErrorFields"]
+
+
+class SendNewEmailSendNewEmailErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 SendNewEmail.model_rebuild()
 SendNewEmailSendNewEmail.model_rebuild()
+SendNewEmailSendNewEmailError.model_rebuild()

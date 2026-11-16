@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import CustomerParts
+from .fragments import CustomerFields
 
 
 class CustomerByEmail(BaseModel):
@@ -15,5 +15,5 @@ class CustomerByEmail(BaseModel):
     )
 
 
-CustomerByEmailCustomerByEmail = CustomerParts
+CustomerByEmailCustomerByEmail = CustomerFields
 CustomerByEmail.model_rebuild()

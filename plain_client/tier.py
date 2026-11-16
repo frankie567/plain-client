@@ -4,12 +4,12 @@
 from typing import Optional
 
 from .base_model import BaseModel
-from .fragments import TierParts
+from .fragments import TierFields
 
 
 class Tier(BaseModel):
     tier: Optional["TierTier"]
 
 
-TierTier = TierParts
+TierTier = TierFields
 Tier.model_rebuild()

@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, ThreadParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import ThreadFields
 
 
 class MarkThreadAsTodo(BaseModel):
@@ -20,7 +21,22 @@ class MarkThreadAsTodoMarkThreadAsTodo(BaseModel):
     error: Optional["MarkThreadAsTodoMarkThreadAsTodoError"]
 
 
-MarkThreadAsTodoMarkThreadAsTodoThread = ThreadParts
-MarkThreadAsTodoMarkThreadAsTodoError = MutationErrorParts
+MarkThreadAsTodoMarkThreadAsTodoThread = ThreadFields
+
+
+class MarkThreadAsTodoMarkThreadAsTodoError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["MarkThreadAsTodoMarkThreadAsTodoErrorFields"]
+
+
+class MarkThreadAsTodoMarkThreadAsTodoErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 MarkThreadAsTodo.model_rebuild()
 MarkThreadAsTodoMarkThreadAsTodo.model_rebuild()
+MarkThreadAsTodoMarkThreadAsTodoError.model_rebuild()

@@ -6,12 +6,12 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import UserParts
+from .fragments import UserFields
 
 
 class UserByEmail(BaseModel):
     user_by_email: Optional["UserByEmailUserByEmail"] = Field(alias="userByEmail")
 
 
-UserByEmailUserByEmail = UserParts
+UserByEmailUserByEmail = UserFields
 UserByEmail.model_rebuild()
