@@ -1,0 +1,20 @@
+.pre-commit-config.yaml
+  s_e286656b5eefdb::t_143a08913e7fa5 1-21,23-29
+  s_e286656b5eefdb::t_9927f92a683c48 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d599713bc0b0ecb9b987599306839282be3925e6",
+  "prompts": {},
+  "sessions": {
+    "s_e286656b5eefdb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e3e6-e9ac-75f0-848f-6f93c75dbfee",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "François Voron <me@fvoron.com>"
+    }
+  }
+}
