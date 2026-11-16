@@ -13,8 +13,5 @@ class UserByEmail(BaseModel):
     user_by_email: Optional["UserByEmailUserByEmail"] = Field(alias="userByEmail")
 
 
-class UserByEmailUserByEmail(UserParts):
-    pass
-
-
+UserByEmailUserByEmail = UserParts
 UserByEmail.model_rebuild()

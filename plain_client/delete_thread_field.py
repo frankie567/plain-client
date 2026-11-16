@@ -19,9 +19,6 @@ class DeleteThreadFieldDeleteThreadField(BaseModel):
     error: Optional["DeleteThreadFieldDeleteThreadFieldError"]
 
 
-class DeleteThreadFieldDeleteThreadFieldError(MutationErrorParts):
-    pass
-
-
+DeleteThreadFieldDeleteThreadFieldError = MutationErrorParts
 DeleteThreadField.model_rebuild()
 DeleteThreadFieldDeleteThreadField.model_rebuild()

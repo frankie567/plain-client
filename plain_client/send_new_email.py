@@ -18,13 +18,7 @@ class SendNewEmailSendNewEmail(BaseModel):
     error: Optional["SendNewEmailSendNewEmailError"]
 
 
-class SendNewEmailSendNewEmailEmail(EmailParts):
-    pass
-
-
-class SendNewEmailSendNewEmailError(MutationErrorParts):
-    pass
-
-
+SendNewEmailSendNewEmailEmail = EmailParts
+SendNewEmailSendNewEmailError = MutationErrorParts
 SendNewEmail.model_rebuild()
 SendNewEmailSendNewEmail.model_rebuild()

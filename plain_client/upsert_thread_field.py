@@ -17,20 +17,14 @@ class UpsertThreadField(BaseModel):
 
 
 class UpsertThreadFieldUpsertThreadField(BaseModel):
-    result: Optional[UpsertResult]
+    result: UpsertResult | None
     thread_field: Optional["UpsertThreadFieldUpsertThreadFieldThreadField"] = Field(
         alias="threadField"
     )
     error: Optional["UpsertThreadFieldUpsertThreadFieldError"]
 
 
-class UpsertThreadFieldUpsertThreadFieldThreadField(ThreadFieldParts):
-    pass
-
-
-class UpsertThreadFieldUpsertThreadFieldError(MutationErrorParts):
-    pass
-
-
+UpsertThreadFieldUpsertThreadFieldThreadField = ThreadFieldParts
+UpsertThreadFieldUpsertThreadFieldError = MutationErrorParts
 UpsertThreadField.model_rebuild()
 UpsertThreadFieldUpsertThreadField.model_rebuild()

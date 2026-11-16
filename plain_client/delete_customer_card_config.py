@@ -19,9 +19,6 @@ class DeleteCustomerCardConfigDeleteCustomerCardConfig(BaseModel):
     error: Optional["DeleteCustomerCardConfigDeleteCustomerCardConfigError"]
 
 
-class DeleteCustomerCardConfigDeleteCustomerCardConfigError(MutationErrorParts):
-    pass
-
-
+DeleteCustomerCardConfigDeleteCustomerCardConfigError = MutationErrorParts
 DeleteCustomerCardConfig.model_rebuild()
 DeleteCustomerCardConfigDeleteCustomerCardConfig.model_rebuild()

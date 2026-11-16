@@ -1,92 +1,3 @@
-[tool.ruff]
-target-version = "py39"
-
-[tool.mypy]
-
-[[tool.mypy.overrides]]
-module = "plain_client.fragments"
-disable_error_code = ["no-redef"]  # Circumvent an ariadne-codegen generation bug
-
-[tool.pytest.ini_options]
-addopts = "--cov=plain_client/ --cov-report=term-missing"
-asyncio_default_fixture_loop_scope = "function"
-asyncio_mode = "strict"
-
-[tool.hatch]
-
-[tool.hatch.metadata]
-allow-direct-references = true
-
-[tool.hatch.version]
-source = "regex_commit"
-commit_extra_args = ["-e"]
-path = "plain_client/__version__.py"
-
-[tool.hatch.envs.default]
-python = "3.9"
-installer = "uv"
-dependencies = [
-    "ariadne-codegen",
-    "mypy",
-    "ruff",
-    "mkdocs-material",
-    "mkdocstrings[python]",
-]
-
-[tool.hatch.envs.default.scripts]
-download-schema = "curl https://core-api.uk.plain.com/graphql/v1/schema.graphql -o schema.graphql"
-download-queries = "./download-queries.sh"
-generate = [
-    "download-schema",
-    "download-queries",
-    "generate-local"
-]
-generate-local = [
-    "ariadne-codegen",
-    "lint"
-]
-lint = [
-  "ruff format .",
-  "ruff check --fix .",
-  "mypy plain_client/",
-]
-lint-check = [
-  "ruff format --check .",
-  "ruff check .",
-  "mypy plain_client/",
-]
-docs-serve = "mkdocs serve"
-docs-build = "mkdocs build"
-
-[tool.hatch.envs.test]
-python = "3.9"
-installer = "uv"
-dependencies = [
-    "pytest",
-    "pytest-cov",
-    "pytest-asyncio",
-]
-
-[tool.hatch.envs.test.scripts]
-test = "pytest"
-test-cov-xml = "pytest --cov-report=xml"
-
-[build-system]
-requires = ["hatchling", "hatch-regex-commit"]
-build-backend = "hatchling.build"
-
-[tool.ariadne-codegen]
-schema_path = "schema.graphql"
-queries_path = "graphql/"
-target_package_name = "plain_client"
-client_name = "Plain"
-include_all_inputs = false
-include_all_enums = false
-enable_custom_operations = false
-plugins = ["ariadne_codegen.contrib.shorter_results.ShorterResultsPlugin"]
-base_client_name = "AsyncBaseClient"
-base_client_file_path = "/Users/fvoron/Development/plain-client/generator/async_base_client.py"
-
 [project]
 name = "plain-client"
 authors = [
@@ -97,20 +8,81 @@ readme = "README.md"
 dynamic = ["version"]
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "License :: OSI Approved :: MIT License",
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
-    "graphql-core",
-    "httpx",
+    "httpx2>=2.13.0,<3",
     "pydantic>=2.0.0,<3.0.0",
 ]
 
 [project.urls]
 Documentation = "https://frankie567.github.io/plain-client/"
 Source = "https://github.com/frankie567/plain-client"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "plain_client/__version__.py"
+
+[dependency-groups]
+dev = [
+    "ariadne-codegen",
+    "ty",
+    "ruff",
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio",
+    "hatchling",
+    "keepachangelog>=2.0.0",
+    "zensical>=0.0.63",
+    "mkdocstrings-python>=2.0.8",
+    "pre-commit",
+]
+
+[tool.ruff]
+target-version = "py311"
+
+[tool.ruff.lint]
+extend-select = ["I", "TRY", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=plain_client/ --cov-report=term-missing"
+asyncio_default_fixture_loop_scope = "function"
+asyncio_mode = "strict"
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.ariadne-codegen]
+schema_path = "schema.graphql"
+queries_path = "graphql/"
+target_package_name = "plain_client"
+client_name = "Plain"
+include_all_inputs = false
+include_all_enums = false
+enable_custom_operations = false
+plugins = [
+    "ariadne_codegen.contrib.shorter_results.ShorterResultsPlugin",
+]
+files_to_include = ["generator/exceptions.py"]
+base_client_name = "AsyncBaseClient"
+base_client_file_path = "generator/async_base_client.py"
+
+[tool.ruff.lint.per-file-ignores]
+# Preserve generated enum string behavior and upstream exception messages.
+"plain_client/*.py" = ["UP042", "TRY003"]
+"generator/*.py" = ["UP042", "TRY003"]
+
+[[tool.ty.overrides]]
+# Codegen narrows Pydantic discriminator fields on generated subclasses.
+include = ["plain_client/**"]
+[tool.ty.overrides.rules]
+incompatible-mutable-override = "ignore"

@@ -11,8 +11,5 @@ class Tenant(BaseModel):
     tenant: Optional["TenantTenant"]
 
 
-class TenantTenant(TenantParts):
-    pass
-
-
+TenantTenant = TenantParts
 Tenant.model_rebuild()

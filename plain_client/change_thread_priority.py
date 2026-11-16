@@ -20,13 +20,7 @@ class ChangeThreadPriorityChangeThreadPriority(BaseModel):
     error: Optional["ChangeThreadPriorityChangeThreadPriorityError"]
 
 
-class ChangeThreadPriorityChangeThreadPriorityThread(ThreadParts):
-    pass
-
-
-class ChangeThreadPriorityChangeThreadPriorityError(MutationErrorParts):
-    pass
-
-
+ChangeThreadPriorityChangeThreadPriorityThread = ThreadParts
+ChangeThreadPriorityChangeThreadPriorityError = MutationErrorParts
 ChangeThreadPriority.model_rebuild()
 ChangeThreadPriorityChangeThreadPriority.model_rebuild()

@@ -22,15 +22,9 @@ class CreateCustomerCardConfigCreateCustomerCardConfig(BaseModel):
     error: Optional["CreateCustomerCardConfigCreateCustomerCardConfigError"]
 
 
-class CreateCustomerCardConfigCreateCustomerCardConfigCustomerCardConfig(
+CreateCustomerCardConfigCreateCustomerCardConfigCustomerCardConfig = (
     CustomerCardConfigParts
-):
-    pass
-
-
-class CreateCustomerCardConfigCreateCustomerCardConfigError(MutationErrorParts):
-    pass
-
-
+)
+CreateCustomerCardConfigCreateCustomerCardConfigError = MutationErrorParts
 CreateCustomerCardConfig.model_rebuild()
 CreateCustomerCardConfigCreateCustomerCardConfig.model_rebuild()

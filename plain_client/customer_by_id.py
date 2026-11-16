@@ -11,8 +11,5 @@ class CustomerById(BaseModel):
     customer: Optional["CustomerByIdCustomer"]
 
 
-class CustomerByIdCustomer(CustomerParts):
-    pass
-
-
+CustomerByIdCustomer = CustomerParts
 CustomerById.model_rebuild()

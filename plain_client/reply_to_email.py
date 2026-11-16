@@ -18,13 +18,7 @@ class ReplyToEmailReplyToEmail(BaseModel):
     error: Optional["ReplyToEmailReplyToEmailError"]
 
 
-class ReplyToEmailReplyToEmailEmail(EmailParts):
-    pass
-
-
-class ReplyToEmailReplyToEmailError(MutationErrorParts):
-    pass
-
-
+ReplyToEmailReplyToEmailEmail = EmailParts
+ReplyToEmailReplyToEmailError = MutationErrorParts
 ReplyToEmail.model_rebuild()
 ReplyToEmailReplyToEmail.model_rebuild()

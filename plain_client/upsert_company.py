@@ -18,13 +18,7 @@ class UpsertCompanyUpsertCompany(BaseModel):
     error: Optional["UpsertCompanyUpsertCompanyError"]
 
 
-class UpsertCompanyUpsertCompanyCompany(CompanyParts):
-    pass
-
-
-class UpsertCompanyUpsertCompanyError(MutationErrorParts):
-    pass
-
-
+UpsertCompanyUpsertCompanyCompany = CompanyParts
+UpsertCompanyUpsertCompanyError = MutationErrorParts
 UpsertCompany.model_rebuild()
 UpsertCompanyUpsertCompany.model_rebuild()

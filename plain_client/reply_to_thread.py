@@ -17,9 +17,6 @@ class ReplyToThreadReplyToThread(BaseModel):
     error: Optional["ReplyToThreadReplyToThreadError"]
 
 
-class ReplyToThreadReplyToThreadError(MutationErrorParts):
-    pass
-
-
+ReplyToThreadReplyToThreadError = MutationErrorParts
 ReplyToThread.model_rebuild()
 ReplyToThreadReplyToThread.model_rebuild()

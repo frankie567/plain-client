@@ -11,8 +11,5 @@ class Thread(BaseModel):
     thread: Optional["ThreadThread"]
 
 
-class ThreadThread(ThreadParts):
-    pass
-
-
+ThreadThread = ThreadParts
 Thread.model_rebuild()

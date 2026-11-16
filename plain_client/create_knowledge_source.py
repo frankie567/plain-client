@@ -23,7 +23,7 @@ class CreateKnowledgeSource(BaseModel):
 
 
 class CreateKnowledgeSourceCreateKnowledgeSource(BaseModel):
-    knowledge_source: Optional[
+    knowledge_source: (
         Annotated[
             Union[
                 "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemap",
@@ -31,7 +31,8 @@ class CreateKnowledgeSourceCreateKnowledgeSource(BaseModel):
             ],
             Field(discriminator="typename__"),
         ]
-    ] = Field(alias="knowledgeSource")
+        | None
+    ) = Field(alias="knowledgeSource")
     error: Optional["CreateKnowledgeSourceCreateKnowledgeSourceError"]
 
 
@@ -41,7 +42,7 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSi
     typename__: Literal["KnowledgeSourceSitemap"] = Field(alias="__typename")
     id: str
     url: str
-    type: KnowledgeSourceType
+    type_: KnowledgeSourceType = Field(alias="type")
     status: Union[
         "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusPending",
         "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexed",
@@ -74,10 +75,7 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSi
     )
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusPendingStartedAt(
-    DateTimeParts
-):
-    pass
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusPendingStartedAt = DateTimeParts
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexed(
@@ -89,10 +87,7 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSi
     )
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexedIndexedAt(
-    DateTimeParts
-):
-    pass
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusIndexedIndexedAt = DateTimeParts
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusFailed(
@@ -105,16 +100,8 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSi
     reason: str
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusFailedFailedAt(
-    DateTimeParts
-):
-    pass
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedAt(
-    DateTimeParts
-):
-    pass
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapStatusIndexingStatusFailedFailedAt = DateTimeParts
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedAt = DateTimeParts
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapCreatedByUserActor(
@@ -135,10 +122,7 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSi
     typename__: Literal["MachineUserActor"] = Field(alias="__typename")
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedAt(
-    DateTimeParts
-):
-    pass
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedAt = DateTimeParts
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemapUpdatedByUserActor(
@@ -165,7 +149,7 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUr
     typename__: Literal["KnowledgeSourceUrl"] = Field(alias="__typename")
     id: str
     url: str
-    type: KnowledgeSourceType
+    type_: KnowledgeSourceType = Field(alias="type")
     status: Union[
         "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusPending",
         "CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexed",
@@ -198,10 +182,7 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUr
     )
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusPendingStartedAt(
-    DateTimeParts
-):
-    pass
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusPendingStartedAt = DateTimeParts
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexed(
@@ -213,10 +194,7 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUr
     )
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexedIndexedAt(
-    DateTimeParts
-):
-    pass
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusIndexedIndexedAt = DateTimeParts
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusFailed(
@@ -229,16 +207,10 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUr
     reason: str
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusFailedFailedAt(
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlStatusIndexingStatusFailedFailedAt = DateTimeParts
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedAt = (
     DateTimeParts
-):
-    pass
-
-
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedAt(
-    DateTimeParts
-):
-    pass
+)
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlCreatedByUserActor(
@@ -259,10 +231,9 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUr
     typename__: Literal["MachineUserActor"] = Field(alias="__typename")
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedAt(
+CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedAt = (
     DateTimeParts
-):
-    pass
+)
 
 
 class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUrlUpdatedByUserActor(
@@ -283,10 +254,7 @@ class CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceUr
     typename__: Literal["MachineUserActor"] = Field(alias="__typename")
 
 
-class CreateKnowledgeSourceCreateKnowledgeSourceError(MutationErrorParts):
-    pass
-
-
+CreateKnowledgeSourceCreateKnowledgeSourceError = MutationErrorParts
 CreateKnowledgeSource.model_rebuild()
 CreateKnowledgeSourceCreateKnowledgeSource.model_rebuild()
 CreateKnowledgeSourceCreateKnowledgeSourceKnowledgeSourceKnowledgeSourceSitemap.model_rebuild()

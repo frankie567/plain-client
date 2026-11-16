@@ -1,0 +1,32 @@
+version: 2
+updates:
+    - package-ecosystem: uv
+      directory: "/"
+      schedule:
+          interval: weekly
+      cooldown:
+          default-days: 7
+      groups:
+          uv-dev:
+              patterns:
+                  - ty
+                  - ruff
+                  - pytest
+                  - pytest-asyncio
+                  - ariadne-codegen
+                  - pytest-cov
+                  - hatchling
+                  - keepachangelog
+                  - pre-commit
+                  - zensical
+                  - mkdocstrings-python
+    - package-ecosystem: github-actions
+      directory: "/"
+      schedule:
+          interval: weekly
+      cooldown:
+          default-days: 7
+      groups:
+          github-actions:
+              patterns:
+                  - "*"

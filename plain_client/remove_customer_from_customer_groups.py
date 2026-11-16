@@ -21,11 +21,8 @@ class RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroups(BaseModel
     ]
 
 
-class RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsError(
+RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsError = (
     MutationErrorParts
-):
-    pass
-
-
+)
 RemoveCustomerFromCustomerGroups.model_rebuild()
 RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroups.model_rebuild()

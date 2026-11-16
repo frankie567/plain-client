@@ -15,18 +15,12 @@ class UpsertCustomer(BaseModel):
 
 
 class UpsertCustomerUpsertCustomer(BaseModel):
-    result: Optional[UpsertResult]
+    result: UpsertResult | None
     customer: Optional["UpsertCustomerUpsertCustomerCustomer"]
     error: Optional["UpsertCustomerUpsertCustomerError"]
 
 
-class UpsertCustomerUpsertCustomerCustomer(CustomerParts):
-    pass
-
-
-class UpsertCustomerUpsertCustomerError(MutationErrorParts):
-    pass
-
-
+UpsertCustomerUpsertCustomerCustomer = CustomerParts
+UpsertCustomerUpsertCustomerError = MutationErrorParts
 UpsertCustomer.model_rebuild()
 UpsertCustomerUpsertCustomer.model_rebuild()

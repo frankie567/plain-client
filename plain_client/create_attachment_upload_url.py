@@ -22,15 +22,9 @@ class CreateAttachmentUploadUrlCreateAttachmentUploadUrl(BaseModel):
     error: Optional["CreateAttachmentUploadUrlCreateAttachmentUploadUrlError"]
 
 
-class CreateAttachmentUploadUrlCreateAttachmentUploadUrlAttachmentUploadUrl(
+CreateAttachmentUploadUrlCreateAttachmentUploadUrlAttachmentUploadUrl = (
     AttachmentUploadUrlParts
-):
-    pass
-
-
-class CreateAttachmentUploadUrlCreateAttachmentUploadUrlError(MutationErrorParts):
-    pass
-
-
+)
+CreateAttachmentUploadUrlCreateAttachmentUploadUrlError = MutationErrorParts
 CreateAttachmentUploadUrl.model_rebuild()
 CreateAttachmentUploadUrlCreateAttachmentUploadUrl.model_rebuild()

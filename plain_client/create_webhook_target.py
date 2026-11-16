@@ -22,13 +22,7 @@ class CreateWebhookTargetCreateWebhookTarget(BaseModel):
     error: Optional["CreateWebhookTargetCreateWebhookTargetError"]
 
 
-class CreateWebhookTargetCreateWebhookTargetWebhookTarget(WebhookTargetParts):
-    pass
-
-
-class CreateWebhookTargetCreateWebhookTargetError(MutationErrorParts):
-    pass
-
-
+CreateWebhookTargetCreateWebhookTargetWebhookTarget = WebhookTargetParts
+CreateWebhookTargetCreateWebhookTargetError = MutationErrorParts
 CreateWebhookTarget.model_rebuild()
 CreateWebhookTargetCreateWebhookTarget.model_rebuild()

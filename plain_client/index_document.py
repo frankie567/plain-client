@@ -22,13 +22,7 @@ class IndexDocumentCreateIndexedDocument(BaseModel):
     error: Optional["IndexDocumentCreateIndexedDocumentError"]
 
 
-class IndexDocumentCreateIndexedDocumentIndexedDocument(IndexedDocumentParts):
-    pass
-
-
-class IndexDocumentCreateIndexedDocumentError(MutationErrorParts):
-    pass
-
-
+IndexDocumentCreateIndexedDocumentIndexedDocument = IndexedDocumentParts
+IndexDocumentCreateIndexedDocumentError = MutationErrorParts
 IndexDocument.model_rebuild()
 IndexDocumentCreateIndexedDocument.model_rebuild()

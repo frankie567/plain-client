@@ -22,13 +22,7 @@ class UpdateTenantTierUpdateTenantTier(BaseModel):
     error: Optional["UpdateTenantTierUpdateTenantTierError"]
 
 
-class UpdateTenantTierUpdateTenantTierTenantTierMembership(TenantTierMembershipParts):
-    pass
-
-
-class UpdateTenantTierUpdateTenantTierError(MutationErrorParts):
-    pass
-
-
+UpdateTenantTierUpdateTenantTierTenantTierMembership = TenantTierMembershipParts
+UpdateTenantTierUpdateTenantTierError = MutationErrorParts
 UpdateTenantTier.model_rebuild()
 UpdateTenantTierUpdateTenantTier.model_rebuild()

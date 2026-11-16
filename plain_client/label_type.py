@@ -13,8 +13,5 @@ class LabelType(BaseModel):
     label_type: Optional["LabelTypeLabelType"] = Field(alias="labelType")
 
 
-class LabelTypeLabelType(LabelTypeParts):
-    pass
-
-
+LabelTypeLabelType = LabelTypeParts
 LabelType.model_rebuild()

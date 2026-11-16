@@ -22,13 +22,7 @@ class CreateThreadEventCreateThreadEvent(BaseModel):
     error: Optional["CreateThreadEventCreateThreadEventError"]
 
 
-class CreateThreadEventCreateThreadEventThreadEvent(ThreadEventParts):
-    pass
-
-
-class CreateThreadEventCreateThreadEventError(MutationErrorParts):
-    pass
-
-
+CreateThreadEventCreateThreadEventThreadEvent = ThreadEventParts
+CreateThreadEventCreateThreadEventError = MutationErrorParts
 CreateThreadEvent.model_rebuild()
 CreateThreadEventCreateThreadEvent.model_rebuild()

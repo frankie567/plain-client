@@ -18,13 +18,7 @@ class AssignThreadAssignThread(BaseModel):
     error: Optional["AssignThreadAssignThreadError"]
 
 
-class AssignThreadAssignThreadThread(ThreadParts):
-    pass
-
-
-class AssignThreadAssignThreadError(MutationErrorParts):
-    pass
-
-
+AssignThreadAssignThreadThread = ThreadParts
+AssignThreadAssignThreadError = MutationErrorParts
 AssignThread.model_rebuild()
 AssignThreadAssignThread.model_rebuild()

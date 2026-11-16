@@ -20,13 +20,7 @@ class MarkThreadAsDoneMarkThreadAsDone(BaseModel):
     error: Optional["MarkThreadAsDoneMarkThreadAsDoneError"]
 
 
-class MarkThreadAsDoneMarkThreadAsDoneThread(ThreadParts):
-    pass
-
-
-class MarkThreadAsDoneMarkThreadAsDoneError(MutationErrorParts):
-    pass
-
-
+MarkThreadAsDoneMarkThreadAsDoneThread = ThreadParts
+MarkThreadAsDoneMarkThreadAsDoneError = MutationErrorParts
 MarkThreadAsDone.model_rebuild()
 MarkThreadAsDoneMarkThreadAsDone.model_rebuild()

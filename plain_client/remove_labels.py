@@ -17,9 +17,6 @@ class RemoveLabelsRemoveLabels(BaseModel):
     error: Optional["RemoveLabelsRemoveLabelsError"]
 
 
-class RemoveLabelsRemoveLabelsError(MutationErrorParts):
-    pass
-
-
+RemoveLabelsRemoveLabelsError = MutationErrorParts
 RemoveLabels.model_rebuild()
 RemoveLabelsRemoveLabels.model_rebuild()

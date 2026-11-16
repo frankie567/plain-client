@@ -18,13 +18,7 @@ class UpsertTenantUpsertTenant(BaseModel):
     error: Optional["UpsertTenantUpsertTenantError"]
 
 
-class UpsertTenantUpsertTenantTenant(TenantParts):
-    pass
-
-
-class UpsertTenantUpsertTenantError(MutationErrorParts):
-    pass
-
-
+UpsertTenantUpsertTenantTenant = TenantParts
+UpsertTenantUpsertTenantError = MutationErrorParts
 UpsertTenant.model_rebuild()
 UpsertTenantUpsertTenant.model_rebuild()

@@ -19,9 +19,6 @@ class RemoveCustomerFromTenantsRemoveCustomerFromTenants(BaseModel):
     error: Optional["RemoveCustomerFromTenantsRemoveCustomerFromTenantsError"]
 
 
-class RemoveCustomerFromTenantsRemoveCustomerFromTenantsError(MutationErrorParts):
-    pass
-
-
+RemoveCustomerFromTenantsRemoveCustomerFromTenantsError = MutationErrorParts
 RemoveCustomerFromTenants.model_rebuild()
 RemoveCustomerFromTenantsRemoveCustomerFromTenants.model_rebuild()

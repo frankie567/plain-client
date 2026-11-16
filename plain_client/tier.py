@@ -11,8 +11,5 @@ class Tier(BaseModel):
     tier: Optional["TierTier"]
 
 
-class TierTier(TierParts):
-    pass
-
-
+TierTier = TierParts
 Tier.model_rebuild()
