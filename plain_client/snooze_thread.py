@@ -18,13 +18,7 @@ class SnoozeThreadSnoozeThread(BaseModel):
     error: Optional["SnoozeThreadSnoozeThreadError"]
 
 
-class SnoozeThreadSnoozeThreadThread(ThreadParts):
-    pass
-
-
-class SnoozeThreadSnoozeThreadError(MutationErrorParts):
-    pass
-
-
+SnoozeThreadSnoozeThreadThread = ThreadParts
+SnoozeThreadSnoozeThreadError = MutationErrorParts
 SnoozeThread.model_rebuild()
 SnoozeThreadSnoozeThread.model_rebuild()

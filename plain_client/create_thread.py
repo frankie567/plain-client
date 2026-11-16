@@ -18,13 +18,7 @@ class CreateThreadCreateThread(BaseModel):
     error: Optional["CreateThreadCreateThreadError"]
 
 
-class CreateThreadCreateThreadThread(ThreadParts):
-    pass
-
-
-class CreateThreadCreateThreadError(MutationErrorParts):
-    pass
-
-
+CreateThreadCreateThreadThread = ThreadParts
+CreateThreadCreateThreadError = MutationErrorParts
 CreateThread.model_rebuild()
 CreateThreadCreateThread.model_rebuild()

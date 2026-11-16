@@ -20,13 +20,7 @@ class CreateLabelTypeCreateLabelType(BaseModel):
     error: Optional["CreateLabelTypeCreateLabelTypeError"]
 
 
-class CreateLabelTypeCreateLabelTypeLabelType(LabelTypeParts):
-    pass
-
-
-class CreateLabelTypeCreateLabelTypeError(MutationErrorParts):
-    pass
-
-
+CreateLabelTypeCreateLabelTypeLabelType = LabelTypeParts
+CreateLabelTypeCreateLabelTypeError = MutationErrorParts
 CreateLabelType.model_rebuild()
 CreateLabelTypeCreateLabelType.model_rebuild()

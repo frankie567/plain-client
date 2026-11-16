@@ -18,13 +18,7 @@ class UnassignThreadUnassignThread(BaseModel):
     error: Optional["UnassignThreadUnassignThreadError"]
 
 
-class UnassignThreadUnassignThreadThread(ThreadParts):
-    pass
-
-
-class UnassignThreadUnassignThreadError(MutationErrorParts):
-    pass
-
-
+UnassignThreadUnassignThreadThread = ThreadParts
+UnassignThreadUnassignThreadError = MutationErrorParts
 UnassignThread.model_rebuild()
 UnassignThreadUnassignThread.model_rebuild()

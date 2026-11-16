@@ -13,8 +13,5 @@ class UserById(BaseModel):
     user_by_id: Optional["UserByIdUserById"] = Field(alias="userById")
 
 
-class UserByIdUserById(UserParts):
-    pass
-
-
+UserByIdUserById = UserParts
 UserById.model_rebuild()

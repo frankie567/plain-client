@@ -13,6 +13,9 @@ class ThreadFieldSchemaType(str, Enum):
     STRING = "STRING"
     BOOL = "BOOL"
     ENUM = "ENUM"
+    NUMBER = "NUMBER"
+    CURRENCY = "CURRENCY"
+    DATE = "DATE"
 
 
 class SortDirection(str, Enum):
@@ -85,6 +88,8 @@ class SentimentType(str, Enum):
 class ServiceLevelAgreementType(str, Enum):
     FIRST_RESPONSE_TIME = "FIRST_RESPONSE_TIME"
     NEXT_RESPONSE_TIME = "NEXT_RESPONSE_TIME"
+    FIRST_RESOLUTION_TIME = "FIRST_RESOLUTION_TIME"
+    TOTAL_RESOLUTION_TIME = "TOTAL_RESOLUTION_TIME"
 
 
 class ThreadsSortField(str, Enum):
@@ -93,6 +98,7 @@ class ThreadsSortField(str, Enum):
     CLOSEST_TO_BREACH_SLA = "CLOSEST_TO_BREACH_SLA"
     LAST_INBOUND_MESSAGE_AT = "LAST_INBOUND_MESSAGE_AT"
     PRIORITY = "PRIORITY"
+    THREAD_FIELD = "THREAD_FIELD"
 
 
 class MutationErrorType(str, Enum):
@@ -144,6 +150,7 @@ class StatusDetailType(str, Enum):
     THREAD_DISCUSSION_RESOLVED = "THREAD_DISCUSSION_RESOLVED"
     WAITING_FOR_CUSTOMER = "WAITING_FOR_CUSTOMER"
     WAITING_FOR_DURATION = "WAITING_FOR_DURATION"
+    WAITING_INDEFINITELY = "WAITING_INDEFINITELY"
     IGNORED = "IGNORED"
     DONE_MANUALLY_SET = "DONE_MANUALLY_SET"
     DONE_AUTOMATICALLY_SET = "DONE_AUTOMATICALLY_SET"
@@ -161,12 +168,24 @@ class TodoStatusDetail(str, Enum):
 class SnoozeStatusDetail(str, Enum):
     WAITING_FOR_CUSTOMER = "WAITING_FOR_CUSTOMER"
     WAITING_FOR_DURATION = "WAITING_FOR_DURATION"
+    WAITING_INDEFINITELY = "WAITING_INDEFINITELY"
+
+
+class AgentMode(str, Enum):
+    LIVE = "LIVE"
+    SHADOW = "SHADOW"
 
 
 class ThreadStatus(str, Enum):
     TODO = "TODO"
     SNOOZED = "SNOOZED"
     DONE = "DONE"
+
+
+class AgentStatus(str, Enum):
+    IN_PROGRESS = "IN_PROGRESS"
+    HANDED_OFF = "HANDED_OFF"
+    HANDLED = "HANDLED"
 
 
 class MessageSource(str, Enum):
@@ -176,6 +195,7 @@ class MessageSource(str, Enum):
     SLACK = "SLACK"
     MS_TEAMS = "MS_TEAMS"
     DISCORD = "DISCORD"
+    INTERNAL = "INTERNAL"
 
 
 class ThreadChannel(str, Enum):
@@ -186,6 +206,7 @@ class ThreadChannel(str, Enum):
     MS_TEAMS = "MS_TEAMS"
     DISCORD = "DISCORD"
     IMPORT = "IMPORT"
+    INTERNAL = "INTERNAL"
 
 
 class ServiceLevelAgreementStatus(str, Enum):

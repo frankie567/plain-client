@@ -22,15 +22,9 @@ class UpdateCustomerCardConfigUpdateCustomerCardConfig(BaseModel):
     error: Optional["UpdateCustomerCardConfigUpdateCustomerCardConfigError"]
 
 
-class UpdateCustomerCardConfigUpdateCustomerCardConfigCustomerCardConfig(
+UpdateCustomerCardConfigUpdateCustomerCardConfigCustomerCardConfig = (
     CustomerCardConfigParts
-):
-    pass
-
-
-class UpdateCustomerCardConfigUpdateCustomerCardConfigError(MutationErrorParts):
-    pass
-
-
+)
+UpdateCustomerCardConfigUpdateCustomerCardConfigError = MutationErrorParts
 UpdateCustomerCardConfig.model_rebuild()
 UpdateCustomerCardConfigUpdateCustomerCardConfig.model_rebuild()

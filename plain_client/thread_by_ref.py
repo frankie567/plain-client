@@ -13,8 +13,5 @@ class ThreadByRef(BaseModel):
     thread_by_ref: Optional["ThreadByRefThreadByRef"] = Field(alias="threadByRef")
 
 
-class ThreadByRefThreadByRef(ThreadParts):
-    pass
-
-
+ThreadByRefThreadByRef = ThreadParts
 ThreadByRef.model_rebuild()

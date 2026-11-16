@@ -1,0 +1,59 @@
+[project]
+site_name = "plain-client"
+site_description = "A Python client for Plain GraphQL API"
+site_url = "https://frankie567.github.io/plain-client/"
+repo_url = "https://github.com/frankie567/plain-client"
+repo_name = "frankie567/plain-client"
+watch = ["plain_client"]
+nav = [
+    { "About" = "index.md" },
+    { "Reference" = [
+        { "plain_client" = "reference/plain_client.md" },
+    ] },
+]
+
+[project.theme]
+features = ["navigation.path", "content.code.copy"]
+
+[project.theme.icon]
+logo = "material/library"
+repo = "fontawesome/brands/github"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+primary = "black"
+accent = "black"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "black"
+accent = "black"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "black"
+accent = "black"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.markdown_extensions]
+toc.permalink = true
+pymdownx.highlight.anchor_linenums = true
+pymdownx.tasklist.custom_checkbox = true
+pymdownx.inlinehilite = {}
+pymdownx.snippets = {}
+pymdownx.superfences = {}
+admonition = {}
+
+[project.plugins.mkdocstrings.handlers.python]
+paths = ["."]
+inventories = ["https://docs.python.org/3.11/objects.inv"]
+
+[project.plugins.mkdocstrings.handlers.python.options]
+docstring_style = "google"

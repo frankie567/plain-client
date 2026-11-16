@@ -17,9 +17,6 @@ class DeleteCustomerDeleteCustomer(BaseModel):
     error: Optional["DeleteCustomerDeleteCustomerError"]
 
 
-class DeleteCustomerDeleteCustomerError(MutationErrorParts):
-    pass
-
-
+DeleteCustomerDeleteCustomerError = MutationErrorParts
 DeleteCustomer.model_rebuild()
 DeleteCustomerDeleteCustomer.model_rebuild()

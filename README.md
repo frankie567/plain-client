@@ -23,6 +23,9 @@
 
 ## Quickstart
 
+Requires Python 3.11 or newer. The client uses HTTPX2; pass an
+`httpx2.AsyncClient` when supplying a custom HTTP client.
+
 ```bash
 pip install plain-client
 ```
@@ -40,55 +43,66 @@ async def get_thread():
 
 ### Setup environment
 
-We use [Hatch](https://hatch.pypa.io/latest/install/) to manage the development environment and production build. Ensure it's installed on your system.
+Install [uv](https://docs.astral.sh/uv/) and [just](https://just.systems/). Use Python 3.11 or newer.
+
+Install the development dependencies and pre-commit hooks with `just install`.
 
 ### Generate the client
 
-You can trigger a generation of the client with:
-
-```bash
-hatch run generate
-```
-
-It'll automatically download latest schema, fragments, mutations and queries provided by Plain.
+Run `just generate` to download the current Plain schema and the fragments,
+mutations, and queries from Plain's TypeScript SDK and regenerate the client.
+Use `just generate-local` to regenerate from the existing downloads.
+Generation requires Git and curl.
 
 ### Run unit tests
 
-You can run all the tests with:
-
 ```bash
-hatch run test:test
+just test
 ```
 
-### Publish a new version
+### Format the code
 
-You can bump the version, create a commit and associated tag with one command:
-
-```bash
-hatch version patch
-```
+Run Ruff to format and lint the code, then check types with ty.
 
 ```bash
-hatch version minor
+just lint
 ```
 
-```bash
-hatch version major
-```
+Use `just lint-check` to run the same checks without editing files.
 
-Your default Git text editor will open so you can add information about the release.
+### Publishing a release
 
-When you push the tag on GitHub, the workflow will automatically publish it on PyPi and a GitHub release will be created as draft.
+1. Commit the release notes under `Unreleased` in [CHANGELOG.md](CHANGELOG.md).
+   From a clean release branch with Git signing configured, run `just version patch`,
+   `just version minor`, or `just version major`. The recipe updates the version,
+   changelog, and lockfile, then opens your Git editor for the signed commit.
+2. Preview the release notes with `just release-notes <version>`, then push the
+   branch and merge the release PR into `main`.
+3. With the GitHub CLI authenticated, run `just release <PR number>`. This signs
+   and pushes a tag pointing to the merged PR commit. After the checks pass,
+   CI publishes the distributions to PyPI with attestations and publishes the
+   GitHub release with build provenance.
+
+The PyPI Trusted Publisher must match the `build.yml` workflow and the GitHub
+`release` environment.
 
 ## Serve the documentation
 
-You can serve the Mkdocs documentation with:
+The documentation uses Zensical. Start the local preview with the following command.
 
 ```bash
-hatch run docs-serve
+just docs-serve
 ```
 
-It'll automatically watch for changes in your code.
+Open http://localhost:8000. The preview reloads when documentation changes.
+Edit pages in `docs/` and configure the site in `zensical.toml`.
+
+Build the static site into `site/` with the following command.
+
+```bash
+just docs-build
+```
+
 
 ## License
 

@@ -15,8 +15,5 @@ class WebhookTarget(BaseModel):
     )
 
 
-class WebhookTargetWebhookTarget(WebhookTargetParts):
-    pass
-
-
+WebhookTargetWebhookTarget = WebhookTargetParts
 WebhookTarget.model_rebuild()

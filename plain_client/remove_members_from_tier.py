@@ -19,9 +19,6 @@ class RemoveMembersFromTierRemoveMembersFromTier(BaseModel):
     error: Optional["RemoveMembersFromTierRemoveMembersFromTierError"]
 
 
-class RemoveMembersFromTierRemoveMembersFromTierError(MutationErrorParts):
-    pass
-
-
+RemoveMembersFromTierRemoveMembersFromTierError = MutationErrorParts
 RemoveMembersFromTier.model_rebuild()
 RemoveMembersFromTierRemoveMembersFromTier.model_rebuild()

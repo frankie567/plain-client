@@ -20,13 +20,7 @@ class MarkThreadAsTodoMarkThreadAsTodo(BaseModel):
     error: Optional["MarkThreadAsTodoMarkThreadAsTodoError"]
 
 
-class MarkThreadAsTodoMarkThreadAsTodoThread(ThreadParts):
-    pass
-
-
-class MarkThreadAsTodoMarkThreadAsTodoError(MutationErrorParts):
-    pass
-
-
+MarkThreadAsTodoMarkThreadAsTodoThread = ThreadParts
+MarkThreadAsTodoMarkThreadAsTodoError = MutationErrorParts
 MarkThreadAsTodo.model_rebuild()
 MarkThreadAsTodoMarkThreadAsTodo.model_rebuild()

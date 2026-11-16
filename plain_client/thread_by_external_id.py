@@ -15,8 +15,5 @@ class ThreadByExternalId(BaseModel):
     )
 
 
-class ThreadByExternalIdThreadByExternalId(ThreadParts):
-    pass
-
-
+ThreadByExternalIdThreadByExternalId = ThreadParts
 ThreadByExternalId.model_rebuild()

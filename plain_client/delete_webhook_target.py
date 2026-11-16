@@ -19,9 +19,6 @@ class DeleteWebhookTargetDeleteWebhookTarget(BaseModel):
     error: Optional["DeleteWebhookTargetDeleteWebhookTargetError"]
 
 
-class DeleteWebhookTargetDeleteWebhookTargetError(MutationErrorParts):
-    pass
-
-
+DeleteWebhookTargetDeleteWebhookTargetError = MutationErrorParts
 DeleteWebhookTarget.model_rebuild()
 DeleteWebhookTargetDeleteWebhookTarget.model_rebuild()

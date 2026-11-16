@@ -20,13 +20,7 @@ class SendCustomerChatSendCustomerChat(BaseModel):
     error: Optional["SendCustomerChatSendCustomerChatError"]
 
 
-class SendCustomerChatSendCustomerChatChat(ChatParts):
-    pass
-
-
-class SendCustomerChatSendCustomerChatError(MutationErrorParts):
-    pass
-
-
+SendCustomerChatSendCustomerChatChat = ChatParts
+SendCustomerChatSendCustomerChatError = MutationErrorParts
 SendCustomerChat.model_rebuild()
 SendCustomerChatSendCustomerChat.model_rebuild()

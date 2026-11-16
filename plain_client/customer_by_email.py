@@ -15,8 +15,5 @@ class CustomerByEmail(BaseModel):
     )
 
 
-class CustomerByEmailCustomerByEmail(CustomerParts):
-    pass
-
-
+CustomerByEmailCustomerByEmail = CustomerParts
 CustomerByEmail.model_rebuild()

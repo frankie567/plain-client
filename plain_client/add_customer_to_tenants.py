@@ -19,9 +19,6 @@ class AddCustomerToTenantsAddCustomerToTenants(BaseModel):
     error: Optional["AddCustomerToTenantsAddCustomerToTenantsError"]
 
 
-class AddCustomerToTenantsAddCustomerToTenantsError(MutationErrorParts):
-    pass
-
-
+AddCustomerToTenantsAddCustomerToTenantsError = MutationErrorParts
 AddCustomerToTenants.model_rebuild()
 AddCustomerToTenantsAddCustomerToTenants.model_rebuild()

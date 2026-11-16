@@ -22,15 +22,7 @@ class UpdateCompanyTierUpdateCompanyTier(BaseModel):
     error: Optional["UpdateCompanyTierUpdateCompanyTierError"]
 
 
-class UpdateCompanyTierUpdateCompanyTierCompanyTierMembership(
-    CompanyTierMembershipParts
-):
-    pass
-
-
-class UpdateCompanyTierUpdateCompanyTierError(MutationErrorParts):
-    pass
-
-
+UpdateCompanyTierUpdateCompanyTierCompanyTierMembership = CompanyTierMembershipParts
+UpdateCompanyTierUpdateCompanyTierError = MutationErrorParts
 UpdateCompanyTier.model_rebuild()
 UpdateCompanyTierUpdateCompanyTier.model_rebuild()

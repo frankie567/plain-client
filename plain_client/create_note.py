@@ -18,13 +18,7 @@ class CreateNoteCreateNote(BaseModel):
     error: Optional["CreateNoteCreateNoteError"]
 
 
-class CreateNoteCreateNoteNote(NoteParts):
-    pass
-
-
-class CreateNoteCreateNoteError(MutationErrorParts):
-    pass
-
-
+CreateNoteCreateNoteNote = NoteParts
+CreateNoteCreateNoteError = MutationErrorParts
 CreateNote.model_rebuild()
 CreateNoteCreateNote.model_rebuild()

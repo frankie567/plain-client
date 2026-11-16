@@ -22,8 +22,7 @@ class ArchiveLabelTypeArchiveLabelType(BaseModel):
     error: Optional["ArchiveLabelTypeArchiveLabelTypeError"]
 
 
-class ArchiveLabelTypeArchiveLabelTypeLabelType(LabelTypeParts):
-    pass
+ArchiveLabelTypeArchiveLabelTypeLabelType = LabelTypeParts
 
 
 class ArchiveLabelTypeArchiveLabelTypeError(BaseModel):

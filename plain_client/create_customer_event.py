@@ -22,13 +22,7 @@ class CreateCustomerEventCreateCustomerEvent(BaseModel):
     error: Optional["CreateCustomerEventCreateCustomerEventError"]
 
 
-class CreateCustomerEventCreateCustomerEventCustomerEvent(CustomerEventParts):
-    pass
-
-
-class CreateCustomerEventCreateCustomerEventError(MutationErrorParts):
-    pass
-
-
+CreateCustomerEventCreateCustomerEventCustomerEvent = CustomerEventParts
+CreateCustomerEventCreateCustomerEventError = MutationErrorParts
 CreateCustomerEvent.model_rebuild()
 CreateCustomerEventCreateCustomerEvent.model_rebuild()

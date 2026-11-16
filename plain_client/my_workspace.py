@@ -13,8 +13,5 @@ class MyWorkspace(BaseModel):
     my_workspace: Optional["MyWorkspaceMyWorkspace"] = Field(alias="myWorkspace")
 
 
-class MyWorkspaceMyWorkspace(WorkspaceParts):
-    pass
-
-
+MyWorkspaceMyWorkspace = WorkspaceParts
 MyWorkspace.model_rebuild()

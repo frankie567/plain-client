@@ -15,8 +15,5 @@ class CustomerByExternalId(BaseModel):
     )
 
 
-class CustomerByExternalIdCustomerByExternalId(CustomerParts):
-    pass
-
-
+CustomerByExternalIdCustomerByExternalId = CustomerParts
 CustomerByExternalId.model_rebuild()

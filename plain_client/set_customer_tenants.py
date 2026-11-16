@@ -19,9 +19,6 @@ class SetCustomerTenantsSetCustomerTenants(BaseModel):
     error: Optional["SetCustomerTenantsSetCustomerTenantsError"]
 
 
-class SetCustomerTenantsSetCustomerTenantsError(MutationErrorParts):
-    pass
-
-
+SetCustomerTenantsSetCustomerTenantsError = MutationErrorParts
 SetCustomerTenants.model_rebuild()
 SetCustomerTenantsSetCustomerTenants.model_rebuild()

@@ -20,13 +20,7 @@ class UpdateThreadTenantUpdateThreadTenant(BaseModel):
     error: Optional["UpdateThreadTenantUpdateThreadTenantError"]
 
 
-class UpdateThreadTenantUpdateThreadTenantThread(ThreadParts):
-    pass
-
-
-class UpdateThreadTenantUpdateThreadTenantError(MutationErrorParts):
-    pass
-
-
+UpdateThreadTenantUpdateThreadTenantThread = ThreadParts
+UpdateThreadTenantUpdateThreadTenantError = MutationErrorParts
 UpdateThreadTenant.model_rebuild()
 UpdateThreadTenantUpdateThreadTenant.model_rebuild()

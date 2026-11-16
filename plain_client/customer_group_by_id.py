@@ -15,8 +15,5 @@ class CustomerGroupById(BaseModel):
     )
 
 
-class CustomerGroupByIdCustomerGroup(CustomerGroupParts):
-    pass
-
-
+CustomerGroupByIdCustomerGroup = CustomerGroupParts
 CustomerGroupById.model_rebuild()

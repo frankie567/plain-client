@@ -20,13 +20,7 @@ class UpdateCustomerCompanyUpdateCustomerCompany(BaseModel):
     error: Optional["UpdateCustomerCompanyUpdateCustomerCompanyError"]
 
 
-class UpdateCustomerCompanyUpdateCustomerCompanyCustomer(CustomerParts):
-    pass
-
-
-class UpdateCustomerCompanyUpdateCustomerCompanyError(MutationErrorParts):
-    pass
-
-
+UpdateCustomerCompanyUpdateCustomerCompanyCustomer = CustomerParts
+UpdateCustomerCompanyUpdateCustomerCompanyError = MutationErrorParts
 UpdateCustomerCompany.model_rebuild()
 UpdateCustomerCompanyUpdateCustomerCompany.model_rebuild()
