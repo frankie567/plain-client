@@ -1,0 +1,19 @@
+.github/workflows/dependency-review.yml
+  s_e286656b5eefdb::t_42cd61904aa925 1-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b6516b586fc012b02b0312035d8044dedecd0796",
+  "prompts": {},
+  "sessions": {
+    "s_e286656b5eefdb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e3e6-e9ac-75f0-848f-6f93c75dbfee",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "François Voron <me@fvoron.com>"
+    }
+  }
+}
