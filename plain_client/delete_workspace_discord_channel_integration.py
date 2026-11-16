@@ -40,8 +40,3 @@ class DeleteWorkspaceDiscordChannelIntegrationDeleteWorkspaceDiscordChannelInteg
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkspaceDiscordChannelIntegration.model_rebuild()
-DeleteWorkspaceDiscordChannelIntegrationDeleteWorkspaceDiscordChannelIntegration.model_rebuild()
-DeleteWorkspaceDiscordChannelIntegrationDeleteWorkspaceDiscordChannelIntegrationError.model_rebuild()

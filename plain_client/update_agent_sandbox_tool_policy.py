@@ -41,8 +41,3 @@ class UpdateAgentSandboxToolPolicyUpdateAgentSandboxToolPolicyErrorFields(BaseMo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateAgentSandboxToolPolicy.model_rebuild()
-UpdateAgentSandboxToolPolicyUpdateAgentSandboxToolPolicy.model_rebuild()
-UpdateAgentSandboxToolPolicyUpdateAgentSandboxToolPolicyError.model_rebuild()

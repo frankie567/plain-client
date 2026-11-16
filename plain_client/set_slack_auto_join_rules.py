@@ -35,8 +35,3 @@ class SetSlackAutoJoinRulesSetSlackAutoJoinRulesErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SetSlackAutoJoinRules.model_rebuild()
-SetSlackAutoJoinRulesSetSlackAutoJoinRules.model_rebuild()
-SetSlackAutoJoinRulesSetSlackAutoJoinRulesError.model_rebuild()

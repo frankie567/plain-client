@@ -16,4 +16,3 @@ class ImportJobDefinition(BaseModel):
 
 
 ImportJobDefinitionImportJobDefinition = ImportJobDefinitionFields
-ImportJobDefinition.model_rebuild()

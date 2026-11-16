@@ -37,8 +37,3 @@ class RemoveLabelsFromUserRemoveLabelsFromUserErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveLabelsFromUser.model_rebuild()
-RemoveLabelsFromUserRemoveLabelsFromUser.model_rebuild()
-RemoveLabelsFromUserRemoveLabelsFromUserError.model_rebuild()

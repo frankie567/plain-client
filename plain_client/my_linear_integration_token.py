@@ -16,6 +16,3 @@ class MyLinearIntegrationToken(BaseModel):
 
 class MyLinearIntegrationTokenMyLinearIntegrationToken(BaseModel):
     token: str
-
-
-MyLinearIntegrationToken.model_rebuild()

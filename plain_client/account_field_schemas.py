@@ -34,8 +34,3 @@ class AccountFieldSchemasAccountFieldSchemasPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-AccountFieldSchemas.model_rebuild()
-AccountFieldSchemasAccountFieldSchemas.model_rebuild()
-AccountFieldSchemasAccountFieldSchemasEdges.model_rebuild()

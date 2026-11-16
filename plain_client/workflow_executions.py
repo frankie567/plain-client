@@ -32,8 +32,3 @@ class WorkflowExecutionsWorkflowExecutionsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-WorkflowExecutions.model_rebuild()
-WorkflowExecutionsWorkflowExecutions.model_rebuild()
-WorkflowExecutionsWorkflowExecutionsEdges.model_rebuild()

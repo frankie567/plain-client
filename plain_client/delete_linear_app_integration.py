@@ -30,8 +30,3 @@ class DeleteLinearAppIntegrationDeleteLinearAppIntegrationErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteLinearAppIntegration.model_rebuild()
-DeleteLinearAppIntegrationDeleteLinearAppIntegration.model_rebuild()
-DeleteLinearAppIntegrationDeleteLinearAppIntegrationError.model_rebuild()

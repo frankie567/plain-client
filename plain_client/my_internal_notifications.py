@@ -35,8 +35,3 @@ class MyInternalNotificationsMyInternalNotificationsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-MyInternalNotifications.model_rebuild()
-MyInternalNotificationsMyInternalNotifications.model_rebuild()
-MyInternalNotificationsMyInternalNotificationsEdges.model_rebuild()

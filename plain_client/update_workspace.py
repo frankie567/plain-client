@@ -33,8 +33,3 @@ class UpdateWorkspaceUpdateWorkspaceErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateWorkspace.model_rebuild()
-UpdateWorkspaceUpdateWorkspace.model_rebuild()
-UpdateWorkspaceUpdateWorkspaceError.model_rebuild()

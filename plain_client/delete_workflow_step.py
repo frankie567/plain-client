@@ -30,8 +30,3 @@ class DeleteWorkflowStepDeleteWorkflowStepErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkflowStep.model_rebuild()
-DeleteWorkflowStepDeleteWorkflowStep.model_rebuild()
-DeleteWorkflowStepDeleteWorkflowStepError.model_rebuild()

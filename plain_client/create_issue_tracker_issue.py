@@ -39,6 +39,3 @@ class CreateIssueTrackerIssueCreateIssueTrackerIssueErrorFields(BaseModel):
 CreateIssueTrackerIssueCreateIssueTrackerIssueThreadLinkCandidate = (
     ThreadLinkCandidateFields
 )
-CreateIssueTrackerIssue.model_rebuild()
-CreateIssueTrackerIssueCreateIssueTrackerIssue.model_rebuild()
-CreateIssueTrackerIssueCreateIssueTrackerIssueError.model_rebuild()

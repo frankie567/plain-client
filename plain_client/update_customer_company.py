@@ -35,8 +35,3 @@ class UpdateCustomerCompanyUpdateCustomerCompanyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateCustomerCompany.model_rebuild()
-UpdateCustomerCompanyUpdateCustomerCompany.model_rebuild()
-UpdateCustomerCompanyUpdateCustomerCompanyError.model_rebuild()

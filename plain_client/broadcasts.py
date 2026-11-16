@@ -31,8 +31,3 @@ class BroadcastsBroadcastsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-Broadcasts.model_rebuild()
-BroadcastsBroadcasts.model_rebuild()
-BroadcastsBroadcastsEdges.model_rebuild()

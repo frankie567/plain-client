@@ -37,8 +37,3 @@ class UpsertTeamSettingsUpsertTeamSettingsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertTeamSettings.model_rebuild()
-UpsertTeamSettingsUpsertTeamSettings.model_rebuild()
-UpsertTeamSettingsUpsertTeamSettingsError.model_rebuild()

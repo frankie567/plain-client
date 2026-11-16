@@ -16,4 +16,3 @@ class CustomerSurvey(BaseModel):
 
 
 CustomerSurveyCustomerSurvey = CustomerSurveyFields
-CustomerSurvey.model_rebuild()

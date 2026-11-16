@@ -18,4 +18,3 @@ class SidekickGithubServiceConfig(BaseModel):
 SidekickGithubServiceConfigSidekickGithubServiceConfig = (
     SidekickGithubServiceConfigFields
 )
-SidekickGithubServiceConfig.model_rebuild()

@@ -39,8 +39,3 @@ class DeleteAccountFieldSchemaDeleteAccountFieldSchemaErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteAccountFieldSchema.model_rebuild()
-DeleteAccountFieldSchemaDeleteAccountFieldSchema.model_rebuild()
-DeleteAccountFieldSchemaDeleteAccountFieldSchemaError.model_rebuild()

@@ -14,4 +14,3 @@ class BusinessHoursSlots(BaseModel):
 
 
 BusinessHoursSlotsBusinessHoursSlots = BusinessHoursSlotFields
-BusinessHoursSlots.model_rebuild()

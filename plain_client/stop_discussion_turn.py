@@ -30,8 +30,3 @@ class StopDiscussionTurnStopDiscussionTurnErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-StopDiscussionTurn.model_rebuild()
-StopDiscussionTurnStopDiscussionTurn.model_rebuild()
-StopDiscussionTurnStopDiscussionTurnError.model_rebuild()

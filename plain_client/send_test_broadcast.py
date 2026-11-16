@@ -35,8 +35,3 @@ class SendTestBroadcastSendTestBroadcastErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SendTestBroadcast.model_rebuild()
-SendTestBroadcastSendTestBroadcast.model_rebuild()
-SendTestBroadcastSendTestBroadcastError.model_rebuild()

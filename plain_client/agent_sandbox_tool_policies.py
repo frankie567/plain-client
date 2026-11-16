@@ -21,6 +21,3 @@ class AgentSandboxToolPoliciesAgentSandboxToolPolicies(BaseModel):
     mode: AgentSandboxToolMode
     factory_default: AgentSandboxToolMode = Field(alias="factoryDefault")
     is_override: bool = Field(alias="isOverride")
-
-
-AgentSandboxToolPolicies.model_rebuild()

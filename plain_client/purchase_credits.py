@@ -38,8 +38,3 @@ class PurchaseCreditsPurchaseCreditsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-PurchaseCredits.model_rebuild()
-PurchaseCreditsPurchaseCredits.model_rebuild()
-PurchaseCreditsPurchaseCreditsError.model_rebuild()

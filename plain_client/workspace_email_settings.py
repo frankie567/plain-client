@@ -14,4 +14,3 @@ class WorkspaceEmailSettings(BaseModel):
 
 
 WorkspaceEmailSettingsWorkspaceEmailSettings = WorkspaceEmailSettingsFields
-WorkspaceEmailSettings.model_rebuild()

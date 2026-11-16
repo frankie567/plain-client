@@ -35,8 +35,3 @@ class DeleteOAuthAppDeleteOAuthAppErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteOAuthApp.model_rebuild()
-DeleteOAuthAppDeleteOAuthApp.model_rebuild()
-DeleteOAuthAppDeleteOAuthAppError.model_rebuild()

@@ -30,8 +30,3 @@ class CreateAiFeedbackCreateAiFeedbackErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateAiFeedback.model_rebuild()
-CreateAiFeedbackCreateAiFeedback.model_rebuild()
-CreateAiFeedbackCreateAiFeedbackError.model_rebuild()

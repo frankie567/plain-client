@@ -16,4 +16,3 @@ class ThreadFieldSchema(BaseModel):
 
 
 ThreadFieldSchemaThreadFieldSchema = ThreadFieldSchemaFields
-ThreadFieldSchema.model_rebuild()

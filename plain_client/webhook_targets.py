@@ -30,8 +30,3 @@ class WebhookTargetsWebhookTargetsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-WebhookTargets.model_rebuild()
-WebhookTargetsWebhookTargets.model_rebuild()
-WebhookTargetsWebhookTargetsEdges.model_rebuild()

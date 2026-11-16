@@ -35,8 +35,3 @@ class UpdateSidekickMcpServerUpdateSidekickMcpServerErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateSidekickMcpServer.model_rebuild()
-UpdateSidekickMcpServerUpdateSidekickMcpServer.model_rebuild()
-UpdateSidekickMcpServerUpdateSidekickMcpServerError.model_rebuild()

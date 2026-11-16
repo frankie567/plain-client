@@ -35,8 +35,3 @@ class SetCustomerTenantsSetCustomerTenantsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SetCustomerTenants.model_rebuild()
-SetCustomerTenantsSetCustomerTenants.model_rebuild()
-SetCustomerTenantsSetCustomerTenantsError.model_rebuild()

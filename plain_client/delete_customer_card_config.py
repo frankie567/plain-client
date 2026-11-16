@@ -30,8 +30,3 @@ class DeleteCustomerCardConfigDeleteCustomerCardConfigErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteCustomerCardConfig.model_rebuild()
-DeleteCustomerCardConfigDeleteCustomerCardConfig.model_rebuild()
-DeleteCustomerCardConfigDeleteCustomerCardConfigError.model_rebuild()

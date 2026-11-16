@@ -34,7 +34,7 @@ path = "plain_client/__version__.py"
 
 [dependency-groups]
 dev = [
-    "ariadne-codegen",
+    "ariadne-codegen>=0.19.0",
     "ty",
     "ruff",
     "pytest",
@@ -70,6 +70,8 @@ client_name = "Plain"
 include_all_inputs = false
 include_all_enums = false
 enable_custom_operations = false
+lazy_imports = true
+defer_model_build = true
 plugins = [
     "ariadne_codegen.contrib.shorter_results.ShorterResultsPlugin",
 ]

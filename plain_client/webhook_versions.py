@@ -32,8 +32,3 @@ class WebhookVersionsWebhookVersionsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-WebhookVersions.model_rebuild()
-WebhookVersionsWebhookVersions.model_rebuild()
-WebhookVersionsWebhookVersionsEdges.model_rebuild()

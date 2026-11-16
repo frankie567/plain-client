@@ -19,6 +19,3 @@ class SuggestedSlackTeammatesSuggestedSlackTeammates(BaseModel):
     full_name: str = Field(alias="fullName")
     slack_handle: str = Field(alias="slackHandle")
     slack_avatar_url_72_px: str | None = Field(alias="slackAvatarUrl72px")
-
-
-SuggestedSlackTeammates.model_rebuild()

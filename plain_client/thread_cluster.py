@@ -16,4 +16,3 @@ class ThreadCluster(BaseModel):
 
 
 ThreadClusterThreadCluster = ThreadClusterFields
-ThreadCluster.model_rebuild()

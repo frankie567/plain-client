@@ -37,8 +37,3 @@ class RegenerateWorkspaceHmacRegenerateWorkspaceHmacErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RegenerateWorkspaceHmac.model_rebuild()
-RegenerateWorkspaceHmacRegenerateWorkspaceHmac.model_rebuild()
-RegenerateWorkspaceHmacRegenerateWorkspaceHmacError.model_rebuild()

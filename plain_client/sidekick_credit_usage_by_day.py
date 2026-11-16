@@ -26,8 +26,3 @@ class SidekickCreditUsageByDaySidekickCreditUsageByDayDays(BaseModel):
 class SidekickCreditUsageByDaySidekickCreditUsageByDayDaysDay(BaseModel):
     unix_timestamp: str = Field(alias="unixTimestamp")
     iso_8601: str = Field(alias="iso8601")
-
-
-SidekickCreditUsageByDay.model_rebuild()
-SidekickCreditUsageByDaySidekickCreditUsageByDay.model_rebuild()
-SidekickCreditUsageByDaySidekickCreditUsageByDayDays.model_rebuild()

@@ -30,8 +30,3 @@ class ShareThreadToUserInSlackShareThreadToUserInSlackErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ShareThreadToUserInSlack.model_rebuild()
-ShareThreadToUserInSlackShareThreadToUserInSlack.model_rebuild()
-ShareThreadToUserInSlackShareThreadToUserInSlackError.model_rebuild()

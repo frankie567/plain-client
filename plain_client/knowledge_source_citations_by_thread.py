@@ -16,4 +16,3 @@ class KnowledgeSourceCitationsByThread(BaseModel):
 KnowledgeSourceCitationsByThreadKnowledgeSourceCitationsByThread = (
     KnowledgeSourceCitationFields
 )
-KnowledgeSourceCitationsByThread.model_rebuild()

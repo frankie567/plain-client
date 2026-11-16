@@ -30,8 +30,3 @@ class RolesRolesPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-Roles.model_rebuild()
-RolesRoles.model_rebuild()
-RolesRolesEdges.model_rebuild()

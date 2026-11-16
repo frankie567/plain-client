@@ -16,6 +16,3 @@ class SidekickGithubAccessibleReposSidekickGithubAccessibleRepos(BaseModel):
     repo_id: str = Field(alias="repoId")
     owner: str
     name: str
-
-
-SidekickGithubAccessibleRepos.model_rebuild()

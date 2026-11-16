@@ -41,8 +41,3 @@ class EditQueuedAgentSessionMessageEditQueuedAgentSessionMessageErrorFields(Base
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-EditQueuedAgentSessionMessage.model_rebuild()
-EditQueuedAgentSessionMessageEditQueuedAgentSessionMessage.model_rebuild()
-EditQueuedAgentSessionMessageEditQueuedAgentSessionMessageError.model_rebuild()

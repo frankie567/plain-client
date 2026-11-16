@@ -39,8 +39,3 @@ class CreateHyperlineBillingPortalSessionCreateHyperlineBillingPortalSessionErro
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateHyperlineBillingPortalSession.model_rebuild()
-CreateHyperlineBillingPortalSessionCreateHyperlineBillingPortalSession.model_rebuild()
-CreateHyperlineBillingPortalSessionCreateHyperlineBillingPortalSessionError.model_rebuild()

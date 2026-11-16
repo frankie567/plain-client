@@ -30,8 +30,3 @@ class StopAgentSessionTurnStopAgentSessionTurnErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-StopAgentSessionTurn.model_rebuild()
-StopAgentSessionTurnStopAgentSessionTurn.model_rebuild()
-StopAgentSessionTurnStopAgentSessionTurnError.model_rebuild()

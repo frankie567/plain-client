@@ -33,8 +33,3 @@ class ReplyToEmailReplyToEmailErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ReplyToEmail.model_rebuild()
-ReplyToEmailReplyToEmail.model_rebuild()
-ReplyToEmailReplyToEmailError.model_rebuild()

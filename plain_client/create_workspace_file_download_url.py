@@ -43,8 +43,3 @@ class CreateWorkspaceFileDownloadUrlCreateWorkspaceFileDownloadUrlErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkspaceFileDownloadUrl.model_rebuild()
-CreateWorkspaceFileDownloadUrlCreateWorkspaceFileDownloadUrl.model_rebuild()
-CreateWorkspaceFileDownloadUrlCreateWorkspaceFileDownloadUrlError.model_rebuild()

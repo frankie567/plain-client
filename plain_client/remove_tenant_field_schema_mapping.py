@@ -43,8 +43,3 @@ class RemoveTenantFieldSchemaMappingRemoveTenantFieldSchemaMappingErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveTenantFieldSchemaMapping.model_rebuild()
-RemoveTenantFieldSchemaMappingRemoveTenantFieldSchemaMapping.model_rebuild()
-RemoveTenantFieldSchemaMappingRemoveTenantFieldSchemaMappingError.model_rebuild()

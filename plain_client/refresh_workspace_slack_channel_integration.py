@@ -47,8 +47,3 @@ class RefreshWorkspaceSlackChannelIntegrationRefreshWorkspaceSlackChannelIntegra
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RefreshWorkspaceSlackChannelIntegration.model_rebuild()
-RefreshWorkspaceSlackChannelIntegrationRefreshWorkspaceSlackChannelIntegration.model_rebuild()
-RefreshWorkspaceSlackChannelIntegrationRefreshWorkspaceSlackChannelIntegrationError.model_rebuild()

@@ -107,6 +107,3 @@ class CustomerCardInstancesCustomerCardInstancesCustomerCardInstanceLoading(
     CustomerCardInstanceLoadingFields
 ):
     typename__: Literal["CustomerCardInstanceLoading"] = Field(alias="__typename")
-
-
-CustomerCardInstances.model_rebuild()

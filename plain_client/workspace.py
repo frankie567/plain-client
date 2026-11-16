@@ -12,4 +12,3 @@ class Workspace(BaseModel):
 
 
 WorkspaceWorkspace = WorkspaceFields
-Workspace.model_rebuild()

@@ -33,8 +33,3 @@ class SendNewEmailSendNewEmailErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SendNewEmail.model_rebuild()
-SendNewEmailSendNewEmail.model_rebuild()
-SendNewEmailSendNewEmailError.model_rebuild()

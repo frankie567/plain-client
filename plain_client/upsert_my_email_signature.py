@@ -38,8 +38,3 @@ class UpsertMyEmailSignatureUpsertMyEmailSignatureErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertMyEmailSignature.model_rebuild()
-UpsertMyEmailSignatureUpsertMyEmailSignature.model_rebuild()
-UpsertMyEmailSignatureUpsertMyEmailSignatureError.model_rebuild()

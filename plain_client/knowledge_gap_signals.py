@@ -66,10 +66,3 @@ class KnowledgeGapSignalsKnowledgeGapSignalsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-KnowledgeGapSignals.model_rebuild()
-KnowledgeGapSignalsKnowledgeGap.model_rebuild()
-KnowledgeGapSignalsKnowledgeGapSignals.model_rebuild()
-KnowledgeGapSignalsKnowledgeGapSignalsEdges.model_rebuild()
-KnowledgeGapSignalsKnowledgeGapSignalsEdgesNodeAriKnowledgeGapSignal.model_rebuild()

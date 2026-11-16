@@ -14,6 +14,3 @@ class WorkspaceMSTeamsInstallationInfo(BaseModel):
 
 class WorkspaceMSTeamsInstallationInfoWorkspaceMsTeamsInstallationInfo(BaseModel):
     installation_url: str = Field(alias="installationUrl")
-
-
-WorkspaceMSTeamsInstallationInfo.model_rebuild()

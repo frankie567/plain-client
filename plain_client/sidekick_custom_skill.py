@@ -21,6 +21,3 @@ class SidekickCustomSkillSidekickCustomSkill(BaseModel):
     description: str
     instructions: str
     is_enabled: bool = Field(alias="isEnabled")
-
-
-SidekickCustomSkill.model_rebuild()

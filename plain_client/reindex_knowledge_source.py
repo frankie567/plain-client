@@ -79,8 +79,3 @@ class ReindexKnowledgeSourceReindexKnowledgeSourceErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ReindexKnowledgeSource.model_rebuild()
-ReindexKnowledgeSourceReindexKnowledgeSource.model_rebuild()
-ReindexKnowledgeSourceReindexKnowledgeSourceError.model_rebuild()

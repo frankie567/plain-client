@@ -41,8 +41,3 @@ class SetupTenantFieldSchemaMappingSetupTenantFieldSchemaMappingErrorFields(Base
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SetupTenantFieldSchemaMapping.model_rebuild()
-SetupTenantFieldSchemaMappingSetupTenantFieldSchemaMapping.model_rebuild()
-SetupTenantFieldSchemaMappingSetupTenantFieldSchemaMappingError.model_rebuild()

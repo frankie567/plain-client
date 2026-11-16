@@ -37,8 +37,3 @@ class AcceptSuggestedLabelTypesAcceptSuggestedLabelTypesErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AcceptSuggestedLabelTypes.model_rebuild()
-AcceptSuggestedLabelTypesAcceptSuggestedLabelTypes.model_rebuild()
-AcceptSuggestedLabelTypesAcceptSuggestedLabelTypesError.model_rebuild()

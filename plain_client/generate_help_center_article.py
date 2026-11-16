@@ -39,8 +39,3 @@ class GenerateHelpCenterArticleGenerateHelpCenterArticleErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-GenerateHelpCenterArticle.model_rebuild()
-GenerateHelpCenterArticleGenerateHelpCenterArticle.model_rebuild()
-GenerateHelpCenterArticleGenerateHelpCenterArticleError.model_rebuild()

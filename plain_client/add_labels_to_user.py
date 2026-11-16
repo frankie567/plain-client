@@ -37,8 +37,3 @@ class AddLabelsToUserAddLabelsToUserErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddLabelsToUser.model_rebuild()
-AddLabelsToUserAddLabelsToUser.model_rebuild()
-AddLabelsToUserAddLabelsToUserError.model_rebuild()

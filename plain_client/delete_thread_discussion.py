@@ -30,8 +30,3 @@ class DeleteThreadDiscussionDeleteThreadDiscussionErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteThreadDiscussion.model_rebuild()
-DeleteThreadDiscussionDeleteThreadDiscussion.model_rebuild()
-DeleteThreadDiscussionDeleteThreadDiscussionError.model_rebuild()

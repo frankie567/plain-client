@@ -14,4 +14,3 @@ class MyUser(BaseModel):
 
 
 MyUserMyUser = UserFields
-MyUser.model_rebuild()

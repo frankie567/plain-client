@@ -45,8 +45,3 @@ class CreateWorkspaceEmailDomainSettingsCreateWorkspaceEmailDomainSettingsErrorF
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkspaceEmailDomainSettings.model_rebuild()
-CreateWorkspaceEmailDomainSettingsCreateWorkspaceEmailDomainSettings.model_rebuild()
-CreateWorkspaceEmailDomainSettingsCreateWorkspaceEmailDomainSettingsError.model_rebuild()

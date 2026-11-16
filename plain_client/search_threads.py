@@ -34,9 +34,3 @@ class SearchThreadsSearchThreadsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-SearchThreads.model_rebuild()
-SearchThreadsSearchThreads.model_rebuild()
-SearchThreadsSearchThreadsEdges.model_rebuild()
-SearchThreadsSearchThreadsEdgesNode.model_rebuild()

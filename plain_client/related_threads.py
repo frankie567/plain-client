@@ -14,4 +14,3 @@ class RelatedThreads(BaseModel):
 
 
 RelatedThreadsRelatedThreads = ThreadWithDistanceFields
-RelatedThreads.model_rebuild()

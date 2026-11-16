@@ -39,8 +39,3 @@ class CreateCustomerCardConfigCreateCustomerCardConfigErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateCustomerCardConfig.model_rebuild()
-CreateCustomerCardConfigCreateCustomerCardConfig.model_rebuild()
-CreateCustomerCardConfigCreateCustomerCardConfigError.model_rebuild()

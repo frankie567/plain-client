@@ -16,4 +16,3 @@ class WorkflowShareLink(BaseModel):
 
 
 WorkflowShareLinkWorkflowShareLink = WorkflowShareLinkFields
-WorkflowShareLink.model_rebuild()

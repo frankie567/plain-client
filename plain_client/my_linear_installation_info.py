@@ -14,6 +14,3 @@ class MyLinearInstallationInfo(BaseModel):
 
 class MyLinearInstallationInfoMyLinearInstallationInfo(BaseModel):
     installation_url: str = Field(alias="installationUrl")
-
-
-MyLinearInstallationInfo.model_rebuild()

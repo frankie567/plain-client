@@ -35,8 +35,3 @@ class RemoveCustomerFromAccountsRemoveCustomerFromAccountsErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveCustomerFromAccounts.model_rebuild()
-RemoveCustomerFromAccountsRemoveCustomerFromAccounts.model_rebuild()
-RemoveCustomerFromAccountsRemoveCustomerFromAccountsError.model_rebuild()

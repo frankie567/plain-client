@@ -30,8 +30,3 @@ class DeleteWorkspaceFileDeleteWorkspaceFileErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkspaceFile.model_rebuild()
-DeleteWorkspaceFileDeleteWorkspaceFile.model_rebuild()
-DeleteWorkspaceFileDeleteWorkspaceFileError.model_rebuild()

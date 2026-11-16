@@ -45,8 +45,3 @@ class VerifyHelpCenterCustomDomainNameVerifyHelpCenterCustomDomainNameErrorField
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-VerifyHelpCenterCustomDomainName.model_rebuild()
-VerifyHelpCenterCustomDomainNameVerifyHelpCenterCustomDomainName.model_rebuild()
-VerifyHelpCenterCustomDomainNameVerifyHelpCenterCustomDomainNameError.model_rebuild()

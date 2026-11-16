@@ -37,8 +37,3 @@ class DeleteWorkspaceCursorIntegrationDeleteWorkspaceCursorIntegrationErrorField
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkspaceCursorIntegration.model_rebuild()
-DeleteWorkspaceCursorIntegrationDeleteWorkspaceCursorIntegration.model_rebuild()
-DeleteWorkspaceCursorIntegrationDeleteWorkspaceCursorIntegrationError.model_rebuild()

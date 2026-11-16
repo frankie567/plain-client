@@ -30,8 +30,3 @@ class BulkJoinSlackChannelsBulkJoinSlackChannelsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-BulkJoinSlackChannels.model_rebuild()
-BulkJoinSlackChannelsBulkJoinSlackChannels.model_rebuild()
-BulkJoinSlackChannelsBulkJoinSlackChannelsError.model_rebuild()

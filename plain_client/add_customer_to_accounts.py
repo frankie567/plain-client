@@ -35,8 +35,3 @@ class AddCustomerToAccountsAddCustomerToAccountsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddCustomerToAccounts.model_rebuild()
-AddCustomerToAccountsAddCustomerToAccounts.model_rebuild()
-AddCustomerToAccountsAddCustomerToAccountsError.model_rebuild()

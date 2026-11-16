@@ -18,4 +18,3 @@ class UserAuthDiscordChannelIntegration(BaseModel):
 UserAuthDiscordChannelIntegrationUserAuthDiscordChannelIntegration = (
     UserAuthDiscordChannelIntegrationFields
 )
-UserAuthDiscordChannelIntegration.model_rebuild()

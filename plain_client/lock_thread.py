@@ -33,8 +33,3 @@ class LockThreadLockThreadErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-LockThread.model_rebuild()
-LockThreadLockThread.model_rebuild()
-LockThreadLockThreadError.model_rebuild()

@@ -16,4 +16,3 @@ class TimeSeriesMetric(BaseModel):
 
 
 TimeSeriesMetricTimeSeriesMetric = TimeSeriesMetricFields
-TimeSeriesMetric.model_rebuild()

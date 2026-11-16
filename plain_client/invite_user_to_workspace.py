@@ -35,8 +35,3 @@ class InviteUserToWorkspaceInviteUserToWorkspaceErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-InviteUserToWorkspace.model_rebuild()
-InviteUserToWorkspaceInviteUserToWorkspace.model_rebuild()
-InviteUserToWorkspaceInviteUserToWorkspaceError.model_rebuild()

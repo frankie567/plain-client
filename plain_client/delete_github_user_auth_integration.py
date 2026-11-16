@@ -37,8 +37,3 @@ class DeleteGithubUserAuthIntegrationDeleteGithubUserAuthIntegrationErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteGithubUserAuthIntegration.model_rebuild()
-DeleteGithubUserAuthIntegrationDeleteGithubUserAuthIntegration.model_rebuild()
-DeleteGithubUserAuthIntegrationDeleteGithubUserAuthIntegrationError.model_rebuild()

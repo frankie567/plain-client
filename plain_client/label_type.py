@@ -14,4 +14,3 @@ class LabelType(BaseModel):
 
 
 LabelTypeLabelType = LabelTypeFields
-LabelType.model_rebuild()

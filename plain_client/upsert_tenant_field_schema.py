@@ -41,8 +41,3 @@ class UpsertTenantFieldSchemaUpsertTenantFieldSchemaErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertTenantFieldSchema.model_rebuild()
-UpsertTenantFieldSchemaUpsertTenantFieldSchema.model_rebuild()
-UpsertTenantFieldSchemaUpsertTenantFieldSchemaError.model_rebuild()

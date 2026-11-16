@@ -31,8 +31,3 @@ class CreateWorkflowShareLinkCreateWorkflowShareLinkErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkflowShareLink.model_rebuild()
-CreateWorkflowShareLinkCreateWorkflowShareLink.model_rebuild()
-CreateWorkflowShareLinkCreateWorkflowShareLinkError.model_rebuild()

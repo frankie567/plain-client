@@ -18,6 +18,3 @@ class WorkflowCapabilitiesWorkflowCapabilities(BaseModel):
     allowed_action_types: list[str] = Field(alias="allowedActionTypes")
     has_sidekick_action_support: bool = Field(alias="hasSidekickActionSupport")
     has_ai_triage_action_support: bool = Field(alias="hasAiTriageActionSupport")
-
-
-WorkflowCapabilities.model_rebuild()

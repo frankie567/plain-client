@@ -33,8 +33,3 @@ class DeleteNoteDeleteNoteErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteNote.model_rebuild()
-DeleteNoteDeleteNote.model_rebuild()
-DeleteNoteDeleteNoteError.model_rebuild()

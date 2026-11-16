@@ -16,4 +16,3 @@ class EscalationPath(BaseModel):
 
 
 EscalationPathEscalationPath = EscalationPathFields
-EscalationPath.model_rebuild()

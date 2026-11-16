@@ -49,8 +49,3 @@ class UpdateThreadServiceLevelAgreementPolicyUpdateThreadServiceLevelAgreementPo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateThreadServiceLevelAgreementPolicy.model_rebuild()
-UpdateThreadServiceLevelAgreementPolicyUpdateThreadServiceLevelAgreementPolicy.model_rebuild()
-UpdateThreadServiceLevelAgreementPolicyUpdateThreadServiceLevelAgreementPolicyError.model_rebuild()

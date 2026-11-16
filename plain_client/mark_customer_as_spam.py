@@ -35,8 +35,3 @@ class MarkCustomerAsSpamMarkCustomerAsSpamErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-MarkCustomerAsSpam.model_rebuild()
-MarkCustomerAsSpamMarkCustomerAsSpam.model_rebuild()
-MarkCustomerAsSpamMarkCustomerAsSpamError.model_rebuild()

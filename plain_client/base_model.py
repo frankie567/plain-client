@@ -20,6 +20,7 @@ class BaseModel(PydanticBaseModel):
         validate_assignment=True,
         arbitrary_types_allowed=True,
         protected_namespaces=(),
+        defer_build=True,
     )
 
 

@@ -14,6 +14,3 @@ class WorkspaceChatSettings(BaseModel):
 
 class WorkspaceChatSettingsWorkspaceChatSettings(BaseModel):
     is_enabled: bool = Field(alias="isEnabled")
-
-
-WorkspaceChatSettings.model_rebuild()

@@ -14,4 +14,3 @@ class SidekickAvailableTools(BaseModel):
 
 
 SidekickAvailableToolsSidekickAvailableTools = SidekickAvailableToolFields
-SidekickAvailableTools.model_rebuild()

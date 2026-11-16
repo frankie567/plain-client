@@ -16,4 +16,3 @@ class CustomerCardConfig(BaseModel):
 
 
 CustomerCardConfigCustomerCardConfig = CustomerCardConfigFields
-CustomerCardConfig.model_rebuild()

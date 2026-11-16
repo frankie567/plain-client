@@ -40,8 +40,3 @@ class BulkUpsertWorkflowStepsBulkUpsertWorkflowStepsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-BulkUpsertWorkflowSteps.model_rebuild()
-BulkUpsertWorkflowStepsBulkUpsertWorkflowSteps.model_rebuild()
-BulkUpsertWorkflowStepsBulkUpsertWorkflowStepsError.model_rebuild()

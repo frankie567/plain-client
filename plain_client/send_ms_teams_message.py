@@ -37,8 +37,3 @@ class SendMSTeamsMessageSendMsTeamsMessageErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SendMSTeamsMessage.model_rebuild()
-SendMSTeamsMessageSendMsTeamsMessage.model_rebuild()
-SendMSTeamsMessageSendMsTeamsMessageError.model_rebuild()

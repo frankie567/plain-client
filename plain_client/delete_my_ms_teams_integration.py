@@ -39,8 +39,3 @@ class DeleteMyMSTeamsIntegrationDeleteMyMsTeamsIntegrationErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteMyMSTeamsIntegration.model_rebuild()
-DeleteMyMSTeamsIntegrationDeleteMyMsTeamsIntegration.model_rebuild()
-DeleteMyMSTeamsIntegrationDeleteMyMsTeamsIntegrationError.model_rebuild()

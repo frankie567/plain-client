@@ -39,8 +39,3 @@ class StartServiceAuthorizationStartServiceAuthorizationErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-StartServiceAuthorization.model_rebuild()
-StartServiceAuthorizationStartServiceAuthorization.model_rebuild()
-StartServiceAuthorizationStartServiceAuthorizationError.model_rebuild()

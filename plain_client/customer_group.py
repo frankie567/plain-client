@@ -16,4 +16,3 @@ class CustomerGroup(BaseModel):
 
 
 CustomerGroupCustomerGroup = CustomerGroupFields
-CustomerGroup.model_rebuild()

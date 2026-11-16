@@ -12,4 +12,3 @@ class Customer(BaseModel):
 
 
 CustomerCustomer = CustomerFields
-Customer.model_rebuild()

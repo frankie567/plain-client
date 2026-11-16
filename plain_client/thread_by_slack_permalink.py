@@ -16,4 +16,3 @@ class ThreadBySlackPermalink(BaseModel):
 
 
 ThreadBySlackPermalinkThreadBySlackPermalink = ThreadFields
-ThreadBySlackPermalink.model_rebuild()

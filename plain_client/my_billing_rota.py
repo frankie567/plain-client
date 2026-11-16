@@ -17,6 +17,3 @@ class MyBillingRota(BaseModel):
 class MyBillingRotaMyBillingRota(BaseModel):
     on_rota_user_ids: list[str] = Field(alias="onRotaUserIds")
     off_rota_user_ids: list[str] = Field(alias="offRotaUserIds")
-
-
-MyBillingRota.model_rebuild()

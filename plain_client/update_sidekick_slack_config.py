@@ -39,8 +39,3 @@ class UpdateSidekickSlackConfigUpdateSidekickSlackConfigErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateSidekickSlackConfig.model_rebuild()
-UpdateSidekickSlackConfigUpdateSidekickSlackConfig.model_rebuild()
-UpdateSidekickSlackConfigUpdateSidekickSlackConfigError.model_rebuild()

@@ -16,4 +16,3 @@ class BroadcastAudience(BaseModel):
 
 
 BroadcastAudienceBroadcastAudience = BroadcastAudienceFields
-BroadcastAudience.model_rebuild()

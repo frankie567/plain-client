@@ -32,6 +32,3 @@ class SidekickSkillsSidekickSkillsCustomSidekickSkill(CustomSidekickSkillFields)
 
 class SidekickSkillsSidekickSkillsSystemSidekickSkill(SystemSidekickSkillFields):
     typename__: Literal["SystemSidekickSkill"] = Field(alias="__typename")
-
-
-SidekickSkills.model_rebuild()

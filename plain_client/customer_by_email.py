@@ -16,4 +16,3 @@ class CustomerByEmail(BaseModel):
 
 
 CustomerByEmailCustomerByEmail = CustomerFields
-CustomerByEmail.model_rebuild()

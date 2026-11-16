@@ -47,8 +47,3 @@ class CreateWorkspaceSlackSidekickIntegrationCreateWorkspaceSlackSidekickIntegra
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkspaceSlackSidekickIntegration.model_rebuild()
-CreateWorkspaceSlackSidekickIntegrationCreateWorkspaceSlackSidekickIntegration.model_rebuild()
-CreateWorkspaceSlackSidekickIntegrationCreateWorkspaceSlackSidekickIntegrationError.model_rebuild()

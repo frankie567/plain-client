@@ -43,8 +43,3 @@ class CreateUserAuthSlackIntegrationCreateUserAuthSlackIntegrationErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateUserAuthSlackIntegration.model_rebuild()
-CreateUserAuthSlackIntegrationCreateUserAuthSlackIntegration.model_rebuild()
-CreateUserAuthSlackIntegrationCreateUserAuthSlackIntegrationError.model_rebuild()

@@ -35,8 +35,3 @@ class SyncBusinessHoursSlotsSyncBusinessHoursSlotsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SyncBusinessHoursSlots.model_rebuild()
-SyncBusinessHoursSlotsSyncBusinessHoursSlots.model_rebuild()
-SyncBusinessHoursSlotsSyncBusinessHoursSlotsError.model_rebuild()

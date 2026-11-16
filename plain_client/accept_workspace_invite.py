@@ -35,8 +35,3 @@ class AcceptWorkspaceInviteAcceptWorkspaceInviteErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AcceptWorkspaceInvite.model_rebuild()
-AcceptWorkspaceInviteAcceptWorkspaceInvite.model_rebuild()
-AcceptWorkspaceInviteAcceptWorkspaceInviteError.model_rebuild()

@@ -37,8 +37,3 @@ class CreateCustomerEventCreateCustomerEventErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateCustomerEvent.model_rebuild()
-CreateCustomerEventCreateCustomerEvent.model_rebuild()
-CreateCustomerEventCreateCustomerEventError.model_rebuild()

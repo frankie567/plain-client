@@ -16,4 +16,3 @@ class LabelTypeByExternalId(BaseModel):
 
 
 LabelTypeByExternalIdLabelTypeByExternalId = LabelTypeFields
-LabelTypeByExternalId.model_rebuild()

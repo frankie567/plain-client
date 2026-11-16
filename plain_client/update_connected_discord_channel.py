@@ -41,8 +41,3 @@ class UpdateConnectedDiscordChannelUpdateConnectedDiscordChannelErrorFields(Base
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateConnectedDiscordChannel.model_rebuild()
-UpdateConnectedDiscordChannelUpdateConnectedDiscordChannel.model_rebuild()
-UpdateConnectedDiscordChannelUpdateConnectedDiscordChannelError.model_rebuild()

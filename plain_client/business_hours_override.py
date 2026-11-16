@@ -16,4 +16,3 @@ class BusinessHoursOverride(BaseModel):
 
 
 BusinessHoursOverrideBusinessHoursOverride = BusinessHoursOverrideFields
-BusinessHoursOverride.model_rebuild()

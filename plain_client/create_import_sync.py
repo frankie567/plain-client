@@ -37,8 +37,3 @@ class CreateImportSyncCreateImportSyncErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateImportSync.model_rebuild()
-CreateImportSyncCreateImportSync.model_rebuild()
-CreateImportSyncCreateImportSyncError.model_rebuild()

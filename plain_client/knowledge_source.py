@@ -56,6 +56,3 @@ class KnowledgeSourceKnowledgeSourceKnowledgeSourceSitemap(
 
 class KnowledgeSourceKnowledgeSourceKnowledgeSourceUrl(KnowledgeSourceUrlFields):
     typename__: Literal["KnowledgeSourceUrl"] = Field(alias="__typename")
-
-
-KnowledgeSource.model_rebuild()

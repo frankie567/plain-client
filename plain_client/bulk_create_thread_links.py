@@ -35,8 +35,3 @@ class BulkCreateThreadLinksBulkCreateThreadLinksErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-BulkCreateThreadLinks.model_rebuild()
-BulkCreateThreadLinksBulkCreateThreadLinks.model_rebuild()
-BulkCreateThreadLinksBulkCreateThreadLinksError.model_rebuild()

@@ -45,8 +45,3 @@ class CreateWorkspaceCursorIntegrationCreateWorkspaceCursorIntegrationErrorField
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkspaceCursorIntegration.model_rebuild()
-CreateWorkspaceCursorIntegrationCreateWorkspaceCursorIntegration.model_rebuild()
-CreateWorkspaceCursorIntegrationCreateWorkspaceCursorIntegrationError.model_rebuild()

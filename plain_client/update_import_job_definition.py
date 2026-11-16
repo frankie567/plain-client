@@ -39,8 +39,3 @@ class UpdateImportJobDefinitionUpdateImportJobDefinitionErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateImportJobDefinition.model_rebuild()
-UpdateImportJobDefinitionUpdateImportJobDefinition.model_rebuild()
-UpdateImportJobDefinitionUpdateImportJobDefinitionError.model_rebuild()

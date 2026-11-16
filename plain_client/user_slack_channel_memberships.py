@@ -14,6 +14,3 @@ class UserSlackChannelMemberships(BaseModel):
 
 class UserSlackChannelMembershipsUserSlackChannelMemberships(BaseModel):
     slack_channel_id: str = Field(alias="slackChannelId")
-
-
-UserSlackChannelMemberships.model_rebuild()

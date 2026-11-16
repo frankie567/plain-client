@@ -45,8 +45,3 @@ class UpdateHelpCenterCustomDomainNameUpdateHelpCenterCustomDomainNameErrorField
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateHelpCenterCustomDomainName.model_rebuild()
-UpdateHelpCenterCustomDomainNameUpdateHelpCenterCustomDomainName.model_rebuild()
-UpdateHelpCenterCustomDomainNameUpdateHelpCenterCustomDomainNameError.model_rebuild()

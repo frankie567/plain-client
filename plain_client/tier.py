@@ -12,4 +12,3 @@ class Tier(BaseModel):
 
 
 TierTier = TierFields
-Tier.model_rebuild()

@@ -33,8 +33,3 @@ class MoveWorkflowMoveWorkflowErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-MoveWorkflow.model_rebuild()
-MoveWorkflowMoveWorkflow.model_rebuild()
-MoveWorkflowMoveWorkflowError.model_rebuild()

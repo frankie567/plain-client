@@ -16,4 +16,3 @@ class ActiveThreadCluster(BaseModel):
 
 
 ActiveThreadClusterActiveThreadCluster = ThreadClusterFields
-ActiveThreadCluster.model_rebuild()

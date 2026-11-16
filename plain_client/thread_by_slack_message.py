@@ -16,4 +16,3 @@ class ThreadBySlackMessage(BaseModel):
 
 
 ThreadBySlackMessageThreadBySlackMessage = ThreadFields
-ThreadBySlackMessage.model_rebuild()

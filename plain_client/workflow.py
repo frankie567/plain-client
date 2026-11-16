@@ -12,4 +12,3 @@ class Workflow(BaseModel):
 
 
 WorkflowWorkflow = WorkflowFields
-Workflow.model_rebuild()

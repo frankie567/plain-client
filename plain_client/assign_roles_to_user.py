@@ -30,8 +30,3 @@ class AssignRolesToUserAssignRolesToUserErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AssignRolesToUser.model_rebuild()
-AssignRolesToUserAssignRolesToUser.model_rebuild()
-AssignRolesToUserAssignRolesToUserError.model_rebuild()

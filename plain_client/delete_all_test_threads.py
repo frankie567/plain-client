@@ -30,8 +30,3 @@ class DeleteAllTestThreadsDeleteAllTestThreadsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteAllTestThreads.model_rebuild()
-DeleteAllTestThreadsDeleteAllTestThreads.model_rebuild()
-DeleteAllTestThreadsDeleteAllTestThreadsError.model_rebuild()

@@ -47,8 +47,3 @@ class RemoveWorkspaceAlternateSupportEmailAddressRemoveWorkspaceAlternateSupport
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveWorkspaceAlternateSupportEmailAddress.model_rebuild()
-RemoveWorkspaceAlternateSupportEmailAddressRemoveWorkspaceAlternateSupportEmailAddress.model_rebuild()
-RemoveWorkspaceAlternateSupportEmailAddressRemoveWorkspaceAlternateSupportEmailAddressError.model_rebuild()

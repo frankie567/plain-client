@@ -18,4 +18,3 @@ class WorkspaceMSTeamsIntegration(BaseModel):
 WorkspaceMSTeamsIntegrationWorkspaceMsTeamsIntegration = (
     WorkspaceMSTeamsIntegrationFields
 )
-WorkspaceMSTeamsIntegration.model_rebuild()

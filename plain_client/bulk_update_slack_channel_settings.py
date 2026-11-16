@@ -41,8 +41,3 @@ class BulkUpdateSlackChannelSettingsBulkUpdateSlackChannelSettingsErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-BulkUpdateSlackChannelSettings.model_rebuild()
-BulkUpdateSlackChannelSettingsBulkUpdateSlackChannelSettings.model_rebuild()
-BulkUpdateSlackChannelSettingsBulkUpdateSlackChannelSettingsError.model_rebuild()

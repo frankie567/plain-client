@@ -47,8 +47,3 @@ class GenerateAiToneRulesFromDescriptionGenerateAiToneRulesFromDescriptionErrorF
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-GenerateAiToneRulesFromDescription.model_rebuild()
-GenerateAiToneRulesFromDescriptionGenerateAiToneRulesFromDescription.model_rebuild()
-GenerateAiToneRulesFromDescriptionGenerateAiToneRulesFromDescriptionError.model_rebuild()

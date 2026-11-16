@@ -18,4 +18,3 @@ class UserAuthSlackIntegrationByThreadId(BaseModel):
 UserAuthSlackIntegrationByThreadIdUserAuthSlackIntegrationByThreadId = (
     UserAuthSlackIntegrationFields
 )
-UserAuthSlackIntegrationByThreadId.model_rebuild()

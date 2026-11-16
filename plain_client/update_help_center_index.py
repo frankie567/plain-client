@@ -37,8 +37,3 @@ class UpdateHelpCenterIndexUpdateHelpCenterIndexErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateHelpCenterIndex.model_rebuild()
-UpdateHelpCenterIndexUpdateHelpCenterIndex.model_rebuild()
-UpdateHelpCenterIndexUpdateHelpCenterIndexError.model_rebuild()

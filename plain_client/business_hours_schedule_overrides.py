@@ -41,9 +41,3 @@ class BusinessHoursScheduleOverridesBusinessHoursScheduleOverridesPageInfo(BaseM
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-BusinessHoursScheduleOverrides.model_rebuild()
-BusinessHoursScheduleOverridesBusinessHoursSchedule.model_rebuild()
-BusinessHoursScheduleOverridesBusinessHoursScheduleOverrides.model_rebuild()
-BusinessHoursScheduleOverridesBusinessHoursScheduleOverridesEdges.model_rebuild()

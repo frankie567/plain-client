@@ -30,8 +30,3 @@ class DeleteHelpCenterDeleteHelpCenterErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteHelpCenter.model_rebuild()
-DeleteHelpCenterDeleteHelpCenter.model_rebuild()
-DeleteHelpCenterDeleteHelpCenterError.model_rebuild()

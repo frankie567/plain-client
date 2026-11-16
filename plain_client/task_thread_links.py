@@ -123,9 +123,3 @@ class TaskThreadLinksTaskThreadLinksPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-TaskThreadLinks.model_rebuild()
-TaskThreadLinksTask.model_rebuild()
-TaskThreadLinksTaskThreadLinks.model_rebuild()
-TaskThreadLinksTaskThreadLinksEdges.model_rebuild()

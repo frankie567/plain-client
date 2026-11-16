@@ -35,8 +35,3 @@ class CreateDiscussionCreateDiscussionErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateDiscussion.model_rebuild()
-CreateDiscussionCreateDiscussion.model_rebuild()
-CreateDiscussionCreateDiscussionError.model_rebuild()

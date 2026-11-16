@@ -39,8 +39,3 @@ class UpdateConnectedSlackChannelUpdateConnectedSlackChannelErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateConnectedSlackChannel.model_rebuild()
-UpdateConnectedSlackChannelUpdateConnectedSlackChannel.model_rebuild()
-UpdateConnectedSlackChannelUpdateConnectedSlackChannelError.model_rebuild()

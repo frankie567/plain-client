@@ -35,8 +35,3 @@ class UpdateThreadEscalationPathUpdateThreadEscalationPathErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateThreadEscalationPath.model_rebuild()
-UpdateThreadEscalationPathUpdateThreadEscalationPath.model_rebuild()
-UpdateThreadEscalationPathUpdateThreadEscalationPathError.model_rebuild()

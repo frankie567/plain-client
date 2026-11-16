@@ -37,8 +37,3 @@ class SendDiscordMessageSendDiscordMessageErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SendDiscordMessage.model_rebuild()
-SendDiscordMessageSendDiscordMessage.model_rebuild()
-SendDiscordMessageSendDiscordMessageError.model_rebuild()

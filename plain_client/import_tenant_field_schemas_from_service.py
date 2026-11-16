@@ -45,8 +45,3 @@ class ImportTenantFieldSchemasFromServiceImportTenantFieldSchemasFromServiceErro
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ImportTenantFieldSchemasFromService.model_rebuild()
-ImportTenantFieldSchemasFromServiceImportTenantFieldSchemasFromService.model_rebuild()
-ImportTenantFieldSchemasFromServiceImportTenantFieldSchemasFromServiceError.model_rebuild()

@@ -35,8 +35,3 @@ class CreateThreadFromSlackMessageCreateThreadFromSlackMessageErrorFields(BaseMo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateThreadFromSlackMessage.model_rebuild()
-CreateThreadFromSlackMessageCreateThreadFromSlackMessage.model_rebuild()
-CreateThreadFromSlackMessageCreateThreadFromSlackMessageError.model_rebuild()

@@ -35,8 +35,3 @@ class CreateAllTestThreadsCreateAllTestThreadsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateAllTestThreads.model_rebuild()
-CreateAllTestThreadsCreateAllTestThreads.model_rebuild()
-CreateAllTestThreadsCreateAllTestThreadsError.model_rebuild()

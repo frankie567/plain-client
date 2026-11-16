@@ -33,8 +33,3 @@ class CreateThreadCreateThreadErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateThread.model_rebuild()
-CreateThreadCreateThread.model_rebuild()
-CreateThreadCreateThreadError.model_rebuild()

@@ -40,8 +40,3 @@ class ReorderCustomerCardConfigsReorderCustomerCardConfigsErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ReorderCustomerCardConfigs.model_rebuild()
-ReorderCustomerCardConfigsReorderCustomerCardConfigs.model_rebuild()
-ReorderCustomerCardConfigsReorderCustomerCardConfigsError.model_rebuild()

@@ -47,8 +47,3 @@ class DeleteWorkspaceDiscordIntegrationDeleteWorkspaceDiscordIntegrationErrorFie
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkspaceDiscordIntegration.model_rebuild()
-DeleteWorkspaceDiscordIntegrationDeleteWorkspaceDiscordIntegration.model_rebuild()
-DeleteWorkspaceDiscordIntegrationDeleteWorkspaceDiscordIntegrationError.model_rebuild()

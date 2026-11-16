@@ -37,8 +37,3 @@ class CreateChatAppSecretCreateChatAppSecretErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateChatAppSecret.model_rebuild()
-CreateChatAppSecretCreateChatAppSecret.model_rebuild()
-CreateChatAppSecretCreateChatAppSecretError.model_rebuild()

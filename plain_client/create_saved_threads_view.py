@@ -37,8 +37,3 @@ class CreateSavedThreadsViewCreateSavedThreadsViewErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateSavedThreadsView.model_rebuild()
-CreateSavedThreadsViewCreateSavedThreadsView.model_rebuild()
-CreateSavedThreadsViewCreateSavedThreadsViewError.model_rebuild()

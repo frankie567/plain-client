@@ -33,8 +33,3 @@ class UpdateMyUserUpdateMyUserErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateMyUser.model_rebuild()
-UpdateMyUserUpdateMyUser.model_rebuild()
-UpdateMyUserUpdateMyUserError.model_rebuild()

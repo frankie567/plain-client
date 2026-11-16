@@ -66,8 +66,3 @@ class UpdateSettingUpdateSettingErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateSetting.model_rebuild()
-UpdateSettingUpdateSetting.model_rebuild()
-UpdateSettingUpdateSettingError.model_rebuild()

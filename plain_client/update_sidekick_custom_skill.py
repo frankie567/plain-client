@@ -42,8 +42,3 @@ class UpdateSidekickCustomSkillUpdateSidekickCustomSkillErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateSidekickCustomSkill.model_rebuild()
-UpdateSidekickCustomSkillUpdateSidekickCustomSkill.model_rebuild()
-UpdateSidekickCustomSkillUpdateSidekickCustomSkillError.model_rebuild()

@@ -37,8 +37,3 @@ class ImportTenantFieldSchemasImportTenantFieldSchemasErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ImportTenantFieldSchemas.model_rebuild()
-ImportTenantFieldSchemasImportTenantFieldSchemas.model_rebuild()
-ImportTenantFieldSchemasImportTenantFieldSchemasError.model_rebuild()

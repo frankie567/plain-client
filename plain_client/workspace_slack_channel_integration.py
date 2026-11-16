@@ -18,4 +18,3 @@ class WorkspaceSlackChannelIntegration(BaseModel):
 WorkspaceSlackChannelIntegrationWorkspaceSlackChannelIntegration = (
     WorkspaceSlackChannelIntegrationFields
 )
-WorkspaceSlackChannelIntegration.model_rebuild()

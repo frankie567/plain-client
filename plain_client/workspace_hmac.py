@@ -16,4 +16,3 @@ class WorkspaceHmac(BaseModel):
 
 
 WorkspaceHmacWorkspaceHmac = WorkspaceHmacFields
-WorkspaceHmac.model_rebuild()

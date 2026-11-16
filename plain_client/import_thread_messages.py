@@ -35,8 +35,3 @@ class ImportThreadMessagesImportThreadMessagesErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ImportThreadMessages.model_rebuild()
-ImportThreadMessagesImportThreadMessages.model_rebuild()
-ImportThreadMessagesImportThreadMessagesError.model_rebuild()

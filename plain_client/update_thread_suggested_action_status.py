@@ -45,8 +45,3 @@ class UpdateThreadSuggestedActionStatusUpdateThreadSuggestedActionStatusErrorFie
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateThreadSuggestedActionStatus.model_rebuild()
-UpdateThreadSuggestedActionStatusUpdateThreadSuggestedActionStatus.model_rebuild()
-UpdateThreadSuggestedActionStatusUpdateThreadSuggestedActionStatusError.model_rebuild()

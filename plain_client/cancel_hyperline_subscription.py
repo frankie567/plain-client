@@ -30,8 +30,3 @@ class CancelHyperlineSubscriptionCancelHyperlineSubscriptionErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CancelHyperlineSubscription.model_rebuild()
-CancelHyperlineSubscriptionCancelHyperlineSubscription.model_rebuild()
-CancelHyperlineSubscriptionCancelHyperlineSubscriptionError.model_rebuild()

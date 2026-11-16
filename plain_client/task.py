@@ -12,4 +12,3 @@ class Task(BaseModel):
 
 
 TaskTask = TaskFields
-Task.model_rebuild()

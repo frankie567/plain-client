@@ -33,8 +33,3 @@ class DeleteTierDeleteTierErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteTier.model_rebuild()
-DeleteTierDeleteTier.model_rebuild()
-DeleteTierDeleteTierError.model_rebuild()

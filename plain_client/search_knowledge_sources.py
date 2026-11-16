@@ -37,6 +37,3 @@ class SearchKnowledgeSourcesSearchKnowledgeSourcesHelpCenterArticleSearchResult(
     HelpCenterArticleSearchResultFields
 ):
     typename__: Literal["HelpCenterArticleSearchResult"] = Field(alias="__typename")
-
-
-SearchKnowledgeSources.model_rebuild()

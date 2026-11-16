@@ -35,8 +35,3 @@ class UpdateCustomRoleUpdateCustomRoleErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateCustomRole.model_rebuild()
-UpdateCustomRoleUpdateCustomRole.model_rebuild()
-UpdateCustomRoleUpdateCustomRoleError.model_rebuild()

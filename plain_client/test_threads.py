@@ -12,4 +12,3 @@ class TestThreads(BaseModel):
 
 
 TestThreadsTestThreads = ThreadFields
-TestThreads.model_rebuild()

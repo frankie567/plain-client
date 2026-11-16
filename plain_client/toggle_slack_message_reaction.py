@@ -30,8 +30,3 @@ class ToggleSlackMessageReactionToggleSlackMessageReactionErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ToggleSlackMessageReaction.model_rebuild()
-ToggleSlackMessageReactionToggleSlackMessageReaction.model_rebuild()
-ToggleSlackMessageReactionToggleSlackMessageReactionError.model_rebuild()

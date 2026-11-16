@@ -30,8 +30,3 @@ class DeleteAiToneRulesDeleteAiToneRulesErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteAiToneRules.model_rebuild()
-DeleteAiToneRulesDeleteAiToneRules.model_rebuild()
-DeleteAiToneRulesDeleteAiToneRulesError.model_rebuild()

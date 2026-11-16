@@ -37,8 +37,3 @@ class CreateEscalationPathCreateEscalationPathErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateEscalationPath.model_rebuild()
-CreateEscalationPathCreateEscalationPath.model_rebuild()
-CreateEscalationPathCreateEscalationPathError.model_rebuild()

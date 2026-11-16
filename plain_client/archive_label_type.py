@@ -37,8 +37,3 @@ class ArchiveLabelTypeArchiveLabelTypeErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ArchiveLabelType.model_rebuild()
-ArchiveLabelTypeArchiveLabelType.model_rebuild()
-ArchiveLabelTypeArchiveLabelTypeError.model_rebuild()

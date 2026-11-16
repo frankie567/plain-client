@@ -67,8 +67,3 @@ class CreateThreadChannelAssociationCreateThreadChannelAssociationErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateThreadChannelAssociation.model_rebuild()
-CreateThreadChannelAssociationCreateThreadChannelAssociation.model_rebuild()
-CreateThreadChannelAssociationCreateThreadChannelAssociationError.model_rebuild()

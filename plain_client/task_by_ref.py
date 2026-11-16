@@ -14,4 +14,3 @@ class TaskByRef(BaseModel):
 
 
 TaskByRefTaskByRef = TaskFields
-TaskByRef.model_rebuild()

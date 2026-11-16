@@ -33,8 +33,3 @@ class CreateAccountCreateAccountErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateAccount.model_rebuild()
-CreateAccountCreateAccount.model_rebuild()
-CreateAccountCreateAccountError.model_rebuild()

@@ -16,4 +16,3 @@ class UserAuthSlackIntegration(BaseModel):
 
 
 UserAuthSlackIntegrationUserAuthSlackIntegration = UserAuthSlackIntegrationFields
-UserAuthSlackIntegration.model_rebuild()

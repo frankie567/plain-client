@@ -37,6 +37,3 @@ class CreateIndexedDocumentCreateIndexedDocumentErrorFields(BaseModel):
 
 
 CreateIndexedDocumentCreateIndexedDocumentIndexedDocument = IndexedDocumentFields
-CreateIndexedDocument.model_rebuild()
-CreateIndexedDocumentCreateIndexedDocument.model_rebuild()
-CreateIndexedDocumentCreateIndexedDocumentError.model_rebuild()

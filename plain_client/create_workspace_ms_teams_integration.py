@@ -47,8 +47,3 @@ class CreateWorkspaceMSTeamsIntegrationCreateWorkspaceMsTeamsIntegrationErrorFie
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkspaceMSTeamsIntegration.model_rebuild()
-CreateWorkspaceMSTeamsIntegrationCreateWorkspaceMsTeamsIntegration.model_rebuild()
-CreateWorkspaceMSTeamsIntegrationCreateWorkspaceMsTeamsIntegrationError.model_rebuild()

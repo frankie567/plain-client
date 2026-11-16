@@ -30,8 +30,3 @@ class DeleteCustomerGroupDeleteCustomerGroupErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteCustomerGroup.model_rebuild()
-DeleteCustomerGroupDeleteCustomerGroup.model_rebuild()
-DeleteCustomerGroupDeleteCustomerGroupError.model_rebuild()

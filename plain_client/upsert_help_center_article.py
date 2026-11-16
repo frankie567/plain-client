@@ -39,8 +39,3 @@ class UpsertHelpCenterArticleUpsertHelpCenterArticleErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertHelpCenterArticle.model_rebuild()
-UpsertHelpCenterArticleUpsertHelpCenterArticle.model_rebuild()
-UpsertHelpCenterArticleUpsertHelpCenterArticleError.model_rebuild()

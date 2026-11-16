@@ -47,8 +47,3 @@ class RefreshWorkspaceSlackSidekickIntegrationRefreshWorkspaceSlackSidekickInteg
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RefreshWorkspaceSlackSidekickIntegration.model_rebuild()
-RefreshWorkspaceSlackSidekickIntegrationRefreshWorkspaceSlackSidekickIntegration.model_rebuild()
-RefreshWorkspaceSlackSidekickIntegrationRefreshWorkspaceSlackSidekickIntegrationError.model_rebuild()

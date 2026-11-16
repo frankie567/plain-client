@@ -19,6 +19,3 @@ class WorkOSConfigurationWorkOsConfiguration(BaseModel):
     directory_sync_url: str = Field(alias="directorySyncUrl")
     domain_verification_url: str = Field(alias="domainVerificationUrl")
     widget_token: str = Field(alias="widgetToken")
-
-
-WorkOSConfiguration.model_rebuild()

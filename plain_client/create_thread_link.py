@@ -130,8 +130,3 @@ class CreateThreadLinkCreateThreadLinkErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateThreadLink.model_rebuild()
-CreateThreadLinkCreateThreadLink.model_rebuild()
-CreateThreadLinkCreateThreadLinkError.model_rebuild()

@@ -30,8 +30,3 @@ class OauthAppsOauthAppsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-OauthApps.model_rebuild()
-OauthAppsOauthApps.model_rebuild()
-OauthAppsOauthAppsEdges.model_rebuild()

@@ -35,8 +35,3 @@ class AddAdditionalAssigneesAddAdditionalAssigneesErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddAdditionalAssignees.model_rebuild()
-AddAdditionalAssigneesAddAdditionalAssignees.model_rebuild()
-AddAdditionalAssigneesAddAdditionalAssigneesError.model_rebuild()

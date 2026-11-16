@@ -37,8 +37,3 @@ class CreateEmailPreviewUrlCreateEmailPreviewUrlErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateEmailPreviewUrl.model_rebuild()
-CreateEmailPreviewUrlCreateEmailPreviewUrl.model_rebuild()
-CreateEmailPreviewUrlCreateEmailPreviewUrlError.model_rebuild()

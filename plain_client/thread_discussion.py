@@ -16,4 +16,3 @@ class ThreadDiscussion(BaseModel):
 
 
 ThreadDiscussionThreadDiscussion = ThreadDiscussionFields
-ThreadDiscussion.model_rebuild()

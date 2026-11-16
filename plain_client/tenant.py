@@ -12,4 +12,3 @@ class Tenant(BaseModel):
 
 
 TenantTenant = TenantFields
-Tenant.model_rebuild()

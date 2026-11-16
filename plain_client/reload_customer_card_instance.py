@@ -131,8 +131,3 @@ class ReloadCustomerCardInstanceReloadCustomerCardInstanceErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ReloadCustomerCardInstance.model_rebuild()
-ReloadCustomerCardInstanceReloadCustomerCardInstance.model_rebuild()
-ReloadCustomerCardInstanceReloadCustomerCardInstanceError.model_rebuild()

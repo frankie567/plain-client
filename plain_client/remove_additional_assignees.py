@@ -35,8 +35,3 @@ class RemoveAdditionalAssigneesRemoveAdditionalAssigneesErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveAdditionalAssignees.model_rebuild()
-RemoveAdditionalAssigneesRemoveAdditionalAssignees.model_rebuild()
-RemoveAdditionalAssigneesRemoveAdditionalAssigneesError.model_rebuild()

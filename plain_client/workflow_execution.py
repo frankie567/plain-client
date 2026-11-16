@@ -16,4 +16,3 @@ class WorkflowExecution(BaseModel):
 
 
 WorkflowExecutionWorkflowExecution = WorkflowExecutionFields
-WorkflowExecution.model_rebuild()

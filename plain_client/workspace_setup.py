@@ -12,4 +12,3 @@ class WorkspaceSetup(BaseModel):
 
 
 WorkspaceSetupWorkspaceSetup = WorkspaceSetupFields
-WorkspaceSetup.model_rebuild()

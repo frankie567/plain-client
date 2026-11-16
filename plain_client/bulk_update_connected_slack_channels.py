@@ -45,8 +45,3 @@ class BulkUpdateConnectedSlackChannelsBulkUpdateConnectedSlackChannelsErrorField
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-BulkUpdateConnectedSlackChannels.model_rebuild()
-BulkUpdateConnectedSlackChannelsBulkUpdateConnectedSlackChannels.model_rebuild()
-BulkUpdateConnectedSlackChannelsBulkUpdateConnectedSlackChannelsError.model_rebuild()

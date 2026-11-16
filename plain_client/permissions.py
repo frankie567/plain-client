@@ -10,6 +10,3 @@ class Permissions(BaseModel):
 
 class PermissionsPermissions(BaseModel):
     permissions: list[str]
-
-
-Permissions.model_rebuild()

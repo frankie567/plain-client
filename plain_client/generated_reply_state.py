@@ -18,6 +18,3 @@ class GeneratedReplyState(BaseModel):
 class GeneratedReplyStateGeneratedReplyState(BaseModel):
     timeline_entry_id: str = Field(alias="timelineEntryId")
     status: GeneratedReplyStatus
-
-
-GeneratedReplyState.model_rebuild()

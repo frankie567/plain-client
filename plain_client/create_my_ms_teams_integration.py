@@ -39,8 +39,3 @@ class CreateMyMSTeamsIntegrationCreateMyMsTeamsIntegrationErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateMyMSTeamsIntegration.model_rebuild()
-CreateMyMSTeamsIntegrationCreateMyMsTeamsIntegration.model_rebuild()
-CreateMyMSTeamsIntegrationCreateMyMsTeamsIntegrationError.model_rebuild()

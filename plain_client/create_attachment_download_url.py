@@ -42,8 +42,3 @@ class CreateAttachmentDownloadUrlCreateAttachmentDownloadUrlErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateAttachmentDownloadUrl.model_rebuild()
-CreateAttachmentDownloadUrlCreateAttachmentDownloadUrl.model_rebuild()
-CreateAttachmentDownloadUrlCreateAttachmentDownloadUrlError.model_rebuild()

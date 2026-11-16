@@ -34,8 +34,3 @@ class UpsertCompanyUpsertCompanyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertCompany.model_rebuild()
-UpsertCompanyUpsertCompany.model_rebuild()
-UpsertCompanyUpsertCompanyError.model_rebuild()

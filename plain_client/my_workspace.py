@@ -14,4 +14,3 @@ class MyWorkspace(BaseModel):
 
 
 MyWorkspaceMyWorkspace = WorkspaceFields
-MyWorkspace.model_rebuild()

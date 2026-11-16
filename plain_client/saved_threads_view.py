@@ -16,4 +16,3 @@ class SavedThreadsView(BaseModel):
 
 
 SavedThreadsViewSavedThreadsView = SavedThreadsViewFields
-SavedThreadsView.model_rebuild()

@@ -35,8 +35,3 @@ class BulkDeleteThreadLinksBulkDeleteThreadLinksErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-BulkDeleteThreadLinks.model_rebuild()
-BulkDeleteThreadLinksBulkDeleteThreadLinks.model_rebuild()
-BulkDeleteThreadLinksBulkDeleteThreadLinksError.model_rebuild()

@@ -51,8 +51,3 @@ class UpsertDiscussionToolCallUpsertDiscussionToolCallErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertDiscussionToolCall.model_rebuild()
-UpsertDiscussionToolCallUpsertDiscussionToolCall.model_rebuild()
-UpsertDiscussionToolCallUpsertDiscussionToolCallError.model_rebuild()

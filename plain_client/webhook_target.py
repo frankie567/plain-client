@@ -16,4 +16,3 @@ class WebhookTarget(BaseModel):
 
 
 WebhookTargetWebhookTarget = WebhookTargetFields
-WebhookTarget.model_rebuild()

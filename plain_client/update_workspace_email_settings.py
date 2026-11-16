@@ -39,8 +39,3 @@ class UpdateWorkspaceEmailSettingsUpdateWorkspaceEmailSettingsErrorFields(BaseMo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateWorkspaceEmailSettings.model_rebuild()
-UpdateWorkspaceEmailSettingsUpdateWorkspaceEmailSettings.model_rebuild()
-UpdateWorkspaceEmailSettingsUpdateWorkspaceEmailSettingsError.model_rebuild()

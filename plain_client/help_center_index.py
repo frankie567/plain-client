@@ -16,4 +16,3 @@ class HelpCenterIndex(BaseModel):
 
 
 HelpCenterIndexHelpCenterIndex = HelpCenterIndexFields
-HelpCenterIndex.model_rebuild()

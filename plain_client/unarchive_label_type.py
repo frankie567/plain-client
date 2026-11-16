@@ -37,8 +37,3 @@ class UnarchiveLabelTypeUnarchiveLabelTypeErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UnarchiveLabelType.model_rebuild()
-UnarchiveLabelTypeUnarchiveLabelType.model_rebuild()
-UnarchiveLabelTypeUnarchiveLabelTypeError.model_rebuild()

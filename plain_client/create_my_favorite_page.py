@@ -37,8 +37,3 @@ class CreateMyFavoritePageCreateMyFavoritePageErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateMyFavoritePage.model_rebuild()
-CreateMyFavoritePageCreateMyFavoritePage.model_rebuild()
-CreateMyFavoritePageCreateMyFavoritePageError.model_rebuild()

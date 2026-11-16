@@ -14,4 +14,3 @@ class SlackUser(BaseModel):
 
 
 SlackUserSlackUser = SlackUserFields
-SlackUser.model_rebuild()

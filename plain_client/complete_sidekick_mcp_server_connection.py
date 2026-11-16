@@ -47,8 +47,3 @@ class CompleteSidekickMcpServerConnectionCompleteSidekickMcpServerConnectionErro
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CompleteSidekickMcpServerConnection.model_rebuild()
-CompleteSidekickMcpServerConnectionCompleteSidekickMcpServerConnection.model_rebuild()
-CompleteSidekickMcpServerConnectionCompleteSidekickMcpServerConnectionError.model_rebuild()

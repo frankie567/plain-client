@@ -33,8 +33,3 @@ class RemoveLabelsRemoveLabelsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveLabels.model_rebuild()
-RemoveLabelsRemoveLabels.model_rebuild()
-RemoveLabelsRemoveLabelsError.model_rebuild()

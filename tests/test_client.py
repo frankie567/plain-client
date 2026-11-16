@@ -1,5 +1,7 @@
 import contextlib
 import json
+import subprocess
+import sys
 from collections.abc import AsyncGenerator, Callable, Coroutine
 
 import httpx2
@@ -14,6 +16,31 @@ from plain_client.input_types import (
     UpsertCustomerOnCreateInput,
     UpsertCustomerOnUpdateInput,
 )
+
+
+def test_lazy_model_imports() -> None:
+    subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            """
+import sys
+from plain_client import Plain
+
+assert "plain_client.fragments" not in sys.modules
+assert "plain_client.input_types" not in sys.modules
+assert "plain_client.send_chat" not in sys.modules
+
+from plain_client import SendChatInput
+
+assert not SendChatInput.__pydantic_complete__
+message = SendChatInput(customerId="CUSTOMER_ID", text="Hello")
+assert message.customer_id == "CUSTOMER_ID"
+assert SendChatInput.__pydantic_complete__
+""",
+        ],
+        check=True,
+    )
 
 
 @contextlib.asynccontextmanager

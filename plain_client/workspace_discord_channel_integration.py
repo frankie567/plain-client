@@ -18,4 +18,3 @@ class WorkspaceDiscordChannelIntegration(BaseModel):
 WorkspaceDiscordChannelIntegrationWorkspaceDiscordChannelIntegration = (
     WorkspaceDiscordChannelIntegrationFields
 )
-WorkspaceDiscordChannelIntegration.model_rebuild()

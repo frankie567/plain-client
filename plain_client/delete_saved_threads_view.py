@@ -30,8 +30,3 @@ class DeleteSavedThreadsViewDeleteSavedThreadsViewErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteSavedThreadsView.model_rebuild()
-DeleteSavedThreadsViewDeleteSavedThreadsView.model_rebuild()
-DeleteSavedThreadsViewDeleteSavedThreadsViewError.model_rebuild()

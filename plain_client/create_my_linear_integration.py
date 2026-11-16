@@ -39,8 +39,3 @@ class CreateMyLinearIntegrationCreateMyLinearIntegrationErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateMyLinearIntegration.model_rebuild()
-CreateMyLinearIntegrationCreateMyLinearIntegration.model_rebuild()
-CreateMyLinearIntegrationCreateMyLinearIntegrationError.model_rebuild()

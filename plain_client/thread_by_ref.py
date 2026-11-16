@@ -14,4 +14,3 @@ class ThreadByRef(BaseModel):
 
 
 ThreadByRefThreadByRef = ThreadFields
-ThreadByRef.model_rebuild()

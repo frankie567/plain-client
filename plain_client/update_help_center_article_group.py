@@ -39,8 +39,3 @@ class UpdateHelpCenterArticleGroupUpdateHelpCenterArticleGroupErrorFields(BaseMo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateHelpCenterArticleGroup.model_rebuild()
-UpdateHelpCenterArticleGroupUpdateHelpCenterArticleGroup.model_rebuild()
-UpdateHelpCenterArticleGroupUpdateHelpCenterArticleGroupError.model_rebuild()

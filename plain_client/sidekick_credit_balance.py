@@ -14,4 +14,3 @@ class SidekickCreditBalance(BaseModel):
 
 
 SidekickCreditBalanceSidekickCreditBalance = SidekickCreditBalanceFields
-SidekickCreditBalance.model_rebuild()
