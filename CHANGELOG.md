@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-16
+
 ### Changed
 
 - Lazily import generated client models and defer Pydantic model building until first use to reduce startup time and memory.
