@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, ThreadParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import ThreadFields
 
 
 class ChangeThreadPriority(BaseModel):
@@ -20,7 +21,22 @@ class ChangeThreadPriorityChangeThreadPriority(BaseModel):
     error: Optional["ChangeThreadPriorityChangeThreadPriorityError"]
 
 
-ChangeThreadPriorityChangeThreadPriorityThread = ThreadParts
-ChangeThreadPriorityChangeThreadPriorityError = MutationErrorParts
+ChangeThreadPriorityChangeThreadPriorityThread = ThreadFields
+
+
+class ChangeThreadPriorityChangeThreadPriorityError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["ChangeThreadPriorityChangeThreadPriorityErrorFields"]
+
+
+class ChangeThreadPriorityChangeThreadPriorityErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 ChangeThreadPriority.model_rebuild()
 ChangeThreadPriorityChangeThreadPriority.model_rebuild()
+ChangeThreadPriorityChangeThreadPriorityError.model_rebuild()

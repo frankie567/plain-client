@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, TenantParts
+from .enums import MutationErrorType, MutationFieldErrorType, UpsertResult
+from .fragments import TenantFields
 
 
 class UpsertTenant(BaseModel):
@@ -15,10 +16,26 @@ class UpsertTenant(BaseModel):
 
 class UpsertTenantUpsertTenant(BaseModel):
     tenant: Optional["UpsertTenantUpsertTenantTenant"]
+    result: UpsertResult | None
     error: Optional["UpsertTenantUpsertTenantError"]
 
 
-UpsertTenantUpsertTenantTenant = TenantParts
-UpsertTenantUpsertTenantError = MutationErrorParts
+UpsertTenantUpsertTenantTenant = TenantFields
+
+
+class UpsertTenantUpsertTenantError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["UpsertTenantUpsertTenantErrorFields"]
+
+
+class UpsertTenantUpsertTenantErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 UpsertTenant.model_rebuild()
 UpsertTenantUpsertTenant.model_rebuild()
+UpsertTenantUpsertTenantError.model_rebuild()

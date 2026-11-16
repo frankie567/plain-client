@@ -6,12 +6,12 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import WorkspaceParts
+from .fragments import WorkspaceFields
 
 
 class MyWorkspace(BaseModel):
     my_workspace: Optional["MyWorkspaceMyWorkspace"] = Field(alias="myWorkspace")
 
 
-MyWorkspaceMyWorkspace = WorkspaceParts
+MyWorkspaceMyWorkspace = WorkspaceFields
 MyWorkspace.model_rebuild()

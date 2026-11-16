@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import LabelTypeParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import LabelTypeFields
 
 
 class ArchiveLabelType(BaseModel):
@@ -22,12 +23,22 @@ class ArchiveLabelTypeArchiveLabelType(BaseModel):
     error: Optional["ArchiveLabelTypeArchiveLabelTypeError"]
 
 
-ArchiveLabelTypeArchiveLabelTypeLabelType = LabelTypeParts
+ArchiveLabelTypeArchiveLabelTypeLabelType = LabelTypeFields
 
 
 class ArchiveLabelTypeArchiveLabelTypeError(BaseModel):
     message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["ArchiveLabelTypeArchiveLabelTypeErrorFields"]
+
+
+class ArchiveLabelTypeArchiveLabelTypeErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
 
 
 ArchiveLabelType.model_rebuild()
 ArchiveLabelTypeArchiveLabelType.model_rebuild()
+ArchiveLabelTypeArchiveLabelTypeError.model_rebuild()

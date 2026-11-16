@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import CompanyParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType, UpsertResult
+from .fragments import CompanyFields
 
 
 class UpsertCompany(BaseModel):
@@ -15,10 +16,26 @@ class UpsertCompany(BaseModel):
 
 class UpsertCompanyUpsertCompany(BaseModel):
     company: Optional["UpsertCompanyUpsertCompanyCompany"]
+    result: UpsertResult | None
     error: Optional["UpsertCompanyUpsertCompanyError"]
 
 
-UpsertCompanyUpsertCompanyCompany = CompanyParts
-UpsertCompanyUpsertCompanyError = MutationErrorParts
+UpsertCompanyUpsertCompanyCompany = CompanyFields
+
+
+class UpsertCompanyUpsertCompanyError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["UpsertCompanyUpsertCompanyErrorFields"]
+
+
+class UpsertCompanyUpsertCompanyErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 UpsertCompany.model_rebuild()
 UpsertCompanyUpsertCompany.model_rebuild()
+UpsertCompanyUpsertCompanyError.model_rebuild()

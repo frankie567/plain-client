@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
 
 
 class DeleteWebhookTarget(BaseModel):
@@ -19,6 +19,19 @@ class DeleteWebhookTargetDeleteWebhookTarget(BaseModel):
     error: Optional["DeleteWebhookTargetDeleteWebhookTargetError"]
 
 
-DeleteWebhookTargetDeleteWebhookTargetError = MutationErrorParts
+class DeleteWebhookTargetDeleteWebhookTargetError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["DeleteWebhookTargetDeleteWebhookTargetErrorFields"]
+
+
+class DeleteWebhookTargetDeleteWebhookTargetErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 DeleteWebhookTarget.model_rebuild()
 DeleteWebhookTargetDeleteWebhookTarget.model_rebuild()
+DeleteWebhookTargetDeleteWebhookTargetError.model_rebuild()

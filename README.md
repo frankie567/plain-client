@@ -18,8 +18,8 @@
 > [!IMPORTANT]
 > This client is generated **automatically** using:
 > * [ariadne-codegen](https://github.com/mirumee/ariadne-codegen)
-> * [Plain GraphQL Schema](https://core-api.uk.plain.com/graphql/v1/schema.graphql)
-> * Fragments, mutations and queries provided by Plain in their [official TypeScript SDK](https://github.com/team-plain/typescript-sdk/tree/main/src/graphql)
+> * [Plain GraphQL Schema](https://github.com/team-plain/sdk/blob/main/packages/graphql/src/schema.graphql)
+> * Fragments, mutations and queries provided by Plain in their [official TypeScript SDK](https://github.com/team-plain/sdk/blob/main/packages/graphql/src/_generated_documents.graphql)
 
 ## Quickstart
 
@@ -52,10 +52,10 @@ Install the development dependencies and pre-commit hooks with `just install`.
 
 ### Generate the client
 
-Run `just generate` to download the current Plain schema and the fragments,
-mutations, and queries from Plain's TypeScript SDK and regenerate the client.
+Run `just generate` to download the schema, fragments, mutations, and queries
+from Plain's TypeScript SDK and regenerate the client.
 Use `just generate-local` to regenerate from the existing downloads.
-Generation requires Git and curl.
+Generation requires curl.
 
 ### Run unit tests
 

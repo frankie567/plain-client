@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import CustomerEventParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import CustomerEventFields
 
 
 class CreateCustomerEvent(BaseModel):
@@ -22,7 +23,22 @@ class CreateCustomerEventCreateCustomerEvent(BaseModel):
     error: Optional["CreateCustomerEventCreateCustomerEventError"]
 
 
-CreateCustomerEventCreateCustomerEventCustomerEvent = CustomerEventParts
-CreateCustomerEventCreateCustomerEventError = MutationErrorParts
+CreateCustomerEventCreateCustomerEventCustomerEvent = CustomerEventFields
+
+
+class CreateCustomerEventCreateCustomerEventError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["CreateCustomerEventCreateCustomerEventErrorFields"]
+
+
+class CreateCustomerEventCreateCustomerEventErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 CreateCustomerEvent.model_rebuild()
 CreateCustomerEventCreateCustomerEvent.model_rebuild()
+CreateCustomerEventCreateCustomerEventError.model_rebuild()

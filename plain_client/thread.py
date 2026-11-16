@@ -4,12 +4,12 @@
 from typing import Optional
 
 from .base_model import BaseModel
-from .fragments import ThreadParts
+from .fragments import ThreadFields
 
 
 class Thread(BaseModel):
     thread: Optional["ThreadThread"]
 
 
-ThreadThread = ThreadParts
+ThreadThread = ThreadFields
 Thread.model_rebuild()

@@ -54,6 +54,7 @@ target-version = "py311"
 extend-select = ["I", "TRY", "UP"]
 
 [tool.pytest.ini_options]
+testpaths = ["tests"]
 addopts = "--cov=plain_client/ --cov-report=term-missing"
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "strict"

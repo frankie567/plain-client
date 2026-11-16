@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import ChatParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import ChatFields
 
 
 class SendChat(BaseModel):
@@ -18,7 +19,22 @@ class SendChatSendChat(BaseModel):
     error: Optional["SendChatSendChatError"]
 
 
-SendChatSendChatChat = ChatParts
-SendChatSendChatError = MutationErrorParts
+SendChatSendChatChat = ChatFields
+
+
+class SendChatSendChatError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["SendChatSendChatErrorFields"]
+
+
+class SendChatSendChatErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 SendChat.model_rebuild()
 SendChatSendChat.model_rebuild()
+SendChatSendChatError.model_rebuild()

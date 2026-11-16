@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, ThreadEventParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import ThreadEventFields
 
 
 class CreateThreadEvent(BaseModel):
@@ -22,7 +23,22 @@ class CreateThreadEventCreateThreadEvent(BaseModel):
     error: Optional["CreateThreadEventCreateThreadEventError"]
 
 
-CreateThreadEventCreateThreadEventThreadEvent = ThreadEventParts
-CreateThreadEventCreateThreadEventError = MutationErrorParts
+CreateThreadEventCreateThreadEventThreadEvent = ThreadEventFields
+
+
+class CreateThreadEventCreateThreadEventError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["CreateThreadEventCreateThreadEventErrorFields"]
+
+
+class CreateThreadEventCreateThreadEventErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 CreateThreadEvent.model_rebuild()
 CreateThreadEventCreateThreadEvent.model_rebuild()
+CreateThreadEventCreateThreadEventError.model_rebuild()

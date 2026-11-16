@@ -4,9 +4,33 @@
 from enum import Enum
 
 
+class UserStatus(str, Enum):
+    ONLINE = "ONLINE"
+    OFFLINE = "OFFLINE"
+    BREAK = "BREAK"
+    AWAY = "AWAY"
+
+
 class LabelTypeType(str, Enum):
     DEFAULT = "DEFAULT"
     TEAM = "TEAM"
+
+
+class SuggestedLabelTypeSource(str, Enum):
+    AI = "AI"
+    FALLBACK = "FALLBACK"
+
+
+class SuggestedLabelTypeStatus(str, Enum):
+    PENDING = "PENDING"
+    ACCEPTED = "ACCEPTED"
+    DISMISSED = "DISMISSED"
+
+
+class CustomerStatus(str, Enum):
+    IDLE = "IDLE"
+    ACTIVE = "ACTIVE"
+    SNOOZED = "SNOOZED"
 
 
 class ThreadFieldSchemaType(str, Enum):
@@ -18,6 +42,179 @@ class ThreadFieldSchemaType(str, Enum):
     DATE = "DATE"
 
 
+class ThreadDiscussionVisibility(str, Enum):
+    WORKSPACE = "WORKSPACE"
+    USER = "USER"
+
+
+class ThreadDiscussionStatus(str, Enum):
+    OPEN = "OPEN"
+    RESOLVED = "RESOLVED"
+
+
+class ThreadDiscussionAgentStatus(str, Enum):
+    UNKNOWN = "UNKNOWN"
+    IDLE = "IDLE"
+    IN_PROGRESS = "IN_PROGRESS"
+    TOOL_CALL_APPROVAL_PENDING = "TOOL_CALL_APPROVAL_PENDING"
+    CONNECTION_PENDING = "CONNECTION_PENDING"
+
+
+class SidekickModelOption(str, Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+
+
+class DiscussionsSortField(str, Enum):
+    CREATED_AT = "CREATED_AT"
+    LAST_ACTIVITY_AT = "LAST_ACTIVITY_AT"
+    UPDATED_AT = "UPDATED_AT"
+
+
+class DiscussionToolCallStatus(str, Enum):
+    PENDING = "PENDING"
+    SUCCESS = "SUCCESS"
+    ERROR = "ERROR"
+
+
+class AgentApprovalStatus(str, Enum):
+    PENDING = "PENDING"
+    APPROVED = "APPROVED"
+    DENIED = "DENIED"
+
+
+class AgentApprovalDecision(str, Enum):
+    APPROVED = "APPROVED"
+    DENIED = "DENIED"
+
+
+class SidekickConnectRequestStatus(str, Enum):
+    PENDING = "PENDING"
+    CONNECTED = "CONNECTED"
+
+
+class SidekickQuestionStatus(str, Enum):
+    PENDING = "PENDING"
+    ANSWERED = "ANSWERED"
+    DISMISSED = "DISMISSED"
+
+
+class WorkflowTriggerType(str, Enum):
+    MANUAL = "MANUAL"
+    EVENTS = "EVENTS"
+    SCHEDULE = "SCHEDULE"
+
+
+class WorkflowsSortField(str, Enum):
+    POSITION = "POSITION"
+    UPDATED_AT = "UPDATED_AT"
+    NAME = "NAME"
+    CREATED_AT = "CREATED_AT"
+    PUBLISHED_AT = "PUBLISHED_AT"
+    LAST_TRIGGERED_AT = "LAST_TRIGGERED_AT"
+
+
+class WorkflowStepType(str, Enum):
+    CONDITION = "CONDITION"
+    ACTION = "ACTION"
+    WAIT = "WAIT"
+    NOTE = "NOTE"
+
+
+class WorkflowExecutionStatus(str, Enum):
+    QUEUED = "QUEUED"
+    RUNNING = "RUNNING"
+    SUCCESS = "SUCCESS"
+    FAILED = "FAILED"
+    WAITING = "WAITING"
+    CANCELLED = "CANCELLED"
+
+
+class WorkflowExecutionEntityType(str, Enum):
+    THREAD = "THREAD"
+    WORKSPACE = "WORKSPACE"
+
+
+class WorkflowStepExecutionStatus(str, Enum):
+    RUNNING = "RUNNING"
+    SUCCESS = "SUCCESS"
+    FAILED = "FAILED"
+
+
+class WorkflowStepEntityType(str, Enum):
+    SIDEKICK_DISCUSSION = "SIDEKICK_DISCUSSION"
+
+
+class ThreadsLayout(str, Enum):
+    TABLE = "TABLE"
+    BOARD = "BOARD"
+
+
+class ThreadsGroupBy(str, Enum):
+    NONE = "NONE"
+    PRIORITY = "PRIORITY"
+    STATUS = "STATUS"
+    COMPANY = "COMPANY"
+    LABEL = "LABEL"
+    TIER = "TIER"
+    CHANNEL = "CHANNEL"
+    ASSIGNEE = "ASSIGNEE"
+    CUSTOMER_GROUP = "CUSTOMER_GROUP"
+    ACCOUNT = "ACCOUNT"
+    TENANT = "TENANT"
+    SERVICE_LEVEL_AGREEMENT_POLICY = "SERVICE_LEVEL_AGREEMENT_POLICY"
+
+
+class BroadcastType(str, Enum):
+    SLACK = "SLACK"
+
+
+class BroadcastSenderType(str, Enum):
+    PLAIN_WORKSPACE = "PLAIN_WORKSPACE"
+    PLAIN_USER = "PLAIN_USER"
+
+
+class BroadcastContentFormat(str, Enum):
+    TIPTAP = "TIPTAP"
+    SLACK_BLOCK_KIT = "SLACK_BLOCK_KIT"
+
+
+class BroadcastSendTargetRecipientsEmptyReason(str, Enum):
+    NO_TENANTS_MATCHED = "NO_TENANTS_MATCHED"
+    NO_RECIPIENTS_RESOLVED = "NO_RECIPIENTS_RESOLVED"
+    EXCLUDED_BY_AUDIENCE = "EXCLUDED_BY_AUDIENCE"
+    ALL_RECIPIENTS_UNSUBSCRIBED = "ALL_RECIPIENTS_UNSUBSCRIBED"
+
+
+class BroadcastStatus(str, Enum):
+    DRAFT = "DRAFT"
+    SCHEDULED = "SCHEDULED"
+    RESOLVING = "RESOLVING"
+    SENDING = "SENDING"
+    SENT = "SENT"
+    PARTIALLY_SENT = "PARTIALLY_SENT"
+    FAILED = "FAILED"
+    CANCELLED = "CANCELLED"
+
+
+class BroadcastSendStatus(str, Enum):
+    SCHEDULED = "SCHEDULED"
+    RESOLVING = "RESOLVING"
+    SENDING = "SENDING"
+    SENT = "SENT"
+    PARTIALLY_SENT = "PARTIALLY_SENT"
+    FAILED = "FAILED"
+    CANCELLED = "CANCELLED"
+
+
+class TaskStatus(str, Enum):
+    TODO = "TODO"
+    IN_PROGRESS = "IN_PROGRESS"
+    DONE = "DONE"
+    CANCELLED = "CANCELLED"
+
+
 class SortDirection(str, Enum):
     ASC = "ASC"
     DESC = "DESC"
@@ -25,6 +222,29 @@ class SortDirection(str, Enum):
 
 class CustomersSortField(str, Enum):
     FULL_NAME = "FULL_NAME"
+
+
+class BroadcastRecipientUnsubscribeSource(str, Enum):
+    CUSTOMER_LINK = "CUSTOMER_LINK"
+    PLAIN_USER = "PLAIN_USER"
+    BULK_IMPORT = "BULK_IMPORT"
+
+
+class BroadcastRecipientUnsubscribeChannelType(str, Enum):
+    SLACK = "SLACK"
+
+
+class EmailAuthenticity(str, Enum):
+    PASS = "PASS"
+    FAIL = "FAIL"
+    UNKNOWN = "UNKNOWN"
+
+
+class EmailSendStatus(str, Enum):
+    PENDING = "PENDING"
+    SENT = "SENT"
+    BOUNCED = "BOUNCED"
+    FAILED = "FAILED"
 
 
 class ComponentTextSize(str, Enum):
@@ -79,10 +299,233 @@ class ComponentDividerSpacingSize(str, Enum):
     XL = "XL"
 
 
+class MSTeamsChannelMemberRole(str, Enum):
+    guest = "guest"
+    owner = "owner"
+
+
+class SettingScopeType(str, Enum):
+    USER = "USER"
+    CHAT = "CHAT"
+    USER_EMAIL_NOTIFICATIONS = "USER_EMAIL_NOTIFICATIONS"
+    USER_SLACK_NOTIFICATIONS = "USER_SLACK_NOTIFICATIONS"
+    WORKSPACE_SLACK_CHANNEL = "WORKSPACE_SLACK_CHANNEL"
+    WORKSPACE_SLACK_CONNECTED_CHANNEL = "WORKSPACE_SLACK_CONNECTED_CHANNEL"
+    WORKSPACE_SLACK_NOTIFICATIONS = "WORKSPACE_SLACK_NOTIFICATIONS"
+    WORKSPACE_DISCORD_NOTIFICATIONS = "WORKSPACE_DISCORD_NOTIFICATIONS"
+    WORKSPACE = "WORKSPACE"
+
+
+class IssueTrackerFieldType(str, Enum):
+    SELECT = "SELECT"
+    MULTI_SELECT = "MULTI_SELECT"
+
+
+class SidekickToolArgOptionSource(str, Enum):
+    SLACK_CHANNELS = "SLACK_CHANNELS"
+    PLAIN_DISCUSSION_CHANNELS = "PLAIN_DISCUSSION_CHANNELS"
+    LINEAR_TEAMS = "LINEAR_TEAMS"
+    LINEAR_PROJECTS = "LINEAR_PROJECTS"
+    NOTION_PAGES = "NOTION_PAGES"
+    NOTION_DATA_SOURCES = "NOTION_DATA_SOURCES"
+    HELP_CENTERS = "HELP_CENTERS"
+    HELP_CENTER_GROUPS = "HELP_CENTER_GROUPS"
+    HELP_CENTER_ARTICLE_STATUSES = "HELP_CENTER_ARTICLE_STATUSES"
+
+
+class ServiceLevelAgreementPauseStatusDetailType(str, Enum):
+    WAITING_FOR_CUSTOMER = "WAITING_FOR_CUSTOMER"
+    WAITING_INDEFINITELY = "WAITING_INDEFINITELY"
+    WAITING_FOR_DURATION = "WAITING_FOR_DURATION"
+    IN_PROGRESS = "IN_PROGRESS"
+    THREAD_LINK_UPDATED = "THREAD_LINK_UPDATED"
+    THREAD_DISCUSSION_RESOLVED = "THREAD_DISCUSSION_RESOLVED"
+
+
+class MetricDimensionType(str, Enum):
+    COMPANY = "COMPANY"
+    CUSTOMER_GROUP = "CUSTOMER_GROUP"
+    LABEL_TYPE = "LABEL_TYPE"
+    MESSAGE_SOURCE = "MESSAGE_SOURCE"
+    PRIORITY = "PRIORITY"
+    THREAD_FIELD = "THREAD_FIELD"
+    ACCOUNT_FIELD = "ACCOUNT_FIELD"
+    TENANT_FIELD = "TENANT_FIELD"
+    TIER = "TIER"
+
+
+class TimeSeriesMetricDimensionType(str, Enum):
+    COMPANY = "COMPANY"
+    CUSTOMER_GROUP = "CUSTOMER_GROUP"
+    LABEL_TYPE = "LABEL_TYPE"
+    MESSAGE_SOURCE = "MESSAGE_SOURCE"
+    PRIORITY = "PRIORITY"
+    THREAD_FIELD = "THREAD_FIELD"
+    ACCOUNT_FIELD = "ACCOUNT_FIELD"
+    TENANT_FIELD = "TENANT_FIELD"
+    TIER = "TIER"
+
+
+class TimeSeriesMetricIntervalUnit(str, Enum):
+    HOUR = "HOUR"
+    DAY = "DAY"
+    WEEK = "WEEK"
+    MONTH = "MONTH"
+    QUARTER = "QUARTER"
+    YEAR = "YEAR"
+
+
+class SingleValueMetricName(str, Enum):
+    service_level_agreement_compliance_frt = "service_level_agreement_compliance_frt"
+    service_level_agreement_compliance_nrt = "service_level_agreement_compliance_nrt"
+    threads_first_response_time_median = "threads_first_response_time_median"
+    threads_resolution_time_median = "threads_resolution_time_median"
+    threads_all_time_count_done = "threads_all_time_count_done"
+    threads_time_between_follow_up_responses_median = (
+        "threads_time_between_follow_up_responses_median"
+    )
+    threads_time_customer_waiting_median = "threads_time_customer_waiting_median"
+    threads_csat__percentage = "threads_csat__percentage"
+    threads_csat__count = "threads_csat__count"
+    agent_threads_first_response_time_median = (
+        "agent_threads_first_response_time_median"
+    )
+    agent_threads_time_between_follow_up_responses_median = (
+        "agent_threads_time_between_follow_up_responses_median"
+    )
+    agent_threads_resolution_time_median = "agent_threads_resolution_time_median"
+    agent_threads_time_customer_waiting_median = (
+        "agent_threads_time_customer_waiting_median"
+    )
+    agent_service_level_agreement_compliance_frt = (
+        "agent_service_level_agreement_compliance_frt"
+    )
+    agent_service_level_agreement_compliance_nrt = (
+        "agent_service_level_agreement_compliance_nrt"
+    )
+    threads_first_response_time = "threads_first_response_time"
+    threads_resolution_time = "threads_resolution_time"
+    threads_time_between_follow_up_responses = (
+        "threads_time_between_follow_up_responses"
+    )
+    threads_time_customer_waiting = "threads_time_customer_waiting"
+    agent_threads_first_response_time = "agent_threads_first_response_time"
+    agent_threads_time_between_follow_up_responses = (
+        "agent_threads_time_between_follow_up_responses"
+    )
+    agent_threads_resolution_time = "agent_threads_resolution_time"
+    agent_threads_time_customer_waiting = "agent_threads_time_customer_waiting"
+
+
+class TimeSeriesMetricName(str, Enum):
+    threads_created_count = "threads_created_count"
+    threads_first_response_time__p50 = "threads_first_response_time__p50"
+    threads_first_response_time__p90 = "threads_first_response_time__p90"
+    threads_status_count__todo = "threads_status_count__todo"
+    threads_status_count__done = "threads_status_count__done"
+    threads_status_count__snoozed = "threads_status_count__snoozed"
+    threads_resolution_time__p50 = "threads_resolution_time__p50"
+    threads_resolution_time__p90 = "threads_resolution_time__p90"
+    threads_time_customer_waiting__p50 = "threads_time_customer_waiting__p50"
+    threads_time_customer_waiting__p90 = "threads_time_customer_waiting__p90"
+    threads_status_transitions_count__todo = "threads_status_transitions_count__todo"
+    threads_status_reopened_count = "threads_status_reopened_count"
+    threads_status_transitions_count__todo_with_created = (
+        "threads_status_transitions_count__todo_with_created"
+    )
+    threads_status_transitions_count__done = "threads_status_transitions_count__done"
+    threads_status_transitions_count__snoozed = (
+        "threads_status_transitions_count__snoozed"
+    )
+    threads_time_between_follow_up_responses__p50 = (
+        "threads_time_between_follow_up_responses__p50"
+    )
+    threads_time_between_follow_up_responses__p90 = (
+        "threads_time_between_follow_up_responses__p90"
+    )
+    threads_time_between_all_responses__p50 = "threads_time_between_all_responses__p50"
+    threads_time_between_all_responses__p90 = "threads_time_between_all_responses__p90"
+    threads_csat__percentage = "threads_csat__percentage"
+    threads_csat__count = "threads_csat__count"
+    agent_messages_sent_count = "agent_messages_sent_count"
+    agent_threads_first_response_time__p50 = "agent_threads_first_response_time__p50"
+    agent_threads_time_between_follow_up_responses__p50 = (
+        "agent_threads_time_between_follow_up_responses__p50"
+    )
+    agent_threads_resolution_time__p50 = "agent_threads_resolution_time__p50"
+    agent_threads_assignment_transitions_count = (
+        "agent_threads_assignment_transitions_count"
+    )
+    agent_threads_status_transitions_count__todo = (
+        "agent_threads_status_transitions_count__todo"
+    )
+    agent_threads_status_transitions_count__done = (
+        "agent_threads_status_transitions_count__done"
+    )
+    agent_threads_status_transitions_count__snoozed = (
+        "agent_threads_status_transitions_count__snoozed"
+    )
+    agent_threads_csat__percentage = "agent_threads_csat__percentage"
+    agent_threads_csat__count = "agent_threads_csat__count"
+    threads_first_response_time = "threads_first_response_time"
+    threads_resolution_time = "threads_resolution_time"
+    threads_time_customer_waiting = "threads_time_customer_waiting"
+    threads_time_between_follow_up_responses = (
+        "threads_time_between_follow_up_responses"
+    )
+    threads_time_between_all_responses = "threads_time_between_all_responses"
+    agent_threads_first_response_time = "agent_threads_first_response_time"
+    agent_threads_time_between_follow_up_responses = (
+        "agent_threads_time_between_follow_up_responses"
+    )
+    agent_threads_resolution_time = "agent_threads_resolution_time"
+
+
+class HeatmapMetricName(str, Enum):
+    threads_created_count_heatmap = "threads_created_count_heatmap"
+    agent_messages_sent_count = "agent_messages_sent_count"
+
+
+class ThreadMetricGroupBy(str, Enum):
+    ASSIGNEE = "ASSIGNEE"
+    COMPANY = "COMPANY"
+    CUSTOMER_GROUP = "CUSTOMER_GROUP"
+    LABEL_TYPE = "LABEL_TYPE"
+    MESSAGE_SOURCE = "MESSAGE_SOURCE"
+    PRIORITY = "PRIORITY"
+    ACCOUNT = "ACCOUNT"
+    ACCOUNT_FIELD = "ACCOUNT_FIELD"
+    TENANT = "TENANT"
+    TENANT_FIELD = "TENANT_FIELD"
+    THREAD_FIELD = "THREAD_FIELD"
+    TIER = "TIER"
+
+
+class ThreadMetricIntervalUnit(str, Enum):
+    HOUR = "HOUR"
+    DAY = "DAY"
+    WEEK = "WEEK"
+    MONTH = "MONTH"
+    QUARTER = "QUARTER"
+    YEAR = "YEAR"
+
+
+class ThreadMetricMode(str, Enum):
+    METRIC = "METRIC"
+    THREAD_IDS = "THREAD_IDS"
+
+
 class SentimentType(str, Enum):
     POSITIVE = "POSITIVE"
     NEGATIVE = "NEGATIVE"
     NEUTRAL = "NEUTRAL"
+
+
+class TasksSortField(str, Enum):
+    PRIORITY = "PRIORITY"
+    STATUS = "STATUS"
+    CREATED_AT = "CREATED_AT"
+    UPDATED_AT = "UPDATED_AT"
 
 
 class ServiceLevelAgreementType(str, Enum):
@@ -113,6 +556,116 @@ class MutationFieldErrorType(str, Enum):
     NOT_FOUND = "NOT_FOUND"
 
 
+class RoleScopeResourceType(str, Enum):
+    THREAD = "THREAD"
+
+
+class ThreadScopePrimitiveType(str, Enum):
+    LABEL = "LABEL"
+    TIER = "TIER"
+    CHANNEL = "CHANNEL"
+    ACCOUNT = "ACCOUNT"
+    TENANT = "TENANT"
+    COMPANY = "COMPANY"
+
+
+class RoleScopeAccessMode(str, Enum):
+    VIEW_ANY = "VIEW_ANY"
+    VIEW_ONLY = "VIEW_ONLY"
+    VIEW_ALL_EXCEPT = "VIEW_ALL_EXCEPT"
+
+
+class EscalationPathStepType(str, Enum):
+    USER = "USER"
+    LABEL_TYPE = "LABEL_TYPE"
+
+
+class BulkUpsertWorkflowStepResult(str, Enum):
+    CREATED = "CREATED"
+    UPDATED = "UPDATED"
+    NOOP = "NOOP"
+
+
+class ThreadLinkStatus(str, Enum):
+    TODO = "TODO"
+    IN_PROGRESS = "IN_PROGRESS"
+    DONE = "DONE"
+    UNKNOWN = "UNKNOWN"
+
+
+class ThreadLinkLinkType(str, Enum):
+    RELATED_TO = "RELATED_TO"
+    MERGED_INTO = "MERGED_INTO"
+    SUCCEEDED_BY = "SUCCEEDED_BY"
+
+
+class LinearIssueStateType(str, Enum):
+    TRIAGE = "TRIAGE"
+    BACKLOG = "BACKLOG"
+    UNSTARTED = "UNSTARTED"
+    STARTED = "STARTED"
+    COMPLETED = "COMPLETED"
+    CANCELLED = "CANCELLED"
+    UNKNOWN = "UNKNOWN"
+
+
+class BroadcastRecipientType(str, Enum):
+    SLACK = "SLACK"
+
+
+class BroadcastSendTargetScope(str, Enum):
+    ALL_RECIPIENTS = "ALL_RECIPIENTS"
+    MATCHING = "MATCHING"
+
+
+class ImportBroadcastAudienceChannelRowStatus(str, Enum):
+    ADDED = "ADDED"
+    ALREADY_IN_AUDIENCE = "ALREADY_IN_AUDIENCE"
+    NOT_FOUND = "NOT_FOUND"
+    AMBIGUOUS = "AMBIGUOUS"
+    INVALID = "INVALID"
+
+
+class EmailSuppressionReason(str, Enum):
+    HARD_BOUNCE = "HARD_BOUNCE"
+    SPAM_COMPLAINT = "SPAM_COMPLAINT"
+    MANUAL_SUPPRESSION = "MANUAL_SUPPRESSION"
+
+
+class WorkspaceSetupWorkflowStatus(str, Enum):
+    NOT_STARTED = "NOT_STARTED"
+    PARTIAL = "PARTIAL"
+    DONE = "DONE"
+
+
+class WorkspaceSetupStepKey(str, Enum):
+    CREATE_LABEL_TYPES = "CREATE_LABEL_TYPES"
+    SET_UP_WORKFLOWS = "SET_UP_WORKFLOWS"
+    CONNECT_CHANNELS = "CONNECT_CHANNELS"
+    SET_UP_TIERS = "SET_UP_TIERS"
+    SET_UP_SIDEKICK = "SET_UP_SIDEKICK"
+    INVITE_TEAM = "INVITE_TEAM"
+
+
+class EmailCategory(str, Enum):
+    MESSAGING = "MESSAGING"
+    CUSTOMER_SURVEY = "CUSTOMER_SURVEY"
+    UNREAD_CHAT_MESSAGES = "UNREAD_CHAT_MESSAGES"
+    THREAD_DISCUSSION = "THREAD_DISCUSSION"
+    USER_HIDDEN = "USER_HIDDEN"
+
+
+class SendBulkEmailSkippedThreadReason(str, Enum):
+    THREAD_LOCKED = "THREAD_LOCKED"
+
+
+class AttachmentVirusScanResult(str, Enum):
+    CLEAN = "CLEAN"
+    INFECTED = "INFECTED"
+    FAILED = "FAILED"
+    PENDING = "PENDING"
+
+
 class AttachmentType(str, Enum):
     EMAIL = "EMAIL"
     CUSTOM_TIMELINE_ENTRY = "CUSTOM_TIMELINE_ENTRY"
@@ -130,9 +683,178 @@ class UpsertResult(str, Enum):
     NOOP = "NOOP"
 
 
+class TestThreadChannel(str, Enum):
+    CHAT = "CHAT"
+    SLACK = "SLACK"
+
+
+class AutoresponderMessageSource(str, Enum):
+    EMAIL = "EMAIL"
+    API = "API"
+    CHAT = "CHAT"
+    SLACK = "SLACK"
+    MS_TEAMS = "MS_TEAMS"
+    DISCORD = "DISCORD"
+
+
+class CustomerSurveyConditionOperator(str, Enum):
+    INCLUDES = "INCLUDES"
+    EXCLUDES = "EXCLUDES"
+
+
+class CustomerSurveyConditionsOperator(str, Enum):
+    AND = "AND"
+    OR = "OR"
+
+
+class AiFeedbackSentiment(str, Enum):
+    POSITIVE = "POSITIVE"
+    NEGATIVE = "NEGATIVE"
+    NEUTRAL = "NEUTRAL"
+
+
+class McpFeedbackReason(str, Enum):
+    BUG_REPORT = "BUG_REPORT"
+    FEATURE_REQUEST = "FEATURE_REQUEST"
+
+
+class AiFeedbackFeature(str, Enum):
+    AI_AGENT = "AI_AGENT"
+    THREAD_CATCHUP = "THREAD_CATCHUP"
+    THREAD_CLUSTERS = "THREAD_CLUSTERS"
+    TONE_RULE = "TONE_RULE"
+    KNOWLEDGE_GAP = "KNOWLEDGE_GAP"
+    MCP = "MCP"
+
+
+class GeneratedReplyStatus(str, Enum):
+    NONE = "NONE"
+    PENDING = "PENDING"
+    READY = "READY"
+    SUPPRESSED = "SUPPRESSED"
+
+
+class GeneratedReplyFeedbackType(str, Enum):
+    POSITIVE = "POSITIVE"
+    NEGATIVE = "NEGATIVE"
+    UNKNOWN = "UNKNOWN"
+
+
+class IndexedDocumentStatusType(str, Enum):
+    INDEXED = "INDEXED"
+    PENDING = "PENDING"
+    FAILED = "FAILED"
+
+
 class KnowledgeSourceType(str, Enum):
     SITEMAP = "SITEMAP"
     URL = "URL"
+
+
+class KnowledgeSourceCitationType(str, Enum):
+    HELP_CENTER_ARTICLE = "HELP_CENTER_ARTICLE"
+    INDEXED_DOCUMENT = "INDEXED_DOCUMENT"
+
+
+class KnowledgeSourceSearchResultType(str, Enum):
+    INDEXED_DOCUMENT = "INDEXED_DOCUMENT"
+    HELP_CENTER_ARTICLE = "HELP_CENTER_ARTICLE"
+
+
+class ThreadDiscussionType(str, Enum):
+    EMAIL = "EMAIL"
+    SLACK = "SLACK"
+    CURSOR_WORKSPACE_BACKGROUND_AGENT = "CURSOR_WORKSPACE_BACKGROUND_AGENT"
+    AGENT_SESSION = "AGENT_SESSION"
+
+
+class CreateThreadDiscussionType(str, Enum):
+    EMAIL = "EMAIL"
+    SLACK = "SLACK"
+    CURSOR_WORKSPACE_BACKGROUND_AGENT = "CURSOR_WORKSPACE_BACKGROUND_AGENT"
+
+
+class DiscussionType(str, Enum):
+    EMAIL = "EMAIL"
+    SLACK = "SLACK"
+    CURSOR_WORKSPACE_BACKGROUND_AGENT = "CURSOR_WORKSPACE_BACKGROUND_AGENT"
+    AGENT_SESSION = "AGENT_SESSION"
+
+
+class DiscussionAgentType(str, Enum):
+    PLAIN_SIDEKICK = "PLAIN_SIDEKICK"
+    CUSTOM_AGENT = "CUSTOM_AGENT"
+
+
+class DiscussionSourceEntityType(str, Enum):
+    COMPANY = "COMPANY"
+    ACCOUNT = "ACCOUNT"
+    TENANT = "TENANT"
+    LABEL = "LABEL"
+    CHANNEL = "CHANNEL"
+    TIER = "TIER"
+    CUSTOMER_GROUP = "CUSTOMER_GROUP"
+    CUSTOMER = "CUSTOMER"
+
+
+class DiscussionSourceType(str, Enum):
+    THREAD = "THREAD"
+    PAGE = "PAGE"
+    ENTITY = "ENTITY"
+    CHART = "CHART"
+
+
+class ThreadDiscussionMessageType(str, Enum):
+    INBOUND = "INBOUND"
+    OUTBOUND = "OUTBOUND"
+
+
+class ImportThreadDiscussionType(str, Enum):
+    SLACK = "SLACK"
+
+
+class TenantSource(str, Enum):
+    API = "API"
+    SALESFORCE = "SALESFORCE"
+    HUBSPOT = "HUBSPOT"
+    ATTIO = "ATTIO"
+    EMAIL_DOMAIN = "EMAIL_DOMAIN"
+
+
+class AccountSource(str, Enum):
+    API = "API"
+    SALESFORCE = "SALESFORCE"
+    HUBSPOT = "HUBSPOT"
+    ATTIO = "ATTIO"
+    EMAIL_DOMAIN = "EMAIL_DOMAIN"
+
+
+class TenantFieldType(str, Enum):
+    STRING_TYPE = "STRING_TYPE"
+    NUMBER_TYPE = "NUMBER_TYPE"
+    BOOLEAN_TYPE = "BOOLEAN_TYPE"
+    STRING_ARRAY = "STRING_ARRAY"
+    DATETIME_TYPE = "DATETIME_TYPE"
+    USER_REFERENCE_TYPE = "USER_REFERENCE_TYPE"
+    TENANT_REFERENCE_TYPE = "TENANT_REFERENCE_TYPE"
+
+
+class TenantFieldMappingConcept(str, Enum):
+    TIER = "TIER"
+
+
+class AccountFieldType(str, Enum):
+    STRING_TYPE = "STRING_TYPE"
+    NUMBER_TYPE = "NUMBER_TYPE"
+    BOOLEAN_TYPE = "BOOLEAN_TYPE"
+    STRING_ARRAY = "STRING_ARRAY"
+    DATETIME_TYPE = "DATETIME_TYPE"
+    USER_REFERENCE_TYPE = "USER_REFERENCE_TYPE"
+    ACCOUNT_REFERENCE_TYPE = "ACCOUNT_REFERENCE_TYPE"
+
+
+class AccountFieldMappingConcept(str, Enum):
+    TIER = "TIER"
 
 
 class DoneStatusDetail(str, Enum):
@@ -198,6 +920,23 @@ class MessageSource(str, Enum):
     INTERNAL = "INTERNAL"
 
 
+class TenantMembershipPolicy(str, Enum):
+    DO_NOT_ADD = "DO_NOT_ADD"
+    IF_DOMAIN_NOT_AVAILABLE = "IF_DOMAIN_NOT_AVAILABLE"
+    ALWAYS_ADD = "ALWAYS_ADD"
+
+
+class AccountMembershipPolicy(str, Enum):
+    DO_NOT_ADD = "DO_NOT_ADD"
+    IF_DOMAIN_NOT_AVAILABLE = "IF_DOMAIN_NOT_AVAILABLE"
+    ALWAYS_ADD = "ALWAYS_ADD"
+
+
+class MSTeamsMessageType(str, Enum):
+    CHATS = "CHATS"
+    CHANNELS = "CHANNELS"
+
+
 class ThreadChannel(str, Enum):
     EMAIL = "EMAIL"
     SLACK = "SLACK"
@@ -209,6 +948,52 @@ class ThreadChannel(str, Enum):
     INTERNAL = "INTERNAL"
 
 
+class TimelineEntryType(str, Enum):
+    HELP_CENTER_AI_CONVERSATION_MESSAGE = "HELP_CENTER_AI_CONVERSATION_MESSAGE"
+    CHAT = "CHAT"
+    CUSTOM = "CUSTOM"
+    EMAIL = "EMAIL"
+    LINEAR_ISSUE_THREAD_LINK_STATE_TRANSITIONED = (
+        "LINEAR_ISSUE_THREAD_LINK_STATE_TRANSITIONED"
+    )
+    NOTE = "NOTE"
+    THREAD_ASSIGNMENT_TRANSITIONED = "THREAD_ASSIGNMENT_TRANSITIONED"
+    THREAD_ADDITIONAL_ASSIGNEES_TRANSITIONED = (
+        "THREAD_ADDITIONAL_ASSIGNEES_TRANSITIONED"
+    )
+    THREAD_STATUS_TRANSITIONED = "THREAD_STATUS_TRANSITIONED"
+    THREAD_PRIORITY_CHANGED = "THREAD_PRIORITY_CHANGED"
+    THREAD_SERVICE_LEVEL_AGREEMENT_POLICY_CHANGED = (
+        "THREAD_SERVICE_LEVEL_AGREEMENT_POLICY_CHANGED"
+    )
+    THREAD_EVENT = "THREAD_EVENT"
+    CUSTOMER_EVENT = "CUSTOMER_EVENT"
+    SLACK_MESSAGE = "SLACK_MESSAGE"
+    SLACK_REPLY = "SLACK_REPLY"
+    MS_TEAMS_MESSAGE = "MS_TEAMS_MESSAGE"
+    MERGED_THREAD_MESSAGE = "MERGED_THREAD_MESSAGE"
+    DISCORD_MESSAGE = "DISCORD_MESSAGE"
+    THREAD_LABELS_CHANGED = "THREAD_LABELS_CHANGED"
+    THREAD_DISCUSSION = "THREAD_DISCUSSION"
+    THREAD_DISCUSSION_MESSAGE = "THREAD_DISCUSSION_MESSAGE"
+    THREAD_DISCUSSION_RESOLVED = "THREAD_DISCUSSION_RESOLVED"
+    SERVICE_LEVEL_AGREEMENT_STATUS_TRANSITIONED = (
+        "SERVICE_LEVEL_AGREEMENT_STATUS_TRANSITIONED"
+    )
+    THREAD_LINK_CREATED = "THREAD_LINK_CREATED"
+    THREAD_LINK_UPDATED = "THREAD_LINK_UPDATED"
+    THREAD_LINK_DELETED = "THREAD_LINK_DELETED"
+    THREAD_LINK_TARGET_CREATED = "THREAD_LINK_TARGET_CREATED"
+    THREAD_LINK_TARGET_DELETED = "THREAD_LINK_TARGET_DELETED"
+    CUSTOMER_SURVEY_REQUESTED = "CUSTOMER_SURVEY_REQUESTED"
+
+
+class ThreadCatchupSuggestedActionStatus(str, Enum):
+    SUGGESTED = "SUGGESTED"
+    ACCEPTED = "ACCEPTED"
+    REJECTED = "REJECTED"
+
+
 class ServiceLevelAgreementStatus(str, Enum):
     PENDING = "PENDING"
     IMMINENT_BREACH = "IMMINENT_BREACH"
@@ -216,3 +1001,313 @@ class ServiceLevelAgreementStatus(str, Enum):
     BREACHED = "BREACHED"
     ACHIEVED = "ACHIEVED"
     CANCELLED = "CANCELLED"
+
+
+class ImportThreadStatusDetail(str, Enum):
+    NEW_REPLY = "NEW_REPLY"
+    IN_PROGRESS = "IN_PROGRESS"
+    DONE_MANUALLY_SET = "DONE_MANUALLY_SET"
+    IGNORED = "IGNORED"
+    WAITING_FOR_CUSTOMER = "WAITING_FOR_CUSTOMER"
+
+
+class ImportThreadMessageType(str, Enum):
+    INBOUND = "INBOUND"
+    OUTBOUND = "OUTBOUND"
+    NOTE = "NOTE"
+
+
+class InterpolationVariableGroup(str, Enum):
+    THREAD = "THREAD"
+    CUSTOMER = "CUSTOMER"
+    TENANT = "TENANT"
+    WORKSPACE = "WORKSPACE"
+    USER = "USER"
+
+
+class WebhookDeliveryAttemptResultStatus(str, Enum):
+    SUCCESSFUL_RESPONSE = "SUCCESSFUL_RESPONSE"
+    FAILED_RESPONSE = "FAILED_RESPONSE"
+    ERROR = "ERROR"
+    REJECTED = "REJECTED"
+    SCHEMA_VALIDATION_FAILED = "SCHEMA_VALIDATION_FAILED"
+
+
+class ConnectedSlackChannelType(str, Enum):
+    CUSTOMER = "CUSTOMER"
+    DISCUSSION = "DISCUSSION"
+
+
+class SlackAutoJoinRuleChannelMode(str, Enum):
+    CUSTOMER = "CUSTOMER"
+    DISCUSSION = "DISCUSSION"
+    DISABLED = "DISABLED"
+
+
+class SlackIngestionMode(str, Enum):
+    TIME_BASED = "TIME_BASED"
+    AI_BASED = "AI_BASED"
+    SINGLE_MESSAGE = "SINGLE_MESSAGE"
+    MANUAL = "MANUAL"
+    API_ONLY = "API_ONLY"
+
+
+class ServiceAuthorizationStatus(str, Enum):
+    PENDING_AUTH = "PENDING_AUTH"
+    COMPLETED_AUTH = "COMPLETED_AUTH"
+    CONNECTED = "CONNECTED"
+    REINSTALL_REQUIRED = "REINSTALL_REQUIRED"
+
+
+class AgentSandboxToolMode(str, Enum):
+    NOT_REQUIRED = "NOT_REQUIRED"
+    APPROVAL_REQUIRED = "APPROVAL_REQUIRED"
+    DISABLED = "DISABLED"
+
+
+class SidekickMcpServerAuthType(str, Enum):
+    OAUTH = "OAUTH"
+    API_KEY = "API_KEY"
+
+
+class SidekickMcpAuthParamPlacement(str, Enum):
+    HEADER = "HEADER"
+    QUERY = "QUERY"
+
+
+class WeekDay(str, Enum):
+    MONDAY = "MONDAY"
+    TUESDAY = "TUESDAY"
+    WEDNESDAY = "WEDNESDAY"
+    THURSDAY = "THURSDAY"
+    FRIDAY = "FRIDAY"
+    SATURDAY = "SATURDAY"
+    SUNDAY = "SUNDAY"
+
+
+class BusinessHoursOverridesSortField(str, Enum):
+    STARTS_ON = "STARTS_ON"
+
+
+class TenantsSortField(str, Enum):
+    NAME = "NAME"
+    SOURCE = "SOURCE"
+    TIER = "TIER"
+    TENANT_FIELD = "TENANT_FIELD"
+    OPEN_THREAD_COUNT = "OPEN_THREAD_COUNT"
+
+
+class AccountsSortField(str, Enum):
+    NAME = "NAME"
+    SOURCE = "SOURCE"
+    TIER = "TIER"
+    ACCOUNT_FIELD = "ACCOUNT_FIELD"
+    OPEN_THREAD_COUNT = "OPEN_THREAD_COUNT"
+
+
+class BillingSubscriptionStatus(str, Enum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+
+
+class BillingPlanKey(str, Enum):
+    LEGACY = "LEGACY"
+    EVALUATE = "EVALUATE"
+    LAUNCH = "LAUNCH"
+    GROW = "GROW"
+    SCALE = "SCALE"
+    FOUNDATION = "FOUNDATION"
+    HORIZON = "HORIZON"
+    FRONTIER = "FRONTIER"
+
+
+class HyperlineCheckoutPlanKey(str, Enum):
+    FOUNDATION = "FOUNDATION"
+    HORIZON = "HORIZON"
+    FRONTIER = "FRONTIER"
+
+
+class BillingSeatType(str, Enum):
+    VIEWER = "VIEWER"
+    MEMBER = "MEMBER"
+    ENG_ROTA = "ENG_ROTA"
+
+
+class BillingInterval(str, Enum):
+    MONTH = "MONTH"
+    YEAR = "YEAR"
+
+
+class BillingIntervalUnit(str, Enum):
+    MONTH = "MONTH"
+    YEAR = "YEAR"
+
+
+class CurrencyCode(str, Enum):
+    USD = "USD"
+
+
+class FeatureKey(str, Enum):
+    BUSINESS_HOURS = "BUSINESS_HOURS"
+    MULTIPLE_BUSINESS_HOURS = "MULTIPLE_BUSINESS_HOURS"
+    SLACK_DISCUSSIONS = "SLACK_DISCUSSIONS"
+    SERVICE_LEVEL_AGREEMENTS = "SERVICE_LEVEL_AGREEMENTS"
+    ZENDESK_IMPORTER = "ZENDESK_IMPORTER"
+    INTERCOM_IMPORTER = "INTERCOM_IMPORTER"
+    SALESFORCE_IMPORTER = "SALESFORCE_IMPORTER"
+    HELPSCOUT_SYNC = "HELPSCOUT_SYNC"
+    HUBSPOT_SYNC = "HUBSPOT_SYNC"
+    INCIDENTIO_INTEGRATION = "INCIDENTIO_INTEGRATION"
+    ATTIO_IMPORTER = "ATTIO_IMPORTER"
+    FRESHDESK_IMPORTER = "FRESHDESK_IMPORTER"
+    ROOTLY_INTEGRATION = "ROOTLY_INTEGRATION"
+    MS_TEAMS_INTEGRATION = "MS_TEAMS_INTEGRATION"
+    LIVE_CHAT = "LIVE_CHAT"
+    ESCALATION_PATHS = "ESCALATION_PATHS"
+    DISCORD_INTEGRATION = "DISCORD_INTEGRATION"
+    WORKFLOW_RULES = "WORKFLOW_RULES"
+    CONNECTED_CUSTOMER_SLACK_CHANNELS = "CONNECTED_CUSTOMER_SLACK_CHANNELS"
+    CONNECTED_SUPPORT_EMAIL_ADDRESSES = "CONNECTED_SUPPORT_EMAIL_ADDRESSES"
+    INSIGHTS_LOOKBACK_DAYS = "INSIGHTS_LOOKBACK_DAYS"
+    BILLING_ROTA_SEATS = "BILLING_ROTA_SEATS"
+    MORE_ACTIVE_ENG_ROTA_SEATS = "MORE_ACTIVE_ENG_ROTA_SEATS"
+    AI_SUGGESTED_RESPONSES = "AI_SUGGESTED_RESPONSES"
+    TEAM_REPORTING = "TEAM_REPORTING"
+    CUSTOMER_SURVEYS = "CUSTOMER_SURVEYS"
+    HELP_CENTER = "HELP_CENTER"
+    HELP_CENTERS = "HELP_CENTERS"
+    AI_AGENT = "AI_AGENT"
+    AI_ASSISTANT = "AI_ASSISTANT"
+    CUSTOM_ROLES = "CUSTOM_ROLES"
+    CURSOR_AGENTS = "CURSOR_AGENTS"
+    SSO = "SSO"
+    USER_SEATS = "USER_SEATS"
+
+
+class BillingCreditBalanceType(str, Enum):
+    monthlyAllowance = "monthlyAllowance"
+    committed = "committed"
+    topUp = "topUp"
+
+
+class CreditSpendKind(str, Enum):
+    SIDEKICK_DISCUSSION = "SIDEKICK_DISCUSSION"
+    SIDEKICK_WORKFLOW_ACTION = "SIDEKICK_WORKFLOW_ACTION"
+    AI_TRIAGE = "AI_TRIAGE"
+    CUSTOM_AGENT_DISCUSSION = "CUSTOM_AGENT_DISCUSSION"
+    CUSTOM_AGENT_THREAD_ASSIGNMENT = "CUSTOM_AGENT_THREAD_ASSIGNMENT"
+    ARI_OUTCOME_RESOLUTION = "ARI_OUTCOME_RESOLUTION"
+
+
+class CreditSpendStatus(str, Enum):
+    RECORDED = "RECORDED"
+    BILLED = "BILLED"
+    FREE_BETA = "FREE_BETA"
+
+
+class SidekickCreditBalanceStatus(str, Enum):
+    TRACKED = "TRACKED"
+    UNMETERED = "UNMETERED"
+
+
+class HyperlineCheckoutSessionStatus(str, Enum):
+    OPENED = "OPENED"
+    COMPLETED = "COMPLETED"
+    CANCELLED = "CANCELLED"
+    ERRORED = "ERRORED"
+
+
+class RoleKey(str, Enum):
+    OWNER = "OWNER"
+    ADMIN = "ADMIN"
+    SUPPORT = "SUPPORT"
+    VIEWER = "VIEWER"
+    NONE = "NONE"
+
+
+class MachineUserType(str, Enum):
+    API_USER = "API_USER"
+    AI_AGENT = "AI_AGENT"
+
+
+class WorkspaceFileVisibility(str, Enum):
+    PRIVATE = "PRIVATE"
+    PUBLIC = "PUBLIC"
+
+
+class HelpCenterAiConversationsSortField(str, Enum):
+    CREATED_AT = "CREATED_AT"
+    LAST_MESSAGE_AT = "LAST_MESSAGE_AT"
+
+
+class HelpCenterAiMessageFeedbackType(str, Enum):
+    POSITIVE = "POSITIVE"
+    NEGATIVE = "NEGATIVE"
+
+
+class HelpCenterArticleStatus(str, Enum):
+    PUBLISHED = "PUBLISHED"
+    DRAFT = "DRAFT"
+
+
+class HelpCenterType(str, Enum):
+    PUBLIC = "PUBLIC"
+    PRIVATE = "PRIVATE"
+    INTERNAL = "INTERNAL"
+
+
+class HelpCenterAuthMechanismType(str, Enum):
+    WORKOS_AUTHKIT = "WORKOS_AUTHKIT"
+    WORKOS_CONNECT = "WORKOS_CONNECT"
+
+
+class HelpCenterHeroAlignment(str, Enum):
+    LEFT = "LEFT"
+    CENTER = "CENTER"
+
+
+class HelpCenterIndexItemType(str, Enum):
+    ARTICLE = "ARTICLE"
+    ARTICLE_GROUP = "ARTICLE_GROUP"
+    HEADING = "HEADING"
+
+
+class HelpCenterPortalSettingsFormFieldType(str, Enum):
+    TEXT_INPUT = "TEXT_INPUT"
+    TEXT_AREA = "TEXT_AREA"
+    DROPDOWN = "DROPDOWN"
+
+
+class HelpCenterFeaturedHomepageItemType(str, Enum):
+    ARTICLE = "ARTICLE"
+
+
+class ImporterEntityType(str, Enum):
+    THREADS = "THREADS"
+    CUSTOMERS = "CUSTOMERS"
+    TENANTS = "TENANTS"
+    TENANT_FIELD_SCHEMAS = "TENANT_FIELD_SCHEMAS"
+    USERS = "USERS"
+
+
+class ImporterStatus(str, Enum):
+    PENDING = "PENDING"
+    RUNNING = "RUNNING"
+    SUCCEEDED = "SUCCEEDED"
+    FAILED = "FAILED"
+    CANCELLED = "CANCELLED"
+
+
+class KnowledgeGapSignalType(str, Enum):
+    ARI = "ARI"
+
+
+class KnowledgeGapStatus(str, Enum):
+    TODO = "TODO"
+    DONE = "DONE"
+    CANCELLED = "CANCELLED"
+
+
+class KnowledgeGapsSortField(str, Enum):
+    SIGNAL_COUNT = "SIGNAL_COUNT"
+    LAST_SEEN_AT = "LAST_SEEN_AT"
