@@ -1,0 +1,21 @@
+CHANGELOG.md
+  s_80ddfd736f89a2::t_e6c0b443067460 8-9
+plain_client/__version__.py
+  s_80ddfd736f89a2::t_ebc0d11134997e 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f42244ae12119521d07cde91c3a0ebdfc382acbe",
+  "prompts": {},
+  "sessions": {
+    "s_80ddfd736f89a2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e41a-aa74-7e22-a3c4-02e0fce681e2",
+        "model": "unknown"
+      },
+      "human_author": "François Voron <me@fvoron.com>"
+    }
+  }
+}
