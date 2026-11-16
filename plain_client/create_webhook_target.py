@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, WebhookTargetParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import WebhookTargetFields
 
 
 class CreateWebhookTarget(BaseModel):
@@ -22,7 +23,22 @@ class CreateWebhookTargetCreateWebhookTarget(BaseModel):
     error: Optional["CreateWebhookTargetCreateWebhookTargetError"]
 
 
-CreateWebhookTargetCreateWebhookTargetWebhookTarget = WebhookTargetParts
-CreateWebhookTargetCreateWebhookTargetError = MutationErrorParts
+CreateWebhookTargetCreateWebhookTargetWebhookTarget = WebhookTargetFields
+
+
+class CreateWebhookTargetCreateWebhookTargetError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["CreateWebhookTargetCreateWebhookTargetErrorFields"]
+
+
+class CreateWebhookTargetCreateWebhookTargetErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 CreateWebhookTarget.model_rebuild()
 CreateWebhookTargetCreateWebhookTarget.model_rebuild()
+CreateWebhookTargetCreateWebhookTargetError.model_rebuild()

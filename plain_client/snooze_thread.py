@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, ThreadParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import ThreadFields
 
 
 class SnoozeThread(BaseModel):
@@ -18,7 +19,22 @@ class SnoozeThreadSnoozeThread(BaseModel):
     error: Optional["SnoozeThreadSnoozeThreadError"]
 
 
-SnoozeThreadSnoozeThreadThread = ThreadParts
-SnoozeThreadSnoozeThreadError = MutationErrorParts
+SnoozeThreadSnoozeThreadThread = ThreadFields
+
+
+class SnoozeThreadSnoozeThreadError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["SnoozeThreadSnoozeThreadErrorFields"]
+
+
+class SnoozeThreadSnoozeThreadErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 SnoozeThread.model_rebuild()
 SnoozeThreadSnoozeThread.model_rebuild()
+SnoozeThreadSnoozeThreadError.model_rebuild()

@@ -102,7 +102,7 @@ release-notes version:
     @uv run --locked keepachangelog show {{quote(version)}}
 
 download-schema:
-    curl --fail --location --silent --show-error https://core-api.uk.plain.com/graphql/v1/schema.graphql -o schema.graphql
+    curl --fail --location --silent --show-error https://raw.githubusercontent.com/team-plain/sdk/main/packages/graphql/src/schema.graphql -o schema.graphql
 
 download-queries:
     ./download-queries.sh

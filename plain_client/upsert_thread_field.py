@@ -6,8 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .enums import UpsertResult
-from .fragments import MutationErrorParts, ThreadFieldParts
+from .enums import MutationErrorType, MutationFieldErrorType, UpsertResult
+from .fragments import ThreadFieldFields
 
 
 class UpsertThreadField(BaseModel):
@@ -17,14 +17,29 @@ class UpsertThreadField(BaseModel):
 
 
 class UpsertThreadFieldUpsertThreadField(BaseModel):
-    result: UpsertResult | None
     thread_field: Optional["UpsertThreadFieldUpsertThreadFieldThreadField"] = Field(
         alias="threadField"
     )
+    result: UpsertResult | None
     error: Optional["UpsertThreadFieldUpsertThreadFieldError"]
 
 
-UpsertThreadFieldUpsertThreadFieldThreadField = ThreadFieldParts
-UpsertThreadFieldUpsertThreadFieldError = MutationErrorParts
+UpsertThreadFieldUpsertThreadFieldThreadField = ThreadFieldFields
+
+
+class UpsertThreadFieldUpsertThreadFieldError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["UpsertThreadFieldUpsertThreadFieldErrorFields"]
+
+
+class UpsertThreadFieldUpsertThreadFieldErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 UpsertThreadField.model_rebuild()
 UpsertThreadFieldUpsertThreadField.model_rebuild()
+UpsertThreadFieldUpsertThreadFieldError.model_rebuild()

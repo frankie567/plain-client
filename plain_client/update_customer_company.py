@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import CustomerParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import CustomerFields
 
 
 class UpdateCustomerCompany(BaseModel):
@@ -20,7 +21,22 @@ class UpdateCustomerCompanyUpdateCustomerCompany(BaseModel):
     error: Optional["UpdateCustomerCompanyUpdateCustomerCompanyError"]
 
 
-UpdateCustomerCompanyUpdateCustomerCompanyCustomer = CustomerParts
-UpdateCustomerCompanyUpdateCustomerCompanyError = MutationErrorParts
+UpdateCustomerCompanyUpdateCustomerCompanyCustomer = CustomerFields
+
+
+class UpdateCustomerCompanyUpdateCustomerCompanyError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["UpdateCustomerCompanyUpdateCustomerCompanyErrorFields"]
+
+
+class UpdateCustomerCompanyUpdateCustomerCompanyErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 UpdateCustomerCompany.model_rebuild()
 UpdateCustomerCompanyUpdateCustomerCompany.model_rebuild()
+UpdateCustomerCompanyUpdateCustomerCompanyError.model_rebuild()

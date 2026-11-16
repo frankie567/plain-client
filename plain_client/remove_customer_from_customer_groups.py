@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
 
 
 class RemoveCustomerFromCustomerGroups(BaseModel):
@@ -21,8 +21,23 @@ class RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroups(BaseModel
     ]
 
 
-RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsError = (
-    MutationErrorParts
-)
+class RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list[
+        "RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsErrorFields"
+    ]
+
+
+class RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsErrorFields(
+    BaseModel
+):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 RemoveCustomerFromCustomerGroups.model_rebuild()
 RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroups.model_rebuild()
+RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsError.model_rebuild()

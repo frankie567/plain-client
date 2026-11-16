@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
 
 
 class DeleteThreadField(BaseModel):
@@ -19,6 +19,19 @@ class DeleteThreadFieldDeleteThreadField(BaseModel):
     error: Optional["DeleteThreadFieldDeleteThreadFieldError"]
 
 
-DeleteThreadFieldDeleteThreadFieldError = MutationErrorParts
+class DeleteThreadFieldDeleteThreadFieldError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["DeleteThreadFieldDeleteThreadFieldErrorFields"]
+
+
+class DeleteThreadFieldDeleteThreadFieldErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 DeleteThreadField.model_rebuild()
 DeleteThreadFieldDeleteThreadField.model_rebuild()
+DeleteThreadFieldDeleteThreadFieldError.model_rebuild()

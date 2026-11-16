@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import ThreadParts
+from .fragments import ThreadFields
 
 
 class ThreadByExternalId(BaseModel):
@@ -15,5 +15,5 @@ class ThreadByExternalId(BaseModel):
     )
 
 
-ThreadByExternalIdThreadByExternalId = ThreadParts
+ThreadByExternalIdThreadByExternalId = ThreadFields
 ThreadByExternalId.model_rebuild()

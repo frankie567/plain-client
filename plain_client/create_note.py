@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, NoteParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import NoteFields
 
 
 class CreateNote(BaseModel):
@@ -18,7 +19,22 @@ class CreateNoteCreateNote(BaseModel):
     error: Optional["CreateNoteCreateNoteError"]
 
 
-CreateNoteCreateNoteNote = NoteParts
-CreateNoteCreateNoteError = MutationErrorParts
+CreateNoteCreateNoteNote = NoteFields
+
+
+class CreateNoteCreateNoteError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["CreateNoteCreateNoteErrorFields"]
+
+
+class CreateNoteCreateNoteErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 CreateNote.model_rebuild()
 CreateNoteCreateNote.model_rebuild()
+CreateNoteCreateNoteError.model_rebuild()

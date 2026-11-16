@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import LabelParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import LabelFields, ThreadFields
 
 
 class AddLabels(BaseModel):
@@ -15,10 +16,27 @@ class AddLabels(BaseModel):
 
 class AddLabelsAddLabels(BaseModel):
     labels: list["AddLabelsAddLabelsLabels"]
+    thread: Optional["AddLabelsAddLabelsThread"]
     error: Optional["AddLabelsAddLabelsError"]
 
 
-AddLabelsAddLabelsLabels = LabelParts
-AddLabelsAddLabelsError = MutationErrorParts
+AddLabelsAddLabelsLabels = LabelFields
+AddLabelsAddLabelsThread = ThreadFields
+
+
+class AddLabelsAddLabelsError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["AddLabelsAddLabelsErrorFields"]
+
+
+class AddLabelsAddLabelsErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 AddLabels.model_rebuild()
 AddLabelsAddLabels.model_rebuild()
+AddLabelsAddLabelsError.model_rebuild()

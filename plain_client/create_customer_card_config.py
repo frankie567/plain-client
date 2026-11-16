@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import CustomerCardConfigParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import CustomerCardConfigFields
 
 
 class CreateCustomerCardConfig(BaseModel):
@@ -23,8 +24,23 @@ class CreateCustomerCardConfigCreateCustomerCardConfig(BaseModel):
 
 
 CreateCustomerCardConfigCreateCustomerCardConfigCustomerCardConfig = (
-    CustomerCardConfigParts
+    CustomerCardConfigFields
 )
-CreateCustomerCardConfigCreateCustomerCardConfigError = MutationErrorParts
+
+
+class CreateCustomerCardConfigCreateCustomerCardConfigError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["CreateCustomerCardConfigCreateCustomerCardConfigErrorFields"]
+
+
+class CreateCustomerCardConfigCreateCustomerCardConfigErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 CreateCustomerCardConfig.model_rebuild()
 CreateCustomerCardConfigCreateCustomerCardConfig.model_rebuild()
+CreateCustomerCardConfigCreateCustomerCardConfigError.model_rebuild()

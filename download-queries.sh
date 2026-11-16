@@ -4,13 +4,11 @@ set -euo pipefail
 checkout=$(mktemp -d)
 trap 'rm -rf "$checkout"' EXIT
 
-git clone --depth 1 https://github.com/team-plain/typescript-sdk.git "$checkout/sdk"
-for folder in fragments mutations queries; do
-    test -n "$(find "$checkout/sdk/src/graphql/$folder" -name '*.gql' -print -quit)"
-done
+curl --fail --location --silent --show-error \
+    https://raw.githubusercontent.com/team-plain/sdk/main/packages/graphql/src/_generated_documents.graphql \
+    -o "$checkout/documents.graphql"
+test -s "$checkout/documents.graphql"
 
 rm -rf graphql
 mkdir graphql
-for folder in fragments mutations queries; do
-    cp -R "$checkout/sdk/src/graphql/$folder" graphql/
-done
+cp "$checkout/documents.graphql" graphql/

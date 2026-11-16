@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import CustomerGroupMembershipParts, MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import CustomerGroupMembershipFields
 
 
 class AddCustomerToCustomerGroups(BaseModel):
@@ -26,8 +27,23 @@ class AddCustomerToCustomerGroupsAddCustomerToCustomerGroups(BaseModel):
 
 
 AddCustomerToCustomerGroupsAddCustomerToCustomerGroupsCustomerGroupMemberships = (
-    CustomerGroupMembershipParts
+    CustomerGroupMembershipFields
 )
-AddCustomerToCustomerGroupsAddCustomerToCustomerGroupsError = MutationErrorParts
+
+
+class AddCustomerToCustomerGroupsAddCustomerToCustomerGroupsError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["AddCustomerToCustomerGroupsAddCustomerToCustomerGroupsErrorFields"]
+
+
+class AddCustomerToCustomerGroupsAddCustomerToCustomerGroupsErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 AddCustomerToCustomerGroups.model_rebuild()
 AddCustomerToCustomerGroupsAddCustomerToCustomerGroups.model_rebuild()
+AddCustomerToCustomerGroupsAddCustomerToCustomerGroupsError.model_rebuild()

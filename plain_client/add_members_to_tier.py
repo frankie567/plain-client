@@ -6,26 +6,26 @@ from typing import Annotated, Literal, Optional, Union
 from pydantic import Field
 
 from .base_model import BaseModel
+from .enums import MutationErrorType, MutationFieldErrorType
 from .fragments import (  # noqa: F401
-    CompanyTierMembershipParts,
-    CompanyTierMembershipPartsCreatedAt,
-    CompanyTierMembershipPartsCreatedByMachineUserActor,
-    CompanyTierMembershipPartsCreatedBySystemActor,
-    CompanyTierMembershipPartsCreatedByUserActor,
-    CompanyTierMembershipPartsUpdatedAt,
-    CompanyTierMembershipPartsUpdatedByMachineUserActor,
-    CompanyTierMembershipPartsUpdatedBySystemActor,
-    CompanyTierMembershipPartsUpdatedByUserActor,
-    MutationErrorParts,
-    TenantTierMembershipParts,
-    TenantTierMembershipPartsCreatedAt,
-    TenantTierMembershipPartsCreatedByMachineUserActor,
-    TenantTierMembershipPartsCreatedBySystemActor,
-    TenantTierMembershipPartsCreatedByUserActor,
-    TenantTierMembershipPartsUpdatedAt,
-    TenantTierMembershipPartsUpdatedByMachineUserActor,
-    TenantTierMembershipPartsUpdatedBySystemActor,
-    TenantTierMembershipPartsUpdatedByUserActor,
+    CompanyTierMembershipFields,
+    CompanyTierMembershipFieldsCreatedAt,
+    CompanyTierMembershipFieldsCreatedByMachineUserActor,
+    CompanyTierMembershipFieldsCreatedBySystemActor,
+    CompanyTierMembershipFieldsCreatedByUserActor,
+    CompanyTierMembershipFieldsUpdatedAt,
+    CompanyTierMembershipFieldsUpdatedByMachineUserActor,
+    CompanyTierMembershipFieldsUpdatedBySystemActor,
+    CompanyTierMembershipFieldsUpdatedByUserActor,
+    TenantTierMembershipFields,
+    TenantTierMembershipFieldsCreatedAt,
+    TenantTierMembershipFieldsCreatedByMachineUserActor,
+    TenantTierMembershipFieldsCreatedBySystemActor,
+    TenantTierMembershipFieldsCreatedByUserActor,
+    TenantTierMembershipFieldsUpdatedAt,
+    TenantTierMembershipFieldsUpdatedByMachineUserActor,
+    TenantTierMembershipFieldsUpdatedBySystemActor,
+    TenantTierMembershipFieldsUpdatedByUserActor,
 )
 
 
@@ -49,17 +49,30 @@ class AddMembersToTierAddMembersToTier(BaseModel):
 
 
 class AddMembersToTierAddMembersToTierMembershipsTenantTierMembership(
-    TenantTierMembershipParts
+    TenantTierMembershipFields
 ):
     typename__: Literal["TenantTierMembership"] = Field(alias="__typename")
 
 
 class AddMembersToTierAddMembersToTierMembershipsCompanyTierMembership(
-    CompanyTierMembershipParts
+    CompanyTierMembershipFields
 ):
     typename__: Literal["CompanyTierMembership"] = Field(alias="__typename")
 
 
-AddMembersToTierAddMembersToTierError = MutationErrorParts
+class AddMembersToTierAddMembersToTierError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["AddMembersToTierAddMembersToTierErrorFields"]
+
+
+class AddMembersToTierAddMembersToTierErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 AddMembersToTier.model_rebuild()
 AddMembersToTierAddMembersToTier.model_rebuild()
+AddMembersToTierAddMembersToTierError.model_rebuild()

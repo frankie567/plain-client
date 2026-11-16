@@ -6,7 +6,7 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts
+from .enums import MutationErrorType, MutationFieldErrorType
 
 
 class ReplyToThread(BaseModel):
@@ -17,6 +17,19 @@ class ReplyToThreadReplyToThread(BaseModel):
     error: Optional["ReplyToThreadReplyToThreadError"]
 
 
-ReplyToThreadReplyToThreadError = MutationErrorParts
+class ReplyToThreadReplyToThreadError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["ReplyToThreadReplyToThreadErrorFields"]
+
+
+class ReplyToThreadReplyToThreadErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 ReplyToThread.model_rebuild()
 ReplyToThreadReplyToThread.model_rebuild()
+ReplyToThreadReplyToThreadError.model_rebuild()

@@ -6,12 +6,12 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import LabelTypeParts
+from .fragments import LabelTypeFields
 
 
 class LabelType(BaseModel):
     label_type: Optional["LabelTypeLabelType"] = Field(alias="labelType")
 
 
-LabelTypeLabelType = LabelTypeParts
+LabelTypeLabelType = LabelTypeFields
 LabelType.model_rebuild()

@@ -6,7 +6,8 @@ from typing import Optional
 from pydantic import Field
 
 from .base_model import BaseModel
-from .fragments import MutationErrorParts, TenantTierMembershipParts
+from .enums import MutationErrorType, MutationFieldErrorType
+from .fragments import TenantTierMembershipFields
 
 
 class UpdateTenantTier(BaseModel):
@@ -22,7 +23,22 @@ class UpdateTenantTierUpdateTenantTier(BaseModel):
     error: Optional["UpdateTenantTierUpdateTenantTierError"]
 
 
-UpdateTenantTierUpdateTenantTierTenantTierMembership = TenantTierMembershipParts
-UpdateTenantTierUpdateTenantTierError = MutationErrorParts
+UpdateTenantTierUpdateTenantTierTenantTierMembership = TenantTierMembershipFields
+
+
+class UpdateTenantTierUpdateTenantTierError(BaseModel):
+    message: str
+    type_: MutationErrorType = Field(alias="type")
+    code: str
+    fields: list["UpdateTenantTierUpdateTenantTierErrorFields"]
+
+
+class UpdateTenantTierUpdateTenantTierErrorFields(BaseModel):
+    field: str
+    message: str
+    type_: MutationFieldErrorType = Field(alias="type")
+
+
 UpdateTenantTier.model_rebuild()
 UpdateTenantTierUpdateTenantTier.model_rebuild()
+UpdateTenantTierUpdateTenantTierError.model_rebuild()
