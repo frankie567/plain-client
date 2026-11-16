@@ -33,7 +33,10 @@ pip install plain-client
 ```py
 from plain_client import Plain
 
-client = Plain("https://core-api.uk.plain.com/graphql/v1", {"Authorization": "Bearer YOUR_API_KEY"})
+client = Plain(
+    "https://core-api.uk.plain.com/graphql/v1", {"Authorization": "Bearer YOUR_API_KEY"}
+)
+
 
 async def get_thread():
     return await client.thread("THREAD_ID")

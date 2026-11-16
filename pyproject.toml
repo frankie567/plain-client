@@ -80,6 +80,8 @@ base_client_file_path = "generator/async_base_client.py"
 # Preserve generated enum string behavior and upstream exception messages.
 "plain_client/*.py" = ["UP042", "TRY003"]
 "generator/*.py" = ["UP042", "TRY003"]
+# Ariadne can emit duplicate discriminator fields in generated fragments.
+"plain_client/fragments.py" = ["PIE794"]
 
 [[tool.ty.overrides]]
 # Codegen narrows Pydantic discriminator fields on generated subclasses.
