@@ -2,7 +2,7 @@ import enum
 import json
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from typing import IO, Any, TypeVar, cast
+from typing import IO, Any, Self, cast
 from uuid import uuid4
 
 import httpx2
@@ -29,11 +29,9 @@ Data = Any  # type: ignore[misc,assignment,unused-ignore]
 Origin = str
 
 
-def Subprotocol(*args, **kwargs):  # noqa: N802, N803
+def Subprotocol(*args, **kwargs):
     raise NotImplementedError("Subscriptions require 'websockets' package.")
 
-
-Self = TypeVar("Self", bound="AsyncBaseClient")
 
 GRAPHQL_TRANSPORT_WS = "graphql-transport-ws"
 
@@ -71,7 +69,7 @@ class AsyncBaseClient:
         self.ws_origin = Origin(ws_origin) if ws_origin else None
         self.ws_connection_init_payload = ws_connection_init_payload
 
-    async def __aenter__(self: Self) -> Self:
+    async def __aenter__(self) -> Self:
         return self
 
     async def __aexit__(

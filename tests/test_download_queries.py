@@ -28,6 +28,7 @@ def test_download_queries(tmp_path: Path, download: str) -> None:
     result = subprocess.run(
         ["bash", str(script)],
         cwd=tmp_path,
+        check=False,
         env={**os.environ, "PATH": f"{bin_dir}:{os.environ['PATH']}"},
         capture_output=True,
         text=True,
