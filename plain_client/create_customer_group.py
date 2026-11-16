@@ -37,8 +37,3 @@ class CreateCustomerGroupCreateCustomerGroupErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateCustomerGroup.model_rebuild()
-CreateCustomerGroupCreateCustomerGroup.model_rebuild()
-CreateCustomerGroupCreateCustomerGroupError.model_rebuild()

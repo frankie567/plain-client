@@ -16,4 +16,3 @@ class ThreadByMSTeamsMessage(BaseModel):
 
 
 ThreadByMSTeamsMessageThreadByMsTeamsMessage = ThreadFields
-ThreadByMSTeamsMessage.model_rebuild()

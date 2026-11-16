@@ -35,8 +35,3 @@ class BulkUpsertThreadFieldsBulkUpsertThreadFieldsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-BulkUpsertThreadFields.model_rebuild()
-BulkUpsertThreadFieldsBulkUpsertThreadFields.model_rebuild()
-BulkUpsertThreadFieldsBulkUpsertThreadFieldsError.model_rebuild()

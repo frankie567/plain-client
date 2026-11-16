@@ -30,8 +30,3 @@ class MachineUsersMachineUsersPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-MachineUsers.model_rebuild()
-MachineUsersMachineUsers.model_rebuild()
-MachineUsersMachineUsersEdges.model_rebuild()

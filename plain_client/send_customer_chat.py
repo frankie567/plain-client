@@ -35,8 +35,3 @@ class SendCustomerChatSendCustomerChatErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SendCustomerChat.model_rebuild()
-SendCustomerChatSendCustomerChat.model_rebuild()
-SendCustomerChatSendCustomerChatError.model_rebuild()

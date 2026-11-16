@@ -30,8 +30,3 @@ class DeleteWebhookTargetDeleteWebhookTargetErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWebhookTarget.model_rebuild()
-DeleteWebhookTargetDeleteWebhookTarget.model_rebuild()
-DeleteWebhookTargetDeleteWebhookTargetError.model_rebuild()

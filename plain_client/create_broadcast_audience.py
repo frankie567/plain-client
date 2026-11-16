@@ -39,8 +39,3 @@ class CreateBroadcastAudienceCreateBroadcastAudienceErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateBroadcastAudience.model_rebuild()
-CreateBroadcastAudienceCreateBroadcastAudience.model_rebuild()
-CreateBroadcastAudienceCreateBroadcastAudienceError.model_rebuild()

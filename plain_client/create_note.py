@@ -33,8 +33,3 @@ class CreateNoteCreateNoteErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateNote.model_rebuild()
-CreateNoteCreateNote.model_rebuild()
-CreateNoteCreateNoteError.model_rebuild()

@@ -37,8 +37,3 @@ class CalculateRoleChangeCostCalculateRoleChangeCostErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CalculateRoleChangeCost.model_rebuild()
-CalculateRoleChangeCostCalculateRoleChangeCost.model_rebuild()
-CalculateRoleChangeCostCalculateRoleChangeCostError.model_rebuild()

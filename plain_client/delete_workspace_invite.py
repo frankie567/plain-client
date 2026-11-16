@@ -35,8 +35,3 @@ class DeleteWorkspaceInviteDeleteWorkspaceInviteErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkspaceInvite.model_rebuild()
-DeleteWorkspaceInviteDeleteWorkspaceInvite.model_rebuild()
-DeleteWorkspaceInviteDeleteWorkspaceInviteError.model_rebuild()

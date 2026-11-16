@@ -36,8 +36,3 @@ class ConnectedDiscordChannelsConnectedDiscordChannelsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-ConnectedDiscordChannels.model_rebuild()
-ConnectedDiscordChannelsConnectedDiscordChannels.model_rebuild()
-ConnectedDiscordChannelsConnectedDiscordChannelsEdges.model_rebuild()

@@ -16,4 +16,3 @@ class MyMSTeamsIntegration(BaseModel):
 
 
 MyMSTeamsIntegrationMyMsTeamsIntegration = UserMSTeamsIntegrationFields
-MyMSTeamsIntegration.model_rebuild()

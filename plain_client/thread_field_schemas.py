@@ -32,8 +32,3 @@ class ThreadFieldSchemasThreadFieldSchemasPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-ThreadFieldSchemas.model_rebuild()
-ThreadFieldSchemasThreadFieldSchemas.model_rebuild()
-ThreadFieldSchemasThreadFieldSchemasEdges.model_rebuild()

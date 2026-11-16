@@ -35,8 +35,3 @@ class AddLabelsAddLabelsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddLabels.model_rebuild()
-AddLabelsAddLabels.model_rebuild()
-AddLabelsAddLabelsError.model_rebuild()

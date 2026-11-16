@@ -19,6 +19,3 @@ class MyUserAccountMyUserAccount(BaseModel):
     full_name: str = Field(alias="fullName")
     public_name: str = Field(alias="publicName")
     email: str
-
-
-MyUserAccount.model_rebuild()

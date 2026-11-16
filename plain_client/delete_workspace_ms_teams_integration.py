@@ -47,8 +47,3 @@ class DeleteWorkspaceMSTeamsIntegrationDeleteWorkspaceMsTeamsIntegrationErrorFie
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkspaceMSTeamsIntegration.model_rebuild()
-DeleteWorkspaceMSTeamsIntegrationDeleteWorkspaceMsTeamsIntegration.model_rebuild()
-DeleteWorkspaceMSTeamsIntegrationDeleteWorkspaceMsTeamsIntegrationError.model_rebuild()

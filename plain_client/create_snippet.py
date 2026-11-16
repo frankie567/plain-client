@@ -33,8 +33,3 @@ class CreateSnippetCreateSnippetErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateSnippet.model_rebuild()
-CreateSnippetCreateSnippet.model_rebuild()
-CreateSnippetCreateSnippetError.model_rebuild()

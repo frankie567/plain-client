@@ -33,8 +33,3 @@ class CreateBroadcastCreateBroadcastErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateBroadcast.model_rebuild()
-CreateBroadcastCreateBroadcast.model_rebuild()
-CreateBroadcastCreateBroadcastError.model_rebuild()

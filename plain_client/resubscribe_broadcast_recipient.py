@@ -41,8 +41,3 @@ class ResubscribeBroadcastRecipientResubscribeBroadcastRecipientErrorFields(Base
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ResubscribeBroadcastRecipient.model_rebuild()
-ResubscribeBroadcastRecipientResubscribeBroadcastRecipient.model_rebuild()
-ResubscribeBroadcastRecipientResubscribeBroadcastRecipientError.model_rebuild()

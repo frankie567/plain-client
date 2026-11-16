@@ -33,8 +33,3 @@ class ForkThreadForkThreadErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ForkThread.model_rebuild()
-ForkThreadForkThread.model_rebuild()
-ForkThreadForkThreadError.model_rebuild()

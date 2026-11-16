@@ -18,4 +18,3 @@ class ServiceLevelAgreementPolicy(BaseModel):
 ServiceLevelAgreementPolicyServiceLevelAgreementPolicy = (
     ServiceLevelAgreementPolicyFields
 )
-ServiceLevelAgreementPolicy.model_rebuild()

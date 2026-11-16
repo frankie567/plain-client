@@ -33,8 +33,3 @@ class UpdateBroadcastUpdateBroadcastErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateBroadcast.model_rebuild()
-UpdateBroadcastUpdateBroadcast.model_rebuild()
-UpdateBroadcastUpdateBroadcastError.model_rebuild()

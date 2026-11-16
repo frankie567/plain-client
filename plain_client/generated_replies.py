@@ -15,4 +15,3 @@ class GeneratedReplies(BaseModel):
 
 
 GeneratedRepliesGeneratedReplies = GeneratedReplyFields
-GeneratedReplies.model_rebuild()

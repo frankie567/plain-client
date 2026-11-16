@@ -39,8 +39,3 @@ class DismissSuggestedLabelTypesDismissSuggestedLabelTypesErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DismissSuggestedLabelTypes.model_rebuild()
-DismissSuggestedLabelTypesDismissSuggestedLabelTypes.model_rebuild()
-DismissSuggestedLabelTypesDismissSuggestedLabelTypesError.model_rebuild()

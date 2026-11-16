@@ -30,8 +30,3 @@ class SendSlackMessageSendSlackMessageErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SendSlackMessage.model_rebuild()
-SendSlackMessageSendSlackMessage.model_rebuild()
-SendSlackMessageSendSlackMessageError.model_rebuild()

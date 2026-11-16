@@ -16,4 +16,3 @@ class WorkspaceCursorIntegration(BaseModel):
 
 
 WorkspaceCursorIntegrationWorkspaceCursorIntegration = WorkspaceCursorIntegrationFields
-WorkspaceCursorIntegration.model_rebuild()

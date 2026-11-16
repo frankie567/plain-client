@@ -45,8 +45,3 @@ class CreateGithubUserAuthIntegrationCreateGithubUserAuthIntegrationErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateGithubUserAuthIntegration.model_rebuild()
-CreateGithubUserAuthIntegrationCreateGithubUserAuthIntegration.model_rebuild()
-CreateGithubUserAuthIntegrationCreateGithubUserAuthIntegrationError.model_rebuild()

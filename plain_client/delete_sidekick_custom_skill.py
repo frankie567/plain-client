@@ -31,8 +31,3 @@ class DeleteSidekickCustomSkillDeleteSidekickCustomSkillErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteSidekickCustomSkill.model_rebuild()
-DeleteSidekickCustomSkillDeleteSidekickCustomSkill.model_rebuild()
-DeleteSidekickCustomSkillDeleteSidekickCustomSkillError.model_rebuild()

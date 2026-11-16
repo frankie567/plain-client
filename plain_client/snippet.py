@@ -12,4 +12,3 @@ class Snippet(BaseModel):
 
 
 SnippetSnippet = SnippetFields
-Snippet.model_rebuild()

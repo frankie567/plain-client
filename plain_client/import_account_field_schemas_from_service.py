@@ -47,8 +47,3 @@ class ImportAccountFieldSchemasFromServiceImportAccountFieldSchemasFromServiceEr
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ImportAccountFieldSchemasFromService.model_rebuild()
-ImportAccountFieldSchemasFromServiceImportAccountFieldSchemasFromService.model_rebuild()
-ImportAccountFieldSchemasFromServiceImportAccountFieldSchemasFromServiceError.model_rebuild()

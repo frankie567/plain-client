@@ -15,6 +15,3 @@ class MyMSTeamsInstallationInfo(BaseModel):
 
 class MyMSTeamsInstallationInfoMyMsTeamsInstallationInfo(BaseModel):
     installation_url: str | None = Field(alias="installationUrl")
-
-
-MyMSTeamsInstallationInfo.model_rebuild()

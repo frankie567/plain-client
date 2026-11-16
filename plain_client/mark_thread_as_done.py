@@ -35,8 +35,3 @@ class MarkThreadAsDoneMarkThreadAsDoneErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-MarkThreadAsDone.model_rebuild()
-MarkThreadAsDoneMarkThreadAsDone.model_rebuild()
-MarkThreadAsDoneMarkThreadAsDoneError.model_rebuild()

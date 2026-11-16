@@ -12,4 +12,3 @@ class Account(BaseModel):
 
 
 AccountAccount = AccountFields
-Account.model_rebuild()

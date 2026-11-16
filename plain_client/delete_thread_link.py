@@ -30,8 +30,3 @@ class DeleteThreadLinkDeleteThreadLinkErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteThreadLink.model_rebuild()
-DeleteThreadLinkDeleteThreadLink.model_rebuild()
-DeleteThreadLinkDeleteThreadLinkError.model_rebuild()

@@ -37,8 +37,3 @@ class SyncUserWorkingHoursSyncUserWorkingHoursErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SyncUserWorkingHours.model_rebuild()
-SyncUserWorkingHoursSyncUserWorkingHours.model_rebuild()
-SyncUserWorkingHoursSyncUserWorkingHoursError.model_rebuild()

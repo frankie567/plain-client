@@ -38,8 +38,3 @@ class UpsertCustomerGroupUpsertCustomerGroupErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertCustomerGroup.model_rebuild()
-UpsertCustomerGroupUpsertCustomerGroup.model_rebuild()
-UpsertCustomerGroupUpsertCustomerGroupError.model_rebuild()

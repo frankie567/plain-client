@@ -45,8 +45,3 @@ class UpdateUserDefaultSavedThreadsViewUpdateUserDefaultSavedThreadsViewErrorFie
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateUserDefaultSavedThreadsView.model_rebuild()
-UpdateUserDefaultSavedThreadsViewUpdateUserDefaultSavedThreadsView.model_rebuild()
-UpdateUserDefaultSavedThreadsViewUpdateUserDefaultSavedThreadsViewError.model_rebuild()

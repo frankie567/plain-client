@@ -35,8 +35,3 @@ class ChangeThreadCustomerChangeThreadCustomerErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ChangeThreadCustomer.model_rebuild()
-ChangeThreadCustomerChangeThreadCustomer.model_rebuild()
-ChangeThreadCustomerChangeThreadCustomerError.model_rebuild()

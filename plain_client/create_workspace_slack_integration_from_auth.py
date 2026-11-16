@@ -47,8 +47,3 @@ class CreateWorkspaceSlackIntegrationFromAuthCreateWorkspaceSlackIntegrationFrom
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkspaceSlackIntegrationFromAuth.model_rebuild()
-CreateWorkspaceSlackIntegrationFromAuthCreateWorkspaceSlackIntegrationFromAuth.model_rebuild()
-CreateWorkspaceSlackIntegrationFromAuthCreateWorkspaceSlackIntegrationFromAuthError.model_rebuild()

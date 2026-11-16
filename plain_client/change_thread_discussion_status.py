@@ -30,8 +30,3 @@ class ChangeThreadDiscussionStatusChangeThreadDiscussionStatusErrorFields(BaseMo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ChangeThreadDiscussionStatus.model_rebuild()
-ChangeThreadDiscussionStatusChangeThreadDiscussionStatus.model_rebuild()
-ChangeThreadDiscussionStatusChangeThreadDiscussionStatusError.model_rebuild()

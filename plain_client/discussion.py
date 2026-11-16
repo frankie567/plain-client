@@ -12,4 +12,3 @@ class Discussion(BaseModel):
 
 
 DiscussionDiscussion = ThreadDiscussionFields
-Discussion.model_rebuild()

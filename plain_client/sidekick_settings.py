@@ -17,6 +17,3 @@ class SidekickSettingsSidekickSettings(BaseModel):
     model_options: str = Field(alias="modelOptions")
     custom_prompt: str | None = Field(alias="customPrompt")
     preferred_integrations: list[str] = Field(alias="preferredIntegrations")
-
-
-SidekickSettings.model_rebuild()

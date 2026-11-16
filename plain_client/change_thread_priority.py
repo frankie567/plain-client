@@ -35,8 +35,3 @@ class ChangeThreadPriorityChangeThreadPriorityErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ChangeThreadPriority.model_rebuild()
-ChangeThreadPriorityChangeThreadPriority.model_rebuild()
-ChangeThreadPriorityChangeThreadPriorityError.model_rebuild()

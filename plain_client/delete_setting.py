@@ -68,8 +68,3 @@ class DeleteSettingDeleteSettingErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteSetting.model_rebuild()
-DeleteSettingDeleteSetting.model_rebuild()
-DeleteSettingDeleteSettingError.model_rebuild()

@@ -36,8 +36,3 @@ class BroadcastRecipientUnsubscribesBroadcastRecipientUnsubscribesPageInfo(BaseM
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-BroadcastRecipientUnsubscribes.model_rebuild()
-BroadcastRecipientUnsubscribesBroadcastRecipientUnsubscribes.model_rebuild()
-BroadcastRecipientUnsubscribesBroadcastRecipientUnsubscribesEdges.model_rebuild()

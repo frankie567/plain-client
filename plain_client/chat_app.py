@@ -14,4 +14,3 @@ class ChatApp(BaseModel):
 
 
 ChatAppChatApp = ChatAppFields
-ChatApp.model_rebuild()

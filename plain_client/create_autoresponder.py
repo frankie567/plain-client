@@ -35,8 +35,3 @@ class CreateAutoresponderCreateAutoresponderErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateAutoresponder.model_rebuild()
-CreateAutoresponderCreateAutoresponder.model_rebuild()
-CreateAutoresponderCreateAutoresponderError.model_rebuild()

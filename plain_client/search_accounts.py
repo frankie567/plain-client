@@ -34,9 +34,3 @@ class SearchAccountsSearchAccountsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-SearchAccounts.model_rebuild()
-SearchAccountsSearchAccounts.model_rebuild()
-SearchAccountsSearchAccountsEdges.model_rebuild()
-SearchAccountsSearchAccountsEdgesNode.model_rebuild()

@@ -35,8 +35,3 @@ class CreateMySlackIntegrationCreateMySlackIntegrationErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateMySlackIntegration.model_rebuild()
-CreateMySlackIntegrationCreateMySlackIntegration.model_rebuild()
-CreateMySlackIntegrationCreateMySlackIntegrationError.model_rebuild()

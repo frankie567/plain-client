@@ -39,8 +39,3 @@ class UpdateThreadFieldSchemaUpdateThreadFieldSchemaErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateThreadFieldSchema.model_rebuild()
-UpdateThreadFieldSchemaUpdateThreadFieldSchema.model_rebuild()
-UpdateThreadFieldSchemaUpdateThreadFieldSchemaError.model_rebuild()

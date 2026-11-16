@@ -38,8 +38,3 @@ class AddUserToActiveBillingRotaAddUserToActiveBillingRotaErrorFields(BaseModel)
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddUserToActiveBillingRota.model_rebuild()
-AddUserToActiveBillingRotaAddUserToActiveBillingRota.model_rebuild()
-AddUserToActiveBillingRotaAddUserToActiveBillingRotaError.model_rebuild()

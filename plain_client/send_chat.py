@@ -33,8 +33,3 @@ class SendChatSendChatErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SendChat.model_rebuild()
-SendChatSendChat.model_rebuild()
-SendChatSendChatError.model_rebuild()

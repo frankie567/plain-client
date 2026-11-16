@@ -16,4 +16,3 @@ class MyLinearIntegration(BaseModel):
 
 
 MyLinearIntegrationMyLinearIntegration = UserLinearIntegrationFields
-MyLinearIntegration.model_rebuild()

@@ -73,8 +73,3 @@ class UpdateThreadChannelAssociationAccountMembershipPolicyUpdateThreadChannelAs
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateThreadChannelAssociationAccountMembershipPolicy.model_rebuild()
-UpdateThreadChannelAssociationAccountMembershipPolicyUpdateThreadChannelAssociationAccountMembershipPolicy.model_rebuild()
-UpdateThreadChannelAssociationAccountMembershipPolicyUpdateThreadChannelAssociationAccountMembershipPolicyError.model_rebuild()

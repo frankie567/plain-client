@@ -16,4 +16,3 @@ class LinearAppIntegration(BaseModel):
 
 
 LinearAppIntegrationLinearAppIntegration = WorkspaceLinearIntegrationFields
-LinearAppIntegration.model_rebuild()

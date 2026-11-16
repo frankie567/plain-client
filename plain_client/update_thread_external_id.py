@@ -35,8 +35,3 @@ class UpdateThreadExternalIdUpdateThreadExternalIdErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateThreadExternalId.model_rebuild()
-UpdateThreadExternalIdUpdateThreadExternalId.model_rebuild()
-UpdateThreadExternalIdUpdateThreadExternalIdError.model_rebuild()

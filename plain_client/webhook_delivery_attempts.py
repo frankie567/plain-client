@@ -34,8 +34,3 @@ class WebhookDeliveryAttemptsWebhookDeliveryAttemptsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-WebhookDeliveryAttempts.model_rebuild()
-WebhookDeliveryAttemptsWebhookDeliveryAttempts.model_rebuild()
-WebhookDeliveryAttemptsWebhookDeliveryAttemptsEdges.model_rebuild()

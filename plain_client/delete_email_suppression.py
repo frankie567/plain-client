@@ -30,8 +30,3 @@ class DeleteEmailSuppressionDeleteEmailSuppressionErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteEmailSuppression.model_rebuild()
-DeleteEmailSuppressionDeleteEmailSuppression.model_rebuild()
-DeleteEmailSuppressionDeleteEmailSuppressionError.model_rebuild()

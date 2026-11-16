@@ -33,8 +33,3 @@ class SnoozeThreadSnoozeThreadErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SnoozeThread.model_rebuild()
-SnoozeThreadSnoozeThread.model_rebuild()
-SnoozeThreadSnoozeThreadError.model_rebuild()

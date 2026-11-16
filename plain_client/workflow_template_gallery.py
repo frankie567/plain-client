@@ -14,4 +14,3 @@ class WorkflowTemplateGallery(BaseModel):
 
 
 WorkflowTemplateGalleryWorkflowTemplateGallery = WorkflowTemplateGalleryItemFields
-WorkflowTemplateGallery.model_rebuild()

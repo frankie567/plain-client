@@ -32,8 +32,3 @@ class SearchSlackUsersSearchSlackUsersPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-SearchSlackUsers.model_rebuild()
-SearchSlackUsersSearchSlackUsers.model_rebuild()
-SearchSlackUsersSearchSlackUsersEdges.model_rebuild()

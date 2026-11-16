@@ -14,4 +14,3 @@ class CustomRole(BaseModel):
 
 
 CustomRoleCustomRole = CustomRoleFields
-CustomRole.model_rebuild()

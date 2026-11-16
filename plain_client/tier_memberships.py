@@ -67,9 +67,3 @@ class TierMembershipsTierMembershipsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-TierMemberships.model_rebuild()
-TierMembershipsTier.model_rebuild()
-TierMembershipsTierMemberships.model_rebuild()
-TierMembershipsTierMembershipsEdges.model_rebuild()

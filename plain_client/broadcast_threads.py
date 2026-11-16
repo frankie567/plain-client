@@ -36,9 +36,3 @@ class BroadcastThreadsBroadcastThreadsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-BroadcastThreads.model_rebuild()
-BroadcastThreadsBroadcast.model_rebuild()
-BroadcastThreadsBroadcastThreads.model_rebuild()
-BroadcastThreadsBroadcastThreadsEdges.model_rebuild()

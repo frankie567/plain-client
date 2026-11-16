@@ -16,4 +16,3 @@ class HelpCenterArticleGroupBySlug(BaseModel):
 
 
 HelpCenterArticleGroupBySlugHelpCenterArticleGroupBySlug = HelpCenterArticleGroupFields
-HelpCenterArticleGroupBySlug.model_rebuild()

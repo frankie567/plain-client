@@ -36,8 +36,3 @@ class ExportWorkflowTemplateExportWorkflowTemplateErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ExportWorkflowTemplate.model_rebuild()
-ExportWorkflowTemplateExportWorkflowTemplate.model_rebuild()
-ExportWorkflowTemplateExportWorkflowTemplateError.model_rebuild()

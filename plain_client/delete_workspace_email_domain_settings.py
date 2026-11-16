@@ -38,8 +38,3 @@ class DeleteWorkspaceEmailDomainSettingsDeleteWorkspaceEmailDomainSettingsErrorF
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkspaceEmailDomainSettings.model_rebuild()
-DeleteWorkspaceEmailDomainSettingsDeleteWorkspaceEmailDomainSettings.model_rebuild()
-DeleteWorkspaceEmailDomainSettingsDeleteWorkspaceEmailDomainSettingsError.model_rebuild()

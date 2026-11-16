@@ -35,8 +35,3 @@ class UpdateLabelTypeUpdateLabelTypeErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateLabelType.model_rebuild()
-UpdateLabelTypeUpdateLabelType.model_rebuild()
-UpdateLabelTypeUpdateLabelTypeError.model_rebuild()

@@ -33,8 +33,3 @@ class DeleteSnippetDeleteSnippetErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteSnippet.model_rebuild()
-DeleteSnippetDeleteSnippet.model_rebuild()
-DeleteSnippetDeleteSnippetError.model_rebuild()

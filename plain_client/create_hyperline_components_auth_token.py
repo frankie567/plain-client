@@ -39,8 +39,3 @@ class CreateHyperlineComponentsAuthTokenCreateHyperlineComponentsAuthTokenErrorF
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateHyperlineComponentsAuthToken.model_rebuild()
-CreateHyperlineComponentsAuthTokenCreateHyperlineComponentsAuthToken.model_rebuild()
-CreateHyperlineComponentsAuthTokenCreateHyperlineComponentsAuthTokenError.model_rebuild()

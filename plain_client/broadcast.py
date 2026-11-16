@@ -12,4 +12,3 @@ class Broadcast(BaseModel):
 
 
 BroadcastBroadcast = BroadcastFields
-Broadcast.model_rebuild()

@@ -37,8 +37,3 @@ class CreateAiToneRuleCreateAiToneRuleErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateAiToneRule.model_rebuild()
-CreateAiToneRuleCreateAiToneRule.model_rebuild()
-CreateAiToneRuleCreateAiToneRuleError.model_rebuild()

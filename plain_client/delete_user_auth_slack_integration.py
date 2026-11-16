@@ -34,8 +34,3 @@ class DeleteUserAuthSlackIntegrationDeleteUserAuthSlackIntegrationErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteUserAuthSlackIntegration.model_rebuild()
-DeleteUserAuthSlackIntegrationDeleteUserAuthSlackIntegration.model_rebuild()
-DeleteUserAuthSlackIntegrationDeleteUserAuthSlackIntegrationError.model_rebuild()

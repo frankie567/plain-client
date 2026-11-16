@@ -45,8 +45,3 @@ class ImportBroadcastAudienceChannelsImportBroadcastAudienceChannelsErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ImportBroadcastAudienceChannels.model_rebuild()
-ImportBroadcastAudienceChannelsImportBroadcastAudienceChannels.model_rebuild()
-ImportBroadcastAudienceChannelsImportBroadcastAudienceChannelsError.model_rebuild()

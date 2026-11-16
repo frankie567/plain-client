@@ -49,8 +49,3 @@ class ImportBroadcastRecipientUnsubscribesImportBroadcastRecipientUnsubscribesEr
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ImportBroadcastRecipientUnsubscribes.model_rebuild()
-ImportBroadcastRecipientUnsubscribesImportBroadcastRecipientUnsubscribes.model_rebuild()
-ImportBroadcastRecipientUnsubscribesImportBroadcastRecipientUnsubscribesError.model_rebuild()

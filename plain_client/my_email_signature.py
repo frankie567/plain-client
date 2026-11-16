@@ -16,4 +16,3 @@ class MyEmailSignature(BaseModel):
 
 
 MyEmailSignatureMyEmailSignature = EmailSignatureFields
-MyEmailSignature.model_rebuild()

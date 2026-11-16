@@ -37,8 +37,3 @@ class RequestDiscussionQuestionRequestDiscussionQuestionErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RequestDiscussionQuestion.model_rebuild()
-RequestDiscussionQuestionRequestDiscussionQuestion.model_rebuild()
-RequestDiscussionQuestionRequestDiscussionQuestionError.model_rebuild()

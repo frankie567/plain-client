@@ -39,8 +39,3 @@ class UpdateSidekickPosthogConfigUpdateSidekickPosthogConfigErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateSidekickPosthogConfig.model_rebuild()
-UpdateSidekickPosthogConfigUpdateSidekickPosthogConfig.model_rebuild()
-UpdateSidekickPosthogConfigUpdateSidekickPosthogConfigError.model_rebuild()

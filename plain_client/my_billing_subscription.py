@@ -16,4 +16,3 @@ class MyBillingSubscription(BaseModel):
 
 
 MyBillingSubscriptionMyBillingSubscription = BillingSubscriptionFields
-MyBillingSubscription.model_rebuild()

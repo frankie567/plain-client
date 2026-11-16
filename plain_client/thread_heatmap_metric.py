@@ -14,4 +14,3 @@ class ThreadHeatmapMetric(BaseModel):
 
 
 ThreadHeatmapMetricThreadHeatmapMetric = ThreadHeatmapMetricFields
-ThreadHeatmapMetric.model_rebuild()

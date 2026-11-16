@@ -33,8 +33,3 @@ class UpdateChatAppUpdateChatAppErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateChatApp.model_rebuild()
-UpdateChatAppUpdateChatApp.model_rebuild()
-UpdateChatAppUpdateChatAppError.model_rebuild()

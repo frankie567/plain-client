@@ -12,4 +12,3 @@ class Thread(BaseModel):
 
 
 ThreadThread = ThreadFields
-Thread.model_rebuild()

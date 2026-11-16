@@ -16,4 +16,3 @@ class MySlackIntegration(BaseModel):
 
 
 MySlackIntegrationMySlackIntegration = UserSlackIntegrationFields
-MySlackIntegration.model_rebuild()

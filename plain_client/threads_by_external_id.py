@@ -34,8 +34,3 @@ class ThreadsByExternalIdThreadsByExternalIdPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-ThreadsByExternalId.model_rebuild()
-ThreadsByExternalIdThreadsByExternalId.model_rebuild()
-ThreadsByExternalIdThreadsByExternalIdEdges.model_rebuild()

@@ -46,8 +46,3 @@ class RemoveUserFromActiveBillingRotaRemoveUserFromActiveBillingRotaErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveUserFromActiveBillingRota.model_rebuild()
-RemoveUserFromActiveBillingRotaRemoveUserFromActiveBillingRota.model_rebuild()
-RemoveUserFromActiveBillingRotaRemoveUserFromActiveBillingRotaError.model_rebuild()

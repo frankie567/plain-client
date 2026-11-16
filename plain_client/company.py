@@ -12,4 +12,3 @@ class Company(BaseModel):
 
 
 CompanyCompany = CompanyFields
-Company.model_rebuild()

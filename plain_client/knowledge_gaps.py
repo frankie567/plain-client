@@ -31,8 +31,3 @@ class KnowledgeGapsKnowledgeGapsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-KnowledgeGaps.model_rebuild()
-KnowledgeGapsKnowledgeGaps.model_rebuild()
-KnowledgeGapsKnowledgeGapsEdges.model_rebuild()

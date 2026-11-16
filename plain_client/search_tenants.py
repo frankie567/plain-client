@@ -34,9 +34,3 @@ class SearchTenantsSearchTenantsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-SearchTenants.model_rebuild()
-SearchTenantsSearchTenants.model_rebuild()
-SearchTenantsSearchTenantsEdges.model_rebuild()
-SearchTenantsSearchTenantsEdgesNode.model_rebuild()

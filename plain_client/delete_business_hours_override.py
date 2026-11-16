@@ -30,8 +30,3 @@ class DeleteBusinessHoursOverrideDeleteBusinessHoursOverrideErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteBusinessHoursOverride.model_rebuild()
-DeleteBusinessHoursOverrideDeleteBusinessHoursOverride.model_rebuild()
-DeleteBusinessHoursOverrideDeleteBusinessHoursOverrideError.model_rebuild()

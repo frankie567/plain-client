@@ -47,8 +47,3 @@ class CreateUserAuthDiscordChannelIntegrationCreateUserAuthDiscordChannelIntegra
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateUserAuthDiscordChannelIntegration.model_rebuild()
-CreateUserAuthDiscordChannelIntegrationCreateUserAuthDiscordChannelIntegration.model_rebuild()
-CreateUserAuthDiscordChannelIntegrationCreateUserAuthDiscordChannelIntegrationError.model_rebuild()

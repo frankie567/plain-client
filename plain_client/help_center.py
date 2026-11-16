@@ -14,4 +14,3 @@ class HelpCenter(BaseModel):
 
 
 HelpCenterHelpCenter = HelpCenterFields
-HelpCenter.model_rebuild()

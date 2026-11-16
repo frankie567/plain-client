@@ -16,4 +16,3 @@ class CustomerByExternalId(BaseModel):
 
 
 CustomerByExternalIdCustomerByExternalId = CustomerFields
-CustomerByExternalId.model_rebuild()

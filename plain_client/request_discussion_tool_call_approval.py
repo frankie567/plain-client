@@ -47,8 +47,3 @@ class RequestDiscussionToolCallApprovalRequestDiscussionToolCallApprovalErrorFie
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RequestDiscussionToolCallApproval.model_rebuild()
-RequestDiscussionToolCallApprovalRequestDiscussionToolCallApproval.model_rebuild()
-RequestDiscussionToolCallApprovalRequestDiscussionToolCallApprovalError.model_rebuild()

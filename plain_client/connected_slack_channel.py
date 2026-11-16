@@ -16,4 +16,3 @@ class ConnectedSlackChannel(BaseModel):
 
 
 ConnectedSlackChannelConnectedSlackChannel = ConnectedSlackChannelFields
-ConnectedSlackChannel.model_rebuild()

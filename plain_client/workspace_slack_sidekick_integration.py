@@ -18,4 +18,3 @@ class WorkspaceSlackSidekickIntegration(BaseModel):
 WorkspaceSlackSidekickIntegrationWorkspaceSlackSidekickIntegration = (
     WorkspaceSlackSidekickIntegrationFields
 )
-WorkspaceSlackSidekickIntegration.model_rebuild()

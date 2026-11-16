@@ -33,8 +33,3 @@ class CreateChatAppCreateChatAppErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateChatApp.model_rebuild()
-CreateChatAppCreateChatApp.model_rebuild()
-CreateChatAppCreateChatAppError.model_rebuild()

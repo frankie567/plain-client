@@ -16,4 +16,3 @@ class ThreadByExternalId(BaseModel):
 
 
 ThreadByExternalIdThreadByExternalId = ThreadFields
-ThreadByExternalId.model_rebuild()

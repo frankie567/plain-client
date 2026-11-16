@@ -14,4 +14,3 @@ class ThreadSingleValueMetric(BaseModel):
 
 
 ThreadSingleValueMetricThreadSingleValueMetric = ThreadSingleValueMetricFields
-ThreadSingleValueMetric.model_rebuild()

@@ -16,4 +16,3 @@ class HeatmapMetric(BaseModel):
 
 
 HeatmapMetricHeatmapMetric = HeatmapMetricFields
-HeatmapMetric.model_rebuild()

@@ -28,8 +28,3 @@ class ReplyToThreadReplyToThreadErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ReplyToThread.model_rebuild()
-ReplyToThreadReplyToThread.model_rebuild()
-ReplyToThreadReplyToThreadError.model_rebuild()

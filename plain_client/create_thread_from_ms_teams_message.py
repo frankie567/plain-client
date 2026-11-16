@@ -41,8 +41,3 @@ class CreateThreadFromMSTeamsMessageCreateThreadFromMsTeamsMessageErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateThreadFromMSTeamsMessage.model_rebuild()
-CreateThreadFromMSTeamsMessageCreateThreadFromMsTeamsMessage.model_rebuild()
-CreateThreadFromMSTeamsMessageCreateThreadFromMsTeamsMessageError.model_rebuild()

@@ -39,8 +39,3 @@ class UpdateDiscussionAgentStatusUpdateDiscussionAgentStatusErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateDiscussionAgentStatus.model_rebuild()
-UpdateDiscussionAgentStatusUpdateDiscussionAgentStatus.model_rebuild()
-UpdateDiscussionAgentStatusUpdateDiscussionAgentStatusError.model_rebuild()

@@ -54,8 +54,3 @@ class AddWorkspaceAlternateSupportEmailAddressAddWorkspaceAlternateSupportEmailA
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddWorkspaceAlternateSupportEmailAddress.model_rebuild()
-AddWorkspaceAlternateSupportEmailAddressAddWorkspaceAlternateSupportEmailAddress.model_rebuild()
-AddWorkspaceAlternateSupportEmailAddressAddWorkspaceAlternateSupportEmailAddressError.model_rebuild()

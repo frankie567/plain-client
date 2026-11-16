@@ -79,8 +79,3 @@ class CreateKnowledgeSourceCreateKnowledgeSourceErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateKnowledgeSource.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSource.model_rebuild()
-CreateKnowledgeSourceCreateKnowledgeSourceError.model_rebuild()

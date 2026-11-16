@@ -37,8 +37,3 @@ class ReorderAutorespondersReorderAutorespondersErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ReorderAutoresponders.model_rebuild()
-ReorderAutorespondersReorderAutoresponders.model_rebuild()
-ReorderAutorespondersReorderAutorespondersError.model_rebuild()

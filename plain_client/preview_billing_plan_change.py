@@ -35,8 +35,3 @@ class PreviewBillingPlanChangePreviewBillingPlanChangeErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-PreviewBillingPlanChange.model_rebuild()
-PreviewBillingPlanChangePreviewBillingPlanChange.model_rebuild()
-PreviewBillingPlanChangePreviewBillingPlanChangeError.model_rebuild()

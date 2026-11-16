@@ -17,6 +17,3 @@ class SidekickServiceConfig(BaseModel):
 class SidekickServiceConfigSidekickServiceConfig(BaseModel):
     service_authorization_id: str = Field(alias="serviceAuthorizationId")
     operating_instructions: str | None = Field(alias="operatingInstructions")
-
-
-SidekickServiceConfig.model_rebuild()

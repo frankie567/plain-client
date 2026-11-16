@@ -16,4 +16,3 @@ class HelpCenterArticleGroup(BaseModel):
 
 
 HelpCenterArticleGroupHelpCenterArticleGroup = HelpCenterArticleGroupFields
-HelpCenterArticleGroup.model_rebuild()

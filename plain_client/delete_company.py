@@ -33,8 +33,3 @@ class DeleteCompanyDeleteCompanyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteCompany.model_rebuild()
-DeleteCompanyDeleteCompany.model_rebuild()
-DeleteCompanyDeleteCompanyError.model_rebuild()

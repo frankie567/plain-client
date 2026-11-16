@@ -30,8 +30,3 @@ class DeleteEscalationPathDeleteEscalationPathErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteEscalationPath.model_rebuild()
-DeleteEscalationPathDeleteEscalationPath.model_rebuild()
-DeleteEscalationPathDeleteEscalationPathError.model_rebuild()

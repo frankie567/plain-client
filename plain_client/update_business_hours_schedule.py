@@ -39,8 +39,3 @@ class UpdateBusinessHoursScheduleUpdateBusinessHoursScheduleErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateBusinessHoursSchedule.model_rebuild()
-UpdateBusinessHoursScheduleUpdateBusinessHoursSchedule.model_rebuild()
-UpdateBusinessHoursScheduleUpdateBusinessHoursScheduleError.model_rebuild()

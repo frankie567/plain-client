@@ -33,8 +33,3 @@ class CreateTenantCreateTenantErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateTenant.model_rebuild()
-CreateTenantCreateTenant.model_rebuild()
-CreateTenantCreateTenantError.model_rebuild()

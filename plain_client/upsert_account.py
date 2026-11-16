@@ -34,8 +34,3 @@ class UpsertAccountUpsertAccountErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertAccount.model_rebuild()
-UpsertAccountUpsertAccount.model_rebuild()
-UpsertAccountUpsertAccountError.model_rebuild()

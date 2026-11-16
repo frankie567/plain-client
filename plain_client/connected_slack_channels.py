@@ -35,8 +35,3 @@ class ConnectedSlackChannelsConnectedSlackChannelsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-ConnectedSlackChannels.model_rebuild()
-ConnectedSlackChannelsConnectedSlackChannels.model_rebuild()
-ConnectedSlackChannelsConnectedSlackChannelsEdges.model_rebuild()

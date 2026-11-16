@@ -39,8 +39,3 @@ class CreateWorkspaceFileUploadUrlCreateWorkspaceFileUploadUrlErrorFields(BaseMo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkspaceFileUploadUrl.model_rebuild()
-CreateWorkspaceFileUploadUrlCreateWorkspaceFileUploadUrl.model_rebuild()
-CreateWorkspaceFileUploadUrlCreateWorkspaceFileUploadUrlError.model_rebuild()

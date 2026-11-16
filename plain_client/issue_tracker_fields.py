@@ -14,4 +14,3 @@ class IssueTrackerFields(BaseModel):
 
 
 IssueTrackerFieldsIssueTrackerFields = IssueTrackerFieldFields
-IssueTrackerFields.model_rebuild()

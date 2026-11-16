@@ -30,8 +30,3 @@ class DeleteMyFavoritePageDeleteMyFavoritePageErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteMyFavoritePage.model_rebuild()
-DeleteMyFavoritePageDeleteMyFavoritePage.model_rebuild()
-DeleteMyFavoritePageDeleteMyFavoritePageError.model_rebuild()

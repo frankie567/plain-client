@@ -14,4 +14,3 @@ class WorkflowRule(BaseModel):
 
 
 WorkflowRuleWorkflowRule = WorkflowRuleFields
-WorkflowRule.model_rebuild()

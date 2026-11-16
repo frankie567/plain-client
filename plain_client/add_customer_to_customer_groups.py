@@ -42,8 +42,3 @@ class AddCustomerToCustomerGroupsAddCustomerToCustomerGroupsErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddCustomerToCustomerGroups.model_rebuild()
-AddCustomerToCustomerGroupsAddCustomerToCustomerGroups.model_rebuild()
-AddCustomerToCustomerGroupsAddCustomerToCustomerGroupsError.model_rebuild()

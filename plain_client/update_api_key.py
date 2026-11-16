@@ -33,8 +33,3 @@ class UpdateApiKeyUpdateApiKeyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateApiKey.model_rebuild()
-UpdateApiKeyUpdateApiKey.model_rebuild()
-UpdateApiKeyUpdateApiKeyError.model_rebuild()

@@ -16,4 +16,3 @@ class WorkspaceSlackIntegration(BaseModel):
 
 
 WorkspaceSlackIntegrationWorkspaceSlackIntegration = WorkspaceSlackIntegrationFields
-WorkspaceSlackIntegration.model_rebuild()

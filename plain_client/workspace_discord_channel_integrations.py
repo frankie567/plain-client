@@ -42,8 +42,3 @@ class WorkspaceDiscordChannelIntegrationsWorkspaceDiscordChannelIntegrationsPage
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-WorkspaceDiscordChannelIntegrations.model_rebuild()
-WorkspaceDiscordChannelIntegrationsWorkspaceDiscordChannelIntegrations.model_rebuild()
-WorkspaceDiscordChannelIntegrationsWorkspaceDiscordChannelIntegrationsEdges.model_rebuild()

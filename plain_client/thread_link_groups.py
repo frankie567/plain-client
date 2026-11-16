@@ -32,8 +32,3 @@ class ThreadLinkGroupsThreadLinkGroupsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-ThreadLinkGroups.model_rebuild()
-ThreadLinkGroupsThreadLinkGroups.model_rebuild()
-ThreadLinkGroupsThreadLinkGroupsEdges.model_rebuild()

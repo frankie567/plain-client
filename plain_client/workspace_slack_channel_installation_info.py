@@ -16,6 +16,3 @@ class WorkspaceSlackChannelInstallationInfoWorkspaceSlackChannelInstallationInfo
     BaseModel
 ):
     installation_url: str = Field(alias="installationUrl")
-
-
-WorkspaceSlackChannelInstallationInfo.model_rebuild()

@@ -36,8 +36,3 @@ class DeleteQueuedAgentSessionMessageDeleteQueuedAgentSessionMessageErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteQueuedAgentSessionMessage.model_rebuild()
-DeleteQueuedAgentSessionMessageDeleteQueuedAgentSessionMessage.model_rebuild()
-DeleteQueuedAgentSessionMessageDeleteQueuedAgentSessionMessageError.model_rebuild()

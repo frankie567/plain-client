@@ -35,8 +35,3 @@ class CreateHyperlineCheckoutSessionCreateHyperlineCheckoutSessionErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateHyperlineCheckoutSession.model_rebuild()
-CreateHyperlineCheckoutSessionCreateHyperlineCheckoutSession.model_rebuild()
-CreateHyperlineCheckoutSessionCreateHyperlineCheckoutSessionError.model_rebuild()

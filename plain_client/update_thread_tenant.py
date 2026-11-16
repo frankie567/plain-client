@@ -35,8 +35,3 @@ class UpdateThreadTenantUpdateThreadTenantErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateThreadTenant.model_rebuild()
-UpdateThreadTenantUpdateThreadTenant.model_rebuild()
-UpdateThreadTenantUpdateThreadTenantError.model_rebuild()

@@ -18,4 +18,3 @@ class WorkspaceDiscordIntegration(BaseModel):
 WorkspaceDiscordIntegrationWorkspaceDiscordIntegration = (
     WorkspaceDiscordIntegrationFields
 )
-WorkspaceDiscordIntegration.model_rebuild()

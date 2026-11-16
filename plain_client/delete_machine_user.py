@@ -37,8 +37,3 @@ class DeleteMachineUserDeleteMachineUserErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteMachineUser.model_rebuild()
-DeleteMachineUserDeleteMachineUser.model_rebuild()
-DeleteMachineUserDeleteMachineUserError.model_rebuild()

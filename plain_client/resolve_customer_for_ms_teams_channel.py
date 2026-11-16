@@ -45,6 +45,3 @@ class ResolveCustomerForMSTeamsChannelResolveCustomerForMsTeamsChannelErrorField
 ResolveCustomerForMSTeamsChannelResolveCustomerForMsTeamsChannelCustomer = (
     CustomerFields
 )
-ResolveCustomerForMSTeamsChannel.model_rebuild()
-ResolveCustomerForMSTeamsChannelResolveCustomerForMsTeamsChannel.model_rebuild()
-ResolveCustomerForMSTeamsChannelResolveCustomerForMsTeamsChannelError.model_rebuild()

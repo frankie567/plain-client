@@ -18,6 +18,3 @@ class InterpolationVariablesInterpolationVariables(BaseModel):
     label: str
     group: InterpolationVariableGroup
     is_customer_facing: bool = Field(alias="isCustomerFacing")
-
-
-InterpolationVariables.model_rebuild()

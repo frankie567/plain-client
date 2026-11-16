@@ -16,4 +16,3 @@ class HelpCenterAiConversation(BaseModel):
 
 
 HelpCenterAiConversationHelpCenterAiConversation = HelpCenterAiConversationFields
-HelpCenterAiConversation.model_rebuild()

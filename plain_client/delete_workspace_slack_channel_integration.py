@@ -47,8 +47,3 @@ class DeleteWorkspaceSlackChannelIntegrationDeleteWorkspaceSlackChannelIntegrati
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteWorkspaceSlackChannelIntegration.model_rebuild()
-DeleteWorkspaceSlackChannelIntegrationDeleteWorkspaceSlackChannelIntegration.model_rebuild()
-DeleteWorkspaceSlackChannelIntegrationDeleteWorkspaceSlackChannelIntegrationError.model_rebuild()

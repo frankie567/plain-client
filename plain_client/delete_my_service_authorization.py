@@ -30,8 +30,3 @@ class DeleteMyServiceAuthorizationDeleteMyServiceAuthorizationErrorFields(BaseMo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteMyServiceAuthorization.model_rebuild()
-DeleteMyServiceAuthorizationDeleteMyServiceAuthorization.model_rebuild()
-DeleteMyServiceAuthorizationDeleteMyServiceAuthorizationError.model_rebuild()

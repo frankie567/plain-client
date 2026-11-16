@@ -16,4 +16,3 @@ class WorkflowTemplate(BaseModel):
 
 
 WorkflowTemplateWorkflowTemplate = WorkflowTemplateFields
-WorkflowTemplate.model_rebuild()

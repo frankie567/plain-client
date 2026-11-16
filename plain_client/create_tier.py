@@ -33,8 +33,3 @@ class CreateTierCreateTierErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateTier.model_rebuild()
-CreateTierCreateTier.model_rebuild()
-CreateTierCreateTierError.model_rebuild()

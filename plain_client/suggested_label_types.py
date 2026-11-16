@@ -14,4 +14,3 @@ class SuggestedLabelTypes(BaseModel):
 
 
 SuggestedLabelTypesSuggestedLabelTypes = SuggestedLabelTypeFields
-SuggestedLabelTypes.model_rebuild()

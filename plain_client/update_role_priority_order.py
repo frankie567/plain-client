@@ -35,8 +35,3 @@ class UpdateRolePriorityOrderUpdateRolePriorityOrderErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateRolePriorityOrder.model_rebuild()
-UpdateRolePriorityOrderUpdateRolePriorityOrder.model_rebuild()
-UpdateRolePriorityOrderUpdateRolePriorityOrderError.model_rebuild()

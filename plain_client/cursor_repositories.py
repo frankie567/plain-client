@@ -16,6 +16,3 @@ class CursorRepositoriesCursorRepositories(BaseModel):
     owner: str
     name: str
     repository: str
-
-
-CursorRepositories.model_rebuild()

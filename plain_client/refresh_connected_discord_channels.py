@@ -36,8 +36,3 @@ class RefreshConnectedDiscordChannelsRefreshConnectedDiscordChannelsErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RefreshConnectedDiscordChannels.model_rebuild()
-RefreshConnectedDiscordChannelsRefreshConnectedDiscordChannels.model_rebuild()
-RefreshConnectedDiscordChannelsRefreshConnectedDiscordChannelsError.model_rebuild()

@@ -35,8 +35,3 @@ class UpdateThreadAgentStatusUpdateThreadAgentStatusErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateThreadAgentStatus.model_rebuild()
-UpdateThreadAgentStatusUpdateThreadAgentStatus.model_rebuild()
-UpdateThreadAgentStatusUpdateThreadAgentStatusError.model_rebuild()

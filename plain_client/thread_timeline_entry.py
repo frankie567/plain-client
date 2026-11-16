@@ -16,4 +16,3 @@ class ThreadTimelineEntry(BaseModel):
 
 
 ThreadTimelineEntryThreadTimelineEntry = TimelineEntryFields
-ThreadTimelineEntry.model_rebuild()

@@ -14,4 +14,3 @@ class SidekickMcpServers(BaseModel):
 
 
 SidekickMcpServersSidekickMcpServers = SidekickMcpServerFields
-SidekickMcpServers.model_rebuild()

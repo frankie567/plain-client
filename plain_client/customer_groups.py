@@ -30,8 +30,3 @@ class CustomerGroupsCustomerGroupsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-CustomerGroups.model_rebuild()
-CustomerGroupsCustomerGroups.model_rebuild()
-CustomerGroupsCustomerGroupsEdges.model_rebuild()

@@ -33,8 +33,3 @@ class DeleteTaskDeleteTaskErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteTask.model_rebuild()
-DeleteTaskDeleteTask.model_rebuild()
-DeleteTaskDeleteTaskError.model_rebuild()

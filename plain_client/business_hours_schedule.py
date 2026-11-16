@@ -16,4 +16,3 @@ class BusinessHoursSchedule(BaseModel):
 
 
 BusinessHoursScheduleBusinessHoursSchedule = BusinessHoursScheduleFields
-BusinessHoursSchedule.model_rebuild()

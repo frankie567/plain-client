@@ -35,8 +35,3 @@ class DuplicateBroadcastDuplicateBroadcastErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DuplicateBroadcast.model_rebuild()
-DuplicateBroadcastDuplicateBroadcast.model_rebuild()
-DuplicateBroadcastDuplicateBroadcastError.model_rebuild()

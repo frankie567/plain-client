@@ -30,8 +30,3 @@ class ChangeBillingPlanChangeBillingPlanErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ChangeBillingPlan.model_rebuild()
-ChangeBillingPlanChangeBillingPlan.model_rebuild()
-ChangeBillingPlanChangeBillingPlanError.model_rebuild()

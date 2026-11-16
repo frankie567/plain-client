@@ -14,6 +14,3 @@ class WorkspaceSlackInstallationInfo(BaseModel):
 
 class WorkspaceSlackInstallationInfoWorkspaceSlackInstallationInfo(BaseModel):
     installation_url: str = Field(alias="installationUrl")
-
-
-WorkspaceSlackInstallationInfo.model_rebuild()

@@ -28,8 +28,3 @@ class SingleValueMetricSingleValueMetricValues(BaseModel):
 class SingleValueMetricSingleValueMetricValuesDimension(BaseModel):
     type_: MetricDimensionType = Field(alias="type")
     value: str
-
-
-SingleValueMetric.model_rebuild()
-SingleValueMetricSingleValueMetric.model_rebuild()
-SingleValueMetricSingleValueMetricValues.model_rebuild()

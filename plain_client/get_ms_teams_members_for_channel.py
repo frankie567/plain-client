@@ -14,4 +14,3 @@ class GetMSTeamsMembersForChannel(BaseModel):
 
 
 GetMSTeamsMembersForChannelGetMsTeamsMembersForChannel = MSTeamsChannelMembersFields
-GetMSTeamsMembersForChannel.model_rebuild()

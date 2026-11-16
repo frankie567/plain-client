@@ -37,8 +37,3 @@ class CreateCustomerSurveyCreateCustomerSurveyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateCustomerSurvey.model_rebuild()
-CreateCustomerSurveyCreateCustomerSurvey.model_rebuild()
-CreateCustomerSurveyCreateCustomerSurveyError.model_rebuild()

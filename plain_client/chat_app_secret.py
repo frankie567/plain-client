@@ -16,4 +16,3 @@ class ChatAppSecret(BaseModel):
 
 
 ChatAppSecretChatAppSecret = ChatAppHiddenSecretFields
-ChatAppSecret.model_rebuild()

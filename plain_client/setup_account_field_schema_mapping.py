@@ -43,8 +43,3 @@ class SetupAccountFieldSchemaMappingSetupAccountFieldSchemaMappingErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SetupAccountFieldSchemaMapping.model_rebuild()
-SetupAccountFieldSchemaMappingSetupAccountFieldSchemaMapping.model_rebuild()
-SetupAccountFieldSchemaMappingSetupAccountFieldSchemaMappingError.model_rebuild()

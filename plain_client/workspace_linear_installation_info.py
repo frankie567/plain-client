@@ -14,6 +14,3 @@ class WorkspaceLinearInstallationInfo(BaseModel):
 
 class WorkspaceLinearInstallationInfoWorkspaceLinearInstallationInfo(BaseModel):
     installation_url: str = Field(alias="installationUrl")
-
-
-WorkspaceLinearInstallationInfo.model_rebuild()

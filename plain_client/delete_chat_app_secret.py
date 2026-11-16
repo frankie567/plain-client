@@ -30,8 +30,3 @@ class DeleteChatAppSecretDeleteChatAppSecretErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteChatAppSecret.model_rebuild()
-DeleteChatAppSecretDeleteChatAppSecret.model_rebuild()
-DeleteChatAppSecretDeleteChatAppSecretError.model_rebuild()

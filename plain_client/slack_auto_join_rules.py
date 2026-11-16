@@ -14,4 +14,3 @@ class SlackAutoJoinRules(BaseModel):
 
 
 SlackAutoJoinRulesSlackAutoJoinRules = SlackAutoJoinRuleFields
-SlackAutoJoinRules.model_rebuild()

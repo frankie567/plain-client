@@ -36,8 +36,3 @@ class CreateOAuthAppCreateOAuthAppErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateOAuthApp.model_rebuild()
-CreateOAuthAppCreateOAuthApp.model_rebuild()
-CreateOAuthAppCreateOAuthAppError.model_rebuild()

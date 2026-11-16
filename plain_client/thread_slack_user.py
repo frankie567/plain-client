@@ -16,4 +16,3 @@ class ThreadSlackUser(BaseModel):
 
 
 ThreadSlackUserThreadSlackUser = SlackUserFields
-ThreadSlackUser.model_rebuild()

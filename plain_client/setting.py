@@ -47,6 +47,3 @@ class SettingSettingNumberSetting(NumberSettingFields):
 
 class SettingSettingStringArraySetting(StringArraySettingFields):
     typename__: Literal["StringArraySetting"] = Field(alias="__typename")
-
-
-Setting.model_rebuild()

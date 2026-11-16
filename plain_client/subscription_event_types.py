@@ -15,6 +15,3 @@ class SubscriptionEventTypes(BaseModel):
 class SubscriptionEventTypesSubscriptionEventTypes(BaseModel):
     event_type: str = Field(alias="eventType")
     description: str
-
-
-SubscriptionEventTypes.model_rebuild()

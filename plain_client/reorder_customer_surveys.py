@@ -37,8 +37,3 @@ class ReorderCustomerSurveysReorderCustomerSurveysErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ReorderCustomerSurveys.model_rebuild()
-ReorderCustomerSurveysReorderCustomerSurveys.model_rebuild()
-ReorderCustomerSurveysReorderCustomerSurveysError.model_rebuild()

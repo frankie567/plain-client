@@ -39,8 +39,3 @@ class CreateThreadFieldSchemaCreateThreadFieldSchemaErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateThreadFieldSchema.model_rebuild()
-CreateThreadFieldSchemaCreateThreadFieldSchema.model_rebuild()
-CreateThreadFieldSchemaCreateThreadFieldSchemaError.model_rebuild()

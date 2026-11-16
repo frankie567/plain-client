@@ -35,8 +35,3 @@ class DeleteAutoresponderDeleteAutoresponderErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteAutoresponder.model_rebuild()
-DeleteAutoresponderDeleteAutoresponder.model_rebuild()
-DeleteAutoresponderDeleteAutoresponderError.model_rebuild()

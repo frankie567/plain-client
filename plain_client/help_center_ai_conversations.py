@@ -36,8 +36,3 @@ class HelpCenterAiConversationsHelpCenterAiConversationsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-HelpCenterAiConversations.model_rebuild()
-HelpCenterAiConversationsHelpCenterAiConversations.model_rebuild()
-HelpCenterAiConversationsHelpCenterAiConversationsEdges.model_rebuild()

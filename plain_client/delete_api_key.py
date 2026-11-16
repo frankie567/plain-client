@@ -33,8 +33,3 @@ class DeleteApiKeyDeleteApiKeyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteApiKey.model_rebuild()
-DeleteApiKeyDeleteApiKey.model_rebuild()
-DeleteApiKeyDeleteApiKeyError.model_rebuild()

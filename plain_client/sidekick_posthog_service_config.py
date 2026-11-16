@@ -17,6 +17,3 @@ class SidekickPosthogServiceConfig(BaseModel):
 class SidekickPosthogServiceConfigSidekickPosthogServiceConfig(BaseModel):
     operating_instructions: str | None = Field(alias="operatingInstructions")
     project_id: str | None = Field(alias="projectId")
-
-
-SidekickPosthogServiceConfig.model_rebuild()

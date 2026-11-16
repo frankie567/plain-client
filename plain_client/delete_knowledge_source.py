@@ -30,8 +30,3 @@ class DeleteKnowledgeSourceDeleteKnowledgeSourceErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteKnowledgeSource.model_rebuild()
-DeleteKnowledgeSourceDeleteKnowledgeSource.model_rebuild()
-DeleteKnowledgeSourceDeleteKnowledgeSourceError.model_rebuild()

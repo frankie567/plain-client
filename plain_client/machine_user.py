@@ -14,4 +14,3 @@ class MachineUser(BaseModel):
 
 
 MachineUserMachineUser = MachineUserFields
-MachineUser.model_rebuild()

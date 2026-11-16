@@ -16,4 +16,3 @@ class ServiceAuthorization(BaseModel):
 
 
 ServiceAuthorizationServiceAuthorization = ServiceAuthorizationFields
-ServiceAuthorization.model_rebuild()

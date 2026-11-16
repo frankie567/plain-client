@@ -33,8 +33,3 @@ class UpdateSnippetUpdateSnippetErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateSnippet.model_rebuild()
-UpdateSnippetUpdateSnippet.model_rebuild()
-UpdateSnippetUpdateSnippetError.model_rebuild()

@@ -16,6 +16,3 @@ class WorkspaceDiscordChannelInstallationInfoWorkspaceDiscordChannelInstallation
     BaseModel
 ):
     installation_url: str = Field(alias="installationUrl")
-
-
-WorkspaceDiscordChannelInstallationInfo.model_rebuild()

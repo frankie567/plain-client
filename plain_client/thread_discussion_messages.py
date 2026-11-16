@@ -41,9 +41,3 @@ class ThreadDiscussionMessagesThreadDiscussionMessagesPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-ThreadDiscussionMessages.model_rebuild()
-ThreadDiscussionMessagesThreadDiscussion.model_rebuild()
-ThreadDiscussionMessagesThreadDiscussionMessages.model_rebuild()
-ThreadDiscussionMessagesThreadDiscussionMessagesEdges.model_rebuild()

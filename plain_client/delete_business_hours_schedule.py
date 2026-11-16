@@ -30,8 +30,3 @@ class DeleteBusinessHoursScheduleDeleteBusinessHoursScheduleErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteBusinessHoursSchedule.model_rebuild()
-DeleteBusinessHoursScheduleDeleteBusinessHoursSchedule.model_rebuild()
-DeleteBusinessHoursScheduleDeleteBusinessHoursScheduleError.model_rebuild()

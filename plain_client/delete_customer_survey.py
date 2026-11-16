@@ -30,8 +30,3 @@ class DeleteCustomerSurveyDeleteCustomerSurveyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteCustomerSurvey.model_rebuild()
-DeleteCustomerSurveyDeleteCustomerSurvey.model_rebuild()
-DeleteCustomerSurveyDeleteCustomerSurveyError.model_rebuild()

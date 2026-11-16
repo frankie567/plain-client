@@ -14,4 +14,3 @@ class TeamSettings(BaseModel):
 
 
 TeamSettingsTeamSettings = TeamSettingsFields
-TeamSettings.model_rebuild()

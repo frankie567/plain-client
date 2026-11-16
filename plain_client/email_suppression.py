@@ -16,4 +16,3 @@ class EmailSuppression(BaseModel):
 
 
 EmailSuppressionEmailSuppression = EmailSuppressionFields
-EmailSuppression.model_rebuild()

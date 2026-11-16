@@ -30,8 +30,3 @@ class ResolveDiscussionApprovalResolveDiscussionApprovalErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ResolveDiscussionApproval.model_rebuild()
-ResolveDiscussionApprovalResolveDiscussionApproval.model_rebuild()
-ResolveDiscussionApprovalResolveDiscussionApprovalError.model_rebuild()

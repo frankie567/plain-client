@@ -44,8 +44,3 @@ class UserAuthDiscordChannelIntegrationsUserAuthDiscordChannelIntegrationsPageIn
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-UserAuthDiscordChannelIntegrations.model_rebuild()
-UserAuthDiscordChannelIntegrationsUserAuthDiscordChannelIntegrations.model_rebuild()
-UserAuthDiscordChannelIntegrationsUserAuthDiscordChannelIntegrationsEdges.model_rebuild()

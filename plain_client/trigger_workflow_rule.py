@@ -30,8 +30,3 @@ class TriggerWorkflowRuleTriggerWorkflowRuleErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-TriggerWorkflowRule.model_rebuild()
-TriggerWorkflowRuleTriggerWorkflowRule.model_rebuild()
-TriggerWorkflowRuleTriggerWorkflowRuleError.model_rebuild()

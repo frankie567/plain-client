@@ -35,8 +35,3 @@ class ImportCustomersImportCustomersErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ImportCustomers.model_rebuild()
-ImportCustomersImportCustomers.model_rebuild()
-ImportCustomersImportCustomersError.model_rebuild()

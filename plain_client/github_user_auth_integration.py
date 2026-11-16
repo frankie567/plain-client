@@ -16,4 +16,3 @@ class GithubUserAuthIntegration(BaseModel):
 
 
 GithubUserAuthIntegrationGithubUserAuthIntegration = GithubUserAuthIntegrationFields
-GithubUserAuthIntegration.model_rebuild()

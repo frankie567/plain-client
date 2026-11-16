@@ -16,6 +16,3 @@ class UserAuthDiscordChannelInstallationInfoUserAuthDiscordChannelInstallationIn
     BaseModel
 ):
     installation_url: str = Field(alias="installationUrl")
-
-
-UserAuthDiscordChannelInstallationInfo.model_rebuild()

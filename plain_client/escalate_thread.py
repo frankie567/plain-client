@@ -33,8 +33,3 @@ class EscalateThreadEscalateThreadErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-EscalateThread.model_rebuild()
-EscalateThreadEscalateThread.model_rebuild()
-EscalateThreadEscalateThreadError.model_rebuild()

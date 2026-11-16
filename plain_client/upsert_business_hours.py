@@ -38,8 +38,3 @@ class UpsertBusinessHoursUpsertBusinessHoursErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertBusinessHours.model_rebuild()
-UpsertBusinessHoursUpsertBusinessHours.model_rebuild()
-UpsertBusinessHoursUpsertBusinessHoursError.model_rebuild()

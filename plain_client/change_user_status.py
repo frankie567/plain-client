@@ -35,8 +35,3 @@ class ChangeUserStatusChangeUserStatusErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ChangeUserStatus.model_rebuild()
-ChangeUserStatusChangeUserStatus.model_rebuild()
-ChangeUserStatusChangeUserStatusError.model_rebuild()

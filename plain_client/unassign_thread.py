@@ -33,8 +33,3 @@ class UnassignThreadUnassignThreadErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UnassignThread.model_rebuild()
-UnassignThreadUnassignThread.model_rebuild()
-UnassignThreadUnassignThreadError.model_rebuild()

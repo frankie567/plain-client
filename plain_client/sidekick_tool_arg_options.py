@@ -14,4 +14,3 @@ class SidekickToolArgOptions(BaseModel):
 
 
 SidekickToolArgOptionsSidekickToolArgOptions = SidekickToolArgOptionsPageFields
-SidekickToolArgOptions.model_rebuild()

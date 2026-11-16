@@ -39,8 +39,3 @@ class SendDiscussionMessageSendDiscussionMessageErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-SendDiscussionMessage.model_rebuild()
-SendDiscussionMessageSendDiscussionMessage.model_rebuild()
-SendDiscussionMessageSendDiscussionMessageError.model_rebuild()

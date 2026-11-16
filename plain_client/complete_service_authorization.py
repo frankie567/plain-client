@@ -39,8 +39,3 @@ class CompleteServiceAuthorizationCompleteServiceAuthorizationErrorFields(BaseMo
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CompleteServiceAuthorization.model_rebuild()
-CompleteServiceAuthorizationCompleteServiceAuthorization.model_rebuild()
-CompleteServiceAuthorizationCompleteServiceAuthorizationError.model_rebuild()

@@ -35,8 +35,3 @@ class UnmarkCustomerAsSpamUnmarkCustomerAsSpamErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UnmarkCustomerAsSpam.model_rebuild()
-UnmarkCustomerAsSpamUnmarkCustomerAsSpam.model_rebuild()
-UnmarkCustomerAsSpamUnmarkCustomerAsSpamError.model_rebuild()

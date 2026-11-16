@@ -41,9 +41,3 @@ class HelpCenterArticleGroupArticlesHelpCenterArticleGroupArticlesPageInfo(BaseM
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-HelpCenterArticleGroupArticles.model_rebuild()
-HelpCenterArticleGroupArticlesHelpCenterArticleGroup.model_rebuild()
-HelpCenterArticleGroupArticlesHelpCenterArticleGroupArticles.model_rebuild()
-HelpCenterArticleGroupArticlesHelpCenterArticleGroupArticlesEdges.model_rebuild()

@@ -71,8 +71,3 @@ class AddMembersToTierAddMembersToTierErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddMembersToTier.model_rebuild()
-AddMembersToTierAddMembersToTier.model_rebuild()
-AddMembersToTierAddMembersToTierError.model_rebuild()

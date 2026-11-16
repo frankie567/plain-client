@@ -43,8 +43,3 @@ class VerifyWorkspaceEmailDnsSettingsVerifyWorkspaceEmailDnsSettingsErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-VerifyWorkspaceEmailDnsSettings.model_rebuild()
-VerifyWorkspaceEmailDnsSettingsVerifyWorkspaceEmailDnsSettings.model_rebuild()
-VerifyWorkspaceEmailDnsSettingsVerifyWorkspaceEmailDnsSettingsError.model_rebuild()

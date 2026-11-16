@@ -34,8 +34,3 @@ class CreateApiKeyCreateApiKeyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateApiKey.model_rebuild()
-CreateApiKeyCreateApiKey.model_rebuild()
-CreateApiKeyCreateApiKeyError.model_rebuild()

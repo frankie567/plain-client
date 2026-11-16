@@ -40,8 +40,3 @@ class ReorderThreadFieldSchemasReorderThreadFieldSchemasErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ReorderThreadFieldSchemas.model_rebuild()
-ReorderThreadFieldSchemasReorderThreadFieldSchemas.model_rebuild()
-ReorderThreadFieldSchemasReorderThreadFieldSchemasError.model_rebuild()

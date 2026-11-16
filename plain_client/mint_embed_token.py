@@ -33,8 +33,3 @@ class MintEmbedTokenMintEmbedTokenErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-MintEmbedToken.model_rebuild()
-MintEmbedTokenMintEmbedToken.model_rebuild()
-MintEmbedTokenMintEmbedTokenError.model_rebuild()

@@ -14,4 +14,3 @@ class ThreadTimeSeriesMetric(BaseModel):
 
 
 ThreadTimeSeriesMetricThreadTimeSeriesMetric = ThreadTimeSeriesMetricFields
-ThreadTimeSeriesMetric.model_rebuild()

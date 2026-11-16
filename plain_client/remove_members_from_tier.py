@@ -71,8 +71,3 @@ class RemoveMembersFromTierRemoveMembersFromTierErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveMembersFromTier.model_rebuild()
-RemoveMembersFromTierRemoveMembersFromTier.model_rebuild()
-RemoveMembersFromTierRemoveMembersFromTierError.model_rebuild()

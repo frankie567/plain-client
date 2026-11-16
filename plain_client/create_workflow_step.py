@@ -37,8 +37,3 @@ class CreateWorkflowStepCreateWorkflowStepErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkflowStep.model_rebuild()
-CreateWorkflowStepCreateWorkflowStep.model_rebuild()
-CreateWorkflowStepCreateWorkflowStepError.model_rebuild()

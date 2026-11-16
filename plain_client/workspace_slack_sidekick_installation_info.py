@@ -16,6 +16,3 @@ class WorkspaceSlackSidekickInstallationInfoWorkspaceSlackSidekickInstallationIn
     BaseModel
 ):
     installation_url: str = Field(alias="installationUrl")
-
-
-WorkspaceSlackSidekickInstallationInfo.model_rebuild()

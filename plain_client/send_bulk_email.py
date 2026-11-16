@@ -40,8 +40,3 @@ class SendBulkEmailSendBulkEmailErrorFields(BaseModel):
 class SendBulkEmailSendBulkEmailSkippedThreads(BaseModel):
     thread_id: str = Field(alias="threadId")
     reason: SendBulkEmailSkippedThreadReason
-
-
-SendBulkEmail.model_rebuild()
-SendBulkEmailSendBulkEmail.model_rebuild()
-SendBulkEmailSendBulkEmailError.model_rebuild()

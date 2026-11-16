@@ -30,8 +30,3 @@ class AnswerSidekickQuestionAnswerSidekickQuestionErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AnswerSidekickQuestion.model_rebuild()
-AnswerSidekickQuestionAnswerSidekickQuestion.model_rebuild()
-AnswerSidekickQuestionAnswerSidekickQuestionError.model_rebuild()

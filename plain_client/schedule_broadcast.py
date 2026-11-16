@@ -35,8 +35,3 @@ class ScheduleBroadcastScheduleBroadcastErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ScheduleBroadcast.model_rebuild()
-ScheduleBroadcastScheduleBroadcast.model_rebuild()
-ScheduleBroadcastScheduleBroadcastError.model_rebuild()

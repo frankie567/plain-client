@@ -32,8 +32,3 @@ class SavedThreadsViewsSavedThreadsViewsPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-SavedThreadsViews.model_rebuild()
-SavedThreadsViewsSavedThreadsViews.model_rebuild()
-SavedThreadsViewsSavedThreadsViewsEdges.model_rebuild()

@@ -39,8 +39,3 @@ class CreateBusinessHoursOverrideCreateBusinessHoursOverrideErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateBusinessHoursOverride.model_rebuild()
-CreateBusinessHoursOverrideCreateBusinessHoursOverride.model_rebuild()
-CreateBusinessHoursOverrideCreateBusinessHoursOverrideError.model_rebuild()

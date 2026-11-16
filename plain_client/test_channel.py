@@ -14,4 +14,3 @@ class TestChannel(BaseModel):
 
 
 TestChannelTestChannel = ConnectedSlackChannelFields
-TestChannel.model_rebuild()

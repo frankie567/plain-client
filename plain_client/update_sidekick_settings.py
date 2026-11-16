@@ -39,8 +39,3 @@ class UpdateSidekickSettingsUpdateSidekickSettingsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateSidekickSettings.model_rebuild()
-UpdateSidekickSettingsUpdateSidekickSettings.model_rebuild()
-UpdateSidekickSettingsUpdateSidekickSettingsError.model_rebuild()

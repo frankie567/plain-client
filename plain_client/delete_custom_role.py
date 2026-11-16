@@ -31,8 +31,3 @@ class DeleteCustomRoleDeleteCustomRoleErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteCustomRole.model_rebuild()
-DeleteCustomRoleDeleteCustomRole.model_rebuild()
-DeleteCustomRoleDeleteCustomRoleError.model_rebuild()

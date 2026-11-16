@@ -16,4 +16,3 @@ class MyJiraIntegrationToken(BaseModel):
 
 
 MyJiraIntegrationTokenMyJiraIntegrationToken = JiraIntegrationTokenFields
-MyJiraIntegrationToken.model_rebuild()

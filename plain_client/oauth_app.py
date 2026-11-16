@@ -14,4 +14,3 @@ class OauthApp(BaseModel):
 
 
 OauthAppOauthApp = OAuthAppFields
-OauthApp.model_rebuild()

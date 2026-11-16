@@ -39,8 +39,3 @@ class MarkThreadDiscussionReadMarkThreadDiscussionReadErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-MarkThreadDiscussionRead.model_rebuild()
-MarkThreadDiscussionReadMarkThreadDiscussionRead.model_rebuild()
-MarkThreadDiscussionReadMarkThreadDiscussionReadError.model_rebuild()

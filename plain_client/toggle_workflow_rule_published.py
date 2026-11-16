@@ -37,8 +37,3 @@ class ToggleWorkflowRulePublishedToggleWorkflowRulePublishedErrorFields(BaseMode
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ToggleWorkflowRulePublished.model_rebuild()
-ToggleWorkflowRulePublishedToggleWorkflowRulePublished.model_rebuild()
-ToggleWorkflowRulePublishedToggleWorkflowRulePublishedError.model_rebuild()

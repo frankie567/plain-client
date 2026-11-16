@@ -38,8 +38,3 @@ class UpsertThreadFieldUpsertThreadFieldErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertThreadField.model_rebuild()
-UpsertThreadFieldUpsertThreadField.model_rebuild()
-UpsertThreadFieldUpsertThreadFieldError.model_rebuild()

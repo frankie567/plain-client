@@ -47,8 +47,3 @@ class CreateWorkspaceDiscordIntegrationCreateWorkspaceDiscordIntegrationErrorFie
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWorkspaceDiscordIntegration.model_rebuild()
-CreateWorkspaceDiscordIntegrationCreateWorkspaceDiscordIntegration.model_rebuild()
-CreateWorkspaceDiscordIntegrationCreateWorkspaceDiscordIntegrationError.model_rebuild()

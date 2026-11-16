@@ -35,8 +35,3 @@ class UpsertRoleScopesUpsertRoleScopesErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertRoleScopes.model_rebuild()
-UpsertRoleScopesUpsertRoleScopes.model_rebuild()
-UpsertRoleScopesUpsertRoleScopesError.model_rebuild()

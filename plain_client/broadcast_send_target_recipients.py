@@ -16,4 +16,3 @@ class BroadcastSendTargetRecipients(BaseModel):
 BroadcastSendTargetRecipientsBroadcastSendTargetRecipients = (
     BroadcastSendTargetRecipientsFields
 )
-BroadcastSendTargetRecipients.model_rebuild()

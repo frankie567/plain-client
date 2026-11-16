@@ -39,8 +39,3 @@ class DeleteBroadcastAudienceDeleteBroadcastAudienceErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteBroadcastAudience.model_rebuild()
-DeleteBroadcastAudienceDeleteBroadcastAudience.model_rebuild()
-DeleteBroadcastAudienceDeleteBroadcastAudienceError.model_rebuild()

@@ -34,8 +34,3 @@ class DeleteThreadChannelAssociationDeleteThreadChannelAssociationErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteThreadChannelAssociation.model_rebuild()
-DeleteThreadChannelAssociationDeleteThreadChannelAssociation.model_rebuild()
-DeleteThreadChannelAssociationDeleteThreadChannelAssociationError.model_rebuild()

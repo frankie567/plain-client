@@ -37,8 +37,3 @@ class CreateWebhookTargetCreateWebhookTargetErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateWebhookTarget.model_rebuild()
-CreateWebhookTargetCreateWebhookTarget.model_rebuild()
-CreateWebhookTargetCreateWebhookTargetError.model_rebuild()

@@ -45,8 +45,3 @@ class RemoveAccountFieldSchemaMappingRemoveAccountFieldSchemaMappingErrorFields(
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveAccountFieldSchemaMapping.model_rebuild()
-RemoveAccountFieldSchemaMappingRemoveAccountFieldSchemaMapping.model_rebuild()
-RemoveAccountFieldSchemaMappingRemoveAccountFieldSchemaMappingError.model_rebuild()

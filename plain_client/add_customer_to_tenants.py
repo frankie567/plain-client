@@ -35,8 +35,3 @@ class AddCustomerToTenantsAddCustomerToTenantsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-AddCustomerToTenants.model_rebuild()
-AddCustomerToTenantsAddCustomerToTenants.model_rebuild()
-AddCustomerToTenantsAddCustomerToTenantsError.model_rebuild()

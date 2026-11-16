@@ -30,8 +30,3 @@ class CreateMcpFeedbackCreateMcpFeedbackErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateMcpFeedback.model_rebuild()
-CreateMcpFeedbackCreateMcpFeedback.model_rebuild()
-CreateMcpFeedbackCreateMcpFeedbackError.model_rebuild()

@@ -14,4 +14,3 @@ class UserByEmail(BaseModel):
 
 
 UserByEmailUserByEmail = UserFields
-UserByEmail.model_rebuild()

@@ -30,8 +30,3 @@ class ResolveAgentApprovalResolveAgentApprovalErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ResolveAgentApproval.model_rebuild()
-ResolveAgentApprovalResolveAgentApproval.model_rebuild()
-ResolveAgentApprovalResolveAgentApprovalError.model_rebuild()

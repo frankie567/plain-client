@@ -12,4 +12,3 @@ class Autoresponder(BaseModel):
 
 
 AutoresponderAutoresponder = AutoresponderFields
-Autoresponder.model_rebuild()

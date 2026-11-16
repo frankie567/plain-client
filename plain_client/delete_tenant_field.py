@@ -37,8 +37,3 @@ class DeleteTenantFieldDeleteTenantFieldErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-DeleteTenantField.model_rebuild()
-DeleteTenantFieldDeleteTenantField.model_rebuild()
-DeleteTenantFieldDeleteTenantFieldError.model_rebuild()

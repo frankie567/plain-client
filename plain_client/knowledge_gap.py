@@ -14,4 +14,3 @@ class KnowledgeGap(BaseModel):
 
 
 KnowledgeGapKnowledgeGap = KnowledgeGapFields
-KnowledgeGap.model_rebuild()

@@ -40,8 +40,3 @@ class UpsertAccountFieldSchemaUpsertAccountFieldSchemaErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpsertAccountFieldSchema.model_rebuild()
-UpsertAccountFieldSchemaUpsertAccountFieldSchema.model_rebuild()
-UpsertAccountFieldSchemaUpsertAccountFieldSchemaError.model_rebuild()

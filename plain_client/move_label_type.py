@@ -35,8 +35,3 @@ class MoveLabelTypeMoveLabelTypeErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-MoveLabelType.model_rebuild()
-MoveLabelTypeMoveLabelType.model_rebuild()
-MoveLabelTypeMoveLabelTypeError.model_rebuild()

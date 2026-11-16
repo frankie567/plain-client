@@ -14,6 +14,3 @@ class UserAuthSlackInstallationInfo(BaseModel):
 
 class UserAuthSlackInstallationInfoUserAuthSlackInstallationInfo(BaseModel):
     installation_url: str = Field(alias="installationUrl")
-
-
-UserAuthSlackInstallationInfo.model_rebuild()

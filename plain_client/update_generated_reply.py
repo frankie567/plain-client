@@ -37,8 +37,3 @@ class UpdateGeneratedReplyUpdateGeneratedReplyErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateGeneratedReply.model_rebuild()
-UpdateGeneratedReplyUpdateGeneratedReply.model_rebuild()
-UpdateGeneratedReplyUpdateGeneratedReplyError.model_rebuild()

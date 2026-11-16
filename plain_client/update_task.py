@@ -33,8 +33,3 @@ class UpdateTaskUpdateTaskErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateTask.model_rebuild()
-UpdateTaskUpdateTask.model_rebuild()
-UpdateTaskUpdateTaskError.model_rebuild()

@@ -16,4 +16,3 @@ class HelpCenterArticle(BaseModel):
 
 
 HelpCenterArticleHelpCenterArticle = HelpCenterArticleFields
-HelpCenterArticle.model_rebuild()

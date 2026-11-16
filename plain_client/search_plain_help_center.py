@@ -16,6 +16,3 @@ class SearchPlainHelpCenterSearchPlainHelpCenter(BaseModel):
     content: str
     title: str
     url: str
-
-
-SearchPlainHelpCenter.model_rebuild()

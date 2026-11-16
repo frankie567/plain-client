@@ -37,8 +37,3 @@ class UpdateAllMyInternalNotificationsUpdateAllMyInternalNotificationsErrorField
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateAllMyInternalNotifications.model_rebuild()
-UpdateAllMyInternalNotificationsUpdateAllMyInternalNotifications.model_rebuild()
-UpdateAllMyInternalNotificationsUpdateAllMyInternalNotificationsError.model_rebuild()

@@ -47,8 +47,3 @@ class VerifyWorkspaceEmailForwardingSettingsVerifyWorkspaceEmailForwardingSettin
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-VerifyWorkspaceEmailForwardingSettings.model_rebuild()
-VerifyWorkspaceEmailForwardingSettingsVerifyWorkspaceEmailForwardingSettings.model_rebuild()
-VerifyWorkspaceEmailForwardingSettingsVerifyWorkspaceEmailForwardingSettingsError.model_rebuild()

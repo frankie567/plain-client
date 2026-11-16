@@ -16,4 +16,3 @@ class TimelineEntry(BaseModel):
 
 
 TimelineEntryTimelineEntry = TimelineEntryFields
-TimelineEntry.model_rebuild()

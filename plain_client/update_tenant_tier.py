@@ -37,8 +37,3 @@ class UpdateTenantTierUpdateTenantTierErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateTenantTier.model_rebuild()
-UpdateTenantTierUpdateTenantTier.model_rebuild()
-UpdateTenantTierUpdateTenantTierError.model_rebuild()

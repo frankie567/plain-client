@@ -34,8 +34,3 @@ class ThreadClustersPaginatedThreadClustersPaginatedPageInfo(BaseModel):
     has_previous_page: bool = Field(alias="hasPreviousPage")
     start_cursor: str | None = Field(alias="startCursor")
     end_cursor: str | None = Field(alias="endCursor")
-
-
-ThreadClustersPaginated.model_rebuild()
-ThreadClustersPaginatedThreadClustersPaginated.model_rebuild()
-ThreadClustersPaginatedThreadClustersPaginatedEdges.model_rebuild()

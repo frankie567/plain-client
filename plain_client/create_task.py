@@ -33,8 +33,3 @@ class CreateTaskCreateTaskErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-CreateTask.model_rebuild()
-CreateTaskCreateTask.model_rebuild()
-CreateTaskCreateTaskError.model_rebuild()

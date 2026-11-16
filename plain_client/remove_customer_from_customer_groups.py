@@ -36,8 +36,3 @@ class RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsErrorField
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-RemoveCustomerFromCustomerGroups.model_rebuild()
-RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroups.model_rebuild()
-RemoveCustomerFromCustomerGroupsRemoveCustomerFromCustomerGroupsError.model_rebuild()

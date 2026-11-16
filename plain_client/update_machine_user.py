@@ -37,8 +37,3 @@ class UpdateMachineUserUpdateMachineUserErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-UpdateMachineUser.model_rebuild()
-UpdateMachineUserUpdateMachineUser.model_rebuild()
-UpdateMachineUserUpdateMachineUserError.model_rebuild()

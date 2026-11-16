@@ -35,8 +35,3 @@ class ImportAccountsImportAccountsErrorFields(BaseModel):
     field: str
     message: str
     type_: MutationFieldErrorType = Field(alias="type")
-
-
-ImportAccounts.model_rebuild()
-ImportAccountsImportAccounts.model_rebuild()
-ImportAccountsImportAccountsError.model_rebuild()
